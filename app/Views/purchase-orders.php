@@ -2,6 +2,11 @@
 <?php include __DIR__ . '/includes/sidebar.php'; ?>
 
   <main>
+    <!-- Page Title -->
+    <div class="page-title">
+      <h1>CHAKANOKS</h1>
+    </div>
+
     <h2>Purchase Orders</h2>
     <div class="desc">
       Review and manage official Purchase Orders (POs) generated from approved requests.
@@ -124,4 +129,3 @@
   </main>
 
 <?php include __DIR__ . '/includes/footer.php'; ?>
-

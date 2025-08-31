@@ -2,6 +2,11 @@
 <?php include __DIR__ . '/includes/sidebar.php'; ?>
 
   <main>
+    <!-- Page Title -->
+    <div class="page-header">
+      <h1>CHAKANOKS</h1>
+    </div>
+
     <h2>Deliveries</h2>
     <div class="desc">
       This section tracks all product deliveries from the central kitchen and suppliers 
@@ -51,4 +56,3 @@
   </main>
 
 <?php include __DIR__ . '/includes/footer.php'; ?>
-

@@ -38,8 +38,21 @@
       color: white;
       font-size: 16px;
       cursor: pointer;
+      margin-top: 10px;
     }
     button:hover { background: darkorange; }
+    .register-link {
+      margin-top: 15px;
+      font-size: 14px;
+    }
+    .register-link a {
+      color: #4CAF50;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .register-link a:hover {
+      text-decoration: underline;
+    }
   </style>
 </head>
 <body>
@@ -50,7 +63,11 @@
       <input type="password" placeholder="Password" required><br>
       <button type="submit">Login</button>
     </form>
+
+    <!-- Register text link -->
+    <div class="register-link">
+      Don’t have an account? <a href="<?= base_url('/register'); ?>">Register</a>
+    </div>
   </div>
 </body>
 </html>
-

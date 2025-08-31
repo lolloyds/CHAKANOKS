@@ -2,6 +2,11 @@
 <?php include __DIR__ . '/includes/sidebar.php'; ?>
 
   <main>
+    <!-- Page Title -->
+    <div class="page-header">
+      <h1>CHAKANOKS</h1>
+    </div>
+
     <h2>Inventory</h2>
 
     <div class="stats">
@@ -90,4 +95,3 @@
   </main>
 
 <?php include __DIR__ . '/includes/footer.php'; ?>
-
