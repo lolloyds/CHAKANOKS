@@ -16,6 +16,18 @@ class Home extends BaseController
     {
         return view('dashboard');
     }
+    public function admin(): string
+    {
+        return view('admin_dashboard');
+    }
+    public function user(): string
+    {
+        return view('user_dashboard');
+    }
+    public function manager(): string
+    {
+        return view('branch_manager');
+    }
     public function purchaseRequest(): string
     {
         return view('purchase-request');

@@ -58,15 +58,12 @@
 <body>
   <div class="login-container">
     <h2>Login</h2>
-    <form action="<?= base_url('/dashboard'); ?>">
-      <input type="text" placeholder="Username" required><br>
-      <input type="password" placeholder="Password" required><br>
+    <form method="post" action="<?= base_url('login'); ?>">
+      <input type="text" name="username" placeholder="Username" required><br>
+      <input type="password" name="password" placeholder="Password" required><br>
       <button type="submit">Login</button>
     </form>
 
-    <!-- Register text link -->
-    <div class="register-link">
-      Don’t have an account? <a href="<?= base_url('/register'); ?>">Register</a>
     </div>
   </div>
 </body>
