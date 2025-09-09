@@ -8,45 +8,26 @@ class Auth extends BaseController
 {
     public function login()
     {
+        // Show the login view
         return view('login');
     }
 
     public function doLogin()
     {
-        $username = $this->request->getPost('username');
+        // Get posted inputs
+        $usernameOrEmail = $this->request->getPost('username_email');
         $password = $this->request->getPost('password');
+        $remember = $this->request->getPost('remember'); // checkbox
 
         $userModel = new UserModel();
-        $user = $userModel->where('username', $username)->first();
 
-        if (!$user || !password_verify($password, $user['password_hash'])) {
-            return redirect()->to(base_url('login'));
-        }
+        // Allow login using either username OR email
+        $user = $userModel
+            ->groupStart()
+                ->where('username', $usernameOrEmail)
+                ->orWhere('email', $usernameOrEmail)
+            ->groupEnd()
+            ->first();
 
-        session()->set('user', [
-            'id' => $user['id'],
-            'username' => $user['username'],
-            'role' => $user['role'],
-        ]);
-
-        switch ($user['role']) {
-            case 'admin':
-                return redirect()->to(base_url('admin'));
-            case 'inventory_staff':
-                return redirect()->to(base_url('inventory-staff'));
-            case 'branch_manager':
-                return redirect()->to(base_url('manager'));
-            case 'user':
-            default:
-                return redirect()->to(base_url('user'));
-        }
-    }
-
-    public function logout()
-    {
-        session()->remove('user');
-        return redirect()->to(base_url('login'));
-    }
-}
-
-
+        // Validate user
+        if (!$user || !password_ve_

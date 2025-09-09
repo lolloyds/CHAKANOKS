@@ -25,9 +25,8 @@ class CreateUsersTable extends Migration
 				'constraint' => '255',
 			],
 			'role' => [
-				'type' => 'VARCHAR',
-				'constraint' => '50', // admin, inventory_staff, user
-				'default' => 'user',
+				'type' => 'ENUM',
+				'constraint' => ['Branch Manager', 'Inventory Staff', 'Central Office Admin', 'Supplier', 'Logistics', 'Coordinator', 'Franchise Manager', 'System Administrator'], // admin, inventory_staff, user
 			],
 			'created_at' => [
 				'type' => 'DATETIME',
