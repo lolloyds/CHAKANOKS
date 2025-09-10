@@ -9,33 +9,41 @@ use CodeIgniter\Router\RouteCollection;
 // Default route -> login page
 $routes->get('/', 'Auth::login');
 
-// Authentication
-$routes->get('login', 'Auth::login');       // show login page
-$routes->post('login', 'Auth::doLogin');    // process login form
-$routes->get('logout', 'Auth::logout');     // logout
+// ==================== AUTHENTICATION ====================
+$routes->get('login', 'Auth::login');
+$routes->post('login', 'Auth::doLogin');
+$routes->get('logout', 'Auth::logout');
 
-// Forgot password page (dummy, create controller later)
-$routes->get('forgot-password', 'Auth::forgotPassword');
 
-// Dashboard
-$routes->get('dashboard', 'Home::dashboard', ['filter' => 'auth']);
+// ==================== DASHBOARD ====================
+$routes->get('dashboard', 'Home::dashboard');
+$routes->get('bdashboard', 'Inventory::bdashboard');
 
-// Role-based access
-$routes->get('admin', 'Home::admin', ['filter' => 'role:admin']);
-$routes->get('user', 'Home::user', ['filter' => 'role:user']);
-$routes->get('manager', 'Home::manager', ['filter' => 'role:branch_manager']);
-$routes->get('inventory-staff', 'Inventory::staff', ['filter' => 'role:inventory_staff,branch_manager']);
-
-// Feature pages
+// ==================== FEATURE PAGES ====================
 $routes->get('purchase-request', 'Home::purchaseRequest');
 $routes->get('purchase-orders', 'Home::purchaseOrders');
 $routes->get('deliveries', 'Home::deliveries');
 $routes->get('inventory', 'Home::inventory');
+$routes->get('binventory', 'Inventory::binventory');
 $routes->get('suppliers', 'Home::suppliers');
 $routes->get('transfer', 'Home::transfer');
 $routes->get('franchise', 'Home::franchise');
 $routes->get('settings', 'Home::settings');
 
-// API routes
-$routes->get('api/inventory', 'Inventory::list', ['filter' => 'role:inventory_staff,branch_manager']);
-$routes->post('api/inventory/update/(:num)', 'Inventory::updateQuantity/$1', ['filter' => 'role:inventory_staff,branch_manager']);
+// ==================== INVENTORY MANAGEMENT ====================
+
+$routes->post('inventory/receive', 'Inventory::receiveItem', ['filter' => 'role:Inventory Staff,Branch Manager']);
+$routes->post('inventory/use', 'Inventory::useItem', ['filter' => 'role:Inventory Staff,Branch Manager']);
+$routes->post('inventory/transfer', 'Inventory::transferItem', ['filter' => 'role:Inventory Staff,Branch Manager']);
+$routes->post('inventory/adjust', 'Inventory::adjustItem', ['filter' => 'role:Inventory Staff,Branch Manager']);
+$routes->post('inventory/spoil', 'Inventory::spoilItem', ['filter' => 'role:Inventory Staff,Branch Manager']);
+
+
+// Branch inventory routes
+$routes->post('inventory/addItem', 'Inventory::addItem');
+$routes->post('inventory/useItem', 'Inventory::useItem');
+$routes->post('inventory/reportDamage', 'Inventory::reportDamage');
+
+// Central office routes
+$routes->post('inventory/transferItem', 'Inventory::transferItem');
+$routes->post('inventory/adjustItem', 'Inventory::adjustItem');

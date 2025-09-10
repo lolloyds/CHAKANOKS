@@ -1,0 +1,332 @@
+ERROR - 2025-09-11 01:39:18 --> Error connecting to the database: mysqli_sql_exception: Access denied for user 'root'@'localhost' (using password: YES) in C:\xampp\htdocs\CHAKANOKS\system\Database\MySQLi\Connection.php:201
+Stack trace:
+#0 C:\xampp\htdocs\CHAKANOKS\system\Database\MySQLi\Connection.php(201): mysqli->real_connect('127.0.0.1', 'root', Object(SensitiveParameterValue), 'chakanoks_db', 3306, '', 0)
+#1 C:\xampp\htdocs\CHAKANOKS\system\Database\BaseConnection.php(419): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\xampp\htdocs\CHAKANOKS\system\Database\Database.php(72): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\xampp\htdocs\CHAKANOKS\system\Database\Config.php(109): CodeIgniter\Database\Database->loadForge(Object(CodeIgniter\Database\MySQLi\Connection))
+#4 C:\xampp\htdocs\CHAKANOKS\system\Database\Seeder.php(98): CodeIgniter\Database\Config::forge(NULL)
+#5 C:\xampp\htdocs\CHAKANOKS\system\Commands\Database\Seed.php(71): CodeIgniter\Database\Seeder->__construct(Object(Config\Database))
+#6 C:\xampp\htdocs\CHAKANOKS\system\CLI\Commands.php(74): CodeIgniter\Commands\Database\Seed->run(Array)
+#7 C:\xampp\htdocs\CHAKANOKS\system\CLI\Console.php(47): CodeIgniter\CLI\Commands->run('db:seed', Array)
+#8 C:\xampp\htdocs\CHAKANOKS\system\Boot.php(388): CodeIgniter\CLI\Console->run()
+#9 C:\xampp\htdocs\CHAKANOKS\system\Boot.php(133): CodeIgniter\Boot::runCommand(Object(CodeIgniter\CLI\Console))
+#10 C:\xampp\htdocs\CHAKANOKS\spark(87): CodeIgniter\Boot::bootSpark(Object(Config\Paths))
+#11 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Access denied for user '****'@'localhost' (using password: YES) in C:\xampp\htdocs\CHAKANOKS\system\Database\MySQLi\Connection.php:246
+Stack trace:
+#0 C:\xampp\htdocs\CHAKANOKS\system\Database\BaseConnection.php(419): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\xampp\htdocs\CHAKANOKS\system\Database\Database.php(72): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\xampp\htdocs\CHAKANOKS\system\Database\Config.php(109): CodeIgniter\Database\Database->loadForge(Object(CodeIgniter\Database\MySQLi\Connection))
+#3 C:\xampp\htdocs\CHAKANOKS\system\Database\Seeder.php(98): CodeIgniter\Database\Config::forge(NULL)
+#4 C:\xampp\htdocs\CHAKANOKS\system\Commands\Database\Seed.php(71): CodeIgniter\Database\Seeder->__construct(Object(Config\Database))
+#5 C:\xampp\htdocs\CHAKANOKS\system\CLI\Commands.php(74): CodeIgniter\Commands\Database\Seed->run(Array)
+#6 C:\xampp\htdocs\CHAKANOKS\system\CLI\Console.php(47): CodeIgniter\CLI\Commands->run('db:seed', Array)
+#7 C:\xampp\htdocs\CHAKANOKS\system\Boot.php(388): CodeIgniter\CLI\Console->run()
+#8 C:\xampp\htdocs\CHAKANOKS\system\Boot.php(133): CodeIgniter\Boot::runCommand(Object(CodeIgniter\CLI\Console))
+#9 C:\xampp\htdocs\CHAKANOKS\spark(87): CodeIgniter\Boot::bootSpark(Object(Config\Paths))
+#10 {main}
+CRITICAL - 2025-09-11 01:39:18 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: Access denied for user '****'@'localhost' (using password: YES)
+[Method: CLI, Route: db:seed/ItemsSeeder]
+in SYSTEMPATH\Database\BaseConnection.php on line 465.
+ 1 SYSTEMPATH\Database\Database.php(72): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\Config.php(109): CodeIgniter\Database\Database->loadForge(Object(CodeIgniter\Database\MySQLi\Connection))
+ 3 SYSTEMPATH\Database\Seeder.php(98): CodeIgniter\Database\Config::forge(null)
+ 4 SYSTEMPATH\Commands\Database\Seed.php(71): CodeIgniter\Database\Seeder->__construct(Object(Config\Database))
+ 5 SYSTEMPATH\CLI\Commands.php(74): CodeIgniter\Commands\Database\Seed->run([...])
+ 6 SYSTEMPATH\CLI\Console.php(47): CodeIgniter\CLI\Commands->run('db:seed', [...])
+ 7 SYSTEMPATH\Boot.php(388): CodeIgniter\CLI\Console->run()
+ 8 SYSTEMPATH\Boot.php(133): CodeIgniter\Boot::runCommand(Object(CodeIgniter\CLI\Console))
+ 9 ROOTPATH\spark(87): CodeIgniter\Boot::bootSpark(Object(Config\Paths))
+ERROR - 2025-09-11 02:11:55 --> Error connecting to the database: mysqli_sql_exception: Access denied for user 'root'@'localhost' (using password: YES) in C:\xampp\htdocs\CHAKANOKS\system\Database\MySQLi\Connection.php:201
+Stack trace:
+#0 C:\xampp\htdocs\CHAKANOKS\system\Database\MySQLi\Connection.php(201): mysqli->real_connect('127.0.0.1', 'root', Object(SensitiveParameterValue), 'chakanoks_db', 3306, '', 0)
+#1 C:\xampp\htdocs\CHAKANOKS\system\Database\BaseConnection.php(419): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\xampp\htdocs\CHAKANOKS\system\Database\BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\xampp\htdocs\CHAKANOKS\system\Database\BaseConnection.php(1525): CodeIgniter\Database\BaseConnection->query('SHOW TABLES FRO...')
+#4 C:\xampp\htdocs\CHAKANOKS\system\Database\BaseConnection.php(1545): CodeIgniter\Database\BaseConnection->listTables()
+#5 C:\xampp\htdocs\CHAKANOKS\system\Database\MigrationRunner.php(768): CodeIgniter\Database\BaseConnection->tableExists('migrations')
+#6 C:\xampp\htdocs\CHAKANOKS\system\Database\MigrationRunner.php(162): CodeIgniter\Database\MigrationRunner->ensureTable()
+#7 C:\xampp\htdocs\CHAKANOKS\system\Commands\Database\Migrate.php(85): CodeIgniter\Database\MigrationRunner->latest(NULL)
+#8 C:\xampp\htdocs\CHAKANOKS\system\CLI\Commands.php(74): CodeIgniter\Commands\Database\Migrate->run(Array)
+#9 C:\xampp\htdocs\CHAKANOKS\system\CLI\Console.php(47): CodeIgniter\CLI\Commands->run('migrate', Array)
+#10 C:\xampp\htdocs\CHAKANOKS\system\Boot.php(388): CodeIgniter\CLI\Console->run()
+#11 C:\xampp\htdocs\CHAKANOKS\system\Boot.php(133): CodeIgniter\Boot::runCommand(Object(CodeIgniter\CLI\Console))
+#12 C:\xampp\htdocs\CHAKANOKS\spark(87): CodeIgniter\Boot::bootSpark(Object(Config\Paths))
+#13 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Access denied for user '****'@'localhost' (using password: YES) in C:\xampp\htdocs\CHAKANOKS\system\Database\MySQLi\Connection.php:246
+Stack trace:
+#0 C:\xampp\htdocs\CHAKANOKS\system\Database\BaseConnection.php(419): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\xampp\htdocs\CHAKANOKS\system\Database\BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\xampp\htdocs\CHAKANOKS\system\Database\BaseConnection.php(1525): CodeIgniter\Database\BaseConnection->query('SHOW TABLES FRO...')
+#3 C:\xampp\htdocs\CHAKANOKS\system\Database\BaseConnection.php(1545): CodeIgniter\Database\BaseConnection->listTables()
+#4 C:\xampp\htdocs\CHAKANOKS\system\Database\MigrationRunner.php(768): CodeIgniter\Database\BaseConnection->tableExists('migrations')
+#5 C:\xampp\htdocs\CHAKANOKS\system\Database\MigrationRunner.php(162): CodeIgniter\Database\MigrationRunner->ensureTable()
+#6 C:\xampp\htdocs\CHAKANOKS\system\Commands\Database\Migrate.php(85): CodeIgniter\Database\MigrationRunner->latest(NULL)
+#7 C:\xampp\htdocs\CHAKANOKS\system\CLI\Commands.php(74): CodeIgniter\Commands\Database\Migrate->run(Array)
+#8 C:\xampp\htdocs\CHAKANOKS\system\CLI\Console.php(47): CodeIgniter\CLI\Commands->run('migrate', Array)
+#9 C:\xampp\htdocs\CHAKANOKS\system\Boot.php(388): CodeIgniter\CLI\Console->run()
+#10 C:\xampp\htdocs\CHAKANOKS\system\Boot.php(133): CodeIgniter\Boot::runCommand(Object(CodeIgniter\CLI\Console))
+#11 C:\xampp\htdocs\CHAKANOKS\spark(87): CodeIgniter\Boot::bootSpark(Object(Config\Paths))
+#12 {main}
+DEBUG - 2025-09-11 02:30:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-11 02:30:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-11 02:54:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-11 02:56:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-11 03:01:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-11 03:01:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-11 03:02:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-11 03:02:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-11 03:02:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-11 11:36:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-11 11:37:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-09-11 12:02:15 --> CodeIgniter\Filters\Exceptions\FilterException: "auth" filter must have a matching alias defined.
+[Method: GET, Route: inventory]
+in SYSTEMPATH\Filters\Filters.php on line 590.
+ 1 SYSTEMPATH\Filters\Filters.php(590): CodeIgniter\Filters\Exceptions\FilterException::forNoAlias('auth')
+ 2 SYSTEMPATH\Filters\Filters.php(641): CodeIgniter\Filters\Filters->enableFilter('auth', 'before')
+ 3 SYSTEMPATH\CodeIgniter.php(467): CodeIgniter\Filters\Filters->enableFilters([...], 'before')
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-09-11 12:23:13 --> ErrorException: include(C:\xampp\htdocs\CHAKANOKS\app\Views\Branch-only/includes/header.php): Failed to open stream: No such file or directory
+[Method: GET, Route: Binventory]
+in APPPATH\Views\Branch-only\Binventory.php on line 1.
+ 1 APPPATH\Views\Branch-only\Binventory.php(1): CodeIgniter\Debug\Exceptions->errorHandler(2, 'include(C:\\xampp\\htdocs\\CHAKANOKS\\app\\Views\\Branch-only/includes/header.php): Failed to open stream: No such file or directory', 'C:\\xampp\\htdocs\\CHAKANOKS\\app\\Views\\Branch-only\\Binventory.php', 1)
+ 2 APPPATH\Views\Branch-only\Binventory.php(1): include()
+ 3 SYSTEMPATH\View\View.php(226): include('C:\\xampp\\htdocs\\CHAKANOKS\\app\\Views\\Branch-only\\Binventory.php')
+ 4 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 5 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('Branch-only/Binventory', [], true)
+ 6 APPPATH\Controllers\Home.php(38): view('Branch-only/Binventory')
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Home->binventory()
+ 8 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 9 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-09-11 12:23:27 --> ErrorException: include(C:\xampp\htdocs\CHAKANOKS\app\Views\Branch-only/includes/header.php): Failed to open stream: No such file or directory
+[Method: GET, Route: Binventory]
+in APPPATH\Views\Branch-only\Binventory.php on line 1.
+ 1 APPPATH\Views\Branch-only\Binventory.php(1): CodeIgniter\Debug\Exceptions->errorHandler(2, 'include(C:\\xampp\\htdocs\\CHAKANOKS\\app\\Views\\Branch-only/includes/header.php): Failed to open stream: No such file or directory', 'C:\\xampp\\htdocs\\CHAKANOKS\\app\\Views\\Branch-only\\Binventory.php', 1)
+ 2 APPPATH\Views\Branch-only\Binventory.php(1): include()
+ 3 SYSTEMPATH\View\View.php(226): include('C:\\xampp\\htdocs\\CHAKANOKS\\app\\Views\\Branch-only\\Binventory.php')
+ 4 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 5 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('Branch-only/Binventory', [], true)
+ 6 APPPATH\Controllers\Home.php(38): view('Branch-only/Binventory')
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Home->binventory()
+ 8 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 9 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-09-11 12:42:52 --> ErrorException: Undefined variable $totalItems
+[Method: GET, Route: Binventory]
+in APPPATH\Views\Branch-only\Binventory.php on line 16.
+ 1 APPPATH\Views\Branch-only\Binventory.php(16): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $totalItems', 'C:\\xampp\\htdocs\\CHAKANOKS\\app\\Views\\Branch-only\\Binventory.php', 16)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\xampp\\htdocs\\CHAKANOKS\\app\\Views\\Branch-only\\Binventory.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('Branch-only/Binventory', [], true)
+ 5 APPPATH\Controllers\Home.php(38): view('Branch-only/Binventory')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Home->binventory()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-09-11 12:57:29 --> Error: Class "App\Services\InventoryService" not found
+[Method: GET, Route: Binventory]
+in APPPATH\Controllers\Inventory.php on line 13.
+ 1 SYSTEMPATH\CodeIgniter.php(903): App\Controllers\Inventory->__construct()
+ 2 SYSTEMPATH\CodeIgniter.php(498): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2025-09-11 13:19:46 --> mysqli_sql_exception: Table 'items' already exists in C:\xampp\htdocs\CHAKANOKS\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\xampp\htdocs\CHAKANOKS\system\Database\MySQLi\Connection.php(327): mysqli->query('CREATE TABLE `i...', 0)
+#1 C:\xampp\htdocs\CHAKANOKS\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('CREATE TABLE `i...')
+#2 C:\xampp\htdocs\CHAKANOKS\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('CREATE TABLE `i...')
+#3 C:\xampp\htdocs\CHAKANOKS\system\Database\Forge.php(570): CodeIgniter\Database\BaseConnection->query('CREATE TABLE `i...')
+#4 C:\xampp\htdocs\CHAKANOKS\app\Database\Migrations\2025-09-08-000002_CreateItemsTable.php(57): CodeIgniter\Database\Forge->createTable('items')
+#5 C:\xampp\htdocs\CHAKANOKS\system\Database\MigrationRunner.php(876): App\Database\Migrations\CreateItemsTable->up()
+#6 C:\xampp\htdocs\CHAKANOKS\system\Database\MigrationRunner.php(182): CodeIgniter\Database\MigrationRunner->migrate('up', Object(stdClass))
+#7 C:\xampp\htdocs\CHAKANOKS\system\Commands\Database\Migrate.php(85): CodeIgniter\Database\MigrationRunner->latest(NULL)
+#8 C:\xampp\htdocs\CHAKANOKS\system\CLI\Commands.php(74): CodeIgniter\Commands\Database\Migrate->run(Array)
+#9 C:\xampp\htdocs\CHAKANOKS\system\CLI\Console.php(47): CodeIgniter\CLI\Commands->run('migrate', Array)
+#10 C:\xampp\htdocs\CHAKANOKS\system\Boot.php(388): CodeIgniter\CLI\Console->run()
+#11 C:\xampp\htdocs\CHAKANOKS\system\Boot.php(133): CodeIgniter\Boot::runCommand(Object(CodeIgniter\CLI\Console))
+#12 C:\xampp\htdocs\CHAKANOKS\spark(87): CodeIgniter\Boot::bootSpark(Object(Config\Paths))
+#13 {main}
+ERROR - 2025-09-11 13:20:25 --> mysqli_sql_exception: Table 'chakanoks_db.branch_stock' doesn't exist in C:\xampp\htdocs\CHAKANOKS\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\xampp\htdocs\CHAKANOKS\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT `items`....', 0)
+#1 C:\xampp\htdocs\CHAKANOKS\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `items`....')
+#2 C:\xampp\htdocs\CHAKANOKS\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `items`....')
+#3 C:\xampp\htdocs\CHAKANOKS\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `items`....', Array, false)
+#4 C:\xampp\htdocs\CHAKANOKS\app\Controllers\Inventory.php(104): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\CHAKANOKS\system\CodeIgniter.php(933): App\Controllers\Inventory->binventory()
+#6 C:\xampp\htdocs\CHAKANOKS\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventory))
+#7 C:\xampp\htdocs\CHAKANOKS\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\CHAKANOKS\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#9 C:\xampp\htdocs\CHAKANOKS\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#10 C:\xampp\htdocs\CHAKANOKS\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#11 {main}
+CRITICAL - 2025-09-11 13:20:25 --> CodeIgniter\Database\Exceptions\DatabaseException: Table 'chakanoks_db.branch_stock' doesn't exist
+[Method: GET, Route: Binventory]
+in SYSTEMPATH\Database\BaseConnection.php on line 684.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `items`.`id` as `item_id`, `items`.`name` as `item_name`, `items`.`unit`, `items`.`reorder_level`, `branch_stock`.`quantity`
+FROM `items`
+LEFT JOIN `branch_stock` ON `items`.`id` = `branch_stock`.`item_id`
+WHERE `items`.`status` = :items.status:', [...], false)
+ 2 APPPATH\Controllers\Inventory.php(104): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Inventory->binventory()
+ 4 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventory))
+ 5 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-09-11 13:20:25 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Table 'chakanoks_db.branch_stock' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `items`.`id` as `item_id`, `items`.`name` as `item_name`, `items`.`unit`, `items`.`reorder_level`, `branch_stock`.`quantity`
+FROM `items`
+LEFT JOIN `branch_stock` ON `items`.`id` = `branch_stock`.`item_id`
+WHERE `items`.`status` = \'active\'')
+ 2 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `items`.`id` as `item_id`, `items`.`name` as `item_name`, `items`.`unit`, `items`.`reorder_level`, `branch_stock`.`quantity`
+FROM `items`
+LEFT JOIN `branch_stock` ON `items`.`id` = `branch_stock`.`item_id`
+WHERE `items`.`status` = \'active\'')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `items`.`id` as `item_id`, `items`.`name` as `item_name`, `items`.`unit`, `items`.`reorder_level`, `branch_stock`.`quantity`
+FROM `items`
+LEFT JOIN `branch_stock` ON `items`.`id` = `branch_stock`.`item_id`
+WHERE `items`.`status` = :items.status:', [...], false)
+ 4 APPPATH\Controllers\Inventory.php(104): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Inventory->binventory()
+ 6 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventory))
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-09-11 13:20:25 --> [Caused by] mysqli_sql_exception: Table 'chakanoks_db.branch_stock' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query('SELECT `items`.`id` as `item_id`, `items`.`name` as `item_name`, `items`.`unit`, `items`.`reorder_level`, `branch_stock`.`quantity`
+FROM `items`
+LEFT JOIN `branch_stock` ON `items`.`id` = `branch_stock`.`item_id`
+WHERE `items`.`status` = \'active\'', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `items`.`id` as `item_id`, `items`.`name` as `item_name`, `items`.`unit`, `items`.`reorder_level`, `branch_stock`.`quantity`
+FROM `items`
+LEFT JOIN `branch_stock` ON `items`.`id` = `branch_stock`.`item_id`
+WHERE `items`.`status` = \'active\'')
+ 3 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `items`.`id` as `item_id`, `items`.`name` as `item_name`, `items`.`unit`, `items`.`reorder_level`, `branch_stock`.`quantity`
+FROM `items`
+LEFT JOIN `branch_stock` ON `items`.`id` = `branch_stock`.`item_id`
+WHERE `items`.`status` = \'active\'')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `items`.`id` as `item_id`, `items`.`name` as `item_name`, `items`.`unit`, `items`.`reorder_level`, `branch_stock`.`quantity`
+FROM `items`
+LEFT JOIN `branch_stock` ON `items`.`id` = `branch_stock`.`item_id`
+WHERE `items`.`status` = :items.status:', [...], false)
+ 5 APPPATH\Controllers\Inventory.php(104): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Inventory->binventory()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventory))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-09-11 13:20:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-09-11 13:25:14 --> mysqli_sql_exception: Table 'items' already exists in C:\xampp\htdocs\CHAKANOKS\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\xampp\htdocs\CHAKANOKS\system\Database\MySQLi\Connection.php(327): mysqli->query('CREATE TABLE `i...', 0)
+#1 C:\xampp\htdocs\CHAKANOKS\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('CREATE TABLE `i...')
+#2 C:\xampp\htdocs\CHAKANOKS\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('CREATE TABLE `i...')
+#3 C:\xampp\htdocs\CHAKANOKS\system\Database\Forge.php(570): CodeIgniter\Database\BaseConnection->query('CREATE TABLE `i...')
+#4 C:\xampp\htdocs\CHAKANOKS\app\Database\Migrations\2025-09-08-000002_CreateItemsTable.php(57): CodeIgniter\Database\Forge->createTable('items')
+#5 C:\xampp\htdocs\CHAKANOKS\system\Database\MigrationRunner.php(876): App\Database\Migrations\CreateItemsTable->up()
+#6 C:\xampp\htdocs\CHAKANOKS\system\Database\MigrationRunner.php(182): CodeIgniter\Database\MigrationRunner->migrate('up', Object(stdClass))
+#7 C:\xampp\htdocs\CHAKANOKS\system\Commands\Database\Migrate.php(85): CodeIgniter\Database\MigrationRunner->latest(NULL)
+#8 C:\xampp\htdocs\CHAKANOKS\system\CLI\Commands.php(74): CodeIgniter\Commands\Database\Migrate->run(Array)
+#9 C:\xampp\htdocs\CHAKANOKS\system\CLI\Console.php(47): CodeIgniter\CLI\Commands->run('migrate', Array)
+#10 C:\xampp\htdocs\CHAKANOKS\system\Boot.php(388): CodeIgniter\CLI\Console->run()
+#11 C:\xampp\htdocs\CHAKANOKS\system\Boot.php(133): CodeIgniter\Boot::runCommand(Object(CodeIgniter\CLI\Console))
+#12 C:\xampp\htdocs\CHAKANOKS\spark(87): CodeIgniter\Boot::bootSpark(Object(Config\Paths))
+#13 {main}
+DEBUG - 2025-09-11 13:26:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-11 13:54:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-09-11 13:54:20 --> mysqli_sql_exception: Column 'branch_id' cannot be null in C:\xampp\htdocs\CHAKANOKS\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\xampp\htdocs\CHAKANOKS\system\Database\MySQLi\Connection.php(327): mysqli->query('INSERT INTO `br...', 0)
+#1 C:\xampp\htdocs\CHAKANOKS\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `br...')
+#2 C:\xampp\htdocs\CHAKANOKS\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `br...')
+#3 C:\xampp\htdocs\CHAKANOKS\system\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `br...', Array, false)
+#4 C:\xampp\htdocs\CHAKANOKS\app\Services\InventoryService.php(33): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 C:\xampp\htdocs\CHAKANOKS\app\Controllers\Inventory.php(23): App\Services\InventoryService->receiveStock(NULL, '2', '1', '2', 'Delivery from s...')
+#6 C:\xampp\htdocs\CHAKANOKS\system\CodeIgniter.php(933): App\Controllers\Inventory->addItem()
+#7 C:\xampp\htdocs\CHAKANOKS\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventory))
+#8 C:\xampp\htdocs\CHAKANOKS\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\CHAKANOKS\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#10 C:\xampp\htdocs\CHAKANOKS\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#11 C:\xampp\htdocs\CHAKANOKS\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#12 {main}
+CRITICAL - 2025-09-11 13:54:20 --> CodeIgniter\Database\Exceptions\DatabaseException: Column 'branch_id' cannot be null
+[Method: POST, Route: inventory/addItem]
+in SYSTEMPATH\Database\BaseConnection.php on line 684.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `branch_stock` (`branch_id`, `item_id`, `quantity`, `updated_at`) VALUES (:branch_id:, :item_id:, :quantity:, :updated_at:)', [...], false)
+ 2 APPPATH\Services\InventoryService.php(33): CodeIgniter\Database\BaseBuilder->insert([...])
+ 3 APPPATH\Controllers\Inventory.php(23): App\Services\InventoryService->receiveStock(null, '2', '1', '2', 'Delivery from supplier')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Inventory->addItem()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventory))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-09-11 13:54:20 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Column 'branch_id' cannot be null
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `branch_stock` (`branch_id`, `item_id`, `quantity`, `updated_at`) VALUES (NULL, \'2\', \'1\', \'2025-09-11 13:54:20\')')
+ 2 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `branch_stock` (`branch_id`, `item_id`, `quantity`, `updated_at`) VALUES (NULL, \'2\', \'1\', \'2025-09-11 13:54:20\')')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `branch_stock` (`branch_id`, `item_id`, `quantity`, `updated_at`) VALUES (:branch_id:, :item_id:, :quantity:, :updated_at:)', [...], false)
+ 4 APPPATH\Services\InventoryService.php(33): CodeIgniter\Database\BaseBuilder->insert([...])
+ 5 APPPATH\Controllers\Inventory.php(23): App\Services\InventoryService->receiveStock(null, '2', '1', '2', 'Delivery from supplier')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Inventory->addItem()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventory))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-09-11 13:54:20 --> [Caused by] mysqli_sql_exception: Column 'branch_id' cannot be null
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query('INSERT INTO `branch_stock` (`branch_id`, `item_id`, `quantity`, `updated_at`) VALUES (NULL, \'2\', \'1\', \'2025-09-11 13:54:20\')', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `branch_stock` (`branch_id`, `item_id`, `quantity`, `updated_at`) VALUES (NULL, \'2\', \'1\', \'2025-09-11 13:54:20\')')
+ 3 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `branch_stock` (`branch_id`, `item_id`, `quantity`, `updated_at`) VALUES (NULL, \'2\', \'1\', \'2025-09-11 13:54:20\')')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `branch_stock` (`branch_id`, `item_id`, `quantity`, `updated_at`) VALUES (:branch_id:, :item_id:, :quantity:, :updated_at:)', [...], false)
+ 5 APPPATH\Services\InventoryService.php(33): CodeIgniter\Database\BaseBuilder->insert([...])
+ 6 APPPATH\Controllers\Inventory.php(23): App\Services\InventoryService->receiveStock(null, '2', '1', '2', 'Delivery from supplier')
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Inventory->addItem()
+ 8 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventory))
+ 9 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-09-11 13:56:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-09-11 13:56:23 --> Exception: Insufficient stock
+[Method: POST, Route: inventory/useItem]
+in APPPATH\Services\InventoryService.php on line 56.
+ 1 APPPATH\Controllers\Inventory.php(37): App\Services\InventoryService->useStock(null, '1', '1', '2', 'Used for sales/cooking')
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Inventory->useItem()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventory))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-09-11 14:06:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-11 14:06:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-11 14:25:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-11 21:01:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-11 21:01:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-11 21:01:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-11 21:01:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-11 21:01:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-11 21:02:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-11 21:03:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-11 21:04:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.

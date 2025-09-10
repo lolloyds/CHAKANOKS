@@ -26,7 +26,12 @@ class CreateUsersTable extends Migration
 			],
 			'role' => [
 				'type' => 'ENUM',
-				'constraint' => ['Branch Manager', 'Inventory Staff', 'Central Office Admin', 'Supplier', 'Logistics', 'Coordinator', 'Franchise Manager', 'System Administrator'], // admin, inventory_staff, user
+				'constraint' => ['Branch Manager', 'Inventory Staff', 'Central Office Admin', 'Supplier', 'Logistics Coordinator', 'Franchise Manager', 'System Administrator'],
+			],
+			'branch_id' => [
+				'type' => 'INT',
+				'unsigned' => true,
+				'null' => true,
 			],
 			'created_at' => [
 				'type' => 'DATETIME',
@@ -47,5 +52,3 @@ class CreateUsersTable extends Migration
 		$this->forge->dropTable('users', true);
 	}
 }
-
-

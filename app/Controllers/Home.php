@@ -6,28 +6,17 @@ class Home extends BaseController
 {
     public function index(): string
     {
-        return view('login');
+        return view('auth/login');
     }
     public function login(): string
     {
-        return view('login');
+        return view('auth/login');
     }
     public function dashboard(): string
     {
         return view('dashboard');
     }
-    public function admin(): string
-    {
-        return view('admin_dashboard');
-    }
-    public function user(): string
-    {
-        return view('user_dashboard');
-    }
-    public function manager(): string
-    {
-        return view('branch_manager');
-    }
+
     public function purchaseRequest(): string
     {
         return view('purchase-request');
@@ -44,6 +33,7 @@ class Home extends BaseController
     {
         return view('inventory');
     }
+
     public function suppliers(): string
     {
         return view('suppliers');

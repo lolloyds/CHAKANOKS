@@ -1,0 +1,318 @@
+DEBUG - 2025-09-12 00:31:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-12 00:31:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-12 00:31:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-12 00:32:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-12 00:33:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-12 00:33:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-12 00:34:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-12 00:34:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-09-12 01:08:22 --> mysqli_sql_exception: Can't create table `chakanoks_db`.`users` (errno: 150 "Foreign key constraint is incorrectly formed") in C:\xampp\htdocs\CHAKANOKS\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\xampp\htdocs\CHAKANOKS\system\Database\MySQLi\Connection.php(327): mysqli->query('CREATE TABLE `u...', 0)
+#1 C:\xampp\htdocs\CHAKANOKS\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('CREATE TABLE `u...')
+#2 C:\xampp\htdocs\CHAKANOKS\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('CREATE TABLE `u...')
+#3 C:\xampp\htdocs\CHAKANOKS\system\Database\Forge.php(570): CodeIgniter\Database\BaseConnection->query('CREATE TABLE `u...')
+#4 C:\xampp\htdocs\CHAKANOKS\app\Database\Migrations\2025-09-08-000001_CreateUsersTable.php(48): CodeIgniter\Database\Forge->createTable('users')
+#5 C:\xampp\htdocs\CHAKANOKS\system\Database\MigrationRunner.php(876): App\Database\Migrations\CreateUsersTable->up()
+#6 C:\xampp\htdocs\CHAKANOKS\system\Database\MigrationRunner.php(182): CodeIgniter\Database\MigrationRunner->migrate('up', Object(stdClass))
+#7 C:\xampp\htdocs\CHAKANOKS\system\Commands\Database\Migrate.php(85): CodeIgniter\Database\MigrationRunner->latest(NULL)
+#8 C:\xampp\htdocs\CHAKANOKS\system\CLI\Commands.php(74): CodeIgniter\Commands\Database\Migrate->run(Array)
+#9 C:\xampp\htdocs\CHAKANOKS\system\CLI\Console.php(47): CodeIgniter\CLI\Commands->run('migrate', Array)
+#10 C:\xampp\htdocs\CHAKANOKS\system\Boot.php(388): CodeIgniter\CLI\Console->run()
+#11 C:\xampp\htdocs\CHAKANOKS\system\Boot.php(133): CodeIgniter\Boot::runCommand(Object(CodeIgniter\CLI\Console))
+#12 C:\xampp\htdocs\CHAKANOKS\spark(87): CodeIgniter\Boot::bootSpark(Object(Config\Paths))
+#13 {main}
+ERROR - 2025-09-12 01:08:53 --> mysqli_sql_exception: Can't create table `chakanoks_db`.`users` (errno: 150 "Foreign key constraint is incorrectly formed") in C:\xampp\htdocs\CHAKANOKS\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\xampp\htdocs\CHAKANOKS\system\Database\MySQLi\Connection.php(327): mysqli->query('CREATE TABLE `u...', 0)
+#1 C:\xampp\htdocs\CHAKANOKS\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('CREATE TABLE `u...')
+#2 C:\xampp\htdocs\CHAKANOKS\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('CREATE TABLE `u...')
+#3 C:\xampp\htdocs\CHAKANOKS\system\Database\Forge.php(570): CodeIgniter\Database\BaseConnection->query('CREATE TABLE `u...')
+#4 C:\xampp\htdocs\CHAKANOKS\app\Database\Migrations\2025-09-08-000001_CreateUsersTable.php(48): CodeIgniter\Database\Forge->createTable('users')
+#5 C:\xampp\htdocs\CHAKANOKS\system\Database\MigrationRunner.php(876): App\Database\Migrations\CreateUsersTable->up()
+#6 C:\xampp\htdocs\CHAKANOKS\system\Database\MigrationRunner.php(182): CodeIgniter\Database\MigrationRunner->migrate('up', Object(stdClass))
+#7 C:\xampp\htdocs\CHAKANOKS\system\Commands\Database\Migrate.php(85): CodeIgniter\Database\MigrationRunner->latest(NULL)
+#8 C:\xampp\htdocs\CHAKANOKS\system\CLI\Commands.php(74): CodeIgniter\Commands\Database\Migrate->run(Array)
+#9 C:\xampp\htdocs\CHAKANOKS\system\CLI\Console.php(47): CodeIgniter\CLI\Commands->run('migrate', Array)
+#10 C:\xampp\htdocs\CHAKANOKS\system\Boot.php(388): CodeIgniter\CLI\Console->run()
+#11 C:\xampp\htdocs\CHAKANOKS\system\Boot.php(133): CodeIgniter\Boot::runCommand(Object(CodeIgniter\CLI\Console))
+#12 C:\xampp\htdocs\CHAKANOKS\spark(87): CodeIgniter\Boot::bootSpark(Object(Config\Paths))
+#13 {main}
+ERROR - 2025-09-12 01:17:57 --> mysqli_sql_exception: Can't create table `chakanoks_db`.`users` (errno: 150 "Foreign key constraint is incorrectly formed") in C:\xampp\htdocs\CHAKANOKS\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\xampp\htdocs\CHAKANOKS\system\Database\MySQLi\Connection.php(327): mysqli->query('CREATE TABLE `u...', 0)
+#1 C:\xampp\htdocs\CHAKANOKS\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('CREATE TABLE `u...')
+#2 C:\xampp\htdocs\CHAKANOKS\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('CREATE TABLE `u...')
+#3 C:\xampp\htdocs\CHAKANOKS\system\Database\Forge.php(570): CodeIgniter\Database\BaseConnection->query('CREATE TABLE `u...')
+#4 C:\xampp\htdocs\CHAKANOKS\app\Database\Migrations\2025-09-08-000001_CreateUsersTable.php(48): CodeIgniter\Database\Forge->createTable('users')
+#5 C:\xampp\htdocs\CHAKANOKS\system\Database\MigrationRunner.php(876): App\Database\Migrations\CreateUsersTable->up()
+#6 C:\xampp\htdocs\CHAKANOKS\system\Database\MigrationRunner.php(182): CodeIgniter\Database\MigrationRunner->migrate('up', Object(stdClass))
+#7 C:\xampp\htdocs\CHAKANOKS\system\Commands\Database\Migrate.php(85): CodeIgniter\Database\MigrationRunner->latest(NULL)
+#8 C:\xampp\htdocs\CHAKANOKS\system\CLI\Commands.php(74): CodeIgniter\Commands\Database\Migrate->run(Array)
+#9 C:\xampp\htdocs\CHAKANOKS\system\CLI\Console.php(47): CodeIgniter\CLI\Commands->run('migrate', Array)
+#10 C:\xampp\htdocs\CHAKANOKS\system\Boot.php(388): CodeIgniter\CLI\Console->run()
+#11 C:\xampp\htdocs\CHAKANOKS\system\Boot.php(133): CodeIgniter\Boot::runCommand(Object(CodeIgniter\CLI\Console))
+#12 C:\xampp\htdocs\CHAKANOKS\spark(87): CodeIgniter\Boot::bootSpark(Object(Config\Paths))
+#13 {main}
+ERROR - 2025-09-12 01:17:57 --> mysqli_sql_exception: Can't create table `chakanoks_db`.`users` (errno: 150 "Foreign key constraint is incorrectly formed") in C:\xampp\htdocs\CHAKANOKS\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\xampp\htdocs\CHAKANOKS\system\Database\MySQLi\Connection.php(327): mysqli->query('CREATE TABLE `u...', 0)
+#1 C:\xampp\htdocs\CHAKANOKS\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('CREATE TABLE `u...')
+#2 C:\xampp\htdocs\CHAKANOKS\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('CREATE TABLE `u...')
+#3 C:\xampp\htdocs\CHAKANOKS\system\Database\Forge.php(570): CodeIgniter\Database\BaseConnection->query('CREATE TABLE `u...')
+#4 C:\xampp\htdocs\CHAKANOKS\app\Database\Migrations\2025-09-08-000001_CreateUsersTable.php(48): CodeIgniter\Database\Forge->createTable('users')
+#5 C:\xampp\htdocs\CHAKANOKS\system\Database\MigrationRunner.php(876): App\Database\Migrations\CreateUsersTable->up()
+#6 C:\xampp\htdocs\CHAKANOKS\system\Database\MigrationRunner.php(182): CodeIgniter\Database\MigrationRunner->migrate('up', Object(stdClass))
+#7 C:\xampp\htdocs\CHAKANOKS\system\Commands\Database\Migrate.php(85): CodeIgniter\Database\MigrationRunner->latest(NULL)
+#8 C:\xampp\htdocs\CHAKANOKS\system\CLI\Commands.php(74): CodeIgniter\Commands\Database\Migrate->run(Array)
+#9 C:\xampp\htdocs\CHAKANOKS\system\CLI\Console.php(47): CodeIgniter\CLI\Commands->run('migrate', Array)
+#10 C:\xampp\htdocs\CHAKANOKS\system\Boot.php(388): CodeIgniter\CLI\Console->run()
+#11 C:\xampp\htdocs\CHAKANOKS\system\Boot.php(133): CodeIgniter\Boot::runCommand(Object(CodeIgniter\CLI\Console))
+#12 C:\xampp\htdocs\CHAKANOKS\spark(87): CodeIgniter\Boot::bootSpark(Object(Config\Paths))
+#13 {main}
+ERROR - 2025-09-12 01:17:58 --> mysqli_sql_exception: Can't create table `chakanoks_db`.`users` (errno: 150 "Foreign key constraint is incorrectly formed") in C:\xampp\htdocs\CHAKANOKS\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\xampp\htdocs\CHAKANOKS\system\Database\MySQLi\Connection.php(327): mysqli->query('CREATE TABLE `u...', 0)
+#1 C:\xampp\htdocs\CHAKANOKS\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('CREATE TABLE `u...')
+#2 C:\xampp\htdocs\CHAKANOKS\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('CREATE TABLE `u...')
+#3 C:\xampp\htdocs\CHAKANOKS\system\Database\Forge.php(570): CodeIgniter\Database\BaseConnection->query('CREATE TABLE `u...')
+#4 C:\xampp\htdocs\CHAKANOKS\app\Database\Migrations\2025-09-08-000001_CreateUsersTable.php(48): CodeIgniter\Database\Forge->createTable('users')
+#5 C:\xampp\htdocs\CHAKANOKS\system\Database\MigrationRunner.php(876): App\Database\Migrations\CreateUsersTable->up()
+#6 C:\xampp\htdocs\CHAKANOKS\system\Database\MigrationRunner.php(182): CodeIgniter\Database\MigrationRunner->migrate('up', Object(stdClass))
+#7 C:\xampp\htdocs\CHAKANOKS\system\Commands\Database\Migrate.php(85): CodeIgniter\Database\MigrationRunner->latest(NULL)
+#8 C:\xampp\htdocs\CHAKANOKS\system\CLI\Commands.php(74): CodeIgniter\Commands\Database\Migrate->run(Array)
+#9 C:\xampp\htdocs\CHAKANOKS\system\CLI\Console.php(47): CodeIgniter\CLI\Commands->run('migrate', Array)
+#10 C:\xampp\htdocs\CHAKANOKS\system\Boot.php(388): CodeIgniter\CLI\Console->run()
+#11 C:\xampp\htdocs\CHAKANOKS\system\Boot.php(133): CodeIgniter\Boot::runCommand(Object(CodeIgniter\CLI\Console))
+#12 C:\xampp\htdocs\CHAKANOKS\spark(87): CodeIgniter\Boot::bootSpark(Object(Config\Paths))
+#13 {main}
+ERROR - 2025-09-12 01:17:59 --> mysqli_sql_exception: Can't create table `chakanoks_db`.`users` (errno: 150 "Foreign key constraint is incorrectly formed") in C:\xampp\htdocs\CHAKANOKS\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\xampp\htdocs\CHAKANOKS\system\Database\MySQLi\Connection.php(327): mysqli->query('CREATE TABLE `u...', 0)
+#1 C:\xampp\htdocs\CHAKANOKS\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('CREATE TABLE `u...')
+#2 C:\xampp\htdocs\CHAKANOKS\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('CREATE TABLE `u...')
+#3 C:\xampp\htdocs\CHAKANOKS\system\Database\Forge.php(570): CodeIgniter\Database\BaseConnection->query('CREATE TABLE `u...')
+#4 C:\xampp\htdocs\CHAKANOKS\app\Database\Migrations\2025-09-08-000001_CreateUsersTable.php(48): CodeIgniter\Database\Forge->createTable('users')
+#5 C:\xampp\htdocs\CHAKANOKS\system\Database\MigrationRunner.php(876): App\Database\Migrations\CreateUsersTable->up()
+#6 C:\xampp\htdocs\CHAKANOKS\system\Database\MigrationRunner.php(182): CodeIgniter\Database\MigrationRunner->migrate('up', Object(stdClass))
+#7 C:\xampp\htdocs\CHAKANOKS\system\Commands\Database\Migrate.php(85): CodeIgniter\Database\MigrationRunner->latest(NULL)
+#8 C:\xampp\htdocs\CHAKANOKS\system\CLI\Commands.php(74): CodeIgniter\Commands\Database\Migrate->run(Array)
+#9 C:\xampp\htdocs\CHAKANOKS\system\CLI\Console.php(47): CodeIgniter\CLI\Commands->run('migrate', Array)
+#10 C:\xampp\htdocs\CHAKANOKS\system\Boot.php(388): CodeIgniter\CLI\Console->run()
+#11 C:\xampp\htdocs\CHAKANOKS\system\Boot.php(133): CodeIgniter\Boot::runCommand(Object(CodeIgniter\CLI\Console))
+#12 C:\xampp\htdocs\CHAKANOKS\spark(87): CodeIgniter\Boot::bootSpark(Object(Config\Paths))
+#13 {main}
+ERROR - 2025-09-12 01:18:00 --> mysqli_sql_exception: Can't create table `chakanoks_db`.`users` (errno: 150 "Foreign key constraint is incorrectly formed") in C:\xampp\htdocs\CHAKANOKS\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\xampp\htdocs\CHAKANOKS\system\Database\MySQLi\Connection.php(327): mysqli->query('CREATE TABLE `u...', 0)
+#1 C:\xampp\htdocs\CHAKANOKS\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('CREATE TABLE `u...')
+#2 C:\xampp\htdocs\CHAKANOKS\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('CREATE TABLE `u...')
+#3 C:\xampp\htdocs\CHAKANOKS\system\Database\Forge.php(570): CodeIgniter\Database\BaseConnection->query('CREATE TABLE `u...')
+#4 C:\xampp\htdocs\CHAKANOKS\app\Database\Migrations\2025-09-08-000001_CreateUsersTable.php(48): CodeIgniter\Database\Forge->createTable('users')
+#5 C:\xampp\htdocs\CHAKANOKS\system\Database\MigrationRunner.php(876): App\Database\Migrations\CreateUsersTable->up()
+#6 C:\xampp\htdocs\CHAKANOKS\system\Database\MigrationRunner.php(182): CodeIgniter\Database\MigrationRunner->migrate('up', Object(stdClass))
+#7 C:\xampp\htdocs\CHAKANOKS\system\Commands\Database\Migrate.php(85): CodeIgniter\Database\MigrationRunner->latest(NULL)
+#8 C:\xampp\htdocs\CHAKANOKS\system\CLI\Commands.php(74): CodeIgniter\Commands\Database\Migrate->run(Array)
+#9 C:\xampp\htdocs\CHAKANOKS\system\CLI\Console.php(47): CodeIgniter\CLI\Commands->run('migrate', Array)
+#10 C:\xampp\htdocs\CHAKANOKS\system\Boot.php(388): CodeIgniter\CLI\Console->run()
+#11 C:\xampp\htdocs\CHAKANOKS\system\Boot.php(133): CodeIgniter\Boot::runCommand(Object(CodeIgniter\CLI\Console))
+#12 C:\xampp\htdocs\CHAKANOKS\spark(87): CodeIgniter\Boot::bootSpark(Object(Config\Paths))
+#13 {main}
+ERROR - 2025-09-12 01:18:53 --> mysqli_sql_exception: Can't create table `chakanoks_db`.`users` (errno: 150 "Foreign key constraint is incorrectly formed") in C:\xampp\htdocs\CHAKANOKS\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\xampp\htdocs\CHAKANOKS\system\Database\MySQLi\Connection.php(327): mysqli->query('CREATE TABLE `u...', 0)
+#1 C:\xampp\htdocs\CHAKANOKS\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('CREATE TABLE `u...')
+#2 C:\xampp\htdocs\CHAKANOKS\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('CREATE TABLE `u...')
+#3 C:\xampp\htdocs\CHAKANOKS\system\Database\Forge.php(570): CodeIgniter\Database\BaseConnection->query('CREATE TABLE `u...')
+#4 C:\xampp\htdocs\CHAKANOKS\app\Database\Migrations\2025-09-08-000001_CreateUsersTable.php(48): CodeIgniter\Database\Forge->createTable('users')
+#5 C:\xampp\htdocs\CHAKANOKS\system\Database\MigrationRunner.php(876): App\Database\Migrations\CreateUsersTable->up()
+#6 C:\xampp\htdocs\CHAKANOKS\system\Database\MigrationRunner.php(182): CodeIgniter\Database\MigrationRunner->migrate('up', Object(stdClass))
+#7 C:\xampp\htdocs\CHAKANOKS\system\Commands\Database\Migrate.php(85): CodeIgniter\Database\MigrationRunner->latest(NULL)
+#8 C:\xampp\htdocs\CHAKANOKS\system\CLI\Commands.php(74): CodeIgniter\Commands\Database\Migrate->run(Array)
+#9 C:\xampp\htdocs\CHAKANOKS\system\CLI\Console.php(47): CodeIgniter\CLI\Commands->run('migrate', Array)
+#10 C:\xampp\htdocs\CHAKANOKS\system\Boot.php(388): CodeIgniter\CLI\Console->run()
+#11 C:\xampp\htdocs\CHAKANOKS\system\Boot.php(133): CodeIgniter\Boot::runCommand(Object(CodeIgniter\CLI\Console))
+#12 C:\xampp\htdocs\CHAKANOKS\spark(87): CodeIgniter\Boot::bootSpark(Object(Config\Paths))
+#13 {main}
+ERROR - 2025-09-12 01:23:25 --> mysqli_sql_exception: Can't create table `chakanoks_db`.`users` (errno: 150 "Foreign key constraint is incorrectly formed") in C:\xampp\htdocs\CHAKANOKS\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\xampp\htdocs\CHAKANOKS\system\Database\MySQLi\Connection.php(327): mysqli->query('CREATE TABLE `u...', 0)
+#1 C:\xampp\htdocs\CHAKANOKS\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('CREATE TABLE `u...')
+#2 C:\xampp\htdocs\CHAKANOKS\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('CREATE TABLE `u...')
+#3 C:\xampp\htdocs\CHAKANOKS\system\Database\Forge.php(570): CodeIgniter\Database\BaseConnection->query('CREATE TABLE `u...')
+#4 C:\xampp\htdocs\CHAKANOKS\app\Database\Migrations\2025-09-08-000001_CreateUsersTable.php(48): CodeIgniter\Database\Forge->createTable('users')
+#5 C:\xampp\htdocs\CHAKANOKS\system\Database\MigrationRunner.php(876): App\Database\Migrations\CreateUsersTable->up()
+#6 C:\xampp\htdocs\CHAKANOKS\system\Database\MigrationRunner.php(182): CodeIgniter\Database\MigrationRunner->migrate('up', Object(stdClass))
+#7 C:\xampp\htdocs\CHAKANOKS\system\Commands\Database\Migrate.php(85): CodeIgniter\Database\MigrationRunner->latest(NULL)
+#8 C:\xampp\htdocs\CHAKANOKS\system\CLI\Commands.php(74): CodeIgniter\Commands\Database\Migrate->run(Array)
+#9 C:\xampp\htdocs\CHAKANOKS\system\CLI\Console.php(47): CodeIgniter\CLI\Commands->run('migrate', Array)
+#10 C:\xampp\htdocs\CHAKANOKS\system\Boot.php(388): CodeIgniter\CLI\Console->run()
+#11 C:\xampp\htdocs\CHAKANOKS\system\Boot.php(133): CodeIgniter\Boot::runCommand(Object(CodeIgniter\CLI\Console))
+#12 C:\xampp\htdocs\CHAKANOKS\spark(87): CodeIgniter\Boot::bootSpark(Object(Config\Paths))
+#13 {main}
+ERROR - 2025-09-12 01:24:39 --> mysqli_sql_exception: Can't create table `chakanoks_db`.`users` (errno: 150 "Foreign key constraint is incorrectly formed") in C:\xampp\htdocs\CHAKANOKS\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\xampp\htdocs\CHAKANOKS\system\Database\MySQLi\Connection.php(327): mysqli->query('CREATE TABLE `u...', 0)
+#1 C:\xampp\htdocs\CHAKANOKS\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('CREATE TABLE `u...')
+#2 C:\xampp\htdocs\CHAKANOKS\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('CREATE TABLE `u...')
+#3 C:\xampp\htdocs\CHAKANOKS\system\Database\Forge.php(570): CodeIgniter\Database\BaseConnection->query('CREATE TABLE `u...')
+#4 C:\xampp\htdocs\CHAKANOKS\app\Database\Migrations\2025-09-08-000001_CreateUsersTable.php(48): CodeIgniter\Database\Forge->createTable('users', true)
+#5 C:\xampp\htdocs\CHAKANOKS\system\Database\MigrationRunner.php(876): App\Database\Migrations\CreateUsersTable->up()
+#6 C:\xampp\htdocs\CHAKANOKS\system\Database\MigrationRunner.php(182): CodeIgniter\Database\MigrationRunner->migrate('up', Object(stdClass))
+#7 C:\xampp\htdocs\CHAKANOKS\system\Commands\Database\Migrate.php(85): CodeIgniter\Database\MigrationRunner->latest(NULL)
+#8 C:\xampp\htdocs\CHAKANOKS\system\CLI\Commands.php(74): CodeIgniter\Commands\Database\Migrate->run(Array)
+#9 C:\xampp\htdocs\CHAKANOKS\system\CLI\Console.php(47): CodeIgniter\CLI\Commands->run('migrate', Array)
+#10 C:\xampp\htdocs\CHAKANOKS\system\Boot.php(388): CodeIgniter\CLI\Console->run()
+#11 C:\xampp\htdocs\CHAKANOKS\system\Boot.php(133): CodeIgniter\Boot::runCommand(Object(CodeIgniter\CLI\Console))
+#12 C:\xampp\htdocs\CHAKANOKS\spark(87): CodeIgniter\Boot::bootSpark(Object(Config\Paths))
+#13 {main}
+ERROR - 2025-09-12 01:29:14 --> mysqli_sql_exception: Can't create table `chakanoks_db`.`users` (errno: 150 "Foreign key constraint is incorrectly formed") in C:\xampp\htdocs\CHAKANOKS\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\xampp\htdocs\CHAKANOKS\system\Database\MySQLi\Connection.php(327): mysqli->query('CREATE TABLE `u...', 0)
+#1 C:\xampp\htdocs\CHAKANOKS\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('CREATE TABLE `u...')
+#2 C:\xampp\htdocs\CHAKANOKS\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('CREATE TABLE `u...')
+#3 C:\xampp\htdocs\CHAKANOKS\system\Database\Forge.php(570): CodeIgniter\Database\BaseConnection->query('CREATE TABLE `u...')
+#4 C:\xampp\htdocs\CHAKANOKS\app\Database\Migrations\2025-09-08-000001_CreateUsersTable.php(48): CodeIgniter\Database\Forge->createTable('users', true)
+#5 C:\xampp\htdocs\CHAKANOKS\system\Database\MigrationRunner.php(876): App\Database\Migrations\CreateUsersTable->up()
+#6 C:\xampp\htdocs\CHAKANOKS\system\Database\MigrationRunner.php(182): CodeIgniter\Database\MigrationRunner->migrate('up', Object(stdClass))
+#7 C:\xampp\htdocs\CHAKANOKS\system\Commands\Database\Migrate.php(85): CodeIgniter\Database\MigrationRunner->latest(NULL)
+#8 C:\xampp\htdocs\CHAKANOKS\system\CLI\Commands.php(74): CodeIgniter\Commands\Database\Migrate->run(Array)
+#9 C:\xampp\htdocs\CHAKANOKS\system\CLI\Console.php(47): CodeIgniter\CLI\Commands->run('migrate', Array)
+#10 C:\xampp\htdocs\CHAKANOKS\system\Boot.php(388): CodeIgniter\CLI\Console->run()
+#11 C:\xampp\htdocs\CHAKANOKS\system\Boot.php(133): CodeIgniter\Boot::runCommand(Object(CodeIgniter\CLI\Console))
+#12 C:\xampp\htdocs\CHAKANOKS\spark(87): CodeIgniter\Boot::bootSpark(Object(Config\Paths))
+#13 {main}
+ERROR - 2025-09-12 01:31:30 --> mysqli_sql_exception: Can't create table `chakanoks_db`.`users` (errno: 150 "Foreign key constraint is incorrectly formed") in C:\xampp\htdocs\CHAKANOKS\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\xampp\htdocs\CHAKANOKS\system\Database\MySQLi\Connection.php(327): mysqli->query('CREATE TABLE `u...', 0)
+#1 C:\xampp\htdocs\CHAKANOKS\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('CREATE TABLE `u...')
+#2 C:\xampp\htdocs\CHAKANOKS\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('CREATE TABLE `u...')
+#3 C:\xampp\htdocs\CHAKANOKS\system\Database\Forge.php(570): CodeIgniter\Database\BaseConnection->query('CREATE TABLE `u...')
+#4 C:\xampp\htdocs\CHAKANOKS\app\Database\Migrations\2025-09-08-000001_CreateUsersTable.php(48): CodeIgniter\Database\Forge->createTable('users', true)
+#5 C:\xampp\htdocs\CHAKANOKS\system\Database\MigrationRunner.php(876): App\Database\Migrations\CreateUsersTable->up()
+#6 C:\xampp\htdocs\CHAKANOKS\system\Database\MigrationRunner.php(182): CodeIgniter\Database\MigrationRunner->migrate('up', Object(stdClass))
+#7 C:\xampp\htdocs\CHAKANOKS\system\Commands\Database\Migrate.php(85): CodeIgniter\Database\MigrationRunner->latest(NULL)
+#8 C:\xampp\htdocs\CHAKANOKS\system\CLI\Commands.php(74): CodeIgniter\Commands\Database\Migrate->run(Array)
+#9 C:\xampp\htdocs\CHAKANOKS\system\CLI\Console.php(47): CodeIgniter\CLI\Commands->run('migrate', Array)
+#10 C:\xampp\htdocs\CHAKANOKS\system\Boot.php(388): CodeIgniter\CLI\Console->run()
+#11 C:\xampp\htdocs\CHAKANOKS\system\Boot.php(133): CodeIgniter\Boot::runCommand(Object(CodeIgniter\CLI\Console))
+#12 C:\xampp\htdocs\CHAKANOKS\spark(87): CodeIgniter\Boot::bootSpark(Object(Config\Paths))
+#13 {main}
+ERROR - 2025-09-12 01:33:35 --> mysqli_sql_exception: Can't create table `chakanoks_db`.`users` (errno: 150 "Foreign key constraint is incorrectly formed") in C:\xampp\htdocs\CHAKANOKS\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\xampp\htdocs\CHAKANOKS\system\Database\MySQLi\Connection.php(327): mysqli->query('CREATE TABLE `u...', 0)
+#1 C:\xampp\htdocs\CHAKANOKS\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('CREATE TABLE `u...')
+#2 C:\xampp\htdocs\CHAKANOKS\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('CREATE TABLE `u...')
+#3 C:\xampp\htdocs\CHAKANOKS\system\Database\Forge.php(570): CodeIgniter\Database\BaseConnection->query('CREATE TABLE `u...')
+#4 C:\xampp\htdocs\CHAKANOKS\app\Database\Migrations\2025-09-08-000001_CreateUsersTable.php(48): CodeIgniter\Database\Forge->createTable('users', true)
+#5 C:\xampp\htdocs\CHAKANOKS\system\Database\MigrationRunner.php(876): App\Database\Migrations\CreateUsersTable->up()
+#6 C:\xampp\htdocs\CHAKANOKS\system\Database\MigrationRunner.php(182): CodeIgniter\Database\MigrationRunner->migrate('up', Object(stdClass))
+#7 C:\xampp\htdocs\CHAKANOKS\system\Commands\Database\Migrate.php(85): CodeIgniter\Database\MigrationRunner->latest(NULL)
+#8 C:\xampp\htdocs\CHAKANOKS\system\CLI\Commands.php(74): CodeIgniter\Commands\Database\Migrate->run(Array)
+#9 C:\xampp\htdocs\CHAKANOKS\system\CLI\BaseCommand.php(119): CodeIgniter\CLI\Commands->run('migrate', Array)
+#10 C:\xampp\htdocs\CHAKANOKS\system\Commands\Database\MigrateRefresh.php(87): CodeIgniter\CLI\BaseCommand->call('migrate', Array)
+#11 C:\xampp\htdocs\CHAKANOKS\system\CLI\Commands.php(74): CodeIgniter\Commands\Database\MigrateRefresh->run(Array)
+#12 C:\xampp\htdocs\CHAKANOKS\system\CLI\Console.php(47): CodeIgniter\CLI\Commands->run('migrate:refresh', Array)
+#13 C:\xampp\htdocs\CHAKANOKS\system\Boot.php(388): CodeIgniter\CLI\Console->run()
+#14 C:\xampp\htdocs\CHAKANOKS\system\Boot.php(133): CodeIgniter\Boot::runCommand(Object(CodeIgniter\CLI\Console))
+#15 C:\xampp\htdocs\CHAKANOKS\spark(87): CodeIgniter\Boot::bootSpark(Object(Config\Paths))
+#16 {main}
+ERROR - 2025-09-12 01:40:03 --> mysqli_sql_exception: Cannot add or update a child row: a foreign key constraint fails (`chakanoks_db`.`users`, CONSTRAINT `users_branch_id_foreign` FOREIGN KEY (`branch_id`) REFERENCES `branches` (`id`) ON DELETE SET NULL ON UPDATE CASCADE) in C:\xampp\htdocs\CHAKANOKS\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\xampp\htdocs\CHAKANOKS\system\Database\MySQLi\Connection.php(327): mysqli->query('INSERT INTO `us...', 0)
+#1 C:\xampp\htdocs\CHAKANOKS\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `us...')
+#2 C:\xampp\htdocs\CHAKANOKS\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `us...')
+#3 C:\xampp\htdocs\CHAKANOKS\system\Database\BaseBuilder.php(1841): CodeIgniter\Database\BaseConnection->query('INSERT INTO `us...', NULL, false)
+#4 C:\xampp\htdocs\CHAKANOKS\system\Database\BaseBuilder.php(2230): CodeIgniter\Database\BaseBuilder->batchExecute('_insertBatch', 100)
+#5 C:\xampp\htdocs\CHAKANOKS\app\Database\Seeds\UsersSeeder.php(89): CodeIgniter\Database\BaseBuilder->insertBatch(Array)
+#6 C:\xampp\htdocs\CHAKANOKS\system\Database\Seeder.php(149): App\Database\Seeds\UsersSeeder->run()
+#7 C:\xampp\htdocs\CHAKANOKS\system\Commands\Database\Seed.php(79): CodeIgniter\Database\Seeder->call('App\\Database\\Se...')
+#8 C:\xampp\htdocs\CHAKANOKS\system\CLI\Commands.php(74): CodeIgniter\Commands\Database\Seed->run(Array)
+#9 C:\xampp\htdocs\CHAKANOKS\system\CLI\Console.php(47): CodeIgniter\CLI\Commands->run('db:seed', Array)
+#10 C:\xampp\htdocs\CHAKANOKS\system\Boot.php(388): CodeIgniter\CLI\Console->run()
+#11 C:\xampp\htdocs\CHAKANOKS\system\Boot.php(133): CodeIgniter\Boot::runCommand(Object(CodeIgniter\CLI\Console))
+#12 C:\xampp\htdocs\CHAKANOKS\spark(87): CodeIgniter\Boot::bootSpark(Object(Config\Paths))
+#13 {main}
+DEBUG - 2025-09-12 01:44:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-12 01:44:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-12 01:44:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-12 01:45:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-12 01:45:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-12 01:45:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-12 01:55:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-12 01:56:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-12 01:56:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-09-12 01:56:00 --> TypeError: App\Controllers\Inventory::bdashboard(): Return value must be of type string, CodeIgniter\HTTP\RedirectResponse returned
+[Method: GET, Route: bdashboard]
+in APPPATH\Controllers\Inventory.php on line 236.
+ 1 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Inventory->bdashboard()
+ 2 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventory))
+ 3 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-09-12 01:56:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-12 01:56:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-12 01:56:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-09-12 01:56:24 --> TypeError: App\Controllers\Inventory::bdashboard(): Return value must be of type string, CodeIgniter\HTTP\RedirectResponse returned
+[Method: GET, Route: bdashboard]
+in APPPATH\Controllers\Inventory.php on line 236.
+ 1 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Inventory->bdashboard()
+ 2 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventory))
+ 3 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-09-12 01:58:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-12 01:58:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-12 01:58:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-12 01:58:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-09-12 01:58:35 --> TypeError: App\Controllers\Inventory::bdashboard(): Return value must be of type string, CodeIgniter\HTTP\RedirectResponse returned
+[Method: GET, Route: bdashboard]
+in APPPATH\Controllers\Inventory.php on line 236.
+ 1 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Inventory->bdashboard()
+ 2 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventory))
+ 3 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-09-12 02:18:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-12 02:18:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-12 02:18:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-12 02:18:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-12 02:18:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-12 02:19:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-12 02:19:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-12 02:19:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-12 02:19:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-12 02:19:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-12 02:19:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-12 02:19:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-12 02:19:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-12 02:22:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-12 02:22:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-12 02:22:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-12 02:22:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-12 02:23:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-12 02:23:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-12 02:24:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-12 02:24:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-12 02:24:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-12 02:25:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-12 02:25:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-12 02:25:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-12 02:25:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-12 02:25:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-12 02:25:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-12 02:25:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-12 02:25:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-12 02:28:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-12 02:28:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-12 02:29:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-12 02:30:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-12 02:30:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-12 02:30:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-12 02:30:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-12 02:30:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-12 02:30:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-12 02:30:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.

@@ -29,6 +29,13 @@ abstract class BaseController extends Controller
     protected $request;
 
     /**
+     * Database connection instance.
+     *
+     * @var \CodeIgniter\Database\BaseConnection
+     */
+    protected $db;
+
+    /**
      * An array of helpers to be loaded automatically upon
      * class instantiation. These helpers will be available
      * to all other controllers that extend BaseController.
@@ -52,6 +59,7 @@ abstract class BaseController extends Controller
         parent::initController($request, $response, $logger);
 
         // Preload any models, libraries, etc, here.
+        $this->db = \Config\Database::connect();
 
         // E.g.: $this->session = service('session');
     }

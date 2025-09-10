@@ -8,7 +8,7 @@ class Auth extends BaseController
 {
     public function login()
     {
-        return view('login');
+        return view('auth/login');
     }
 
     public function doLogin()
@@ -27,18 +27,21 @@ class Auth extends BaseController
             'id' => $user['id'],
             'username' => $user['username'],
             'role' => $user['role'],
+            'branch_id' => $user['branch_id'] ?? null,
         ]);
 
         switch ($user['role']) {
-            case 'admin':
-                return redirect()->to(base_url('admin'));
-            case 'inventory_staff':
-                return redirect()->to(base_url('inventory-staff'));
-            case 'branch_manager':
-                return redirect()->to(base_url('manager'));
-            case 'user':
+            case 'Inventory Staff':
+                return redirect()->to(base_url('bdashboard'));
+            case 'Branch Manager':
+                return redirect()->to(base_url('bdashboard'));
+            case 'Central Office Admin':
+            case 'Supplier':
+            case 'Logistics Coordinator':
+            case 'Franchise Manager':
+            case 'System Administrator':
             default:
-                return redirect()->to(base_url('user'));
+                return redirect()->to(base_url('dashboard'));
         }
     }
 
@@ -48,5 +51,3 @@ class Auth extends BaseController
         return redirect()->to(base_url('login'));
     }
 }
-
-
