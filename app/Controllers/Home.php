@@ -16,7 +16,6 @@ class Home extends BaseController
     {
         return view('dashboard');
     }
-
     public function purchaseRequest(): string
     {
         return view('purchase-request');
@@ -49,6 +48,22 @@ class Home extends BaseController
     public function settings(): string
     {
         return view('settings');
+    }
+    public function bdeliveries(): string
+    {
+        return view('Branch-only/bdeliveries');
+    }
+    public function bpurchaserequest(): string
+    {
+        return view('Branch-only/bpurchaserequest');
+    }
+    public function bsettings(): string
+    {
+        return view('Branch-only/bsettings');
+    }
+    public function btransfer(): string
+    {
+        return view('Branch-only/btransfer');
     }
     public function logout()
     {

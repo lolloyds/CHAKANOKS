@@ -2,6 +2,11 @@
 <?php include __DIR__ . '/../branch includes/sidebar.php'; ?>
 
 <main>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+</head>
   <style>
     body {
       font-family: "Segoe UI", Arial, sans-serif;
