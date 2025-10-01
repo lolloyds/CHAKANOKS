@@ -21,3 +21,137 @@ DEBUG - 2025-10-01 01:12:26 --> Session: Class initialized using 'CodeIgniter\Se
 DEBUG - 2025-10-01 01:12:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
 DEBUG - 2025-10-01 01:12:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
 DEBUG - 2025-10-01 01:12:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-10-01 02:34:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-10-01 02:34:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-10-01 02:34:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-10-01 02:34:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-10-01 02:34:26 --> ErrorException: include(C:\xampp\htdocs\CHAKANOKS\app\Views\Branch-only/../branch includes/header.php): Failed to open stream: No such file or directory
+[Method: GET, Route: binventory]
+in APPPATH\Views\Branch-only\binventory.php on line 1.
+ 1 APPPATH\Views\Branch-only\binventory.php(1): CodeIgniter\Debug\Exceptions->errorHandler(2, 'include(C:\\xampp\\htdocs\\CHAKANOKS\\app\\Views\\Branch-only/../branch includes/header.php): Failed to open stream: No such file or directory', 'C:\\xampp\\htdocs\\CHAKANOKS\\app\\Views\\Branch-only\\binventory.php', 1)
+ 2 APPPATH\Views\Branch-only\binventory.php(1): include()
+ 3 SYSTEMPATH\View\View.php(226): include('C:\\xampp\\htdocs\\CHAKANOKS\\app\\Views\\Branch-only\\binventory.php')
+ 4 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 5 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('Branch-only/binventory', [], true)
+ 6 APPPATH\Controllers\Inventory.php(220): view('Branch-only/binventory', [...])
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Inventory->binventory()
+ 8 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventory))
+ 9 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-10-01 02:35:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-10-01 02:35:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-10-01 02:35:15 --> ErrorException: include(C:\xampp\htdocs\CHAKANOKS\app\Views\Branch-only/../branch includes/header.php): Failed to open stream: No such file or directory
+[Method: GET, Route: binventory]
+in APPPATH\Views\Branch-only\binventory.php on line 1.
+ 1 APPPATH\Views\Branch-only\binventory.php(1): CodeIgniter\Debug\Exceptions->errorHandler(2, 'include(C:\\xampp\\htdocs\\CHAKANOKS\\app\\Views\\Branch-only/../branch includes/header.php): Failed to open stream: No such file or directory', 'C:\\xampp\\htdocs\\CHAKANOKS\\app\\Views\\Branch-only\\binventory.php', 1)
+ 2 APPPATH\Views\Branch-only\binventory.php(1): include()
+ 3 SYSTEMPATH\View\View.php(226): include('C:\\xampp\\htdocs\\CHAKANOKS\\app\\Views\\Branch-only\\binventory.php')
+ 4 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 5 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('Branch-only/binventory', [], true)
+ 6 APPPATH\Controllers\Inventory.php(220): view('Branch-only/binventory', [...])
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Inventory->binventory()
+ 8 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventory))
+ 9 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-10-01 02:36:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-10-01 02:36:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-10-01 02:36:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-10-01 02:36:17 --> ErrorException: include(C:\xampp\htdocs\CHAKANOKS\app\Views\Branch-only/../branch includes/header.php): Failed to open stream: No such file or directory
+[Method: GET, Route: binventory]
+in APPPATH\Views\Branch-only\binventory.php on line 1.
+ 1 APPPATH\Views\Branch-only\binventory.php(1): CodeIgniter\Debug\Exceptions->errorHandler(2, 'include(C:\\xampp\\htdocs\\CHAKANOKS\\app\\Views\\Branch-only/../branch includes/header.php): Failed to open stream: No such file or directory', 'C:\\xampp\\htdocs\\CHAKANOKS\\app\\Views\\Branch-only\\binventory.php', 1)
+ 2 APPPATH\Views\Branch-only\binventory.php(1): include()
+ 3 SYSTEMPATH\View\View.php(226): include('C:\\xampp\\htdocs\\CHAKANOKS\\app\\Views\\Branch-only\\binventory.php')
+ 4 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 5 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('Branch-only/binventory', [], true)
+ 6 APPPATH\Controllers\Inventory.php(220): view('Branch-only/binventory', [...])
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Inventory->binventory()
+ 8 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventory))
+ 9 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-10-01 02:37:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-10-01 02:37:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-10-01 02:37:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-10-01 02:37:30 --> ErrorException: include(C:\xampp\htdocs\CHAKANOKS\app\Views\Branch-onlyincludes/header.php): Failed to open stream: No such file or directory
+[Method: GET, Route: binventory]
+in APPPATH\Views\Branch-only\binventory.php on line 1.
+ 1 APPPATH\Views\Branch-only\binventory.php(1): CodeIgniter\Debug\Exceptions->errorHandler(2, 'include(C:\\xampp\\htdocs\\CHAKANOKS\\app\\Views\\Branch-onlyincludes/header.php): Failed to open stream: No such file or directory', 'C:\\xampp\\htdocs\\CHAKANOKS\\app\\Views\\Branch-only\\binventory.php', 1)
+ 2 APPPATH\Views\Branch-only\binventory.php(1): include()
+ 3 SYSTEMPATH\View\View.php(226): include('C:\\xampp\\htdocs\\CHAKANOKS\\app\\Views\\Branch-only\\binventory.php')
+ 4 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 5 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('Branch-only/binventory', [], true)
+ 6 APPPATH\Controllers\Inventory.php(220): view('Branch-only/binventory', [...])
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Inventory->binventory()
+ 8 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventory))
+ 9 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-10-01 02:37:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-10-01 02:37:51 --> ErrorException: include(C:\xampp\htdocs\CHAKANOKS\app\Views\Branch-onlyincludes\header.php): Failed to open stream: No such file or directory
+[Method: GET, Route: binventory]
+in APPPATH\Views\Branch-only\binventory.php on line 1.
+ 1 APPPATH\Views\Branch-only\binventory.php(1): CodeIgniter\Debug\Exceptions->errorHandler(2, 'include(C:\\xampp\\htdocs\\CHAKANOKS\\app\\Views\\Branch-onlyincludes\\header.php): Failed to open stream: No such file or directory', 'C:\\xampp\\htdocs\\CHAKANOKS\\app\\Views\\Branch-only\\binventory.php', 1)
+ 2 APPPATH\Views\Branch-only\binventory.php(1): include()
+ 3 SYSTEMPATH\View\View.php(226): include('C:\\xampp\\htdocs\\CHAKANOKS\\app\\Views\\Branch-only\\binventory.php')
+ 4 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 5 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('Branch-only/binventory', [], true)
+ 6 APPPATH\Controllers\Inventory.php(220): view('Branch-only/binventory', [...])
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Inventory->binventory()
+ 8 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventory))
+ 9 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-10-01 02:37:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-10-01 02:37:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-10-01 02:37:54 --> ErrorException: include(C:\xampp\htdocs\CHAKANOKS\app\Views\Branch-onlyincludes\header.php): Failed to open stream: No such file or directory
+[Method: GET, Route: binventory]
+in APPPATH\Views\Branch-only\binventory.php on line 1.
+ 1 APPPATH\Views\Branch-only\binventory.php(1): CodeIgniter\Debug\Exceptions->errorHandler(2, 'include(C:\\xampp\\htdocs\\CHAKANOKS\\app\\Views\\Branch-onlyincludes\\header.php): Failed to open stream: No such file or directory', 'C:\\xampp\\htdocs\\CHAKANOKS\\app\\Views\\Branch-only\\binventory.php', 1)
+ 2 APPPATH\Views\Branch-only\binventory.php(1): include()
+ 3 SYSTEMPATH\View\View.php(226): include('C:\\xampp\\htdocs\\CHAKANOKS\\app\\Views\\Branch-only\\binventory.php')
+ 4 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 5 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('Branch-only/binventory', [], true)
+ 6 APPPATH\Controllers\Inventory.php(220): view('Branch-only/binventory', [...])
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Inventory->binventory()
+ 8 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventory))
+ 9 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-10-01 02:39:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-10-01 02:39:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-10-01 02:39:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-10-01 02:39:11 --> ErrorException: include(includes\header.php): Failed to open stream: No such file or directory
+[Method: GET, Route: binventory]
+in APPPATH\Views\Branch-only\binventory.php on line 1.
+ 1 APPPATH\Views\Branch-only\binventory.php(1): CodeIgniter\Debug\Exceptions->errorHandler(2, 'include(includes\\header.php): Failed to open stream: No such file or directory', 'C:\\xampp\\htdocs\\CHAKANOKS\\app\\Views\\Branch-only\\binventory.php', 1)
+ 2 APPPATH\Views\Branch-only\binventory.php(1): include()
+ 3 SYSTEMPATH\View\View.php(226): include('C:\\xampp\\htdocs\\CHAKANOKS\\app\\Views\\Branch-only\\binventory.php')
+ 4 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 5 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('Branch-only/binventory', [], true)
+ 6 APPPATH\Controllers\Inventory.php(220): view('Branch-only/binventory', [...])
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Inventory->binventory()
+ 8 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventory))
+ 9 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-10-01 02:42:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-10-01 02:42:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-10-01 02:42:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-10-01 02:42:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-10-01 02:42:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-10-01 02:42:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-10-01 02:42:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-10-01 02:42:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-10-01 02:42:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-10-01 02:42:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-10-01 02:42:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
