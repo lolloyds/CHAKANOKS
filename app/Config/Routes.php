@@ -11,13 +11,12 @@ $routes->get('/', 'Auth::login');
 
 // ==================== AUTHENTICATION ====================
 $routes->get('login', 'Auth::login');
-$routes->post('login', 'Auth::doLogin');
+$routes->post('login', 'Auth::login');
 $routes->get('logout', 'Auth::logout');
 
 
 // ==================== DASHBOARD ====================
-$routes->get('dashboard', 'Home::dashboard');
-$routes->get('bdashboard', 'Inventory::bdashboard');
+$routes->get('dashboard', 'Auth::dashboard');
 
 // ==================== FEATURE PAGES ====================
 $routes->get('purchase-request', 'Home::purchaseRequest');

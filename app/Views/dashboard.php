@@ -77,13 +77,15 @@
     }
   </style>
 
+  <?php if (!isset($isBranchUser) || !$isBranchUser): ?>
+  <!-- Central Office Dashboard -->
   <div class="box">
     <h2>📊 Dashboard</h2>
   </div>
 
   <div class="box">
     <div class="desc">
-      Welcome to the <b>CHAKANOKS Management Dashboard</b>.  
+      Welcome to the <b>CHAKANOKS Management Dashboard</b>.
       Monitor <b>real-time operations</b> including <u>inventory, suppliers, purchase requests, deliveries, transfers, and franchise performance</u>.
     </div>
   </div>
@@ -102,7 +104,7 @@
   </div>
 
   <div class="box highlights">
-    <h4>📌 Today’s Highlights</h4>
+    <h4>📌 Today's Highlights</h4>
     <ul>
       <li>3 Deliveries scheduled for Davao branches</li>
       <li>2 Pending Purchase Requests awaiting approval</li>
@@ -136,6 +138,32 @@
       </tr>
     </table>
   </div>
+  <?php else: ?>
+  <!-- Branch Dashboard -->
+  <div class="box">
+    <h2>📊 Dashboard</h2>
+  </div>
+
+  <div class="page-header">
+    <h1>CHAKANOKS</h1>
+    <h3>Welcome to <?= esc($branch->name ?? 'Branch') ?></h3>
+  </div>
+
+  <div class="box">
+    <div class="stats">
+      <div class="stat">🏢 Total Items: <?= esc($totalItems ?? 0) ?></div>
+      <div class="stat">📉 Low Stock Items: <?= esc($lowStock ?? 0) ?></div>
+      <div class="stat">📦 Out of Stock: <?= esc($outOfStock ?? 0) ?></div>
+      <div class="stat">📅 Near Expiry: <?= esc($nearExpiry ?? 0) ?></div>
+    </div>
+  </div>
+
+  <div class="box">
+    <a href="<?= base_url('inventory/binventory') ?>">
+        📦 View Inventory
+      </a>
+  </div>
+  <?php endif; ?>
 </main>
 
 <?php include __DIR__ . '/includes/footer.php'; ?>
