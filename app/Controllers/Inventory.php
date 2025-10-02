@@ -37,7 +37,7 @@ class Inventory extends BaseController
             if ($branch) {
                 // Get inventory stats for this specific branch
                 $inventory = $db->table('items')
-                    ->select('items.id as item_id, items.name as item_name, items.unit, items.reorder_level, items.expiry_date, branch_stock.quantity')
+                    ->select('items.id as item_id, items.name as item_name, items.unit, items.reorder_level, branch_stock.expiry_date, branch_stock.quantity')
                     ->join('branch_stock', 'items.id = branch_stock.item_id AND branch_stock.branch_id = ' . $branchId, 'left')
                     ->where('items.status', 'active')
                     ->get()
@@ -83,42 +83,7 @@ class Inventory extends BaseController
     // 📦 Branch-only: Inventory Page
     // ===============================
 
-    // ✅ Add item (Receive stock from supplier)
-    public function addItem()
-    {
-        try {
-            $db = \Config\Database::connect();
-            $itemName = $this->request->getPost('item_name');
-            $item = $db->table('items')
-                ->where('LOWER(name)', strtolower($itemName))
-                ->where('status', 'active')
-                ->get()
-                ->getRow();
 
-            if (!$item) {
-                throw new \Exception('Item not found: ' . $itemName);
-            }
-
-            $this->inventoryService->receiveStock(
-                $this->request->getPost('branch_id'),
-                $item->id,
-                $this->request->getPost('quantity'),
-                session()->get('user')['id'],
-                'Delivery from supplier'
-            );
-
-            if ($this->request->isAJAX()) {
-                return $this->response->setJSON(['success' => true, 'message' => 'Item added to inventory!']);
-            }
-
-            return redirect()->back()->with('success', 'Item added to inventory!');
-        } catch (\Exception $e) {
-            if ($this->request->isAJAX()) {
-                return $this->response->setJSON(['success' => false, 'message' => $e->getMessage()]);
-            }
-            return redirect()->back()->with('error', $e->getMessage());
-        }
-    }
 
     // ✅ Use item (Cooking / Sales)
     public function useItem()
@@ -253,7 +218,7 @@ class Inventory extends BaseController
 
         // Get inventory stats for this specific branch
         $inventory = $db->table('items')
-            ->select('items.id as item_id, items.name as item_name, items.unit, items.reorder_level, items.expiry_date, branch_stock.quantity')
+            ->select('items.id as item_id, items.name as item_name, items.unit, items.reorder_level, branch_stock.expiry_date, branch_stock.quantity')
             ->join('branch_stock', 'items.id = branch_stock.item_id AND branch_stock.branch_id = ' . $branchId, 'left')
             ->where('items.status', 'active')
             ->get()

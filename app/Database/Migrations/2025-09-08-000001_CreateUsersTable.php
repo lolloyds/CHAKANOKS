@@ -44,6 +44,7 @@ class CreateUsersTable extends Migration
 		]);
 
 		$this->forge->addKey('id', true);
+		$this->forge->addForeignKey('branch_id', 'branches', 'id', 'SET NULL', 'CASCADE');
 		$this->forge->createTable('users', true);
 	}
 

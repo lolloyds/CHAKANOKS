@@ -38,7 +38,6 @@ $routes->post('inventory/spoil', 'Inventory::spoilItem', ['filter' => 'role:Inve
 
 
 // Branch inventory routes
-$routes->post('inventory/addItem', 'Inventory::addItem');
 $routes->post('inventory/useItem', 'Inventory::useItem');
 $routes->post('inventory/reportDamage', 'Inventory::reportDamage');
 

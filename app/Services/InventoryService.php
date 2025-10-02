@@ -14,7 +14,7 @@ class InventoryService
     }
 
     // ✅ Receive stock (delivery from supplier)
-    public function receiveStock($branchId, $itemId, $quantity, $userId, $reason)
+    public function receiveStock($branchId, $itemId, $quantity, $userId, $reason, $expiryDate = null)
     {
         // Update or insert branch stock
         $existing = $this->db->table('branch_stock')
@@ -25,17 +25,25 @@ class InventoryService
 
         if ($existing) {
             $newQuantity = $existing->quantity + $quantity;
+            $updateData = ['quantity' => $newQuantity, 'updated_at' => date('Y-m-d H:i:s')];
+            if ($expiryDate) {
+                $updateData['expiry_date'] = $expiryDate;
+            }
             $this->db->table('branch_stock')
                 ->where('branch_id', $branchId)
                 ->where('item_id', $itemId)
-                ->update(['quantity' => $newQuantity, 'updated_at' => date('Y-m-d H:i:s')]);
+                ->update($updateData);
         } else {
-            $this->db->table('branch_stock')->insert([
+            $insertData = [
                 'branch_id' => $branchId,
                 'item_id' => $itemId,
                 'quantity' => $quantity,
                 'updated_at' => date('Y-m-d H:i:s')
-            ]);
+            ];
+            if ($expiryDate) {
+                $insertData['expiry_date'] = $expiryDate;
+            }
+            $this->db->table('branch_stock')->insert($insertData);
         }
 
         // Log the movement

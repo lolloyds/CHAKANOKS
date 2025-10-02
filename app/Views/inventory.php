@@ -133,7 +133,6 @@
 
   <!-- Action Buttons -->
   <div class="actions" style="margin-bottom: 20px;">
-    <button type="button" onclick="openModal('addItemModal')">+ Add Item</button>
     <button type="button" onclick="openModal('useItemModal')">Use Item</button>
     <button type="button" onclick="openModal('reportModal')">Report Damage/Expiry</button>
   </div>
@@ -182,20 +181,7 @@
     </tbody>
   </table>
 
-  <!-- Add Item Modal -->
-  <div id="addItemModal" class="modal" style="display:none;">
-    <form method="post" action="<?= base_url('inventory/addItem') ?>">
-      <h3>Add Item</h3>
-      <label>Item Name:</label>
-      <input type="text" name="item_name" placeholder="Type item name..." required autocomplete="off">
-      <br>
-      <label>Quantity:</label>
-      <input type="number" name="quantity" required>
-      <br>
-      <button type="submit">Save</button>
-      <button type="button" onclick="closeModal('addItemModal')">Cancel</button>
-    </form>
-  </div>
+
 
   <!-- Use Item Modal -->
   <div id="useItemModal" class="modal" style="display:none;">

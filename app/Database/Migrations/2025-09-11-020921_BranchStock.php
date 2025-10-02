@@ -31,6 +31,10 @@ class BranchStock extends Migration
                 'default'    => 0,
                 'comment'    => 'Current stock level at branch',
             ],
+            'expiry_date' => [
+                'type'    => 'DATE',
+                'null'    => true,
+            ],
             'updated_at' => [
                 'type'    => 'DATETIME',
                 'null'    => true,
