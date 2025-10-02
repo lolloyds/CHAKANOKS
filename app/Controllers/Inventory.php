@@ -13,6 +13,72 @@ class Inventory extends BaseController
         $this->inventoryService = new InventoryService();
     }
 
+    // Main inventory page - role-based display
+    public function inventory()
+    {
+        $user = session()->get('user');
+        if (!$user) {
+            return redirect()->to(base_url('login'));
+        }
+
+        $data = [];
+
+        // If branch user, get branch-specific inventory data
+        if (in_array($user['role'], ['Inventory Staff', 'Branch Manager']) && isset($user['branch_id'])) {
+            $branchId = $user['branch_id'];
+            $db = \Config\Database::connect();
+
+            // Get branch information
+            $branch = $db->table('branches')
+                ->where('id', $branchId)
+                ->get()
+                ->getRow();
+
+            if ($branch) {
+                // Get inventory stats for this specific branch
+                $inventory = $db->table('items')
+                    ->select('items.id as item_id, items.name as item_name, items.unit, items.reorder_level, items.expiry_date, branch_stock.quantity')
+                    ->join('branch_stock', 'items.id = branch_stock.item_id AND branch_stock.branch_id = ' . $branchId, 'left')
+                    ->where('items.status', 'active')
+                    ->get()
+                    ->getResultArray();
+
+                // Calculate stats for this branch
+                $totalItems = count($inventory);
+                $lowStock = 0;
+                $outOfStock = 0;
+                $nearExpiry = 0;
+
+                foreach ($inventory as $item) {
+                    $quantity = $item['quantity'] ?? 0;
+                    if ($quantity == 0) {
+                        $outOfStock++;
+                    } elseif ($quantity <= $item['reorder_level']) {
+                        $lowStock++;
+                    }
+                    if (isset($item['expiry_date']) && $item['expiry_date'] && $item['expiry_date'] <= date('Y-m-d', strtotime('+7 days'))) {
+                        $nearExpiry++;
+                    }
+                }
+
+                $data = [
+                    'branch' => $branch,
+                    'totalItems' => $totalItems,
+                    'lowStock' => $lowStock,
+                    'outOfStock' => $outOfStock,
+                    'nearExpiry' => $nearExpiry,
+                    'inventory' => $inventory,
+                    'isBranchUser' => true
+                ];
+            }
+        } else {
+            // Central office user - show overview stats
+            $data['isBranchUser'] = false;
+        }
+
+        return view('inventory', $data);
+    }
+
     // ===============================
     // 📦 Branch-only: Inventory Page
     // ===============================
@@ -21,8 +87,9 @@ class Inventory extends BaseController
     public function addItem()
     {
         try {
+            $db = \Config\Database::connect();
             $itemName = $this->request->getPost('item_name');
-            $item = $this->db->table('items')
+            $item = $db->table('items')
                 ->where('LOWER(name)', strtolower($itemName))
                 ->where('status', 'active')
                 ->get()
@@ -57,8 +124,9 @@ class Inventory extends BaseController
     public function useItem()
     {
         try {
+            $db = \Config\Database::connect();
             $itemName = $this->request->getPost('item_name');
-            $item = $this->db->table('items')
+            $item = $db->table('items')
                 ->where('LOWER(name)', strtolower($itemName))
                 ->where('status', 'active')
                 ->get()
@@ -93,8 +161,9 @@ class Inventory extends BaseController
     public function reportDamage()
     {
         try {
+            $db = \Config\Database::connect();
             $itemName = $this->request->getPost('item_name');
-            $item = $this->db->table('items')
+            $item = $db->table('items')
                 ->where('LOWER(name)', strtolower($itemName))
                 ->where('status', 'active')
                 ->get()
@@ -158,74 +227,7 @@ class Inventory extends BaseController
         return redirect()->back()->with('success', 'Stock adjusted!');
     }
 
-    public function binventory(): string
-    {
-        // Get current user's branch
-        $user = session()->get('user');
-        if (!$user || !isset($user['branch_id']) || $user['branch_id'] === null) {
-            return redirect()->to(base_url('bdashboard'))->with('error', 'No branch assigned to your account');
-        }
 
-        $branchId = $user['branch_id'];
-        $db = \Config\Database::connect();
-
-        // Get branch information
-        $branch = $db->table('branches')
-            ->where('id', $branchId)
-            ->get()
-            ->getRow();
-
-        if (!$branch) {
-            return redirect()->to(base_url('bdashboard'))->with('error', 'Branch not found');
-        }
-
-        // Join items with branch_stock to get quantities for this specific branch
-        $inventory = $db->table('items')
-            ->select('items.id as item_id, items.name as item_name, items.unit, items.reorder_level, branch_stock.quantity')
-            ->join('branch_stock', 'items.id = branch_stock.item_id AND branch_stock.branch_id = ' . $branchId, 'left')
-            ->where('items.status', 'active')
-            ->get()
-            ->getResultArray();
-
-        // Format data for the view
-        $formattedInventory = [];
-        foreach ($inventory as $item) {
-            $formattedInventory[] = [
-                'item_id'       => $item['item_id'],
-                'item_name'     => $item['item_name'],
-                'category'      => 'General', // placeholder, add category column if needed
-                'quantity'      => $item['quantity'] ?? 0,
-                'unit'          => $item['unit'],
-                'expiry_date'   => null, // add when you have expiry column
-                'reorder_level' => $item['reorder_level']
-            ];
-        }
-
-        // Calculate stats for this branch
-        $totalItems = count($formattedInventory);
-        $lowStock = 0;
-        $outOfStock = 0;
-        $nearExpiry = 0;
-
-        foreach ($formattedInventory as $item) {
-            $quantity = $item['quantity'] ?? 0;
-            if ($quantity == 0) {
-                $outOfStock++;
-            } elseif ($quantity <= $item['reorder_level']) {
-                $lowStock++;
-            }
-            // Near expiry logic can be added later
-        }
-
-        return view('Branch-only/binventory', [
-            'branch'      => $branch,
-            'inventory'   => $formattedInventory,
-            'totalItems'  => $totalItems,
-            'lowStock'    => $lowStock,
-            'outOfStock'  => $outOfStock,
-            'nearExpiry'  => $nearExpiry
-        ]);
-    }
 
     public function bdashboard(): string
     {
@@ -251,7 +253,7 @@ class Inventory extends BaseController
 
         // Get inventory stats for this specific branch
         $inventory = $db->table('items')
-            ->select('items.id as item_id, items.name as item_name, items.unit, items.reorder_level, branch_stock.quantity')
+            ->select('items.id as item_id, items.name as item_name, items.unit, items.reorder_level, items.expiry_date, branch_stock.quantity')
             ->join('branch_stock', 'items.id = branch_stock.item_id AND branch_stock.branch_id = ' . $branchId, 'left')
             ->where('items.status', 'active')
             ->get()
@@ -270,7 +272,9 @@ class Inventory extends BaseController
             } elseif ($quantity <= $item['reorder_level']) {
                 $lowStock++;
             }
-            // Near expiry logic can be added later
+            if (isset($item['expiry_date']) && $item['expiry_date'] && $item['expiry_date'] <= date('Y-m-d', strtotime('+7 days'))) {
+                $nearExpiry++;
+            }
         }
 
         return view('Branch-only/bdashboard', [

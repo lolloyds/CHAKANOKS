@@ -1,0 +1,78 @@
+DEBUG - 2025-10-02 10:16:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-10-02 10:16:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-10-02 10:16:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-10-02 10:17:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-10-02 10:17:00 --> mysqli_sql_exception: Unknown column 'items.expiry_date' in 'field list' in C:\xampp\htdocs\CHAKANOKS\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\xampp\htdocs\CHAKANOKS\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT `items`....', 0)
+#1 C:\xampp\htdocs\CHAKANOKS\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `items`....')
+#2 C:\xampp\htdocs\CHAKANOKS\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `items`....')
+#3 C:\xampp\htdocs\CHAKANOKS\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `items`....', Array, false)
+#4 C:\xampp\htdocs\CHAKANOKS\app\Controllers\Inventory.php(43): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\CHAKANOKS\system\CodeIgniter.php(933): App\Controllers\Inventory->inventory()
+#6 C:\xampp\htdocs\CHAKANOKS\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventory))
+#7 C:\xampp\htdocs\CHAKANOKS\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\CHAKANOKS\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#9 C:\xampp\htdocs\CHAKANOKS\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#10 C:\xampp\htdocs\CHAKANOKS\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#11 {main}
+CRITICAL - 2025-10-02 10:17:00 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'items.expiry_date' in 'field list'
+[Method: GET, Route: inventory]
+in SYSTEMPATH\Database\BaseConnection.php on line 684.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `items`.`id` as `item_id`, `items`.`name` as `item_name`, `items`.`unit`, `items`.`reorder_level`, `items`.`expiry_date`, `branch_stock`.`quantity`
+FROM `items`
+LEFT JOIN `branch_stock` ON `items`.`id` = `branch_stock`.`item_id` AND `branch_stock`.`branch_id` = 1
+WHERE `items`.`status` = :items.status:', [...], false)
+ 2 APPPATH\Controllers\Inventory.php(43): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Inventory->inventory()
+ 4 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventory))
+ 5 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-10-02 10:17:00 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'items.expiry_date' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `items`.`id` as `item_id`, `items`.`name` as `item_name`, `items`.`unit`, `items`.`reorder_level`, `items`.`expiry_date`, `branch_stock`.`quantity`
+FROM `items`
+LEFT JOIN `branch_stock` ON `items`.`id` = `branch_stock`.`item_id` AND `branch_stock`.`branch_id` = 1
+WHERE `items`.`status` = \'active\'')
+ 2 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `items`.`id` as `item_id`, `items`.`name` as `item_name`, `items`.`unit`, `items`.`reorder_level`, `items`.`expiry_date`, `branch_stock`.`quantity`
+FROM `items`
+LEFT JOIN `branch_stock` ON `items`.`id` = `branch_stock`.`item_id` AND `branch_stock`.`branch_id` = 1
+WHERE `items`.`status` = \'active\'')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `items`.`id` as `item_id`, `items`.`name` as `item_name`, `items`.`unit`, `items`.`reorder_level`, `items`.`expiry_date`, `branch_stock`.`quantity`
+FROM `items`
+LEFT JOIN `branch_stock` ON `items`.`id` = `branch_stock`.`item_id` AND `branch_stock`.`branch_id` = 1
+WHERE `items`.`status` = :items.status:', [...], false)
+ 4 APPPATH\Controllers\Inventory.php(43): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Inventory->inventory()
+ 6 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventory))
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-10-02 10:17:00 --> [Caused by] mysqli_sql_exception: Unknown column 'items.expiry_date' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query('SELECT `items`.`id` as `item_id`, `items`.`name` as `item_name`, `items`.`unit`, `items`.`reorder_level`, `items`.`expiry_date`, `branch_stock`.`quantity`
+FROM `items`
+LEFT JOIN `branch_stock` ON `items`.`id` = `branch_stock`.`item_id` AND `branch_stock`.`branch_id` = 1
+WHERE `items`.`status` = \'active\'', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `items`.`id` as `item_id`, `items`.`name` as `item_name`, `items`.`unit`, `items`.`reorder_level`, `items`.`expiry_date`, `branch_stock`.`quantity`
+FROM `items`
+LEFT JOIN `branch_stock` ON `items`.`id` = `branch_stock`.`item_id` AND `branch_stock`.`branch_id` = 1
+WHERE `items`.`status` = \'active\'')
+ 3 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `items`.`id` as `item_id`, `items`.`name` as `item_name`, `items`.`unit`, `items`.`reorder_level`, `items`.`expiry_date`, `branch_stock`.`quantity`
+FROM `items`
+LEFT JOIN `branch_stock` ON `items`.`id` = `branch_stock`.`item_id` AND `branch_stock`.`branch_id` = 1
+WHERE `items`.`status` = \'active\'')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `items`.`id` as `item_id`, `items`.`name` as `item_name`, `items`.`unit`, `items`.`reorder_level`, `items`.`expiry_date`, `branch_stock`.`quantity`
+FROM `items`
+LEFT JOIN `branch_stock` ON `items`.`id` = `branch_stock`.`item_id` AND `branch_stock`.`branch_id` = 1
+WHERE `items`.`status` = :items.status:', [...], false)
+ 5 APPPATH\Controllers\Inventory.php(43): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Inventory->inventory()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventory))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))

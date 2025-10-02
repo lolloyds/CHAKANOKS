@@ -49,22 +49,6 @@ class Home extends BaseController
     {
         return view('settings');
     }
-    public function bdeliveries(): string
-    {
-        return view('Branch-only/bdeliveries');
-    }
-    public function bpurchaserequest(): string
-    {
-        return view('Branch-only/bpurchaserequest');
-    }
-    public function bsettings(): string
-    {
-        return view('Branch-only/bsettings');
-    }
-    public function btransfer(): string
-    {
-        return view('Branch-only/btransfer');
-    }
     public function logout()
     {
         return redirect()->to(base_url('login'));

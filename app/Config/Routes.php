@@ -20,18 +20,13 @@ $routes->get('dashboard', 'Auth::dashboard');
 
 // ==================== FEATURE PAGES ====================
 $routes->get('purchase-request', 'Home::purchaseRequest');
-$routes->get('bpurchaserequest', 'Home::bpurchaserequest');
 $routes->get('purchase-orders', 'Home::purchaseOrders');
 $routes->get('deliveries', 'Home::deliveries');
-$routes->get('bdeliveries', 'Home::bdeliveries');
-$routes->get('inventory', 'Home::inventory');
-$routes->get('binventory', 'Inventory::binventory');
+$routes->get('inventory', 'Inventory::inventory');
 $routes->get('suppliers', 'Home::suppliers');
 $routes->get('transfer', 'Home::transfer');
-$routes->get('btransfer', 'Home::btransfer');
 $routes->get('franchise', 'Home::franchise');
 $routes->get('settings', 'Home::settings');
-$routes->get('bsettings', 'Home::bsettings');
 
 // ==================== INVENTORY MANAGEMENT ====================
 

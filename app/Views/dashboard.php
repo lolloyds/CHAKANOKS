@@ -159,7 +159,7 @@
   </div>
 
   <div class="box">
-    <a href="<?= base_url('inventory/binventory') ?>">
+    <a href="<?= base_url('inventory') ?>">
         📦 View Inventory
       </a>
   </div>
