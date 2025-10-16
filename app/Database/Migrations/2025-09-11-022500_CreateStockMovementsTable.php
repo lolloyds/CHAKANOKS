@@ -27,10 +27,11 @@ class CreateStockMovementsTable extends Migration
             'updated_at'     => ['type' => 'DATETIME', 'null' => true],
         ]);
         $this->forge->addKey('id', true);
-        $this->forge->addForeignKey('branch_id', 'branches', 'id', 'CASCADE', 'CASCADE');
-        $this->forge->addForeignKey('item_id', 'items', 'id', 'CASCADE', 'CASCADE');
-        $this->forge->addForeignKey('created_by', 'users', 'id', 'SET NULL', 'CASCADE');
         $this->forge->createTable('stock_movements');
+        // Add FKs after table creation to avoid order issues
+        $this->forge->addForeignKey('stock_movements', 'branch_id', 'branches', 'id', 'CASCADE', 'CASCADE', 'stock_movements_branch_id_foreign');
+        $this->forge->addForeignKey('stock_movements', 'item_id', 'items', 'id', 'CASCADE', 'CASCADE', 'stock_movements_item_id_foreign');
+        $this->forge->addForeignKey('stock_movements', 'created_by', 'users', 'id', 'SET NULL', 'CASCADE', 'stock_movements_created_by_foreign');
     }
 
     public function down()

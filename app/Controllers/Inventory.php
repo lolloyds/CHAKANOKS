@@ -3,14 +3,17 @@
 namespace App\Controllers;
 
 use App\Services\InventoryService;
+use App\Models\DeliveryModel;
 
 class Inventory extends BaseController
 {
     protected $inventoryService;
+    protected $deliveryModel;
 
     public function __construct()
     {
         $this->inventoryService = new InventoryService();
+        $this->deliveryModel = new DeliveryModel();
     }
 
     // Main inventory page - role-based display
@@ -193,6 +196,209 @@ class Inventory extends BaseController
     }
 
 
+
+    public function deliveries()
+    {
+        $user = session()->get('user');
+        if (!$user) {
+            return redirect()->to(base_url('login'));
+        }
+
+        $data = [];
+
+        // Get user role for access control
+        $data['userRole'] = $user['role'];
+
+        // Get branch deliveries for branch staff, all deliveries for central office
+        if (in_array($user['role'], ['Inventory Staff', 'Branch Manager']) && isset($user['branch_id'])) {
+            // Branch user - show only their branch deliveries
+            $deliveries = $this->getBranchDeliveries($user['branch_id']);
+            $data['deliveries'] = $deliveries;
+            $data['branch_name'] = 'Your Branch';
+            $data['isBranchUser'] = true;
+        } else {
+            // Central office - show all deliveries
+            $deliveries = $this->getAllDeliveries();
+            $data['deliveries'] = $deliveries;
+            $data['isBranchUser'] = false;
+
+            // Calculate stats
+            $data['scheduled'] = $this->countDeliveriesByStatus('scheduled');
+            $data['inTransit'] = $this->countDeliveriesByStatus('in_transit');
+            $data['delivered'] = $this->countDeliveriesByStatus('delivered');
+        }
+
+        return view('deliveries', $data);
+    }
+
+    public function approveDelivery()
+    {
+        try {
+            $user = session()->get('user');
+            if (!$user || !in_array($user['role'], ['Inventory Staff', 'Branch Manager'])) {
+                return $this->response->setJSON(['success' => false, 'message' => 'Unauthorized']);
+            }
+
+            $deliveryId = $this->request->getPost('delivery_id');
+            $branchId = $this->request->getPost('branch_id');
+
+            $db = \Config\Database::connect();
+
+            // Check if delivery exists and is in correct status
+            $delivery = $this->deliveryModel->where('delivery_id', $deliveryId)
+                ->where('branch_id', $branchId)
+                ->where('status', 'delivered')
+                ->first();
+
+            if (!$delivery) {
+                return $this->response->setJSON(['success' => false, 'message' => 'Delivery not found or not ready for approval']);
+            }
+
+            // Check if already approved
+            if (!empty($delivery['approved_by'])) {
+                return $this->response->setJSON(['success' => false, 'message' => 'Delivery already approved']);
+            }
+
+            // Update delivery status to 'received'
+            $this->deliveryModel->update($delivery['id'], [
+                'status' => 'received',
+                'approved_by' => $user['id'],
+                'approved_at' => date('Y-m-d H:i:s'),
+                'arrival_time' => date('Y-m-d H:i:s')
+            ]);
+
+            // Get delivery items and add to inventory
+            $deliveryItems = $db->table('delivery_items')
+                ->where('delivery_id', $deliveryId)
+                ->join('items', 'delivery_items.item_id = items.id')
+                ->select('delivery_items.*, items.name')
+                ->get()
+                ->getResultArray();
+
+            $addedItems = [];
+            foreach ($deliveryItems as $item) {
+                if ($item['item_id']) {
+                    $this->inventoryService->receiveStock(
+                        $branchId,
+                        $item['item_id'],
+                        $item['quantity'],
+                        $user['id'],
+                        "Delivery received: {$item['quantity']} {$item['name']} from {$delivery['driver']}"
+                    );
+                    $addedItems[] = "{$item['quantity']} {$item['name']}";
+                }
+            }
+
+            $itemsJoined = !empty($addedItems) ? implode(', ', $addedItems) : 'items';
+
+            return $this->response->setJSON([
+                'success' => true,
+                'message' => "Delivery approved! Added to inventory: {$itemsJoined}"
+            ]);
+
+        } catch (\Exception $e) {
+            return $this->response->setJSON(['success' => false, 'message' => $e->getMessage()]);
+        }
+    }
+
+    // Database-driven delivery methods
+    private function getBranchDeliveries($branchId)
+    {
+        return $this->getDeliveriesFromDatabase($branchId);
+    }
+
+    private function getAllDeliveries()
+    {
+        return $this->getDeliveriesFromDatabase(null);
+    }
+
+    private function countDeliveriesByStatus($status)
+    {
+        try {
+            return $this->deliveryModel->where('status', $status)->countAllResults();
+        } catch (\Exception $e) {
+            return 0;
+        }
+    }
+
+    private function getDeliveriesFromDatabase($branchId = null)
+    {
+        try {
+            $db = \Config\Database::connect();
+
+            // Build query to get deliveries with branch names and all delivery items
+            $query = $db->table('deliveries d')
+                ->select('d.*, b.name as branch_name, GROUP_CONCAT(CONCAT(di.quantity, " ", i.name) SEPARATOR ", ") as items')
+                ->join('branches b', 'd.branch_id = b.id')
+                ->join('delivery_items di', 'd.delivery_id = di.delivery_id', 'left')
+                ->join('items i', 'di.item_id = i.id', 'left')
+                ->groupBy('d.id')
+                ->orderBy('d.scheduled_time', 'ASC');
+
+            // Filter by branch if provided
+            if ($branchId) {
+                $query->where('d.branch_id', $branchId);
+            }
+
+            $deliveries = $query->get()->getResultArray();
+
+            // Add approve permission flag for branch users
+            foreach ($deliveries as &$delivery) {
+                $delivery['can_approve'] = $branchId && $delivery['branch_id'] == $branchId && $delivery['status'] === 'delivered';
+                // Ensure items exists and is not null
+                $delivery['items'] = $delivery['items'] ?: 'No items listed';
+            }
+
+            return $deliveries;
+        } catch (\Exception $e) {
+            // Fall back to sample data if tables don't exist yet
+            return $this->getFallbackDeliveries($branchId);
+        }
+    }
+
+    private function getFallbackDeliveries($branchId = null)
+    {
+        // Dummy deliveries for testing if database is not set up yet
+        $deliveries = [
+            [
+                'id' => 'DLV-001',
+                'delivery_id' => 'DLV-001',
+                'branch_id' => 1,
+                'branch_name' => 'Chakanoks Davao - Bajada',
+                'items' => '50 Roasted Chickens, 30kg Rice',
+                'driver' => 'Juan Dela Cruz',
+                'status' => 'scheduled',
+                'scheduled_time' => date('Y-m-d H:i:s', strtotime('+1 day')),
+                'can_approve' => !empty($branchId) && $branchId == 1
+            ],
+            [
+                'id' => 'DLV-002',
+                'delivery_id' => 'DLV-002',
+                'branch_id' => 2,
+                'branch_name' => 'Chakanoks Davao - Matina',
+                'items' => '25 Roasted Chickens, 10kg Veggies',
+                'driver' => 'Pedro Santos',
+                'status' => 'in_transit',
+                'scheduled_time' => date('Y-m-d H:i:s'),
+                'can_approve' => !empty($branchId) && $branchId == 2
+            ],
+            [
+                'id' => 'DLV-003',
+                'delivery_id' => 'DLV-003',
+                'branch_id' => 3,
+                'branch_name' => 'Chakanoks Davao - Toril',
+                'items' => '40 Roasted Chickens, 20kg Rice',
+                'driver' => 'Carlos Reyes',
+                'status' => 'delivered',
+                'scheduled_time' => date('Y-m-d H:i:s', strtotime('-1 hour')),
+                'can_approve' => !empty($branchId) && $branchId == 3
+            ]
+        ];
+
+        return $branchId ? array_filter($deliveries, function($d) use ($branchId) {
+            return $d['branch_id'] == $branchId;
+        }) : $deliveries;
+    }
 
     public function bdashboard(): string
     {

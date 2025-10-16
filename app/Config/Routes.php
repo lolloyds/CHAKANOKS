@@ -21,7 +21,7 @@ $routes->get('dashboard', 'Auth::dashboard');
 // ==================== FEATURE PAGES ====================
 $routes->get('purchase-request', 'Home::purchaseRequest');
 $routes->get('purchase-orders', 'Home::purchaseOrders');
-$routes->get('deliveries', 'Home::deliveries');
+$routes->get('deliveries', 'Inventory::deliveries');
 $routes->get('inventory', 'Inventory::inventory');
 $routes->get('suppliers', 'Home::suppliers');
 $routes->get('transfer', 'Home::transfer');
@@ -44,3 +44,6 @@ $routes->post('inventory/reportDamage', 'Inventory::reportDamage');
 // Central office routes
 $routes->post('inventory/transferItem', 'Inventory::transferItem');
 $routes->post('inventory/adjustItem', 'Inventory::adjustItem');
+
+// Delivery routes
+$routes->post('deliveries/approve', 'Inventory::approveDelivery');
