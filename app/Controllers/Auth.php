@@ -12,30 +12,46 @@ class Auth extends BaseController
             $username = $this->request->getPost('username');
             $password = $this->request->getPost('password');
 
-            $userModel = new UserModel();
-            $user = $userModel->where('username', $username)->first();
+            try {
+                $userModel = new UserModel();
+                $user = $userModel->where('username', $username)->first();
 
-            if (!$user || !password_verify($password, $user['password_hash'])) {
+                if (!$user) {
+                    log_message('error', "Login attempt failed: User '$username' not found");
+                    session()->setFlashdata('error', 'Invalid username or password.');
+                    return redirect()->to(base_url('login'));
+                }
+
+                if (!password_verify($password, $user['password_hash'])) {
+                    log_message('error', "Login attempt failed: Invalid password for user '$username'");
+                    session()->setFlashdata('error', 'Invalid username or password.');
+                    return redirect()->to(base_url('login'));
+                }
+
+                log_message('info', "User '$username' logged in successfully");
+
+                session()->set('user', [
+                    'id' => $user['id'],
+                    'username' => $user['username'],
+                    'role' => $user['role'],
+                    'branch_id' => $user['branch_id'] ?? null,
+                ]);
+
+                switch ($user['role']) {
+                    case 'Inventory Staff':
+                    case 'Branch Manager':
+                    case 'Central Office Admin':
+                    case 'Supplier':
+                    case 'Logistics Coordinator':
+                    case 'Franchise Manager':
+                    case 'System Administrator':
+                    default:
+                        return redirect()->to(base_url('dashboard'));
+                }
+            } catch (\Exception $e) {
+                session()->setFlashdata('error', 'Database connection error. Please check your database configuration.');
+                log_message('error', 'Login error: ' . $e->getMessage());
                 return redirect()->to(base_url('login'));
-            }
-
-            session()->set('user', [
-                'id' => $user['id'],
-                'username' => $user['username'],
-                'role' => $user['role'],
-                'branch_id' => $user['branch_id'] ?? null,
-            ]);
-
-            switch ($user['role']) {
-                case 'Inventory Staff':
-                case 'Branch Manager':
-                case 'Central Office Admin':
-                case 'Supplier':
-                case 'Logistics Coordinator':
-                case 'Franchise Manager':
-                case 'System Administrator':
-                default:
-                    return redirect()->to(base_url('dashboard'));
             }
         }
 
