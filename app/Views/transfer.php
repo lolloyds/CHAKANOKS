@@ -16,7 +16,7 @@
     font-size: 22px;
     font-weight: bold;
     margin-bottom: 16px;
-    color: #e63946;
+    color: black;
   }
   .stats {
     display: flex;
