@@ -498,9 +498,20 @@
   <!-- Quick Stats -->
   <div class="stats">
     <div class="stat">Total Items: <?= esc($totalItems ?? 0) ?></div>
-    <div class="stat">Low Stock: <?= esc($lowStock ?? 0) ?></div>
+    <div class="stat">Low Stock Items: <?= esc($lowStock ?? 0) ?></div>
     <div class="stat">Out of Stock: <?= esc($outOfStock ?? 0) ?></div>
     <div class="stat">Near Expiry: <?= esc($nearExpiry ?? 0) ?></div>
+  </div>
+
+  <!-- Alerts Section -->
+  <div class="inventory-container">
+    <h3>🚨 Active Alerts</h3>
+    <div id="alerts-container">
+      <div id="alerts-loading">Loading alerts...</div>
+    </div>
+    <div style="margin-top: 10px;">
+      <button type="button" onclick="checkAlerts()" style="padding: 8px 16px; background: #f39c12; color: white; border: none; border-radius: 4px; cursor: pointer;">🔄 Check for New Alerts</button>
+    </div>
   </div>
 
   <!-- Search & Filters -->
@@ -632,9 +643,113 @@
       document.body.style.overflow = ''; // Restore scrolling
     }
 
-    // Handle modal interactions and AJAX form submissions
+    // Alert management functions
+    function loadAlerts() {
+      fetch('<?= base_url('inventory/alerts') ?>')
+        .then(response => response.json())
+        .then(data => {
+          if (data.success) {
+            displayAlerts(data.alerts, data.counts);
+          } else {
+            document.getElementById('alerts-container').innerHTML = '<p style="color: red;">Failed to load alerts</p>';
+          }
+        })
+        .catch(error => {
+          console.error('Error loading alerts:', error);
+          document.getElementById('alerts-container').innerHTML = '<p style="color: red;">Error loading alerts</p>';
+        });
+    }
+
+    function displayAlerts(alerts, counts) {
+      const container = document.getElementById('alerts-container');
+
+      if (!alerts || alerts.length === 0) {
+        container.innerHTML = '<p style="color: #666; font-style: italic;">No active alerts</p>';
+        return;
+      }
+
+      let html = '<div style="margin-bottom: 15px;">';
+      html += `<span style="font-weight: bold; color: #333;">${alerts.length} active alert(s)</span>`;
+      html += '<div style="display: flex; gap: 10px; margin-top: 5px; font-size: 12px;">';
+      if (counts.critical > 0) html += `<span style="color: #dc3545;">🔴 ${counts.critical} Critical</span>`;
+      if (counts.high > 0) html += `<span style="color: #fd7e14;">🟠 ${counts.high} High</span>`;
+      if (counts.medium > 0) html += `<span style="color: #ffc107;">🟡 ${counts.medium} Medium</span>`;
+      if (counts.low > 0) html += `<span style="color: #6c757d;">🔵 ${counts.low} Low</span>`;
+      html += '</div></div>';
+
+      alerts.forEach(alert => {
+        const severityColor = {
+          'low': '#6c757d',
+          'medium': '#ffc107',
+          'high': '#fd7e14',
+          'critical': '#dc3545'
+        }[alert.severity] || '#6c757d';
+
+        html += `
+          <div style="border-left: 4px solid ${severityColor}; padding: 12px 15px; margin-bottom: 10px; background: #f8f9fa; border-radius: 4px;">
+            <div style="display: flex; justify-content: space-between; align-items: start;">
+              <div style="flex: 1;">
+                <div style="font-weight: bold; color: #333; margin-bottom: 5px;">${alert.title}</div>
+                <div style="color: #666; font-size: 14px;">${alert.message}</div>
+                <div style="color: #999; font-size: 12px; margin-top: 5px;">
+                  ${new Date(alert.created_at).toLocaleString()}
+                </div>
+              </div>
+              <button onclick="acknowledgeAlert(${alert.id})" style="background: #28a745; color: white; border: none; padding: 5px 10px; border-radius: 3px; cursor: pointer; font-size: 12px;">✓ Read</button>
+            </div>
+          </div>
+        `;
+      });
+
+      container.innerHTML = html;
+    }
+
+    function acknowledgeAlert(alertId) {
+      fetch('<?= base_url('inventory/alerts/acknowledge') ?>', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: 'alert_id=' + alertId
+      })
+      .then(response => response.json())
+      .then(data => {
+        if (data.success) {
+          loadAlerts(); // Refresh alerts
+        } else {
+          alert('Failed to acknowledge alert: ' + data.message);
+        }
+      })
+      .catch(error => {
+        console.error('Error:', error);
+        alert('Error acknowledging alert');
+      });
+    }
+
+    function checkAlerts() {
+      fetch('<?= base_url('inventory/alerts/check') ?>', {
+        method: 'POST'
+      })
+      .then(response => response.json())
+      .then(data => {
+        if (data.success) {
+          loadAlerts(); // Refresh alerts
+        } else {
+          alert('Failed to check alerts: ' + data.message);
+        }
+      })
+      .catch(error => {
+        console.error('Error:', error);
+        alert('Error checking alerts');
+      });
+    }
+
     document.addEventListener('DOMContentLoaded', function() {
-      // Close modal when clicking outside
+      // Load alerts on page load (only for branch users)
+      <?php if (isset($isBranchUser) && $isBranchUser): ?>
+      loadAlerts();
+      <?php endif; ?>
+
       const modals = document.querySelectorAll('.modal');
       modals.forEach(modal => {
         modal.addEventListener('click', function(e) {

@@ -10,10 +10,13 @@ class Inventory extends BaseController
     protected $inventoryService;
     protected $deliveryModel;
 
+    protected $alertModel;
+
     public function __construct()
     {
         $this->inventoryService = new InventoryService();
         $this->deliveryModel = new DeliveryModel();
+        $this->alertModel = new \App\Models\AlertModel();
     }
 
     // Main inventory page - role-based display
@@ -456,6 +459,67 @@ class Inventory extends BaseController
             'nearExpiry'  => $nearExpiry,
             'inventory'   => $inventory
         ]);
+    }
+
+    // ===============================
+    // 🚨 Alert Management
+    // ===============================
+
+    public function getAlerts()
+    {
+        $user = session()->get('user');
+        if (!$user) {
+            return $this->response->setJSON(['success' => false, 'message' => 'Unauthorized']);
+        }
+
+        $branchId = in_array($user['role'], ['Inventory Staff', 'Branch Manager']) ? $user['branch_id'] : null;
+
+        try {
+            $alerts = $this->inventoryService->getBranchAlerts($branchId);
+            $alertCounts = $this->inventoryService->getAlertCounts($branchId);
+
+            return $this->response->setJSON([
+                'success' => true,
+                'alerts' => $alerts,
+                'counts' => $alertCounts
+            ]);
+        } catch (\Exception $e) {
+            return $this->response->setJSON(['success' => false, 'message' => $e->getMessage()]);
+        }
+    }
+
+    public function acknowledgeAlert()
+    {
+        $user = session()->get('user');
+        if (!$user) {
+            return $this->response->setJSON(['success' => false, 'message' => 'Unauthorized']);
+        }
+
+        $alertId = $this->request->getPost('alert_id');
+
+        try {
+            $this->inventoryService->acknowledgeAlert($alertId, $user['id']);
+            return $this->response->setJSON(['success' => true, 'message' => 'Alert acknowledged']);
+        } catch (\Exception $e) {
+            return $this->response->setJSON(['success' => false, 'message' => $e->getMessage()]);
+        }
+    }
+
+    public function checkAlerts()
+    {
+        $user = session()->get('user');
+        if (!$user) {
+            return $this->response->setJSON(['success' => false, 'message' => 'Unauthorized']);
+        }
+
+        $branchId = in_array($user['role'], ['Inventory Staff', 'Branch Manager']) ? $user['branch_id'] : null;
+
+        try {
+            $this->inventoryService->checkAllAlerts($branchId);
+            return $this->response->setJSON(['success' => true, 'message' => 'Alerts checked']);
+        } catch (\Exception $e) {
+            return $this->response->setJSON(['success' => false, 'message' => $e->getMessage()]);
+        }
     }
 
 }

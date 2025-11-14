@@ -13,10 +13,8 @@ class InventoryService
         $this->db = \Config\Database::connect();
     }
 
-    // ✅ Receive stock (delivery from supplier)
     public function receiveStock($branchId, $itemId, $quantity, $userId, $reason, $expiryDate = null)
     {
-        // Update or insert branch stock
         $existing = $this->db->table('branch_stock')
             ->where('branch_id', $branchId)
             ->where('item_id', $itemId)
@@ -46,14 +44,11 @@ class InventoryService
             $this->db->table('branch_stock')->insert($insertData);
         }
 
-        // Log the movement
         $this->logMovement($branchId, $itemId, $quantity, 'receive', $userId, $reason);
     }
 
-    // ✅ Use stock (sales/cooking)
     public function useStock($branchId, $itemId, $quantity, $userId, $reason)
     {
-        // Check current stock
         $current = $this->db->table('branch_stock')
             ->where('branch_id', $branchId)
             ->where('item_id', $itemId)
@@ -70,14 +65,11 @@ class InventoryService
             ->where('item_id', $itemId)
             ->update(['quantity' => $newQuantity, 'updated_at' => date('Y-m-d H:i:s')]);
 
-        // Log the movement
         $this->logMovement($branchId, $itemId, -$quantity, 'use', $userId, $reason);
     }
 
-    // ✅ Transfer stock between branches
     public function transferStock($fromBranchId, $toBranchId, $itemId, $quantity, $userId, $reason)
     {
-        // Check source branch stock
         $source = $this->db->table('branch_stock')
             ->where('branch_id', $fromBranchId)
             ->where('item_id', $itemId)
@@ -88,14 +80,12 @@ class InventoryService
             throw new \Exception('Insufficient stock in source branch');
         }
 
-        // Reduce from source
         $newSourceQuantity = $source->quantity - $quantity;
         $this->db->table('branch_stock')
             ->where('branch_id', $fromBranchId)
             ->where('item_id', $itemId)
             ->update(['quantity' => $newSourceQuantity, 'updated_at' => date('Y-m-d H:i:s')]);
 
-        // Add to destination
         $destination = $this->db->table('branch_stock')
             ->where('branch_id', $toBranchId)
             ->where('item_id', $itemId)
@@ -118,15 +108,12 @@ class InventoryService
         }
 
         
-        // Log the movements
         $this->logMovement($fromBranchId, $itemId, -$quantity, 'transfer_out', $userId, $reason);
         $this->logMovement($toBranchId, $itemId, $quantity, 'transfer_in', $userId, $reason);
     }
 
-    // ✅ Adjust stock (manual correction)
     public function adjustStock($branchId, $itemId, $newQuantity, $userId, $reason)
     {
-        // Get current quantity for logging
         $current = $this->db->table('branch_stock')
             ->where('branch_id', $branchId)
             ->where('item_id', $itemId)
@@ -136,7 +123,6 @@ class InventoryService
         $currentQuantity = $current ? $current->quantity : 0;
         $adjustment = $newQuantity - $currentQuantity;
 
-        // Update stock
         if ($current) {
             $this->db->table('branch_stock')
                 ->where('branch_id', $branchId)
@@ -151,14 +137,11 @@ class InventoryService
             ]);
         }
 
-        // Log the adjustment
         $this->logMovement($branchId, $itemId, $adjustment, 'adjust', $userId, $reason);
     }
 
-    // ✅ Record spoilage/damage
     public function recordSpoilage($branchId, $itemId, $quantity, $userId, $reason)
     {
-        // Check current stock
         $current = $this->db->table('branch_stock')
             ->where('branch_id', $branchId)
             ->where('item_id', $itemId)
@@ -175,11 +158,9 @@ class InventoryService
             ->where('item_id', $itemId)
             ->update(['quantity' => $newQuantity, 'updated_at' => date('Y-m-d H:i:s')]);
 
-        // Log the spoilage
         $this->logMovement($branchId, $itemId, -$quantity, 'spoilage', $userId, $reason);
     }
 
-    // Helper method to log stock movements
     private function logMovement($branchId, $itemId, $quantity, $type, $userId, $reason)
     {
         $this->db->table('stock_movements')->insert([
@@ -191,5 +172,116 @@ class InventoryService
             'remarks' => $reason,
             'created_at' => date('Y-m-d H:i:s')
         ]);
+
+        $this->checkStockAlerts($branchId, $itemId);
+    }
+
+    public function checkStockAlerts($branchId, $itemId)
+    {
+        $stock = $this->db->table('branch_stock')
+            ->where('branch_id', $branchId)
+            ->where('item_id', $itemId)
+            ->get()
+            ->getRow();
+
+        $item = $this->db->table('items')
+            ->where('id', $itemId)
+            ->where('status', 'active')
+            ->get()
+            ->getRow();
+
+        if (!$item) return;
+
+        $quantity = $stock ? $stock->quantity : 0;
+        $reorderLevel = $item->reorder_level ?? 0;
+
+        if ($quantity == 0) {
+            $this->createAlert([
+                'branch_id' => $branchId,
+                'item_id' => $itemId,
+                'alert_type' => 'out_of_stock',
+                'title' => 'Out of Stock Alert',
+                'message' => "{$item->name} is completely out of stock at this branch.",
+                'severity' => 'critical'
+            ]);
+        }
+        elseif ($quantity > 0 && $quantity <= $reorderLevel) {
+            $this->createAlert([
+                'branch_id' => $branchId,
+                'item_id' => $itemId,
+                'alert_type' => 'low_stock',
+                'title' => 'Low Stock Alert',
+                'message' => "{$item->name} is running low (Current: {$quantity} {$item->unit}, Reorder Level: {$reorderLevel} {$item->unit}).",
+                'severity' => 'high'
+            ]);
+        }
+
+        if ($item->perishable && $stock && $stock->expiry_date) {
+            $expiryDate = strtotime($stock->expiry_date);
+            $now = time();
+            $daysUntilExpiry = floor(($expiryDate - $now) / (60 * 60 * 24));
+
+            if ($daysUntilExpiry <= 7 && $daysUntilExpiry > 0) {
+                $this->createAlert([
+                    'branch_id' => $branchId,
+                    'item_id' => $itemId,
+                    'alert_type' => 'near_expiry',
+                    'title' => 'Near Expiry Alert',
+                    'message' => "{$item->name} expires in {$daysUntilExpiry} day(s) ({$stock->expiry_date}). Current stock: {$quantity} {$item->unit}.",
+                    'severity' => 'medium'
+                ]);
+            } elseif ($daysUntilExpiry <= 0) {
+                $this->createAlert([
+                    'branch_id' => $branchId,
+                    'item_id' => $itemId,
+                    'alert_type' => 'expired',
+                    'title' => 'Expired Item Alert',
+                    'message' => "{$item->name} has expired ({$stock->expiry_date}). Current stock: {$quantity} {$item->unit}.",
+                    'severity' => 'critical'
+                ]);
+            }
+        }
+    }
+
+    private function createAlert($data)
+    {
+        $alertModel = new \App\Models\AlertModel();
+        $alertModel->createAlert($data);
+    }
+
+    public function getBranchAlerts($branchId)
+    {
+        $alertModel = new \App\Models\AlertModel();
+        return $alertModel->getActiveAlerts($branchId);
+    }
+
+    public function getAlertCounts($branchId = null)
+    {
+        $alertModel = new \App\Models\AlertModel();
+        return $alertModel->getAlertCounts($branchId);
+    }
+
+    public function acknowledgeAlert($alertId, $userId)
+    {
+        $alertModel = new \App\Models\AlertModel();
+        return $alertModel->acknowledgeAlert($alertId, $userId);
+    }
+
+    public function checkAllAlerts($branchId = null)
+    {
+        $query = $this->db->table('items')
+            ->select('items.id as item_id, items.name, items.reorder_level, items.perishable, branch_stock.quantity, branch_stock.expiry_date, branch_stock.branch_id')
+            ->join('branch_stock', 'items.id = branch_stock.item_id', 'left')
+            ->where('items.status', 'active');
+
+        if ($branchId) {
+            $query->where('branch_stock.branch_id', $branchId);
+        }
+
+        $items = $query->get()->getResultArray();
+
+        foreach ($items as $item) {
+            $this->checkStockAlerts($item['branch_id'], $item['item_id']);
+        }
     }
 }

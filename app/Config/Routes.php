@@ -47,3 +47,8 @@ $routes->post('inventory/adjustItem', 'Inventory::adjustItem');
 
 // Delivery routes
 $routes->post('deliveries/approve', 'Inventory::approveDelivery');
+
+// Alert routes
+$routes->get('inventory/alerts', 'Inventory::getAlerts');
+$routes->post('inventory/alerts/acknowledge', 'Inventory::acknowledgeAlert');
+$routes->post('inventory/alerts/check', 'Inventory::checkAlerts');
