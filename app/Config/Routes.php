@@ -32,18 +32,12 @@ $routes->get('settings', 'Home::settings');
 
 $routes->post('inventory/receive', 'Inventory::receiveItem', ['filter' => 'role:Inventory Staff,Branch Manager']);
 $routes->post('inventory/use', 'Inventory::useItem', ['filter' => 'role:Inventory Staff,Branch Manager']);
-$routes->post('inventory/transfer', 'Inventory::transferItem', ['filter' => 'role:Inventory Staff,Branch Manager']);
-$routes->post('inventory/adjust', 'Inventory::adjustItem', ['filter' => 'role:Inventory Staff,Branch Manager']);
-$routes->post('inventory/spoil', 'Inventory::spoilItem', ['filter' => 'role:Inventory Staff,Branch Manager']);
-
-
-// Branch inventory routes
 $routes->post('inventory/useItem', 'Inventory::useItem');
-$routes->post('inventory/reportDamage', 'Inventory::reportDamage');
-
-// Central office routes
+$routes->post('inventory/transfer', 'Inventory::transferItem', ['filter' => 'role:Inventory Staff,Branch Manager']);
 $routes->post('inventory/transferItem', 'Inventory::transferItem');
+$routes->post('inventory/adjust', 'Inventory::adjustItem', ['filter' => 'role:Inventory Staff,Branch Manager']);
 $routes->post('inventory/adjustItem', 'Inventory::adjustItem');
+$routes->post('inventory/spoil', 'Inventory::reportDamage', ['filter' => 'role:Inventory Staff,Branch Manager']);
 
 // Delivery routes
 $routes->post('deliveries/approve', 'Inventory::approveDelivery');

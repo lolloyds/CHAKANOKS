@@ -18,10 +18,6 @@ class RoleFilter implements FilterInterface
         }
 
         if (!empty($allowedRoles) && !in_array($user['role'], $allowedRoles)) {
-            // Redirect Branch Managers to their dashboard
-            if ($user['role'] === 'Branch Manager') {
-                return redirect()->to(base_url('bdashboard'));
-            }
             return redirect()->to(base_url('dashboard'));
         }
     }

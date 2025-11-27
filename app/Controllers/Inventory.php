@@ -10,13 +10,10 @@ class Inventory extends BaseController
     protected $inventoryService;
     protected $deliveryModel;
 
-    protected $alertModel;
-
     public function __construct()
     {
         $this->inventoryService = new InventoryService();
         $this->deliveryModel = new DeliveryModel();
-        $this->alertModel = new \App\Models\AlertModel();
     }
 
     // Main inventory page - role-based display
@@ -403,63 +400,7 @@ class Inventory extends BaseController
         }) : $deliveries;
     }
 
-    public function bdashboard(): string
-    {
-        // Get current user's branch
-        $user = session()->get('user');
-        if (!$user || !isset($user['branch_id']) || $user['branch_id'] === null) {
-            // If user doesn't have a branch assigned, redirect to main dashboard
-            return redirect()->to(base_url('dashboard'))->with('error', 'No branch assigned to your account');
-        }
 
-        $branchId = $user['branch_id'];
-        $db = \Config\Database::connect();
-
-        // Get branch information
-        $branch = $db->table('branches')
-            ->where('id', $branchId)
-            ->get()
-            ->getRow();
-
-        if (!$branch) {
-            return redirect()->to(base_url('dashboard'))->with('error', 'Branch not found');
-        }
-
-        // Get inventory stats for this specific branch
-        $inventory = $db->table('items')
-            ->select('items.id as item_id, items.name as item_name, items.unit, items.reorder_level, branch_stock.expiry_date, branch_stock.quantity')
-            ->join('branch_stock', 'items.id = branch_stock.item_id AND branch_stock.branch_id = ' . $branchId, 'left')
-            ->where('items.status', 'active')
-            ->get()
-            ->getResultArray();
-
-        // Calculate stats for this branch
-        $totalItems = count($inventory);
-        $lowStock = 0;
-        $outOfStock = 0;
-        $nearExpiry = 0;
-
-        foreach ($inventory as $item) {
-            $quantity = $item['quantity'] ?? 0;
-            if ($quantity == 0) {
-                $outOfStock++;
-            } elseif ($quantity <= $item['reorder_level']) {
-                $lowStock++;
-            }
-            if (isset($item['expiry_date']) && $item['expiry_date'] && $item['expiry_date'] <= date('Y-m-d', strtotime('+7 days'))) {
-                $nearExpiry++;
-            }
-        }
-
-        return view('Branch-only/bdashboard', [
-            'branch'      => $branch,
-            'totalItems'  => $totalItems,
-            'lowStock'    => $lowStock,
-            'outOfStock'  => $outOfStock,
-            'nearExpiry'  => $nearExpiry,
-            'inventory'   => $inventory
-        ]);
-    }
 
     // ===============================
     // 🚨 Alert Management

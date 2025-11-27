@@ -605,7 +605,7 @@
       <label>Quantity:</label>
       <input type="number" name="quantity" required>
       <div style="display: flex; gap: 10px; margin-top: 10px;">
-        <button type="submit">Save</button>
+        <button type="submit">Use</button>
         <button type="button" onclick="closeModal('useItemModal')">Cancel</button>
       </div>
     </form>
