@@ -47,7 +47,7 @@ class CreateDeliveries extends Migration
         ]);
 
         $this->forge->addKey('id', true);
-        $this->forge->createTable('deliveries');
+        $this->forge->createTable('deliveries', true);
     }
 
     public function down()

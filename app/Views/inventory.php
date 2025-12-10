@@ -585,8 +585,8 @@
           <td><span class="status-badge <?= $statusClass ?>"><?= $status ?></span></td>
           <td>
             <div class="action-buttons">
-              <button class="edit-btn">Edit</button>
-              <button class="remove-btn">Remove</button>
+              <a href="/inventory/edit/<?= esc($item['item_id']) ?>" class="edit-btn" style="text-decoration:none;">Edit</a>
+              <a href="/inventory/remove/<?= esc($item['item_id']) ?>" class="remove-btn" style="text-decoration:none;" onclick="return confirm('Are you sure you want to remove this item?');">Remove</a>
             </div>
           </td>
         </tr>
@@ -828,6 +828,35 @@
             messageDiv.style.border = '1px solid #f5c6cb';
             messageDiv.textContent = 'An error occurred. Please try again.';
           });
+        });
+      });
+
+      // AJAX Remove
+      document.querySelectorAll('.remove-btn').forEach(function(btn) {
+        btn.addEventListener('click', function(e) {
+          e.preventDefault();
+          if (!confirm('Are you sure you want to remove this item?')) return;
+          fetch(this.href, { method: 'GET', headers: { 'X-Requested-With': 'XMLHttpRequest' } })
+            .then(response => response.text())
+            .then(data => {
+              // Show success message
+              const messageDiv = document.getElementById('message');
+              messageDiv.style.display = 'block';
+              messageDiv.style.backgroundColor = '#d4edda';
+              messageDiv.style.color = '#155724';
+              messageDiv.style.border = '1px solid #c3e6cb';
+              messageDiv.textContent = 'Item removed successfully.';
+              // Remove row from table
+              btn.closest('tr').remove();
+            })
+            .catch(() => {
+              const messageDiv = document.getElementById('message');
+              messageDiv.style.display = 'block';
+              messageDiv.style.backgroundColor = '#f8d7da';
+              messageDiv.style.color = '#721c24';
+              messageDiv.style.border = '1px solid #f5c6cb';
+              messageDiv.textContent = 'Error removing item.';
+            });
         });
       });
     });

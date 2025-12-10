@@ -17,6 +17,7 @@ $routes->get('logout', 'Auth::logout');
 
 // ==================== DASHBOARD ====================
 $routes->get('dashboard', 'Auth::dashboard');
+$routes->get('dashboard/deliveries-summary', 'Home::deliveriesSummary');
 
 // ==================== FEATURE PAGES ====================
 $routes->get('purchase-request', 'Home::purchaseRequest');
@@ -41,8 +42,19 @@ $routes->post('inventory/spoil', 'Inventory::reportDamage', ['filter' => 'role:I
 
 // Delivery routes
 $routes->post('deliveries/approve', 'Inventory::approveDelivery');
+$routes->get('deliveries/create', 'Deliveries::create');
+$routes->post('deliveries/create', 'Deliveries::create');
+$routes->get('deliveries/success', 'Deliveries::success');
+$routes->get('deliveries/update-status/(:num)', 'Deliveries::updateStatus/$1');
+$routes->post('deliveries/update-status/(:num)', 'Deliveries::updateStatus/$1');
+$routes->get('deliveries/status-updated', 'Deliveries::statusUpdated');
+$routes->get('deliveries/mark-delivered/(:num)', 'Deliveries::markDelivered/$1');
+$routes->get('deliveries/delivered-success', 'Deliveries::deliveredSuccess');
 
 // Alert routes
 $routes->get('inventory/alerts', 'Inventory::getAlerts');
 $routes->post('inventory/alerts/acknowledge', 'Inventory::acknowledgeAlert');
 $routes->post('inventory/alerts/check', 'Inventory::checkAlerts');
+$routes->get('inventory/edit/(:num)', 'Inventory::edit/$1');
+$routes->post('inventory/edit/(:num)', 'Inventory::edit/$1');
+$routes->get('inventory/remove/(:num)', 'Inventory::remove/$1');

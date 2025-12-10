@@ -53,6 +53,10 @@ class Home extends BaseController
     {
         return redirect()->to(base_url('login'));
     }
-    
-    
+    public function deliveriesSummary()
+    {
+        $deliveryModel = new \App\Models\DeliveryModel();
+        $deliveries = $deliveryModel->findAll();
+        return view('dashboard/deliveries_summary', ['deliveries' => $deliveries]);
+    }
 }

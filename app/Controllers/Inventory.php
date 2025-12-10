@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Services\InventoryService;
 use App\Models\DeliveryModel;
+use App\Models\ItemModel;
 
 class Inventory extends BaseController
 {
@@ -461,6 +462,31 @@ class Inventory extends BaseController
         } catch (\Exception $e) {
             return $this->response->setJSON(['success' => false, 'message' => $e->getMessage()]);
         }
+    }
+
+    public function edit($id)
+    {
+        $itemModel = new ItemModel();
+        $item = $itemModel->find($id);
+        if ($this->request->getMethod() === 'post') {
+            $data = [
+                'item_name'   => $this->request->getPost('item_name'),
+                'category'    => $this->request->getPost('category'),
+                'quantity'    => $this->request->getPost('quantity'),
+                'unit'        => $this->request->getPost('unit'),
+                'expiry_date' => $this->request->getPost('expiry_date'),
+            ];
+            $itemModel->update($id, $data);
+            return redirect()->to('/inventory');
+        }
+        return view('inventory/edit', ['item' => $item]);
+    }
+
+    public function remove($id)
+    {
+        $itemModel = new ItemModel();
+        $itemModel->delete($id);
+        return redirect()->to('/inventory');
     }
 
 }

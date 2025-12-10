@@ -14,7 +14,8 @@ class DeliveryModel extends Model
     protected $protectFields    = true;
     protected $allowedFields    = [
         'delivery_id', 'branch_id', 'supplier_id', 'driver', 'status',
-        'scheduled_time', 'arrival_time', 'notes', 'created_by', 'approved_by', 'approved_at'
+        'scheduled_time', 'arrival_time', 'notes', 'created_by', 'approved_by', 'approved_at',
+        'item_name', 'quantity', 'delivery_date', 'created_at', 'updated_at'
     ];
 
     protected bool $allowEmptyInserts = false;
