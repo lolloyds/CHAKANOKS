@@ -114,8 +114,73 @@ class Auth extends BaseController
                 ];
             }
         } else {
-            // Central office user
-            $data['isBranchUser'] = false;
+            // Central office user - get dashboard stats
+            $db = \Config\Database::connect();
+            
+            // Get total branches
+            $totalBranches = $db->table('branches')->countAllResults(false);
+            
+            // Get active deliveries (in_transit or scheduled)
+            $activeDeliveries = $db->table('deliveries')
+                ->whereIn('status', ['scheduled', 'in_transit'])
+                ->countAllResults(false);
+            
+            // Get pending purchase orders
+            $pendingOrders = $db->table('purchase_orders')
+                ->whereIn('status', ['pending', 'approved'])
+                ->countAllResults(false);
+            
+            // Get total suppliers
+            $totalSuppliers = $db->table('suppliers')->countAllResults(false);
+            
+            // Get today's highlights
+            $today = date('Y-m-d');
+            $scheduledDeliveries = $db->table('deliveries')
+                ->where('status', 'scheduled')
+                ->where('DATE(scheduled_time)', $today)
+                ->countAllResults(false);
+            
+            $pendingPRs = $db->table('purchase_requests')
+                ->whereIn('status', ['pending', 'pending central office review'])
+                ->countAllResults(false);
+            
+            // Get low stock items
+            $lowStockQuery = $db->table('branch_stock bs')
+                ->select('bs.*, i.reorder_level')
+                ->join('items i', 'bs.item_id = i.id')
+                ->where('bs.quantity >', 0)
+                ->get()
+                ->getResultArray();
+            
+            $lowStockItems = 0;
+            foreach ($lowStockQuery as $item) {
+                if (($item['quantity'] ?? 0) <= ($item['reorder_level'] ?? 0)) {
+                    $lowStockItems++;
+                }
+            }
+            
+            // Get recent activity (from stock_movements)
+            $recentActivity = $db->table('stock_movements sm')
+                ->select('sm.*, i.name as item_name, b.name as branch_name, u.username')
+                ->join('items i', 'sm.item_id = i.id', 'left')
+                ->join('branches b', 'sm.branch_id = b.id', 'left')
+                ->join('users u', 'sm.created_by = u.id', 'left')
+                ->orderBy('sm.created_at', 'DESC')
+                ->limit(10)
+                ->get()
+                ->getResultArray();
+            
+            $data = [
+                'isBranchUser' => false,
+                'totalBranches' => $totalBranches,
+                'activeDeliveries' => $activeDeliveries,
+                'pendingOrders' => $pendingOrders,
+                'totalSuppliers' => $totalSuppliers,
+                'scheduledDeliveries' => $scheduledDeliveries,
+                'pendingPRs' => $pendingPRs,
+                'lowStockItems' => $lowStockItems,
+                'recentActivity' => $recentActivity
+            ];
         }
 
         return view('dashboard', $data);

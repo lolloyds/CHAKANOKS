@@ -48,3 +48,121 @@ DEBUG - 2025-12-13 01:47:24 --> Session: Class initialized using 'CodeIgniter\Se
 DEBUG - 2025-12-13 01:50:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
 DEBUG - 2025-12-13 01:52:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
 DEBUG - 2025-12-13 01:55:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-13 01:56:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-13 01:56:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-13 01:56:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-13 01:57:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-13 01:57:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-13 01:57:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-13 01:57:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-13 01:57:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-13 01:57:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-13 01:58:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-13 01:58:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-13 01:59:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-13 01:59:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-12-13 01:59:19 --> mysqli_sql_exception: Unknown column 'to_branch.name' in 'field list' in C:\xampp1\htdocs\CHAKANOKS\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\xampp1\htdocs\CHAKANOKS\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT `sm`.*, ...', 0)
+#1 C:\xampp1\htdocs\CHAKANOKS\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `sm`.*, ...')
+#2 C:\xampp1\htdocs\CHAKANOKS\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `sm`.*, ...')
+#3 C:\xampp1\htdocs\CHAKANOKS\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `sm`.*, ...', Array, false)
+#4 C:\xampp1\htdocs\CHAKANOKS\app\Models\TransferModel.php(36): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp1\htdocs\CHAKANOKS\app\Controllers\Home.php(51): App\Models\TransferModel->getTransfersWithDetails(NULL)
+#6 C:\xampp1\htdocs\CHAKANOKS\system\CodeIgniter.php(933): App\Controllers\Home->transfer()
+#7 C:\xampp1\htdocs\CHAKANOKS\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#8 C:\xampp1\htdocs\CHAKANOKS\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp1\htdocs\CHAKANOKS\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#10 C:\xampp1\htdocs\CHAKANOKS\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#11 C:\xampp1\htdocs\CHAKANOKS\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#12 {main}
+CRITICAL - 2025-12-13 01:59:19 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'to_branch.name' in 'field list'
+[Method: GET, Route: transfer]
+in SYSTEMPATH\Database\BaseConnection.php on line 684.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `sm`.*, `from_branch`.`name` as `from_branch_name`, `to_branch`.`name` as `to_branch_name`, `i`.`name` as `item_name`, `i`.`unit` as `item_unit`, `u`.`username` as `created_by_name`
+FROM `stock_movements` `sm`
+JOIN `branches` `from_branch` ON `sm`.`branch_id` = `from_branch`.`id`
+JOIN `items` `i` ON `sm`.`item_id` = `i`.`id`
+LEFT JOIN `users` `u` ON `sm`.`created_by` = `u`.`id`
+WHERE `sm`.`movement_type` = :sm.movement_type:
+ORDER BY `sm`.`created_at` DESC', [...], false)
+ 2 APPPATH\Models\TransferModel.php(36): CodeIgniter\Database\BaseBuilder->get()
+ 3 APPPATH\Controllers\Home.php(51): App\Models\TransferModel->getTransfersWithDetails(null)
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Home->transfer()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-12-13 01:59:19 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'to_branch.name' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `sm`.*, `from_branch`.`name` as `from_branch_name`, `to_branch`.`name` as `to_branch_name`, `i`.`name` as `item_name`, `i`.`unit` as `item_unit`, `u`.`username` as `created_by_name`
+FROM `stock_movements` `sm`
+JOIN `branches` `from_branch` ON `sm`.`branch_id` = `from_branch`.`id`
+JOIN `items` `i` ON `sm`.`item_id` = `i`.`id`
+LEFT JOIN `users` `u` ON `sm`.`created_by` = `u`.`id`
+WHERE `sm`.`movement_type` = \'transfer_out\'
+ORDER BY `sm`.`created_at` DESC')
+ 2 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `sm`.*, `from_branch`.`name` as `from_branch_name`, `to_branch`.`name` as `to_branch_name`, `i`.`name` as `item_name`, `i`.`unit` as `item_unit`, `u`.`username` as `created_by_name`
+FROM `stock_movements` `sm`
+JOIN `branches` `from_branch` ON `sm`.`branch_id` = `from_branch`.`id`
+JOIN `items` `i` ON `sm`.`item_id` = `i`.`id`
+LEFT JOIN `users` `u` ON `sm`.`created_by` = `u`.`id`
+WHERE `sm`.`movement_type` = \'transfer_out\'
+ORDER BY `sm`.`created_at` DESC')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `sm`.*, `from_branch`.`name` as `from_branch_name`, `to_branch`.`name` as `to_branch_name`, `i`.`name` as `item_name`, `i`.`unit` as `item_unit`, `u`.`username` as `created_by_name`
+FROM `stock_movements` `sm`
+JOIN `branches` `from_branch` ON `sm`.`branch_id` = `from_branch`.`id`
+JOIN `items` `i` ON `sm`.`item_id` = `i`.`id`
+LEFT JOIN `users` `u` ON `sm`.`created_by` = `u`.`id`
+WHERE `sm`.`movement_type` = :sm.movement_type:
+ORDER BY `sm`.`created_at` DESC', [...], false)
+ 4 APPPATH\Models\TransferModel.php(36): CodeIgniter\Database\BaseBuilder->get()
+ 5 APPPATH\Controllers\Home.php(51): App\Models\TransferModel->getTransfersWithDetails(null)
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Home->transfer()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-12-13 01:59:19 --> [Caused by] mysqli_sql_exception: Unknown column 'to_branch.name' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query('SELECT `sm`.*, `from_branch`.`name` as `from_branch_name`, `to_branch`.`name` as `to_branch_name`, `i`.`name` as `item_name`, `i`.`unit` as `item_unit`, `u`.`username` as `created_by_name`
+FROM `stock_movements` `sm`
+JOIN `branches` `from_branch` ON `sm`.`branch_id` = `from_branch`.`id`
+JOIN `items` `i` ON `sm`.`item_id` = `i`.`id`
+LEFT JOIN `users` `u` ON `sm`.`created_by` = `u`.`id`
+WHERE `sm`.`movement_type` = \'transfer_out\'
+ORDER BY `sm`.`created_at` DESC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `sm`.*, `from_branch`.`name` as `from_branch_name`, `to_branch`.`name` as `to_branch_name`, `i`.`name` as `item_name`, `i`.`unit` as `item_unit`, `u`.`username` as `created_by_name`
+FROM `stock_movements` `sm`
+JOIN `branches` `from_branch` ON `sm`.`branch_id` = `from_branch`.`id`
+JOIN `items` `i` ON `sm`.`item_id` = `i`.`id`
+LEFT JOIN `users` `u` ON `sm`.`created_by` = `u`.`id`
+WHERE `sm`.`movement_type` = \'transfer_out\'
+ORDER BY `sm`.`created_at` DESC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `sm`.*, `from_branch`.`name` as `from_branch_name`, `to_branch`.`name` as `to_branch_name`, `i`.`name` as `item_name`, `i`.`unit` as `item_unit`, `u`.`username` as `created_by_name`
+FROM `stock_movements` `sm`
+JOIN `branches` `from_branch` ON `sm`.`branch_id` = `from_branch`.`id`
+JOIN `items` `i` ON `sm`.`item_id` = `i`.`id`
+LEFT JOIN `users` `u` ON `sm`.`created_by` = `u`.`id`
+WHERE `sm`.`movement_type` = \'transfer_out\'
+ORDER BY `sm`.`created_at` DESC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `sm`.*, `from_branch`.`name` as `from_branch_name`, `to_branch`.`name` as `to_branch_name`, `i`.`name` as `item_name`, `i`.`unit` as `item_unit`, `u`.`username` as `created_by_name`
+FROM `stock_movements` `sm`
+JOIN `branches` `from_branch` ON `sm`.`branch_id` = `from_branch`.`id`
+JOIN `items` `i` ON `sm`.`item_id` = `i`.`id`
+LEFT JOIN `users` `u` ON `sm`.`created_by` = `u`.`id`
+WHERE `sm`.`movement_type` = :sm.movement_type:
+ORDER BY `sm`.`created_at` DESC', [...], false)
+ 5 APPPATH\Models\TransferModel.php(36): CodeIgniter\Database\BaseBuilder->get()
+ 6 APPPATH\Controllers\Home.php(51): App\Models\TransferModel->getTransfersWithDetails(null)
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Home->transfer()
+ 8 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 9 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-12-13 02:00:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-13 02:00:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-13 02:04:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.

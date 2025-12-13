@@ -37,9 +37,22 @@ class Home extends BaseController
     {
         return view('suppliers');
     }
-    public function transfer(): string
+    public function transfer()
     {
-        return view('transfer');
+        $user = session()->get('user');
+        if (!$user) {
+            return redirect()->to(base_url('login'));
+        }
+
+        $transferModel = new \App\Models\TransferModel();
+        $branchId = $user['branch_id'] ?? null;
+        
+        $data = [
+            'transfers' => $transferModel->getTransfersWithDetails($branchId),
+            'stats' => $transferModel->getStats($branchId)
+        ];
+
+        return view('transfer', $data);
     }
     public function franchise()
     {
