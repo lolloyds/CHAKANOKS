@@ -92,8 +92,32 @@
     <div class="stat">Inactive: <?= $stats['inactive'] ?? 0 ?></div>
   </div>
 
+  <!-- Search & Filters -->
+  <div class="box" style="margin-bottom: 15px; padding: 15px; background: #fff;">
+    <div style="display: flex; gap: 15px; align-items: center; flex-wrap: wrap;">
+      <div style="position: relative; flex: 1; min-width: 200px;">
+        <input type="text" id="supplierSearch" placeholder="Search suppliers..." style="width: 100%; padding: 10px 40px 10px 15px; border: 2px solid #ddd; border-radius: 8px; font-size: 14px;">
+        <i class="fas fa-search" style="position: absolute; right: 12px; top: 50%; transform: translateY(-50%); color: #666; font-size: 16px;"></i>
+      </div>
+      <select id="statusFilter" style="padding: 10px 15px; border: 2px solid #ddd; border-radius: 8px; font-size: 14px; min-width: 120px;">
+        <option value="">All Status</option>
+        <option value="active">Active</option>
+        <option value="pending">Pending</option>
+        <option value="inactive">Inactive</option>
+      </select>
+      <select id="supplyTypeFilter" style="padding: 10px 15px; border: 2px solid #ddd; border-radius: 8px; font-size: 14px; min-width: 140px;">
+        <option value="">All Supply Types</option>
+        <option value="Meat">Meat</option>
+        <option value="Seasoning">Seasoning</option>
+        <option value="Fuel">Fuel</option>
+        <option value="Packaging">Packaging</option>
+        <option value="Beverage">Beverage</option>
+      </select>
+    </div>
+  </div>
+
   <div class="box">
-    <table class="table">
+    <table class="table" id="suppliersTable">
       <thead>
         <tr>
           <th>ID</th>
@@ -142,9 +166,67 @@
 <script>
 function deleteSupplier(id) {
   if (!confirm('Are you sure you want to delete this supplier?')) return;
-  
+
   window.location.href = '<?= base_url('suppliers/delete/') ?>' + id;
 }
+
+// Search and Filter Functionality
+document.addEventListener('DOMContentLoaded', function() {
+  const searchInput = document.getElementById('supplierSearch');
+  const statusFilter = document.getElementById('statusFilter');
+  const supplyTypeFilter = document.getElementById('supplyTypeFilter');
+  const table = document.getElementById('suppliersTable');
+  const rows = table.getElementsByTagName('tbody')[0].getElementsByTagName('tr');
+
+  function filterTable() {
+    const searchTerm = searchInput.value.toLowerCase();
+    const statusValue = statusFilter.value.toLowerCase();
+    const supplyTypeValue = supplyTypeFilter.value.toLowerCase();
+
+    for (let i = 0; i < rows.length; i++) {
+      const row = rows[i];
+      const cells = row.getElementsByTagName('td');
+      let showRow = true;
+
+      if (cells.length > 0) {
+        // Search across all columns
+        const textContent = Array.from(cells).map(cell => cell.textContent.toLowerCase()).join(' ');
+        if (searchTerm && !textContent.includes(searchTerm)) {
+          showRow = false;
+        }
+
+        // Status filter
+        if (statusValue) {
+          const statusCell = cells[6]; // Status column
+          if (statusCell) {
+            const statusText = statusCell.textContent.toLowerCase().trim();
+            if (!statusText.includes(statusValue)) {
+              showRow = false;
+            }
+          }
+        }
+
+        // Supply type filter
+        if (supplyTypeValue) {
+          const supplyTypeCell = cells[5]; // Supply Type column
+          if (supplyTypeCell) {
+            const supplyTypeText = supplyTypeCell.textContent.toLowerCase().trim();
+            if (!supplyTypeText.includes(supplyTypeValue)) {
+              showRow = false;
+            }
+          }
+        }
+      }
+
+      row.style.display = showRow ? '' : 'none';
+    }
+  }
+
+  // Add event listeners
+  searchInput.addEventListener('input', filterTable);
+  statusFilter.addEventListener('change', filterTable);
+  supplyTypeFilter.addEventListener('change', filterTable);
+});
 </script>
 
 <?php include __DIR__ . '/includes/footer.php'; ?>

@@ -384,9 +384,33 @@
     </div>
   </div>
 
+  <!-- Search & Filters -->
+  <div class="box" style="margin-bottom: 15px; padding: 15px; background: #fff;">
+    <div style="display: flex; gap: 15px; align-items: center; flex-wrap: wrap;">
+      <div style="position: relative; flex: 1; min-width: 200px;">
+        <input type="text" id="prSearch" placeholder="Search requests..." style="width: 100%; padding: 10px 40px 10px 15px; border: 2px solid #ffd6e8; border-radius: 8px; font-size: 14px;">
+        <i class="fas fa-search" style="position: absolute; right: 12px; top: 50%; transform: translateY(-50%); color: #666; font-size: 16px;"></i>
+      </div>
+      <select id="statusFilter" style="padding: 10px 15px; border: 2px solid #ffd6e8; border-radius: 8px; font-size: 14px; min-width: 140px;">
+        <option value="">All Status</option>
+        <option value="pending">Pending</option>
+        <option value="pending central office review">Pending Central Office Review</option>
+        <option value="approved">Approved</option>
+        <option value="rejected">Rejected</option>
+        <option value="converted">Converted</option>
+      </select>
+      <select id="branchFilter" style="padding: 10px 15px; border: 2px solid #ffd6e8; border-radius: 8px; font-size: 14px; min-width: 140px;">
+        <option value="">All Branches</option>
+        <?php foreach ($branches ?? [] as $branch): ?>
+          <option value="<?= esc($branch['name']) ?>"><?= esc($branch['name']) ?></option>
+        <?php endforeach; ?>
+      </select>
+    </div>
+  </div>
+
   <div class="box">
     <h3>⏳ Purchase Requests</h3>
-    <table class="table">
+    <table class="table" id="prTable">
       <thead>
         <tr>
           <th>Request ID</th>
@@ -611,6 +635,64 @@ function showAlert(message, type) {
   container.innerHTML = `<div class="alert alert-${type}">${message}</div>`;
   setTimeout(() => container.innerHTML = '', 5000);
 }
+
+// Search and Filter Functionality
+document.addEventListener('DOMContentLoaded', function() {
+  const searchInput = document.getElementById('prSearch');
+  const statusFilter = document.getElementById('statusFilter');
+  const branchFilter = document.getElementById('branchFilter');
+  const table = document.getElementById('prTable');
+  const rows = table.getElementsByTagName('tbody')[0].getElementsByTagName('tr');
+
+  function filterTable() {
+    const searchTerm = searchInput.value.toLowerCase();
+    const statusValue = statusFilter.value.toLowerCase();
+    const branchValue = branchFilter.value.toLowerCase();
+
+    for (let i = 0; i < rows.length; i++) {
+      const row = rows[i];
+      const cells = row.getElementsByTagName('td');
+      let showRow = true;
+
+      if (cells.length > 0) {
+        // Search across all columns
+        const textContent = Array.from(cells).map(cell => cell.textContent.toLowerCase()).join(' ');
+        if (searchTerm && !textContent.includes(searchTerm)) {
+          showRow = false;
+        }
+
+        // Status filter
+        if (statusValue) {
+          const statusCell = cells[5]; // Status column
+          if (statusCell) {
+            const statusText = statusCell.textContent.toLowerCase().trim();
+            if (!statusText.includes(statusValue)) {
+              showRow = false;
+            }
+          }
+        }
+
+        // Branch filter
+        if (branchValue) {
+          const branchCell = cells[1]; // Branch column
+          if (branchCell) {
+            const branchText = branchCell.textContent.toLowerCase().trim();
+            if (!branchText.includes(branchValue)) {
+              showRow = false;
+            }
+          }
+        }
+      }
+
+      row.style.display = showRow ? '' : 'none';
+    }
+  }
+
+  // Add event listeners
+  searchInput.addEventListener('input', filterTable);
+  statusFilter.addEventListener('change', filterTable);
+  branchFilter.addEventListener('change', filterTable);
+});
 </script>
 
 <?php include __DIR__ . '/includes/footer.php'; ?>
