@@ -194,7 +194,22 @@
       min-width: 70px;
     }
     .item-row .item-unit {
-      min-width: 80px;
+      min-width: 120px;
+      padding: 8px 30px 8px 10px;
+      border: 1px solid #ffd6e8;
+      border-radius: 6px;
+      background: #fff;
+      font-size: 13px;
+      cursor: pointer;
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23333' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 10px center;
+    }
+    .item-row .item-unit:focus {
+      outline: none;
+      border-color: #ff69b4;
+      box-shadow: 0 0 0 2px rgba(255, 105, 180, 0.1);
     }
     .item-row .item-notes {
       min-width: 100px;
@@ -340,7 +355,25 @@
           <div class="item-row">
             <input type="text" class="item-name" placeholder="Item name" required>
             <input type="number" class="item-quantity" placeholder="Qty" step="0.01" required>
-            <input type="text" class="item-unit" placeholder="Unit (kg, pcs, etc)">
+            <select class="item-unit" required>
+              <option value="">Select Unit</option>
+              <option value="kg">kg (Kilogram)</option>
+              <option value="g">g (Gram)</option>
+              <option value="pcs">pcs (Pieces)</option>
+              <option value="box">box</option>
+              <option value="pack">pack</option>
+              <option value="bottle">bottle</option>
+              <option value="can">can</option>
+              <option value="liter">liter</option>
+              <option value="ml">ml (Milliliter)</option>
+              <option value="gallon">gallon</option>
+              <option value="bag">bag</option>
+              <option value="sack">sack</option>
+              <option value="carton">carton</option>
+              <option value="case">case</option>
+              <option value="dozen">dozen</option>
+              <option value="unit">unit</option>
+            </select>
             <input type="text" class="item-notes" placeholder="Notes (optional)">
             <button type="button" class="btn-remove-item" style="background: #e53935; color: #fff; border-radius: 6px;" onclick="this.parentElement.remove()">Remove</button>
           </div>
@@ -417,7 +450,25 @@ function addItemRow() {
   newRow.innerHTML = `
     <input type="text" class="item-name" placeholder="Item name" required>
     <input type="number" class="item-quantity" placeholder="Qty" step="0.01" required>
-    <input type="text" class="item-unit" placeholder="Unit (kg, pcs, etc)">
+    <select class="item-unit" required>
+      <option value="">Select Unit</option>
+      <option value="kg">kg (Kilogram)</option>
+      <option value="g">g (Gram)</option>
+      <option value="pcs">pcs (Pieces)</option>
+      <option value="box">box</option>
+      <option value="pack">pack</option>
+      <option value="bottle">bottle</option>
+      <option value="can">can</option>
+      <option value="liter">liter</option>
+      <option value="ml">ml (Milliliter)</option>
+      <option value="gallon">gallon</option>
+      <option value="bag">bag</option>
+      <option value="sack">sack</option>
+      <option value="carton">carton</option>
+      <option value="case">case</option>
+      <option value="dozen">dozen</option>
+      <option value="unit">unit</option>
+    </select>
     <input type="text" class="item-notes" placeholder="Notes (optional)">
     <button type="button" class="btn-remove-item" style="background: #e53935; color: #fff; border-radius: 6px;" onclick="this.parentElement.remove()">Remove</button>
   `;
