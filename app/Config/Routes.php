@@ -28,6 +28,9 @@ $routes->get('suppliers', 'Suppliers::index');
 $routes->get('transfer', 'Home::transfer');
 $routes->get('franchise', 'Home::franchise');
 $routes->get('settings', 'Home::settings');
+$routes->post('settings/update-profile', 'Home::updateProfile');
+$routes->post('settings/update-password', 'Home::updatePassword');
+$routes->post('settings/update-notifications', 'Home::updateNotifications');
 
 // ==================== INVENTORY MANAGEMENT ====================
 

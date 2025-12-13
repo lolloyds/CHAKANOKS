@@ -57,9 +57,90 @@ class Home extends BaseController
 
         return view('franchise', $data);
     }
-    public function settings(): string
+    public function settings()
     {
+        $user = session()->get('user');
+        if (!$user) {
+            return redirect()->to(base_url('login'));
+        }
         return view('settings');
+    }
+
+    public function updateProfile()
+    {
+        $user = session()->get('user');
+        if (!$user) {
+            return $this->response->setJSON(['success' => false, 'message' => 'Unauthorized']);
+        }
+
+        $name = $this->request->getPost('name');
+        $email = $this->request->getPost('email');
+        $phone = $this->request->getPost('phone');
+
+        // Store in session for now (can be extended to save in database)
+        $userData = session()->get('user');
+        if ($name) $userData['name'] = $name;
+        if ($email) $userData['email'] = $email;
+        if ($phone) $userData['phone'] = $phone;
+        session()->set('user', $userData);
+
+        return $this->response->setJSON(['success' => true, 'message' => 'Profile updated successfully!']);
+    }
+
+    public function updatePassword()
+    {
+        $user = session()->get('user');
+        if (!$user) {
+            return $this->response->setJSON(['success' => false, 'message' => 'Unauthorized']);
+        }
+
+        $currentPassword = $this->request->getPost('current_password');
+        $newPassword = $this->request->getPost('new_password');
+        $confirmPassword = $this->request->getPost('confirm_password');
+
+        if ($newPassword !== $confirmPassword) {
+            return $this->response->setJSON(['success' => false, 'message' => 'New password and confirm password do not match!']);
+        }
+
+        if (strlen($newPassword) < 6) {
+            return $this->response->setJSON(['success' => false, 'message' => 'Password must be at least 6 characters long!']);
+        }
+
+        // Verify current password
+        $userModel = new \App\Models\UserModel();
+        $userData = $userModel->find($user['id']);
+
+        if (!$userData || !password_verify($currentPassword, $userData['password_hash'])) {
+            return $this->response->setJSON(['success' => false, 'message' => 'Current password is incorrect!']);
+        }
+
+        // Update password
+        $userModel->update($user['id'], [
+            'password_hash' => password_hash($newPassword, PASSWORD_DEFAULT)
+        ]);
+
+        return $this->response->setJSON(['success' => true, 'message' => 'Password updated successfully!']);
+    }
+
+    public function updateNotifications()
+    {
+        $user = session()->get('user');
+        if (!$user) {
+            return $this->response->setJSON(['success' => false, 'message' => 'Unauthorized']);
+        }
+
+        $emailNotifications = $this->request->getPost('email_notifications');
+        $smsNotifications = $this->request->getPost('sms_notifications');
+        $theme = $this->request->getPost('theme');
+
+        // Store in session for now (can be extended to save in database)
+        $userData = session()->get('user');
+        $userData['email_notifications'] = $emailNotifications;
+        $userData['sms_notifications'] = $smsNotifications;
+        $userData['theme'] = $theme;
+        session()->set('user', $userData);
+
+        return $this->response->setJSON(['success' => true, 'message' => 'Preferences saved successfully!']);
     }
     public function logout()
     {
