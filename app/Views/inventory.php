@@ -68,11 +68,11 @@
   /* Enhanced Filters */
   .filters {
     display: flex;
-    gap: 12px;
+    gap: 8px;
     align-items: center;
     flex-wrap: wrap;
     margin: 20px 0;
-    padding: 16px;
+    padding: 12px;
     background: #fff5f8;
     border-radius: 10px;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
@@ -81,11 +81,12 @@
 
   .filters input[type="text"] {
     flex: 1;
-    min-width: 250px;
-    padding: 12px 16px;
+    min-width: 180px;
+    max-width: 200px;
+    padding: 8px 12px;
     border: 2px solid #ffd6e8;
-    border-radius: 8px;
-    font-size: 14px;
+    border-radius: 6px;
+    font-size: 13px;
     transition: border-color 0.2s ease, box-shadow 0.2s ease;
     background: #fff;
   }
@@ -547,8 +548,8 @@
 
   <!-- Search & Filters -->
   <div class="filters">
-    <div style="position: relative; flex: 1;">
-      <input type="text" id="inventorySearch" placeholder="Search items..." style="width: 100%; padding: 12px 40px 12px 16px;" />
+    <div style="position: relative;">
+      <input type="text" id="inventorySearch" placeholder="Search items..." />
       <i class="fas fa-search" style="position: absolute; right: 12px; top: 50%; transform: translateY(-50%); color: #666; font-size: 16px;"></i>
     </div>
     <select id="categoryFilter">
