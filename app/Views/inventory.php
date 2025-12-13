@@ -3,12 +3,22 @@
 
 <style>
   /* Inventory Page Enhanced Styles */
+  body {
+    background: #ffeef5;
+    font-family: "Segoe UI", Arial, sans-serif;
+  }
+
+  main {
+    background: #ffeef5;
+  }
+
   .inventory-container {
-    background: #ffffff;
+    background: #fff5f8;
     border-radius: 12px;
     padding: 24px;
     box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
     margin-bottom: 24px;
+    border: 1px solid #ffd6e8;
   }
 
   .page-header h2 {
@@ -32,22 +42,28 @@
   }
 
   .stat {
-    background: linear-gradient(135deg, #fff5e6 0%, #ffe8cc 100%);
-    border: 2px solid #f39c12;
+    background: linear-gradient(135deg, #fff 0%, #fff0f5 100%);
+    border: 1px solid #ffd6e8;
+    border-left: 4px solid #ff69b4;
     border-radius: 12px;
     padding: 20px;
     text-align: center;
     font-weight: 600;
     font-size: 16px;
     color: #333;
-    box-shadow: 0 4px 12px rgba(243, 156, 18, 0.15);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
     transition: transform 0.2s ease, box-shadow 0.2s ease;
   }
 
   .stat:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 16px rgba(243, 156, 18, 0.25);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   }
+
+  .stat:nth-child(1) { border-left-color: #ff9800; }
+  .stat:nth-child(2) { border-left-color: #ffc107; }
+  .stat:nth-child(3) { border-left-color: #f44336; }
+  .stat:nth-child(4) { border-left-color: #ff9800; }
 
   /* Enhanced Filters */
   .filters {
@@ -57,16 +73,17 @@
     flex-wrap: wrap;
     margin: 20px 0;
     padding: 16px;
-    background: #f8f9fa;
+    background: #fff5f8;
     border-radius: 10px;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    border: 1px solid #ffd6e8;
   }
 
   .filters input[type="text"] {
     flex: 1;
     min-width: 250px;
     padding: 12px 16px;
-    border: 2px solid #e0e0e0;
+    border: 2px solid #ffd6e8;
     border-radius: 8px;
     font-size: 14px;
     transition: border-color 0.2s ease, box-shadow 0.2s ease;
@@ -75,13 +92,13 @@
 
   .filters input[type="text"]:focus {
     outline: none;
-    border-color: #f39c12;
-    box-shadow: 0 0 0 3px rgba(243, 156, 18, 0.1);
+    border-color: #ff69b4;
+    box-shadow: 0 0 0 3px rgba(255, 105, 180, 0.1);
   }
 
   .filters select {
     padding: 12px 16px;
-    border: 2px solid #e0e0e0;
+    border: 2px solid #ffd6e8;
     border-radius: 8px;
     font-size: 14px;
     background: #fff;
@@ -92,8 +109,8 @@
 
   .filters select:focus {
     outline: none;
-    border-color: #f39c12;
-    box-shadow: 0 0 0 3px rgba(243, 156, 18, 0.1);
+    border-color: #ff69b4;
+    box-shadow: 0 0 0 3px rgba(255, 105, 180, 0.1);
   }
 
   /* Enhanced Action Buttons */
@@ -108,19 +125,19 @@
     padding: 12px 24px;
     border: none;
     border-radius: 8px;
-    background: linear-gradient(135deg, #f39c12 0%, #e67e22 100%);
+    background: linear-gradient(135deg, #ff69b4 0%, #ff1493 100%);
     color: #fff;
     font-weight: 600;
     font-size: 15px;
     cursor: pointer;
     transition: all 0.2s ease;
-    box-shadow: 0 4px 12px rgba(243, 156, 18, 0.3);
+    box-shadow: 0 4px 12px rgba(255, 105, 180, 0.3);
   }
 
   .actions button:hover {
-    background: linear-gradient(135deg, #e67e22 0%, #d35400 100%);
+    background: linear-gradient(135deg, #ff1493 0%, #dc143c 100%);
     transform: translateY(-2px);
-    box-shadow: 0 6px 16px rgba(243, 156, 18, 0.4);
+    box-shadow: 0 6px 16px rgba(255, 105, 180, 0.4);
   }
 
   .actions button:active {
@@ -137,36 +154,38 @@
     overflow: hidden;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
     margin: 20px 0;
+    border: 1px solid #ffd6e8;
   }
 
   .inventory-table thead {
-    background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+    background: linear-gradient(135deg, #fff0f5 0%, #ffeef5 100%);
   }
 
   .inventory-table th {
     padding: 16px 18px;
     text-align: left;
     font-weight: 600;
-    color: #fff;
+    color: #333;
     font-size: 14px;
     text-transform: uppercase;
     letter-spacing: 0.5px;
-    border-bottom: 2px solid #f39c12;
+    border-bottom: 2px solid #ffd6e8;
   }
 
   .inventory-table td {
     padding: 14px 18px;
-    border-bottom: 1px solid #f0f0f0;
+    border-bottom: 1px solid #ffd6e8;
     color: #333;
     font-size: 14px;
   }
 
   .inventory-table tbody tr {
     transition: background-color 0.2s ease;
+    background: #fff;
   }
 
   .inventory-table tbody tr:hover {
-    background-color: #fff9f0;
+    background-color: #fff0f5;
   }
 
   .inventory-table tbody tr:last-child td {
@@ -225,14 +244,14 @@
   }
 
   .inventory-table .action-buttons button.edit-btn {
-    background: #f39c12;
+    background: #ff69b4;
     color: #fff;
   }
 
   .inventory-table .action-buttons button.edit-btn:hover {
-    background: #e67e22;
+    background: #ff1493;
     transform: translateY(-1px);
-    box-shadow: 0 3px 8px rgba(243, 156, 18, 0.3);
+    box-shadow: 0 3px 8px rgba(255, 105, 180, 0.3);
   }
 
   .inventory-table .action-buttons button.remove-btn {
@@ -287,7 +306,7 @@
     font-size: 22px;
     margin-bottom: 20px;
     padding-bottom: 12px;
-    border-bottom: 2px solid #f39c12;
+    border-bottom: 2px solid #ffd6e8;
   }
 
   .modal label {
@@ -302,7 +321,7 @@
   .modal select {
     width: 100%;
     padding: 12px 14px;
-    border: 2px solid #e0e0e0;
+    border: 2px solid #ffd6e8;
     border-radius: 8px;
     font-size: 14px;
     transition: border-color 0.2s ease;
@@ -312,14 +331,14 @@
   .modal input:focus,
   .modal select:focus {
     outline: none;
-    border-color: #f39c12;
-    box-shadow: 0 0 0 3px rgba(243, 156, 18, 0.1);
+    border-color: #ff69b4;
+    box-shadow: 0 0 0 3px rgba(255, 105, 180, 0.1);
   }
 
   .modal button[type="submit"] {
     margin-top: 20px;
     padding: 12px 24px;
-    background: linear-gradient(135deg, #f39c12 0%, #e67e22 100%);
+    background: linear-gradient(135deg, #ff69b4 0%, #ff1493 100%);
     color: #fff;
     border: none;
     border-radius: 8px;
@@ -330,9 +349,9 @@
   }
 
   .modal button[type="submit"]:hover {
-    background: linear-gradient(135deg, #e67e22 0%, #d35400 100%);
+    background: linear-gradient(135deg, #ff1493 0%, #dc143c 100%);
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(243, 156, 18, 0.3);
+    box-shadow: 0 4px 12px rgba(255, 105, 180, 0.3);
   }
 
   .modal button[type="button"] {
@@ -399,94 +418,106 @@
 <main>
   <?php if (!isset($isBranchUser) || !$isBranchUser): ?>
   <!-- Central Office Inventory View -->
-  <div class="page-header">
-    <h1>CHAKANOKS</h1>
+  <div class="box" style="margin-bottom: 20px;">
+    <h2 style="margin-top: 0; padding-bottom: 10px; border-bottom: 2px solid #ffd6e8;">📦 Inventory</h2>
+    <p style="color: #666; line-height: 1.6; margin: 0;">
+      The Inventory section provides a complete list of all items available in Chakanok's Roasted Chicken House.
+      It tracks raw ingredients, cooking supplies, packaging materials, and beverages across all branches.
+      This helps ensure that fresh chicken and essential supplies are always available for daily operations.
+    </p>
   </div>
-
-  <h2>Inventory</h2>
 
   <div class="stats">
-    <div class="stat">Total Items: 120</div>
-    <div class="stat">Low Stock: 8</div>
-    <div class="stat">Out of Stock: 2</div>
-    <div class="stat">Near Expiry: 5</div>
+    <div class="stat">
+      <div style="font-size: 24px; color: #ff9800; margin-bottom: 5px;">120</div>
+      <div style="font-size: 13px; color: #666;">Total Items</div>
+    </div>
+    <div class="stat">
+      <div style="font-size: 24px; color: #ffc107; margin-bottom: 5px;">8</div>
+      <div style="font-size: 13px; color: #666;">Low Stock</div>
+    </div>
+    <div class="stat">
+      <div style="font-size: 24px; color: #f44336; margin-bottom: 5px;">2</div>
+      <div style="font-size: 13px; color: #666;">Out of Stock</div>
+    </div>
+    <div class="stat">
+      <div style="font-size: 24px; color: #ff9800; margin-bottom: 5px;">5</div>
+      <div style="font-size: 13px; color: #666;">Near Expiry</div>
+    </div>
   </div>
 
-  <p>
-    The Inventory section provides a complete list of all items available in Chakanok's Roasted Chicken House.
-    It tracks raw ingredients, cooking supplies, packaging materials, and beverages across all branches.
-    This helps ensure that fresh chicken and essential supplies are always available for daily operations.
-  </p>
-
-  <table class="inventory-table">
-    <thead>
-      <tr>
-        <th>Item ID</th>
-        <th>Item Name</th>
-        <th>Category</th>
-        <th>Quantity</th>
-        <th>Unit</th>
-        <th>Expiry Date</th>
-        <th>Status</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>INV-001</td>
-        <td>Whole Chicken</td>
-        <td>Meat</td>
-        <td>45</td>
-        <td>pcs</td>
-        <td>2025-08-20</td>
-        <td><span class="status-badge in-stock">In Stock</span></td>
-      </tr>
-      <tr>
-        <td>INV-002</td>
-        <td>Chicken Marinade Mix</td>
-        <td>Seasoning</td>
-        <td>10</td>
-        <td>kg</td>
-        <td>2025-09-10</td>
-        <td><span class="status-badge low-stock">Low Stock</span></td>
-      </tr>
-      <tr>
-        <td>INV-003</td>
-        <td>Charcoal Bags</td>
-        <td>Fuel</td>
-        <td>50</td>
-        <td>bags</td>
-        <td>N/A</td>
-        <td><span class="status-badge in-stock">In Stock</span></td>
-      </tr>
-      <tr>
-        <td>INV-004</td>
-        <td>Plastic Food Containers</td>
-        <td>Packaging</td>
-        <td>200</td>
-        <td>pcs</td>
-        <td>N/A</td>
-        <td><span class="status-badge in-stock">In Stock</span></td>
-      </tr>
-      <tr>
-        <td>INV-005</td>
-        <td>Soft Drinks</td>
-        <td>Beverage</td>
-        <td>30</td>
-        <td>cases</td>
-        <td>2025-12-15</td>
-        <td><span class="status-badge in-stock">In Stock</span></td>
-      </tr>
-      <tr>
-        <td>INV-006</td>
-        <td>Banana Leaves</td>
-        <td>Wrapping</td>
-        <td>80</td>
-        <td>pcs</td>
-        <td>2025-08-18</td>
-        <td><span class="status-badge near-expiry">Near Expiry</span></td>
-      </tr>
-    </tbody>
-  </table>
+  <div class="box">
+    <h3 style="margin-top: 0; padding-bottom: 10px; border-bottom: 2px solid #ffd6e8;">📋 Inventory Items</h3>
+    <table class="inventory-table">
+      <thead>
+        <tr>
+          <th>Item ID</th>
+          <th>Item Name</th>
+          <th>Category</th>
+          <th>Quantity</th>
+          <th>Unit</th>
+          <th>Expiry Date</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>INV-001</strong></td>
+          <td>Whole Chicken</td>
+          <td>Meat</td>
+          <td>45</td>
+          <td>pcs</td>
+          <td>2025-08-20</td>
+          <td><span class="status-badge in-stock">In Stock</span></td>
+        </tr>
+        <tr>
+          <td><strong>INV-002</strong></td>
+          <td>Chicken Marinade Mix</td>
+          <td>Seasoning</td>
+          <td>10</td>
+          <td>kg</td>
+          <td>2025-09-10</td>
+          <td><span class="status-badge low-stock">Low Stock</span></td>
+        </tr>
+        <tr>
+          <td><strong>INV-003</strong></td>
+          <td>Charcoal Bags</td>
+          <td>Fuel</td>
+          <td>50</td>
+          <td>bags</td>
+          <td>N/A</td>
+          <td><span class="status-badge in-stock">In Stock</span></td>
+        </tr>
+        <tr>
+          <td><strong>INV-004</strong></td>
+          <td>Plastic Food Containers</td>
+          <td>Packaging</td>
+          <td>200</td>
+          <td>pcs</td>
+          <td>N/A</td>
+          <td><span class="status-badge in-stock">In Stock</span></td>
+        </tr>
+        <tr>
+          <td><strong>INV-005</strong></td>
+          <td>Soft Drinks</td>
+          <td>Beverage</td>
+          <td>30</td>
+          <td>cases</td>
+          <td>2025-12-15</td>
+          <td><span class="status-badge in-stock">In Stock</span></td>
+        </tr>
+        <tr>
+          <td><strong>INV-006</strong></td>
+          <td>Banana Leaves</td>
+          <td>Wrapping</td>
+          <td>80</td>
+          <td>pcs</td>
+          <td>2025-08-18</td>
+          <td><span class="status-badge near-expiry">Near Expiry</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
   <?php else: ?>
   <!-- Branch Inventory View -->
   <div class="page-header">
@@ -510,7 +541,7 @@
       <div id="alerts-loading">Loading alerts...</div>
     </div>
     <div style="margin-top: 10px;">
-      <button type="button" onclick="checkAlerts()" style="padding: 8px 16px; background: #f39c12; color: white; border: none; border-radius: 4px; cursor: pointer;">🔄 Check for New Alerts</button>
+      <button type="button" onclick="checkAlerts()" style="padding: 8px 16px; background: #ff69b4; color: white; border: none; border-radius: 6px; cursor: pointer; font-weight: 600; transition: background 0.3s;">🔄 Check for New Alerts</button>
     </div>
   </div>
 

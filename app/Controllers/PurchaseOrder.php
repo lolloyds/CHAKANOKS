@@ -1,0 +1,567 @@
+<?php
+
+namespace App\Controllers;
+
+use App\Models\PurchaseOrderModel;
+use App\Models\PurchaseOrderItemModel;
+use App\Models\PurchaseRequestModel;
+use App\Models\SupplierModel;
+use App\Models\ItemModel;
+use App\Models\BranchModel;
+use App\Services\InventoryService;
+
+class PurchaseOrder extends BaseController
+{
+    protected $purchaseOrderModel;
+    protected $purchaseOrderItemModel;
+    protected $purchaseRequestModel;
+    protected $supplierModel;
+    protected $itemModel;
+    protected $branchModel;
+    protected $inventoryService;
+
+    public function __construct()
+    {
+        $this->purchaseOrderModel = new PurchaseOrderModel();
+        $this->purchaseOrderItemModel = new PurchaseOrderItemModel();
+        $this->purchaseRequestModel = new PurchaseRequestModel();
+        $this->supplierModel = new SupplierModel();
+        $this->itemModel = new ItemModel();
+        $this->branchModel = new BranchModel();
+        $this->inventoryService = new InventoryService();
+    }
+
+    /**
+     * Display purchase orders page
+     */
+    public function index()
+    {
+        $user = session()->get('user');
+        if (!$user) {
+            return redirect()->to(base_url('login'));
+        }
+
+        $branchId = null;
+        $supplierId = null;
+        
+        if (in_array($user['role'], ['Inventory Staff', 'Branch Manager']) && isset($user['branch_id'])) {
+            $branchId = $user['branch_id'];
+        }
+        
+        // For Supplier role, filter by supplier (if supplier_id is stored in user session or can be determined)
+        // For now, Supplier role users can see all POs assigned to any supplier
+        // In a production system, you'd link users to suppliers via a user_supplier_id field
+
+        $data = [
+            'orders' => $this->purchaseOrderModel->getOrdersWithDetails($branchId, $supplierId),
+            'stats' => $this->purchaseOrderModel->getStats($branchId, $supplierId),
+            'suppliers' => $this->supplierModel->where('status', 'Active')->findAll(),
+            'branches' => $this->branchModel->findAll(),
+            'items' => $this->itemModel->where('status', 'active')->findAll(),
+            'approvedRequests' => $this->purchaseRequestModel->where('status', 'approved')->findAll(),
+            'userRole' => $user['role'],
+            'branchId' => $branchId,
+            'supplierId' => $supplierId,
+        ];
+
+        // Load items for each order
+        foreach ($data['orders'] as &$order) {
+            $order['items'] = $this->purchaseOrderItemModel
+                ->where('purchase_order_id', $order['id'])
+                ->findAll();
+        }
+
+        return view('purchase-orders', $data);
+    }
+
+    /**
+     * Create new purchase order
+     */
+    public function create()
+    {
+        $user = session()->get('user');
+        if (!$user) {
+            return $this->response->setJSON(['success' => false, 'message' => 'Unauthorized']);
+        }
+
+        $db = \Config\Database::connect();
+        $db->transStart();
+
+        try {
+            // Create purchase order
+            $poId = $this->purchaseOrderModel->generatePoId();
+            $orderData = [
+                'po_id' => $poId,
+                'purchase_request_id' => $this->request->getPost('purchase_request_id') ?: null,
+                'supplier_id' => $this->request->getPost('supplier_id'),
+                'branch_id' => $this->request->getPost('branch_id') ?: null,
+                'order_date' => $this->request->getPost('order_date') ?: date('Y-m-d'),
+                'expected_delivery_date' => $this->request->getPost('expected_delivery_date'),
+                'status' => 'pending',
+                'notes' => $this->request->getPost('notes'),
+                'created_by' => $user['id'],
+            ];
+
+            $purchaseOrderId = $this->purchaseOrderModel->insert($orderData);
+
+            // Add items and calculate total
+            $items = $this->request->getPost('items');
+            $totalCost = 0;
+            if (is_array($items)) {
+                foreach ($items as $item) {
+                    if (!empty($item['item_name']) && !empty($item['quantity'])) {
+                        // Try to find item by name
+                        $itemRecord = $this->itemModel
+                            ->where('LOWER(name)', strtolower($item['item_name']))
+                            ->first();
+
+                        $unitPrice = floatval($item['unit_price'] ?? 0);
+                        $quantity = floatval($item['quantity']);
+                        $totalPrice = $unitPrice * $quantity;
+                        $totalCost += $totalPrice;
+
+                        $this->purchaseOrderItemModel->insert([
+                            'purchase_order_id' => $purchaseOrderId,
+                            'item_id' => $itemRecord ? $itemRecord['id'] : null,
+                            'item_name' => $item['item_name'],
+                            'quantity' => $quantity,
+                            'unit' => $item['unit'] ?? ($itemRecord ? $itemRecord['unit'] : 'pcs'),
+                            'unit_price' => $unitPrice,
+                            'total_price' => $totalPrice,
+                            'notes' => $item['notes'] ?? null,
+                        ]);
+                    }
+                }
+            }
+
+            // Update total cost
+            $this->purchaseOrderModel->update($purchaseOrderId, ['total_cost' => $totalCost]);
+
+            // If created from purchase request, mark PR as converted
+            if ($orderData['purchase_request_id']) {
+                $this->purchaseRequestModel->update($orderData['purchase_request_id'], [
+                    'status' => 'converted'
+                ]);
+            }
+
+            $db->transComplete();
+
+            if ($db->transStatus() === false) {
+                throw new \Exception('Database transaction failed');
+            }
+
+            return $this->response->setJSON([
+                'success' => true,
+                'message' => 'Purchase order created successfully!',
+                'po_id' => $poId
+            ]);
+
+        } catch (\Exception $e) {
+            $db->transRollback();
+            return $this->response->setJSON([
+                'success' => false,
+                'message' => $e->getMessage()
+            ]);
+        }
+    }
+
+    /**
+     * Update purchase order status
+     */
+    public function updateStatus($id)
+    {
+        $user = session()->get('user');
+        if (!$user) {
+            return $this->response->setJSON(['success' => false, 'message' => 'Unauthorized']);
+        }
+
+        try {
+            $order = $this->purchaseOrderModel->find($id);
+            if (!$order) {
+                return $this->response->setJSON(['success' => false, 'message' => 'Order not found']);
+            }
+
+            $newStatus = $this->request->getPost('status');
+            $validStatuses = ['pending', 'approved', 'po_issued_to_supplier', 'scheduled_for_delivery', 'ordered', 'in_transit', 'delayed', 'arriving', 'delivered', 'delivered_to_branch', 'completed', 'cancelled'];
+
+            if (!in_array($newStatus, $validStatuses)) {
+                return $this->response->setJSON(['success' => false, 'message' => 'Invalid status']);
+            }
+
+            $updateData = ['status' => $newStatus];
+
+            // If approving, record approver
+            if ($newStatus === 'approved' && in_array($user['role'], ['Central Office Admin', 'System Administrator'])) {
+                $updateData['approved_by'] = $user['id'];
+                $updateData['approved_at'] = date('Y-m-d H:i:s');
+            }
+
+            $this->purchaseOrderModel->update($id, $updateData);
+
+            return $this->response->setJSON([
+                'success' => true,
+                'message' => 'Purchase order status updated!'
+            ]);
+
+        } catch (\Exception $e) {
+            return $this->response->setJSON([
+                'success' => false,
+                'message' => $e->getMessage()
+            ]);
+        }
+    }
+
+    /**
+     * Logistics Coordinator updates delivery timeline
+     */
+    public function updateDeliveryTimeline($id)
+    {
+        $user = session()->get('user');
+        if (!$user || $user['role'] !== 'Logistics Coordinator') {
+            return $this->response->setJSON(['success' => false, 'message' => 'Unauthorized - Logistics Coordinator access only']);
+        }
+
+        try {
+            $order = $this->purchaseOrderModel->find($id);
+            if (!$order) {
+                return $this->response->setJSON(['success' => false, 'message' => 'Order not found']);
+            }
+
+            $newStatus = $this->request->getPost('status');
+            $validStatuses = ['scheduled_for_delivery', 'in_transit', 'delayed', 'arriving'];
+            
+            if (!in_array($newStatus, $validStatuses)) {
+                return $this->response->setJSON([
+                    'success' => false,
+                    'message' => 'Invalid status for delivery timeline update'
+                ]);
+            }
+
+            // Get optional delivery notes/updates
+            $deliveryNotes = $this->request->getPost('delivery_notes') ?? $this->request->getJSON(true)['delivery_notes'] ?? null;
+            $expectedArrivalDate = $this->request->getPost('expected_arrival_date') ?? $this->request->getJSON(true)['expected_arrival_date'] ?? null;
+
+            $updateData = [
+                'status' => $newStatus
+            ];
+
+            // Update expected delivery date if provided
+            if ($expectedArrivalDate) {
+                $updateData['expected_delivery_date'] = $expectedArrivalDate;
+            }
+
+            // Add delivery notes to existing notes
+            if ($deliveryNotes) {
+                $existingNotes = $order['notes'] ?? '';
+                $timestamp = date('Y-m-d H:i:s');
+                $updateData['notes'] = $existingNotes . "\n\n[Logistics Update - {$timestamp}]: " . $deliveryNotes;
+            }
+
+            $this->purchaseOrderModel->update($id, $updateData);
+
+            return $this->response->setJSON([
+                'success' => true,
+                'message' => 'Delivery timeline updated successfully!'
+            ]);
+
+        } catch (\Exception $e) {
+            return $this->response->setJSON([
+                'success' => false,
+                'message' => $e->getMessage()
+            ]);
+        }
+    }
+
+    /**
+     * Supplier marks PO as scheduled for delivery
+     */
+    public function scheduleDelivery($id)
+    {
+        $user = session()->get('user');
+        if (!$user || $user['role'] !== 'Supplier') {
+            return $this->response->setJSON(['success' => false, 'message' => 'Unauthorized - Supplier access only']);
+        }
+
+        try {
+            $order = $this->purchaseOrderModel->find($id);
+            if (!$order) {
+                return $this->response->setJSON(['success' => false, 'message' => 'Order not found']);
+            }
+
+            // Only allow updating if status is 'po_issued_to_supplier'
+            if ($order['status'] !== 'po_issued_to_supplier') {
+                return $this->response->setJSON([
+                    'success' => false,
+                    'message' => 'Order must be in "PO issued to supplier" status to schedule delivery'
+                ]);
+            }
+
+            $this->purchaseOrderModel->update($id, [
+                'status' => 'scheduled_for_delivery'
+            ]);
+
+            return $this->response->setJSON([
+                'success' => true,
+                'message' => 'Purchase order scheduled for delivery!'
+            ]);
+
+        } catch (\Exception $e) {
+            return $this->response->setJSON([
+                'success' => false,
+                'message' => $e->getMessage()
+            ]);
+        }
+    }
+
+    /**
+     * Inventory Staff receives delivered items from Purchase Order
+     */
+    public function receiveDelivery($id)
+    {
+        $user = session()->get('user');
+        if (!$user || !in_array($user['role'], ['Inventory Staff', 'Branch Manager'])) {
+            return $this->response->setJSON(['success' => false, 'message' => 'Unauthorized - Inventory Staff or Branch Manager access only']);
+        }
+
+        $db = \Config\Database::connect();
+        $db->transStart();
+
+        try {
+            $order = $this->purchaseOrderModel->find($id);
+            if (!$order) {
+                return $this->response->setJSON(['success' => false, 'message' => 'Order not found']);
+            }
+
+            // Check if order is ready to be received (arriving or delivered status)
+            if (!in_array($order['status'], ['arriving', 'delivered'])) {
+                return $this->response->setJSON([
+                    'success' => false,
+                    'message' => 'Order must be in "Arriving" or "Delivered" status to receive items'
+                ]);
+            }
+
+            // Get branch ID from user
+            $branchId = $user['branch_id'] ?? $order['branch_id'];
+            if (!$branchId) {
+                return $this->response->setJSON(['success' => false, 'message' => 'Branch ID is required']);
+            }
+
+            // Verify this order is for the user's branch
+            if ($order['branch_id'] && $order['branch_id'] != $branchId) {
+                return $this->response->setJSON(['success' => false, 'message' => 'This order is not for your branch']);
+            }
+
+            // Get PO items
+            $poItems = $this->purchaseOrderItemModel->where('purchase_order_id', $id)->findAll();
+            if (empty($poItems)) {
+                throw new \Exception('Purchase order has no items');
+            }
+
+            // Get received items data from request
+            $receivedItems = $this->request->getPost('items') ?? $this->request->getJSON(true)['items'] ?? [];
+            
+            if (empty($receivedItems)) {
+                return $this->response->setJSON(['success' => false, 'message' => 'No items received data provided']);
+            }
+
+            $receivedCount = 0;
+            $damagedCount = 0;
+            $expiredCount = 0;
+            $errors = [];
+
+            // Process each item
+            foreach ($poItems as $poItem) {
+                $itemId = $poItem['item_id'];
+                $itemName = $poItem['item_name'];
+                $expectedQty = floatval($poItem['quantity']);
+                
+                // If item_id is null, try to find item by name
+                if (!$itemId && $itemName) {
+                    $itemRecord = $this->itemModel
+                        ->where('LOWER(name)', strtolower($itemName))
+                        ->first();
+                    if ($itemRecord) {
+                        $itemId = $itemRecord['id'];
+                    }
+                }
+                
+                // Skip if we still don't have a valid item_id
+                if (!$itemId) {
+                    $errors[] = "Item '{$itemName}' not found in system. Please add it to inventory first.";
+                    continue;
+                }
+                
+                // Find corresponding received item data
+                $receivedItem = null;
+                foreach ($receivedItems as $ri) {
+                    if (($ri['item_id'] ?? null) == $itemId || 
+                        (isset($ri['item_name']) && strtolower($ri['item_name']) == strtolower($itemName))) {
+                        $receivedItem = $ri;
+                        break;
+                    }
+                }
+
+                if (!$receivedItem) {
+                    $errors[] = "No data for item: {$itemName}";
+                    continue;
+                }
+
+                $receivedQty = floatval($receivedItem['received_quantity'] ?? $expectedQty);
+                $damagedQty = floatval($receivedItem['damaged_quantity'] ?? 0);
+                $expiredQty = floatval($receivedItem['expired_quantity'] ?? 0);
+                $expiryDate = $receivedItem['expiry_date'] ?? null;
+
+                // Validate quantities
+                if ($receivedQty + $damagedQty + $expiredQty > $expectedQty) {
+                    $errors[] = "Total quantities for {$itemName} exceed expected quantity";
+                    continue;
+                }
+
+                // Add good items to stock
+                if ($receivedQty > 0) {
+                    $this->inventoryService->receiveStock(
+                        $branchId,
+                        $itemId,
+                        $receivedQty,
+                        $user['id'],
+                        "Received from PO: {$order['po_id']}",
+                        $expiryDate
+                    );
+                    $receivedCount++;
+                }
+
+                // Record damaged items
+                if ($damagedQty > 0) {
+                    $this->inventoryService->recordSpoilage(
+                        $branchId,
+                        $itemId,
+                        $damagedQty,
+                        $user['id'],
+                        "Damaged items from PO: {$order['po_id']} - " . ($receivedItem['damage_notes'] ?? 'No notes')
+                    );
+                    $damagedCount++;
+                }
+
+                // Record expired items
+                if ($expiredQty > 0) {
+                    $this->inventoryService->recordSpoilage(
+                        $branchId,
+                        $itemId,
+                        $expiredQty,
+                        $user['id'],
+                        "Expired items from PO: {$order['po_id']} - " . ($receivedItem['expiry_notes'] ?? 'No notes')
+                    );
+                    $expiredCount++;
+                }
+            }
+
+            // Update PO status to delivered_to_branch
+            $this->purchaseOrderModel->update($id, [
+                'status' => 'delivered_to_branch',
+                'notes' => ($order['notes'] ?? '') . "\n\n[Received at Branch - " . date('Y-m-d H:i:s') . "]: Items received by " . $user['username']
+            ]);
+
+            $db->transComplete();
+
+            if ($db->transStatus() === false) {
+                throw new \Exception('Database transaction failed');
+            }
+
+            $message = "Items received successfully! ";
+            $message .= "Received: {$receivedCount} items. ";
+            if ($damagedCount > 0) $message .= "Damaged: {$damagedCount} items. ";
+            if ($expiredCount > 0) $message .= "Expired: {$expiredCount} items. ";
+            if (!empty($errors)) $message .= "Errors: " . implode(', ', $errors);
+
+            return $this->response->setJSON([
+                'success' => true,
+                'message' => $message
+            ]);
+
+        } catch (\Exception $e) {
+            $db->transRollback();
+            return $this->response->setJSON([
+                'success' => false,
+                'message' => $e->getMessage()
+            ]);
+        }
+    }
+
+    /**
+     * Branch Manager confirms delivered goods are correct
+     */
+    public function confirmDelivery($id)
+    {
+        $user = session()->get('user');
+        if (!$user || $user['role'] !== 'Branch Manager') {
+            return $this->response->setJSON(['success' => false, 'message' => 'Unauthorized - Branch Manager access only']);
+        }
+
+        try {
+            $order = $this->purchaseOrderModel->find($id);
+            if (!$order) {
+                return $this->response->setJSON(['success' => false, 'message' => 'Order not found']);
+            }
+
+            // Check if order is in 'delivered_to_branch' status
+            if ($order['status'] !== 'delivered_to_branch') {
+                return $this->response->setJSON([
+                    'success' => false,
+                    'message' => 'Order must be in "Delivered to Branch" status to confirm'
+                ]);
+            }
+
+            // Get branch ID from user
+            $branchId = $user['branch_id'] ?? $order['branch_id'];
+            if (!$branchId) {
+                return $this->response->setJSON(['success' => false, 'message' => 'Branch ID is required']);
+            }
+
+            // Verify this order is for the user's branch
+            if ($order['branch_id'] && $order['branch_id'] != $branchId) {
+                return $this->response->setJSON(['success' => false, 'message' => 'This order is not for your branch']);
+            }
+
+            // Get confirmation notes (optional)
+            $confirmationNotes = $this->request->getPost('confirmation_notes') ?? $this->request->getJSON(true)['confirmation_notes'] ?? null;
+
+            // Update PO status to completed
+            $updateData = [
+                'status' => 'completed',
+                'notes' => ($order['notes'] ?? '') . "\n\n[Confirmed by Branch Manager - " . date('Y-m-d H:i:s') . "]: " . ($confirmationNotes ?: 'Delivery confirmed and stock verified')
+            ];
+
+            // Record who confirmed it (we can use approved_by field or add a new field)
+            // For now, we'll add it to notes
+            $this->purchaseOrderModel->update($id, $updateData);
+
+            return $this->response->setJSON([
+                'success' => true,
+                'message' => 'Delivery confirmed! Stock has been officially recorded in branch inventory.'
+            ]);
+
+        } catch (\Exception $e) {
+            return $this->response->setJSON([
+                'success' => false,
+                'message' => $e->getMessage()
+            ]);
+        }
+    }
+
+    /**
+     * Get purchase order details
+     */
+    public function get($id)
+    {
+        $order = $this->purchaseOrderModel->getOrderWithItems($id);
+        if (!$order) {
+            return $this->response->setJSON(['success' => false, 'message' => 'Order not found']);
+        }
+
+        return $this->response->setJSON(['success' => true, 'data' => $order]);
+    }
+}
+
+
+
+

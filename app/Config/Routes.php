@@ -20,11 +20,11 @@ $routes->get('dashboard', 'Auth::dashboard');
 $routes->get('dashboard/deliveries-summary', 'Home::deliveriesSummary');
 
 // ==================== FEATURE PAGES ====================
-$routes->get('purchase-request', 'Home::purchaseRequest');
-$routes->get('purchase-orders', 'Home::purchaseOrders');
+$routes->get('purchase-request', 'PurchaseRequest::index');
+$routes->get('purchase-orders', 'PurchaseOrder::index');
 $routes->get('deliveries', 'Inventory::deliveries');
 $routes->get('inventory', 'Inventory::inventory');
-$routes->get('suppliers', 'Home::suppliers');
+$routes->get('suppliers', 'Suppliers::index');
 $routes->get('transfer', 'Home::transfer');
 $routes->get('franchise', 'Home::franchise');
 $routes->get('settings', 'Home::settings');
@@ -58,3 +58,23 @@ $routes->post('inventory/alerts/check', 'Inventory::checkAlerts');
 $routes->get('inventory/edit/(:num)', 'Inventory::edit/$1');
 $routes->post('inventory/edit/(:num)', 'Inventory::edit/$1');
 $routes->get('inventory/remove/(:num)', 'Inventory::remove/$1');
+
+// ==================== PURCHASE REQUEST ====================
+$routes->post('purchase-request/create', 'PurchaseRequest::create');
+$routes->post('purchase-request/approve/(:num)', 'PurchaseRequest::approve/$1');
+$routes->post('purchase-request/reject/(:num)', 'PurchaseRequest::reject/$1');
+$routes->get('purchase-request/get/(:num)', 'PurchaseRequest::get/$1');
+
+// ==================== PURCHASE ORDERS ====================
+$routes->post('purchase-orders/create', 'PurchaseOrder::create');
+$routes->post('purchase-orders/update-status/(:num)', 'PurchaseOrder::updateStatus/$1');
+$routes->post('purchase-orders/schedule-delivery/(:num)', 'PurchaseOrder::scheduleDelivery/$1');
+$routes->post('purchase-orders/update-delivery-timeline/(:num)', 'PurchaseOrder::updateDeliveryTimeline/$1');
+$routes->post('purchase-orders/receive-delivery/(:num)', 'PurchaseOrder::receiveDelivery/$1');
+$routes->post('purchase-orders/confirm-delivery/(:num)', 'PurchaseOrder::confirmDelivery/$1');
+$routes->get('purchase-orders/get/(:num)', 'PurchaseOrder::get/$1');
+
+// ==================== SUPPLIERS ====================
+$routes->get('suppliers/edit/(:num)', 'Suppliers::edit/$1');
+$routes->post('suppliers/update/(:num)', 'Suppliers::update/$1');
+$routes->get('suppliers/delete/(:num)', 'Suppliers::delete/$1');

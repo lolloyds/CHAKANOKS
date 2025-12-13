@@ -41,9 +41,21 @@ class Home extends BaseController
     {
         return view('transfer');
     }
-    public function franchise(): string
+    public function franchise()
     {
-        return view('franchise');
+        $user = session()->get('user');
+        if (!$user) {
+            return redirect()->to(base_url('login'));
+        }
+
+        $franchiseModel = new \App\Models\FranchiseModel();
+        
+        $data = [
+            'franchises' => $franchiseModel->orderBy('created_at', 'DESC')->findAll(),
+            'stats' => $franchiseModel->getStats(),
+        ];
+
+        return view('franchise', $data);
     }
     public function settings(): string
     {

@@ -12,7 +12,7 @@ class Suppliers extends BaseController
         $data['stats'] = $model->getStats();
         $data['suppliers'] = $model->orderBy('id', 'DESC')->findAll();
 
-        return view('suppliers_view', $data);
+        return view('suppliers', $data);
     }
 
     public function edit($id)
