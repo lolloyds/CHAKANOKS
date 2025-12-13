@@ -93,19 +93,19 @@
   </div>
 
   <!-- Search & Filters -->
-  <div class="box" style="margin-bottom: 15px; padding: 15px; background: #fff;">
-    <div style="display: flex; gap: 15px; align-items: center; flex-wrap: wrap;">
-      <div style="position: relative; flex: 1; min-width: 200px;">
-        <input type="text" id="supplierSearch" placeholder="Search suppliers..." style="width: 100%; padding: 10px 40px 10px 15px; border: 2px solid #ddd; border-radius: 8px; font-size: 14px;">
-        <i class="fas fa-search" style="position: absolute; right: 12px; top: 50%; transform: translateY(-50%); color: #666; font-size: 16px;"></i>
+  <div class="box" style="margin-bottom: 15px; padding: 12px; background: #fff;">
+    <div style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap;">
+      <div style="position: relative;">
+        <input type="text" id="supplierSearch" placeholder="Search suppliers..." style="width: 180px; padding: 8px 35px 8px 12px; border: 2px solid #ddd; border-radius: 6px; font-size: 13px;">
+        <i class="fas fa-search" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); color: #666; font-size: 14px;"></i>
       </div>
-      <select id="statusFilter" style="padding: 10px 15px; border: 2px solid #ddd; border-radius: 8px; font-size: 14px; min-width: 120px;">
+      <select id="statusFilter" style="padding: 8px 12px; border: 2px solid #ddd; border-radius: 6px; font-size: 13px; min-width: 110px;">
         <option value="">All Status</option>
         <option value="active">Active</option>
         <option value="pending">Pending</option>
         <option value="inactive">Inactive</option>
       </select>
-      <select id="supplyTypeFilter" style="padding: 10px 15px; border: 2px solid #ddd; border-radius: 8px; font-size: 14px; min-width: 140px;">
+      <select id="supplyTypeFilter" style="padding: 8px 12px; border: 2px solid #ddd; border-radius: 6px; font-size: 13px; min-width: 130px;">
         <option value="">All Supply Types</option>
         <option value="Meat">Meat</option>
         <option value="Seasoning">Seasoning</option>
