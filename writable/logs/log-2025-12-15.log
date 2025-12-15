@@ -378,3 +378,365 @@ DEBUG - 2025-12-15 12:38:40 --> Session: Class initialized using 'CodeIgniter\Se
 DEBUG - 2025-12-15 12:38:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
 DEBUG - 2025-12-15 12:38:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
 DEBUG - 2025-12-15 12:38:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-15 13:00:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-12-15 13:00:18 --> Error connecting to the database: mysqli_sql_exception: Access denied for user 'root'@'localhost' (using password: NO) in C:\xampp1\htdocs\CHAKANOKS\system\Database\MySQLi\Connection.php:202
+Stack trace:
+#0 C:\xampp1\htdocs\CHAKANOKS\system\Database\MySQLi\Connection.php(202): mysqli->real_connect('localhost', 'root', '', 'chakanoks_db', 3306, '', 0)
+#1 C:\xampp1\htdocs\CHAKANOKS\system\Database\BaseConnection.php(419): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\xampp1\htdocs\CHAKANOKS\system\Database\BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\xampp1\htdocs\CHAKANOKS\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xampp1\htdocs\CHAKANOKS\system\Model.php(210): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp1\htdocs\CHAKANOKS\system\BaseModel.php(611): CodeIgniter\Model->doFind(true, '1')
+#6 C:\xampp1\htdocs\CHAKANOKS\app\Controllers\PurchaseOrder.php(567): CodeIgniter\BaseModel->find('1')
+#7 C:\xampp1\htdocs\CHAKANOKS\system\CodeIgniter.php(933): App\Controllers\PurchaseOrder->supplierOrders()
+#8 C:\xampp1\htdocs\CHAKANOKS\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PurchaseOrder))
+#9 C:\xampp1\htdocs\CHAKANOKS\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp1\htdocs\CHAKANOKS\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#11 C:\xampp1\htdocs\CHAKANOKS\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 C:\xampp1\htdocs\CHAKANOKS\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Access denied for user '****'@'localhost' (using password: NO) in C:\xampp1\htdocs\CHAKANOKS\system\Database\MySQLi\Connection.php:246
+Stack trace:
+#0 C:\xampp1\htdocs\CHAKANOKS\system\Database\BaseConnection.php(419): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\xampp1\htdocs\CHAKANOKS\system\Database\BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\xampp1\htdocs\CHAKANOKS\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#3 C:\xampp1\htdocs\CHAKANOKS\system\Model.php(210): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\xampp1\htdocs\CHAKANOKS\system\BaseModel.php(611): CodeIgniter\Model->doFind(true, '1')
+#5 C:\xampp1\htdocs\CHAKANOKS\app\Controllers\PurchaseOrder.php(567): CodeIgniter\BaseModel->find('1')
+#6 C:\xampp1\htdocs\CHAKANOKS\system\CodeIgniter.php(933): App\Controllers\PurchaseOrder->supplierOrders()
+#7 C:\xampp1\htdocs\CHAKANOKS\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PurchaseOrder))
+#8 C:\xampp1\htdocs\CHAKANOKS\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp1\htdocs\CHAKANOKS\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#10 C:\xampp1\htdocs\CHAKANOKS\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#11 C:\xampp1\htdocs\CHAKANOKS\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#12 {main}
+CRITICAL - 2025-12-15 13:00:18 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: Access denied for user '****'@'localhost' (using password: NO)
+[Method: GET, Route: supplier-orders]
+in SYSTEMPATH\Database\BaseConnection.php on line 465.
+ 1 SYSTEMPATH\Database\BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `suppliers`
+WHERE `suppliers`.`deleted_at` IS NULL
+AND `suppliers`.`id` = :suppliers.id:', [...], false)
+ 3 SYSTEMPATH\Model.php(210): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\BaseModel.php(611): CodeIgniter\Model->doFind(true, '1')
+ 5 APPPATH\Controllers\PurchaseOrder.php(567): CodeIgniter\BaseModel->find('1')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\PurchaseOrder->supplierOrders()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PurchaseOrder))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-12-15 13:01:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-12-15 13:01:31 --> Error connecting to the database: mysqli_sql_exception: Access denied for user 'root'@'localhost' (using password: NO) in C:\xampp1\htdocs\CHAKANOKS\system\Database\MySQLi\Connection.php:202
+Stack trace:
+#0 C:\xampp1\htdocs\CHAKANOKS\system\Database\MySQLi\Connection.php(202): mysqli->real_connect('localhost', 'root', '', 'chakanoks_db', 3306, '', 0)
+#1 C:\xampp1\htdocs\CHAKANOKS\system\Database\BaseConnection.php(419): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\xampp1\htdocs\CHAKANOKS\system\Database\BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\xampp1\htdocs\CHAKANOKS\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xampp1\htdocs\CHAKANOKS\system\Model.php(210): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp1\htdocs\CHAKANOKS\system\BaseModel.php(611): CodeIgniter\Model->doFind(true, '1')
+#6 C:\xampp1\htdocs\CHAKANOKS\app\Controllers\PurchaseOrder.php(567): CodeIgniter\BaseModel->find('1')
+#7 C:\xampp1\htdocs\CHAKANOKS\system\CodeIgniter.php(933): App\Controllers\PurchaseOrder->supplierOrders()
+#8 C:\xampp1\htdocs\CHAKANOKS\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PurchaseOrder))
+#9 C:\xampp1\htdocs\CHAKANOKS\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp1\htdocs\CHAKANOKS\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#11 C:\xampp1\htdocs\CHAKANOKS\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 C:\xampp1\htdocs\CHAKANOKS\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Access denied for user '****'@'localhost' (using password: NO) in C:\xampp1\htdocs\CHAKANOKS\system\Database\MySQLi\Connection.php:246
+Stack trace:
+#0 C:\xampp1\htdocs\CHAKANOKS\system\Database\BaseConnection.php(419): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\xampp1\htdocs\CHAKANOKS\system\Database\BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\xampp1\htdocs\CHAKANOKS\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#3 C:\xampp1\htdocs\CHAKANOKS\system\Model.php(210): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\xampp1\htdocs\CHAKANOKS\system\BaseModel.php(611): CodeIgniter\Model->doFind(true, '1')
+#5 C:\xampp1\htdocs\CHAKANOKS\app\Controllers\PurchaseOrder.php(567): CodeIgniter\BaseModel->find('1')
+#6 C:\xampp1\htdocs\CHAKANOKS\system\CodeIgniter.php(933): App\Controllers\PurchaseOrder->supplierOrders()
+#7 C:\xampp1\htdocs\CHAKANOKS\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PurchaseOrder))
+#8 C:\xampp1\htdocs\CHAKANOKS\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp1\htdocs\CHAKANOKS\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#10 C:\xampp1\htdocs\CHAKANOKS\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#11 C:\xampp1\htdocs\CHAKANOKS\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#12 {main}
+CRITICAL - 2025-12-15 13:01:31 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: Access denied for user '****'@'localhost' (using password: NO)
+[Method: GET, Route: supplier-orders]
+in SYSTEMPATH\Database\BaseConnection.php on line 465.
+ 1 SYSTEMPATH\Database\BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `suppliers`
+WHERE `suppliers`.`deleted_at` IS NULL
+AND `suppliers`.`id` = :suppliers.id:', [...], false)
+ 3 SYSTEMPATH\Model.php(210): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\BaseModel.php(611): CodeIgniter\Model->doFind(true, '1')
+ 5 APPPATH\Controllers\PurchaseOrder.php(567): CodeIgniter\BaseModel->find('1')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\PurchaseOrder->supplierOrders()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PurchaseOrder))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-12-15 13:01:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-15 13:01:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-15 13:01:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-12-15 13:01:40 --> Error connecting to the database: mysqli_sql_exception: Access denied for user 'root'@'localhost' (using password: NO) in C:\xampp1\htdocs\CHAKANOKS\system\Database\MySQLi\Connection.php:202
+Stack trace:
+#0 C:\xampp1\htdocs\CHAKANOKS\system\Database\MySQLi\Connection.php(202): mysqli->real_connect('localhost', 'root', '', 'chakanoks_db', 3306, '', 0)
+#1 C:\xampp1\htdocs\CHAKANOKS\system\Database\BaseConnection.php(419): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\xampp1\htdocs\CHAKANOKS\system\Database\BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\xampp1\htdocs\CHAKANOKS\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xampp1\htdocs\CHAKANOKS\system\Model.php(210): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp1\htdocs\CHAKANOKS\system\BaseModel.php(611): CodeIgniter\Model->doFind(true, '1')
+#6 C:\xampp1\htdocs\CHAKANOKS\app\Controllers\PurchaseOrder.php(567): CodeIgniter\BaseModel->find('1')
+#7 C:\xampp1\htdocs\CHAKANOKS\system\CodeIgniter.php(933): App\Controllers\PurchaseOrder->supplierOrders()
+#8 C:\xampp1\htdocs\CHAKANOKS\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PurchaseOrder))
+#9 C:\xampp1\htdocs\CHAKANOKS\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp1\htdocs\CHAKANOKS\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#11 C:\xampp1\htdocs\CHAKANOKS\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 C:\xampp1\htdocs\CHAKANOKS\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Access denied for user '****'@'localhost' (using password: NO) in C:\xampp1\htdocs\CHAKANOKS\system\Database\MySQLi\Connection.php:246
+Stack trace:
+#0 C:\xampp1\htdocs\CHAKANOKS\system\Database\BaseConnection.php(419): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\xampp1\htdocs\CHAKANOKS\system\Database\BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\xampp1\htdocs\CHAKANOKS\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#3 C:\xampp1\htdocs\CHAKANOKS\system\Model.php(210): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\xampp1\htdocs\CHAKANOKS\system\BaseModel.php(611): CodeIgniter\Model->doFind(true, '1')
+#5 C:\xampp1\htdocs\CHAKANOKS\app\Controllers\PurchaseOrder.php(567): CodeIgniter\BaseModel->find('1')
+#6 C:\xampp1\htdocs\CHAKANOKS\system\CodeIgniter.php(933): App\Controllers\PurchaseOrder->supplierOrders()
+#7 C:\xampp1\htdocs\CHAKANOKS\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PurchaseOrder))
+#8 C:\xampp1\htdocs\CHAKANOKS\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp1\htdocs\CHAKANOKS\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#10 C:\xampp1\htdocs\CHAKANOKS\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#11 C:\xampp1\htdocs\CHAKANOKS\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#12 {main}
+CRITICAL - 2025-12-15 13:01:40 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: Access denied for user '****'@'localhost' (using password: NO)
+[Method: GET, Route: supplier-orders]
+in SYSTEMPATH\Database\BaseConnection.php on line 465.
+ 1 SYSTEMPATH\Database\BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `suppliers`
+WHERE `suppliers`.`deleted_at` IS NULL
+AND `suppliers`.`id` = :suppliers.id:', [...], false)
+ 3 SYSTEMPATH\Model.php(210): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\BaseModel.php(611): CodeIgniter\Model->doFind(true, '1')
+ 5 APPPATH\Controllers\PurchaseOrder.php(567): CodeIgniter\BaseModel->find('1')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\PurchaseOrder->supplierOrders()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PurchaseOrder))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2025-12-15 13:11:08 --> Error connecting to the database: mysqli_sql_exception: Access denied for user 'root'@'localhost' (using password: NO) in C:\xampp1\htdocs\CHAKANOKS\system\Database\MySQLi\Connection.php:202
+Stack trace:
+#0 C:\xampp1\htdocs\CHAKANOKS\system\Database\MySQLi\Connection.php(202): mysqli->real_connect('localhost', 'root', '', 'chakanoks_db', 3306, '', 0)
+#1 C:\xampp1\htdocs\CHAKANOKS\system\Database\BaseConnection.php(419): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\xampp1\htdocs\CHAKANOKS\system\Database\BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\xampp1\htdocs\CHAKANOKS\system\Database\BaseConnection.php(1525): CodeIgniter\Database\BaseConnection->query('SHOW TABLES FRO...')
+#4 C:\xampp1\htdocs\CHAKANOKS\system\Database\BaseConnection.php(1545): CodeIgniter\Database\BaseConnection->listTables()
+#5 C:\xampp1\htdocs\CHAKANOKS\system\Database\MigrationRunner.php(768): CodeIgniter\Database\BaseConnection->tableExists('migrations')
+#6 C:\xampp1\htdocs\CHAKANOKS\system\Database\MigrationRunner.php(646): CodeIgniter\Database\MigrationRunner->ensureTable()
+#7 C:\xampp1\htdocs\CHAKANOKS\system\Commands\Database\MigrateStatus.php(115): CodeIgniter\Database\MigrationRunner->getHistory('')
+#8 C:\xampp1\htdocs\CHAKANOKS\system\CLI\Commands.php(74): CodeIgniter\Commands\Database\MigrateStatus->run(Array)
+#9 C:\xampp1\htdocs\CHAKANOKS\system\CLI\Console.php(47): CodeIgniter\CLI\Commands->run('migrate:status', Array)
+#10 C:\xampp1\htdocs\CHAKANOKS\system\Boot.php(388): CodeIgniter\CLI\Console->run()
+#11 C:\xampp1\htdocs\CHAKANOKS\system\Boot.php(133): CodeIgniter\Boot::runCommand(Object(CodeIgniter\CLI\Console))
+#12 C:\xampp1\htdocs\CHAKANOKS\spark(87): CodeIgniter\Boot::bootSpark(Object(Config\Paths))
+#13 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Access denied for user '****'@'localhost' (using password: NO) in C:\xampp1\htdocs\CHAKANOKS\system\Database\MySQLi\Connection.php:246
+Stack trace:
+#0 C:\xampp1\htdocs\CHAKANOKS\system\Database\BaseConnection.php(419): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\xampp1\htdocs\CHAKANOKS\system\Database\BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\xampp1\htdocs\CHAKANOKS\system\Database\BaseConnection.php(1525): CodeIgniter\Database\BaseConnection->query('SHOW TABLES FRO...')
+#3 C:\xampp1\htdocs\CHAKANOKS\system\Database\BaseConnection.php(1545): CodeIgniter\Database\BaseConnection->listTables()
+#4 C:\xampp1\htdocs\CHAKANOKS\system\Database\MigrationRunner.php(768): CodeIgniter\Database\BaseConnection->tableExists('migrations')
+#5 C:\xampp1\htdocs\CHAKANOKS\system\Database\MigrationRunner.php(646): CodeIgniter\Database\MigrationRunner->ensureTable()
+#6 C:\xampp1\htdocs\CHAKANOKS\system\Commands\Database\MigrateStatus.php(115): CodeIgniter\Database\MigrationRunner->getHistory('')
+#7 C:\xampp1\htdocs\CHAKANOKS\system\CLI\Commands.php(74): CodeIgniter\Commands\Database\MigrateStatus->run(Array)
+#8 C:\xampp1\htdocs\CHAKANOKS\system\CLI\Console.php(47): CodeIgniter\CLI\Commands->run('migrate:status', Array)
+#9 C:\xampp1\htdocs\CHAKANOKS\system\Boot.php(388): CodeIgniter\CLI\Console->run()
+#10 C:\xampp1\htdocs\CHAKANOKS\system\Boot.php(133): CodeIgniter\Boot::runCommand(Object(CodeIgniter\CLI\Console))
+#11 C:\xampp1\htdocs\CHAKANOKS\spark(87): CodeIgniter\Boot::bootSpark(Object(Config\Paths))
+#12 {main}
+CRITICAL - 2025-12-15 13:11:08 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: Access denied for user '****'@'localhost' (using password: NO)
+[Method: CLI, Route: migrate:status]
+in SYSTEMPATH\Database\BaseConnection.php on line 465.
+ 1 SYSTEMPATH\Database\BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseConnection.php(1525): CodeIgniter\Database\BaseConnection->query('SHOW TABLES FROM `chakanoks_db`')
+ 3 SYSTEMPATH\Database\BaseConnection.php(1545): CodeIgniter\Database\BaseConnection->listTables()
+ 4 SYSTEMPATH\Database\MigrationRunner.php(768): CodeIgniter\Database\BaseConnection->tableExists('migrations')
+ 5 SYSTEMPATH\Database\MigrationRunner.php(646): CodeIgniter\Database\MigrationRunner->ensureTable()
+ 6 SYSTEMPATH\Commands\Database\MigrateStatus.php(115): CodeIgniter\Database\MigrationRunner->getHistory('')
+ 7 SYSTEMPATH\CLI\Commands.php(74): CodeIgniter\Commands\Database\MigrateStatus->run([])
+ 8 SYSTEMPATH\CLI\Console.php(47): CodeIgniter\CLI\Commands->run('migrate:status', [])
+ 9 SYSTEMPATH\Boot.php(388): CodeIgniter\CLI\Console->run()
+10 SYSTEMPATH\Boot.php(133): CodeIgniter\Boot::runCommand(Object(CodeIgniter\CLI\Console))
+11 ROOTPATH\spark(87): CodeIgniter\Boot::bootSpark(Object(Config\Paths))
+DEBUG - 2025-12-15 13:11:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-15 13:11:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-12-15 13:12:11 --> Error connecting to the database: mysqli_sql_exception: Access denied for user 'root'@'localhost' (using password: NO) in C:\xampp1\htdocs\CHAKANOKS\system\Database\MySQLi\Connection.php:202
+Stack trace:
+#0 C:\xampp1\htdocs\CHAKANOKS\system\Database\MySQLi\Connection.php(202): mysqli->real_connect('localhost', 'root', '', 'chakanoks_db', 3306, '', 0)
+#1 C:\xampp1\htdocs\CHAKANOKS\system\Database\BaseConnection.php(419): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\xampp1\htdocs\CHAKANOKS\system\Database\BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\xampp1\htdocs\CHAKANOKS\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xampp1\htdocs\CHAKANOKS\system\Model.php(330): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp1\htdocs\CHAKANOKS\system\BaseModel.php(715): CodeIgniter\Model->doFirst()
+#6 C:\xampp1\htdocs\CHAKANOKS\app\Controllers\Auth.php(17): CodeIgniter\BaseModel->first()
+#7 C:\xampp1\htdocs\CHAKANOKS\system\CodeIgniter.php(933): App\Controllers\Auth->login()
+#8 C:\xampp1\htdocs\CHAKANOKS\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth))
+#9 C:\xampp1\htdocs\CHAKANOKS\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp1\htdocs\CHAKANOKS\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#11 C:\xampp1\htdocs\CHAKANOKS\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 C:\xampp1\htdocs\CHAKANOKS\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Access denied for user '****'@'localhost' (using password: NO) in C:\xampp1\htdocs\CHAKANOKS\system\Database\MySQLi\Connection.php:246
+Stack trace:
+#0 C:\xampp1\htdocs\CHAKANOKS\system\Database\BaseConnection.php(419): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\xampp1\htdocs\CHAKANOKS\system\Database\BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\xampp1\htdocs\CHAKANOKS\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#3 C:\xampp1\htdocs\CHAKANOKS\system\Model.php(330): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\xampp1\htdocs\CHAKANOKS\system\BaseModel.php(715): CodeIgniter\Model->doFirst()
+#5 C:\xampp1\htdocs\CHAKANOKS\app\Controllers\Auth.php(17): CodeIgniter\BaseModel->first()
+#6 C:\xampp1\htdocs\CHAKANOKS\system\CodeIgniter.php(933): App\Controllers\Auth->login()
+#7 C:\xampp1\htdocs\CHAKANOKS\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth))
+#8 C:\xampp1\htdocs\CHAKANOKS\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp1\htdocs\CHAKANOKS\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#10 C:\xampp1\htdocs\CHAKANOKS\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#11 C:\xampp1\htdocs\CHAKANOKS\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#12 {main}
+DEBUG - 2025-12-15 13:12:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-12-15 13:12:11 --> Login error: Unable to connect to the database.
+Main connection [MySQLi]: Access denied for user '****'@'localhost' (using password: NO)
+DEBUG - 2025-12-15 13:12:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-12-15 13:12:26 --> Error connecting to the database: mysqli_sql_exception: Access denied for user 'root'@'localhost' (using password: NO) in C:\xampp1\htdocs\CHAKANOKS\system\Database\MySQLi\Connection.php:202
+Stack trace:
+#0 C:\xampp1\htdocs\CHAKANOKS\system\Database\MySQLi\Connection.php(202): mysqli->real_connect('localhost', 'root', '', 'chakanoks_db', 3306, '', 0)
+#1 C:\xampp1\htdocs\CHAKANOKS\system\Database\BaseConnection.php(419): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\xampp1\htdocs\CHAKANOKS\system\Database\BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\xampp1\htdocs\CHAKANOKS\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xampp1\htdocs\CHAKANOKS\system\Model.php(330): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp1\htdocs\CHAKANOKS\system\BaseModel.php(715): CodeIgniter\Model->doFirst()
+#6 C:\xampp1\htdocs\CHAKANOKS\app\Controllers\Auth.php(17): CodeIgniter\BaseModel->first()
+#7 C:\xampp1\htdocs\CHAKANOKS\system\CodeIgniter.php(933): App\Controllers\Auth->login()
+#8 C:\xampp1\htdocs\CHAKANOKS\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth))
+#9 C:\xampp1\htdocs\CHAKANOKS\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp1\htdocs\CHAKANOKS\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#11 C:\xampp1\htdocs\CHAKANOKS\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 C:\xampp1\htdocs\CHAKANOKS\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Access denied for user '****'@'localhost' (using password: NO) in C:\xampp1\htdocs\CHAKANOKS\system\Database\MySQLi\Connection.php:246
+Stack trace:
+#0 C:\xampp1\htdocs\CHAKANOKS\system\Database\BaseConnection.php(419): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\xampp1\htdocs\CHAKANOKS\system\Database\BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\xampp1\htdocs\CHAKANOKS\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#3 C:\xampp1\htdocs\CHAKANOKS\system\Model.php(330): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\xampp1\htdocs\CHAKANOKS\system\BaseModel.php(715): CodeIgniter\Model->doFirst()
+#5 C:\xampp1\htdocs\CHAKANOKS\app\Controllers\Auth.php(17): CodeIgniter\BaseModel->first()
+#6 C:\xampp1\htdocs\CHAKANOKS\system\CodeIgniter.php(933): App\Controllers\Auth->login()
+#7 C:\xampp1\htdocs\CHAKANOKS\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth))
+#8 C:\xampp1\htdocs\CHAKANOKS\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp1\htdocs\CHAKANOKS\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#10 C:\xampp1\htdocs\CHAKANOKS\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#11 C:\xampp1\htdocs\CHAKANOKS\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#12 {main}
+DEBUG - 2025-12-15 13:12:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-12-15 13:12:26 --> Login error: Unable to connect to the database.
+Main connection [MySQLi]: Access denied for user '****'@'localhost' (using password: NO)
+DEBUG - 2025-12-15 13:12:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-15 13:12:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-12-15 13:12:35 --> Error connecting to the database: mysqli_sql_exception: Access denied for user 'root'@'localhost' (using password: NO) in C:\xampp1\htdocs\CHAKANOKS\system\Database\MySQLi\Connection.php:202
+Stack trace:
+#0 C:\xampp1\htdocs\CHAKANOKS\system\Database\MySQLi\Connection.php(202): mysqli->real_connect('localhost', 'root', '', 'chakanoks_db', 3306, '', 0)
+#1 C:\xampp1\htdocs\CHAKANOKS\system\Database\BaseConnection.php(419): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\xampp1\htdocs\CHAKANOKS\system\Database\BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\xampp1\htdocs\CHAKANOKS\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xampp1\htdocs\CHAKANOKS\system\Model.php(330): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp1\htdocs\CHAKANOKS\system\BaseModel.php(715): CodeIgniter\Model->doFirst()
+#6 C:\xampp1\htdocs\CHAKANOKS\app\Controllers\Auth.php(17): CodeIgniter\BaseModel->first()
+#7 C:\xampp1\htdocs\CHAKANOKS\system\CodeIgniter.php(933): App\Controllers\Auth->login()
+#8 C:\xampp1\htdocs\CHAKANOKS\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth))
+#9 C:\xampp1\htdocs\CHAKANOKS\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp1\htdocs\CHAKANOKS\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#11 C:\xampp1\htdocs\CHAKANOKS\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 C:\xampp1\htdocs\CHAKANOKS\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Access denied for user '****'@'localhost' (using password: NO) in C:\xampp1\htdocs\CHAKANOKS\system\Database\MySQLi\Connection.php:246
+Stack trace:
+#0 C:\xampp1\htdocs\CHAKANOKS\system\Database\BaseConnection.php(419): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\xampp1\htdocs\CHAKANOKS\system\Database\BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\xampp1\htdocs\CHAKANOKS\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#3 C:\xampp1\htdocs\CHAKANOKS\system\Model.php(330): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\xampp1\htdocs\CHAKANOKS\system\BaseModel.php(715): CodeIgniter\Model->doFirst()
+#5 C:\xampp1\htdocs\CHAKANOKS\app\Controllers\Auth.php(17): CodeIgniter\BaseModel->first()
+#6 C:\xampp1\htdocs\CHAKANOKS\system\CodeIgniter.php(933): App\Controllers\Auth->login()
+#7 C:\xampp1\htdocs\CHAKANOKS\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth))
+#8 C:\xampp1\htdocs\CHAKANOKS\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp1\htdocs\CHAKANOKS\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#10 C:\xampp1\htdocs\CHAKANOKS\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#11 C:\xampp1\htdocs\CHAKANOKS\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#12 {main}
+DEBUG - 2025-12-15 13:12:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-12-15 13:12:35 --> Login error: Unable to connect to the database.
+Main connection [MySQLi]: Access denied for user '****'@'localhost' (using password: NO)
+DEBUG - 2025-12-15 13:12:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-12-15 13:13:06 --> Error connecting to the database: mysqli_sql_exception: Access denied for user 'root'@'localhost' (using password: NO) in C:\xampp1\htdocs\CHAKANOKS\system\Database\MySQLi\Connection.php:202
+Stack trace:
+#0 C:\xampp1\htdocs\CHAKANOKS\system\Database\MySQLi\Connection.php(202): mysqli->real_connect('localhost', 'root', '', 'chakanoks_db', 3306, '', 0)
+#1 C:\xampp1\htdocs\CHAKANOKS\system\Database\BaseConnection.php(419): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\xampp1\htdocs\CHAKANOKS\system\Database\BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\xampp1\htdocs\CHAKANOKS\system\Database\BaseConnection.php(1525): CodeIgniter\Database\BaseConnection->query('SHOW TABLES FRO...')
+#4 C:\xampp1\htdocs\CHAKANOKS\system\Database\BaseConnection.php(1545): CodeIgniter\Database\BaseConnection->listTables()
+#5 C:\xampp1\htdocs\CHAKANOKS\system\Database\MigrationRunner.php(768): CodeIgniter\Database\BaseConnection->tableExists('migrations')
+#6 C:\xampp1\htdocs\CHAKANOKS\system\Database\MigrationRunner.php(162): CodeIgniter\Database\MigrationRunner->ensureTable()
+#7 C:\xampp1\htdocs\CHAKANOKS\system\Commands\Database\Migrate.php(85): CodeIgniter\Database\MigrationRunner->latest(NULL)
+#8 C:\xampp1\htdocs\CHAKANOKS\system\CLI\Commands.php(74): CodeIgniter\Commands\Database\Migrate->run(Array)
+#9 C:\xampp1\htdocs\CHAKANOKS\system\CLI\Console.php(47): CodeIgniter\CLI\Commands->run('migrate', Array)
+#10 C:\xampp1\htdocs\CHAKANOKS\system\Boot.php(388): CodeIgniter\CLI\Console->run()
+#11 C:\xampp1\htdocs\CHAKANOKS\system\Boot.php(133): CodeIgniter\Boot::runCommand(Object(CodeIgniter\CLI\Console))
+#12 C:\xampp1\htdocs\CHAKANOKS\spark(87): CodeIgniter\Boot::bootSpark(Object(Config\Paths))
+#13 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Access denied for user '****'@'localhost' (using password: NO) in C:\xampp1\htdocs\CHAKANOKS\system\Database\MySQLi\Connection.php:246
+Stack trace:
+#0 C:\xampp1\htdocs\CHAKANOKS\system\Database\BaseConnection.php(419): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\xampp1\htdocs\CHAKANOKS\system\Database\BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\xampp1\htdocs\CHAKANOKS\system\Database\BaseConnection.php(1525): CodeIgniter\Database\BaseConnection->query('SHOW TABLES FRO...')
+#3 C:\xampp1\htdocs\CHAKANOKS\system\Database\BaseConnection.php(1545): CodeIgniter\Database\BaseConnection->listTables()
+#4 C:\xampp1\htdocs\CHAKANOKS\system\Database\MigrationRunner.php(768): CodeIgniter\Database\BaseConnection->tableExists('migrations')
+#5 C:\xampp1\htdocs\CHAKANOKS\system\Database\MigrationRunner.php(162): CodeIgniter\Database\MigrationRunner->ensureTable()
+#6 C:\xampp1\htdocs\CHAKANOKS\system\Commands\Database\Migrate.php(85): CodeIgniter\Database\MigrationRunner->latest(NULL)
+#7 C:\xampp1\htdocs\CHAKANOKS\system\CLI\Commands.php(74): CodeIgniter\Commands\Database\Migrate->run(Array)
+#8 C:\xampp1\htdocs\CHAKANOKS\system\CLI\Console.php(47): CodeIgniter\CLI\Commands->run('migrate', Array)
+#9 C:\xampp1\htdocs\CHAKANOKS\system\Boot.php(388): CodeIgniter\CLI\Console->run()
+#10 C:\xampp1\htdocs\CHAKANOKS\system\Boot.php(133): CodeIgniter\Boot::runCommand(Object(CodeIgniter\CLI\Console))
+#11 C:\xampp1\htdocs\CHAKANOKS\spark(87): CodeIgniter\Boot::bootSpark(Object(Config\Paths))
+#12 {main}
+ERROR - 2025-12-15 13:14:08 --> Login attempt failed: User 'supplier1' not found
+DEBUG - 2025-12-15 13:14:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-15 13:14:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-12-15 13:14:17 --> Login attempt failed: User 'supplier1' not found
+DEBUG - 2025-12-15 13:14:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-15 13:14:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-12-15 13:14:31 --> Login attempt failed: User 'supplier1' not found
+DEBUG - 2025-12-15 13:14:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-15 13:14:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-15 13:14:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-15 13:17:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-15 13:17:15 --> User 'supplier1' logged in successfully
+DEBUG - 2025-12-15 13:17:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-15 13:17:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-15 13:17:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-15 13:17:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-15 13:17:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.

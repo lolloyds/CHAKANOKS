@@ -154,31 +154,6 @@
   </div>
   <?php endif; ?>
 
-  <!-- Search & Filters -->
-  <div class="box" style="margin-bottom: 15px; padding: 12px; background: #fff;">
-    <div style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap;">
-      <div style="position: relative;">
-        <input type="text" id="deliverySearch" placeholder="Search deliveries..." style="width: 180px; padding: 8px 35px 8px 12px; border: 2px solid #ddd; border-radius: 6px; font-size: 13px;">
-        <i class="fas fa-search" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); color: #666; font-size: 14px;"></i>
-      </div>
-      <select id="statusFilter" style="padding: 8px 12px; border: 2px solid #ddd; border-radius: 6px; font-size: 13px; min-width: 130px;">
-        <option value="">All Status</option>
-        <option value="scheduled">Scheduled</option>
-        <option value="in_transit">In Transit</option>
-        <option value="delivered">Delivered</option>
-        <option value="received">Received</option>
-      </select>
-      <?php if (!$isBranchUser): ?>
-      <select id="branchFilter" style="padding: 8px 12px; border: 2px solid #ddd; border-radius: 6px; font-size: 13px; min-width: 130px;">
-        <option value="">All Branches</option>
-        <?php foreach ($branches ?? [] as $branch): ?>
-          <option value="<?= esc($branch['name']) ?>"><?= esc($branch['name']) ?></option>
-        <?php endforeach; ?>
-      </select>
-      <?php endif; ?>
-    </div>
-  </div>
-
   <div class="box">
     <h3><?php echo ($isBranchUser ? '📍 Your Branch Deliveries' : '📋 Upcoming Deliveries'); ?></h3>
     <table class="table">
@@ -239,64 +214,6 @@
   </div>
 
     <script>
-      // Search and Filter Functionality
-      document.addEventListener('DOMContentLoaded', function() {
-        const searchInput = document.getElementById('deliverySearch');
-        const statusFilter = document.getElementById('statusFilter');
-        const branchFilter = document.getElementById('branchFilter');
-        const table = document.querySelector('.table');
-        const rows = table.getElementsByTagName('tbody')[0].getElementsByTagName('tr');
-
-        function filterTable() {
-          const searchTerm = searchInput ? searchInput.value.toLowerCase() : '';
-          const statusValue = statusFilter.value.toLowerCase();
-          const branchValue = branchFilter ? branchFilter.value.toLowerCase() : '';
-
-          for (let i = 0; i < rows.length; i++) {
-            const row = rows[i];
-            const cells = row.getElementsByTagName('td');
-            let showRow = true;
-
-            if (cells.length > 0) {
-              // Search across all columns
-              const textContent = Array.from(cells).map(cell => cell.textContent.toLowerCase()).join(' ');
-              if (searchTerm && !textContent.includes(searchTerm)) {
-                showRow = false;
-              }
-
-              // Status filter
-              if (statusValue) {
-                const statusCell = cells[4]; // Status column
-                if (statusCell) {
-                  const statusText = statusCell.textContent.toLowerCase().trim();
-                  if (!statusText.includes(statusValue)) {
-                    showRow = false;
-                  }
-                }
-              }
-
-              // Branch filter (only for central office)
-              if (branchValue && branchFilter) {
-                const branchCell = cells[1]; // Branch column
-                if (branchCell) {
-                  const branchText = branchCell.textContent.toLowerCase().trim();
-                  if (!branchText.includes(branchValue)) {
-                    showRow = false;
-                  }
-                }
-              }
-            }
-
-            row.style.display = showRow ? '' : 'none';
-          }
-        }
-
-        // Add event listeners if elements exist
-        if (searchInput) searchInput.addEventListener('input', filterTable);
-        statusFilter.addEventListener('change', filterTable);
-        if (branchFilter) branchFilter.addEventListener('change', filterTable);
-      });
-
       function receiveDelivery(deliveryId, branchId) {
         if (confirm('Confirm receipt of delivery? This will add all items to your branch inventory.')) {
           fetch('<?php echo base_url('deliveries/approve'); ?>', {

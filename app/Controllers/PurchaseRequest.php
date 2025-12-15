@@ -9,7 +9,6 @@ use App\Models\PurchaseOrderItemModel;
 use App\Models\ItemModel;
 use App\Models\BranchModel;
 use App\Models\SupplierModel;
-use CodeIgniter\I18n\Time;
 
 class PurchaseRequest extends BaseController
 {
@@ -76,9 +75,6 @@ class PurchaseRequest extends BaseController
         if (!$user) {
             return $this->response->setJSON(['success' => false, 'message' => 'Unauthorized']);
         }
-        // Support both form-encoded POST and JSON payloads from the front-end
-        $jsonBody = $this->request->getJSON(true);
-        $postBody = $this->request->getPost();
 
         // Get JSON data instead of POST data
         $jsonData = $this->request->getJSON(true);
@@ -102,9 +98,6 @@ class PurchaseRequest extends BaseController
             // Set status based on user role: Branch Manager creates PR with "pending central office review" status
             $status = ($user['role'] === 'Branch Manager') ? 'pending central office review' : 'pending';
             
-            $dateNeeded = $jsonBody['date_needed'] ?? $postBody['date_needed'] ?? null;
-            $notes = $jsonBody['notes'] ?? $postBody['notes'] ?? null;
-
             $requestData = [
                 'request_id' => $requestId,
                 'branch_id' => $branchId,
@@ -113,10 +106,6 @@ class PurchaseRequest extends BaseController
                 'notes' => $jsonData['notes'] ?? null,
                 'requested_by' => $user['id'],
             ];
-
-            // Ensure created_at is set to current server time (explicit) so it reflects creation moment
-            $requestData['created_at'] = Time::now()->toDateTimeString();
-            $requestData['updated_at'] = $requestData['created_at'];
 
             $purchaseRequestId = $this->purchaseRequestModel->insert($requestData);
 
