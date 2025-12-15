@@ -77,7 +77,14 @@ $routes->post('purchase-orders/receive-delivery/(:num)', 'PurchaseOrder::receive
 $routes->post('purchase-orders/confirm-delivery/(:num)', 'PurchaseOrder::confirmDelivery/$1');
 $routes->get('purchase-orders/get/(:num)', 'PurchaseOrder::get/$1');
 
+// ==================== SUPPLIER ROUTES ====================
+$routes->get('supplier-orders', 'PurchaseOrder::supplierOrders');
+$routes->get('supplier-deliveries', 'PurchaseOrder::supplierDeliveries');
+$routes->get('supplier-invoices', 'PurchaseOrder::supplierInvoices');
+
 // ==================== SUPPLIERS ====================
+$routes->post('suppliers/create', 'Suppliers::create');
 $routes->get('suppliers/edit/(:num)', 'Suppliers::edit/$1');
 $routes->post('suppliers/update/(:num)', 'Suppliers::update/$1');
-$routes->get('suppliers/delete/(:num)', 'Suppliers::delete/$1');
+$routes->post('suppliers/delete/(:num)', 'Suppliers::delete/$1');
+$routes->post('suppliers/restore/(:num)', 'Suppliers::restore/$1');

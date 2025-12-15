@@ -549,6 +549,90 @@ class PurchaseOrder extends BaseController
     }
 
     /**
+     * Supplier orders page - shows orders assigned to the supplier
+     */
+    public function supplierOrders()
+    {
+        $user = session()->get('user');
+        if (!$user || $user['role'] !== 'Supplier') {
+            return redirect()->to(base_url('login'));
+        }
+
+        $supplierId = $user['supplier_id'] ?? null;
+        if (!$supplierId) {
+            return redirect()->to(base_url('dashboard'))->with('error', 'Supplier account not properly configured');
+        }
+
+        // Get supplier info
+        $supplier = $this->supplierModel->find($supplierId);
+
+        $data = [
+            'orders' => $this->purchaseOrderModel->getOrdersWithDetails(null, $supplierId),
+            'stats' => $this->purchaseOrderModel->getStats(null, $supplierId),
+            'supplier' => $supplier,
+        ];
+
+        // Load items for each order
+        foreach ($data['orders'] as &$order) {
+            $order['items'] = $this->purchaseOrderItemModel
+                ->where('purchase_order_id', $order['id'])
+                ->findAll();
+        }
+
+        return view('supplier-orders', $data);
+    }
+
+    /**
+     * Supplier deliveries page (placeholder)
+     */
+    public function supplierDeliveries()
+    {
+        $user = session()->get('user');
+        if (!$user || $user['role'] !== 'Supplier') {
+            return redirect()->to(base_url('login'));
+        }
+
+        $supplierId = $user['supplier_id'] ?? null;
+        if (!$supplierId) {
+            return redirect()->to(base_url('dashboard'))->with('error', 'Supplier account not properly configured');
+        }
+
+        // Get supplier info
+        $supplier = $this->supplierModel->find($supplierId);
+
+        $data = [
+            'supplier' => $supplier,
+        ];
+
+        return view('supplier-deliveries', $data);
+    }
+
+    /**
+     * Supplier invoices page (placeholder)
+     */
+    public function supplierInvoices()
+    {
+        $user = session()->get('user');
+        if (!$user || $user['role'] !== 'Supplier') {
+            return redirect()->to(base_url('login'));
+        }
+
+        $supplierId = $user['supplier_id'] ?? null;
+        if (!$supplierId) {
+            return redirect()->to(base_url('dashboard'))->with('error', 'Supplier account not properly configured');
+        }
+
+        // Get supplier info
+        $supplier = $this->supplierModel->find($supplierId);
+
+        $data = [
+            'supplier' => $supplier,
+        ];
+
+        return view('supplier-invoices', $data);
+    }
+
+    /**
      * Get purchase order details
      */
     public function get($id)
@@ -561,7 +645,3 @@ class PurchaseOrder extends BaseController
         return $this->response->setJSON(['success' => true, 'data' => $order]);
     }
 }
-
-
-
-

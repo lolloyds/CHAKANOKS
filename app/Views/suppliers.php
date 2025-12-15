@@ -1,84 +1,323 @@
 <?php include __DIR__ . '/includes/header.php'; ?>
 <?php include __DIR__ . '/includes/sidebar.php'; ?>
 
-<main>
-  <style>
-    body {
-      font-family: "Segoe UI", Arial, sans-serif;
-      background: #f4f6f9;
-    }
-    .box {
-      background: #ffffff;
-      padding: 20px;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-      margin-bottom: 20px;
-    }
-    h2 {
-      margin-top: 0;
-      color: #333;
-    }
-    .stats {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 15px;
-      margin-bottom: 20px;
-    }
-    .stat {
-      background: #ffffff;
-      padding: 15px;
-      border-radius: 8px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-      text-align: center;
-      font-weight: bold;
-      color: #333;
-    }
-    .table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 14px;
-      background: #ffffff;
-      border-radius: 8px;
-      overflow: hidden;
-    }
-    .table th, .table td {
-      text-align: left;
-      padding: 12px 14px;
-      border-bottom: 1px solid #eef2f7;
-    }
-    .table th {
-      background: #f7f9fc;
-      font-weight: bold;
-      color: #555;
-    }
-    .table tr:hover {
-      background: #fafafa;
-    }
-    .badge {
-      padding: 4px 8px;
-      border-radius: 12px;
-      font-size: 12px;
-      font-weight: bold;
-      text-transform: uppercase;
-    }
-    .badge.active { background: #66bb6a; color: #fff; }
-    .badge.pending { background: #ffb74d; color: #fff; }
-    .badge.inactive { background: #e57373; color: #fff; }
-    .btn-edit, .btn-delete {
-      padding: 6px 12px;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-      font-size: 12px;
-      margin: 2px;
-    }
-    .btn-edit { background: #42a5f5; color: #fff; }
-    .btn-delete { background: #e53935; color: #fff; }
-  </style>
+<style>
+  body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: #ffeef5;
+  }
 
+  main {
+    background: #ffeef5;
+    padding: 20px;
+  }
+
+  .box {
+    background: #fff5f8;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    margin-bottom: 20px;
+    border: 1px solid #ffd6e8;
+  }
+
+  h2, h3 {
+    margin-top: 0;
+    color: #333;
+    font-weight: 600;
+  }
+
+  h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+
+  h3 {
+    font-size: 18px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #ffd6e8;
+  }
+
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+    margin-bottom: 20px;
+  }
+
+  .stat {
+    background: linear-gradient(135deg, #fff 0%, #fff0f5 100%);
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    font-weight: 600;
+    color: #333;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    border: 1px solid #ffd6e8;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .stat:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .stat:nth-child(1) { border-left: 4px solid #2196F3; }
+  .stat:nth-child(2) { border-left: 4px solid #4caf50; }
+  .stat:nth-child(3) { border-left: 4px solid #ff9800; }
+  .stat:nth-child(4) { border-left: 4px solid #9c27b0; }
+  .stat:nth-child(5) { border-left: 4px solid #f44336; }
+
+  .stat b {
+    font-size: 24px;
+    display: block;
+    margin-top: 5px;
+    color: #333;
+  }
+
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+    background: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  }
+
+  .table th, .table td {
+    text-align: left;
+    padding: 14px 16px;
+    border-bottom: 1px solid #ffd6e8;
+  }
+
+  .table th {
+    background: linear-gradient(135deg, #fff0f5 0%, #ffeef5 100%);
+    font-weight: 600;
+    color: #333;
+    text-transform: uppercase;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+  }
+
+  .table tbody tr {
+    background: #fff;
+    transition: background 0.2s;
+  }
+
+  .table tbody tr:hover {
+    background: #fff0f5;
+  }
+
+  .table tbody tr.deleted-row {
+    background: #ffe0e0;
+    opacity: 0.7;
+  }
+
+  .table tbody tr:last-child td {
+    border-bottom: none;
+  }
+
+  .badge {
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    display: inline-block;
+  }
+
+  .badge.active { 
+    background: #d4edda; 
+    color: #155724; 
+    border: 1px solid #c3e6cb;
+  }
+  .badge.pending { 
+    background: #fff3cd; 
+    color: #856404; 
+    border: 1px solid #ffeeba;
+  }
+  .badge.inactive { 
+    background: #f8d7da; 
+    color: #721c24; 
+    border: 1px solid #f5c6cb;
+  }
+  .badge.deleted { 
+    background: #e0e0e0; 
+    color: #666; 
+    border: 1px solid #ccc;
+  }
+
+  .action-buttons {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .btn-edit, .btn-delete, .btn-restore {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 600;
+    transition: all 0.2s ease;
+    text-decoration: none;
+    display: inline-block;
+  }
+
+  .btn-edit { 
+    background: linear-gradient(135deg, #42a5f5 0%, #2196F3 100%);
+    color: #fff;
+    box-shadow: 0 2px 6px rgba(66, 165, 245, 0.3);
+  }
+
+  .btn-edit:hover {
+    background: linear-gradient(135deg, #2196F3 0%, #1976d2 100%);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(66, 165, 245, 0.4);
+  }
+
+  .btn-delete { 
+    background: linear-gradient(135deg, #e53935 0%, #c62828 100%);
+    color: #fff;
+    box-shadow: 0 2px 6px rgba(229, 57, 53, 0.3);
+  }
+
+  .btn-delete:hover {
+    background: linear-gradient(135deg, #c62828 0%, #b71c1c 100%);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(229, 57, 53, 0.4);
+  }
+
+  .btn-restore {
+    background: linear-gradient(135deg, #66bb6a 0%, #4caf50 100%);
+    color: #fff;
+    box-shadow: 0 2px 6px rgba(102, 187, 106, 0.3);
+  }
+
+  .btn-restore:hover {
+    background: linear-gradient(135deg, #4caf50 0%, #388e3c 100%);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(102, 187, 106, 0.4);
+  }
+
+  .btn-add {
+    background: linear-gradient(135deg, #ff69b4 0%, #ff1493 100%);
+    color: #fff;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 15px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 12px rgba(255, 105, 180, 0.3);
+    margin-bottom: 20px;
+  }
+
+  .btn-add:hover {
+    background: linear-gradient(135deg, #ff1493 0%, #dc143c 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(255, 105, 180, 0.4);
+  }
+
+  /* Modal Styles */
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(4px);
+  }
+
+  .modal-content {
+    background: #fff5f8;
+    margin: 5% auto;
+    padding: 30px;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 600px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    border: 1px solid #ffd6e8;
+  }
+
+  .modal-header {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: #333;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #ffd6e8;
+  }
+
+  .form-group {
+    margin-bottom: 16px;
+  }
+
+  .form-group label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 600;
+    color: #444;
+    font-size: 14px;
+  }
+
+  .form-group input, .form-group select, .form-group textarea {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #ffd6e8;
+    border-radius: 6px;
+    font-size: 14px;
+    background: #fff;
+    box-sizing: border-box;
+    transition: border-color 0.3s, box-shadow 0.3s;
+  }
+
+  .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+    outline: none;
+    border-color: #ff69b4;
+    box-shadow: 0 0 0 3px rgba(255, 105, 180, 0.1);
+  }
+
+  .modal-footer {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #ffd6e8;
+  }
+
+  .alert {
+    padding: 12px 16px;
+    border-radius: 6px;
+    margin-bottom: 15px;
+    font-size: 14px;
+  }
+
+  .alert-success {
+    background: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+  }
+
+  .alert-error {
+    background: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+  }
+</style>
+
+<main>
   <div class="box">
-    <h2>Suppliers</h2>
-    <p>
+    <h2>📦 Suppliers</h2>
+    <p style="color: #666; line-height: 1.6; margin: 0;">
       The Suppliers section contains the list of all vendors providing goods and services for Chakanok's Roasted Chicken House.
       It includes suppliers for fresh chicken, spices, packaging, beverages, and cooking fuel.
       Managing supplier information ensures timely deliveries, better pricing, and high-quality raw materials for consistent product quality.
@@ -86,13 +325,33 @@
   </div>
 
   <div class="stats">
-    <div class="stat">Total Suppliers: <?= $stats['total'] ?? 0 ?></div>
-    <div class="stat">Active: <?= $stats['active'] ?? 0 ?></div>
-    <div class="stat">Pending: <?= $stats['pending'] ?? 0 ?></div>
-    <div class="stat">Inactive: <?= $stats['inactive'] ?? 0 ?></div>
+    <div class="stat">
+      <div style="font-size: 13px; color: #666; margin-bottom: 5px;">Total Suppliers</div>
+      <b style="color: #2196F3;"><?= $stats['total'] ?? 0 ?></b>
+    </div>
+    <div class="stat">
+      <div style="font-size: 13px; color: #666; margin-bottom: 5px;">Active</div>
+      <b style="color: #4caf50;"><?= $stats['active'] ?? 0 ?></b>
+    </div>
+    <div class="stat">
+      <div style="font-size: 13px; color: #666; margin-bottom: 5px;">Pending</div>
+      <b style="color: #ff9800;"><?= $stats['pending'] ?? 0 ?></b>
+    </div>
+    <div class="stat">
+      <div style="font-size: 13px; color: #666; margin-bottom: 5px;">Inactive</div>
+      <b style="color: #9c27b0;"><?= $stats['inactive'] ?? 0 ?></b>
+    </div>
+    <div class="stat">
+      <div style="font-size: 13px; color: #666; margin-bottom: 5px;">Deleted</div>
+      <b style="color: #f44336;"><?= $stats['deleted'] ?? 0 ?></b>
+    </div>
   </div>
 
+  <button class="btn-add" onclick="openAddModal()">+ Add New Supplier</button>
+
   <div class="box">
+    <h3>📋 Supplier List</h3>
+    <div id="alert-container"></div>
     <table class="table">
       <thead>
         <tr>
@@ -103,17 +362,18 @@
           <th>Email</th>
           <th>Supply Type</th>
           <th>Status</th>
-          <th>Action</th>
+          <th>Actions</th>
         </tr>
       </thead>
       <tbody>
         <?php if (empty($suppliers)): ?>
           <tr>
-            <td colspan="8" style="text-align: center; padding: 20px;">No suppliers found</td>
+            <td colspan="8" style="text-align: center; padding: 20px; color: #666;">No suppliers found</td>
           </tr>
         <?php else: ?>
           <?php foreach ($suppliers as $supplier): ?>
-            <tr>
+            <?php $isDeleted = !empty($supplier['deleted_at']); ?>
+            <tr class="<?= $isDeleted ? 'deleted-row' : '' ?>">
               <td>SUP-<?= str_pad($supplier['id'], 3, '0', STR_PAD_LEFT) ?></td>
               <td><?= esc($supplier['supplier_name'] ?? 'N/A') ?></td>
               <td><?= esc($supplier['contact_person'] ?? 'N/A') ?></td>
@@ -121,15 +381,23 @@
               <td><?= esc($supplier['email'] ?? 'N/A') ?></td>
               <td><?= esc($supplier['supply_type'] ?? 'N/A') ?></td>
               <td>
-                <span class="badge <?= strtolower($supplier['status'] ?? 'active') ?>">
-                  <?= esc($supplier['status'] ?? 'Active') ?>
-                </span>
+                <?php if ($isDeleted): ?>
+                  <span class="badge deleted">Deleted</span>
+                <?php else: ?>
+                  <span class="badge <?= strtolower($supplier['status'] ?? 'active') ?>">
+                    <?= esc($supplier['status'] ?? 'Active') ?>
+                  </span>
+                <?php endif; ?>
               </td>
               <td>
-                <a href="<?= base_url('suppliers/edit/' . $supplier['id']) ?>">
-                  <button class="btn-edit">Edit</button>
-                </a>
-                <button class="btn-delete" onclick="deleteSupplier(<?= $supplier['id'] ?>)">Delete</button>
+                <div class="action-buttons">
+                  <?php if ($isDeleted): ?>
+                    <button class="btn-restore" onclick="restoreSupplier(<?= $supplier['id'] ?>)">Restore</button>
+                  <?php else: ?>
+                    <button class="btn-edit" onclick="openEditModal(<?= htmlspecialchars(json_encode($supplier), ENT_QUOTES, 'UTF-8') ?>)">Edit</button>
+                    <button class="btn-delete" onclick="deleteSupplier(<?= $supplier['id'] ?>)">Delete</button>
+                  <?php endif; ?>
+                </div>
               </td>
             </tr>
           <?php endforeach; ?>
@@ -139,11 +407,176 @@
   </div>
 </main>
 
+<!-- Add/Edit Modal -->
+<div id="supplierModal" class="modal">
+  <div class="modal-content">
+    <div class="modal-header" id="modalTitle">Add New Supplier</div>
+    <form id="supplierForm">
+      <input type="hidden" id="supplier_id" name="id">
+      <div class="form-group">
+        <label for="supplier_name">Supplier Name *</label>
+        <input type="text" id="supplier_name" name="supplier_name" required>
+      </div>
+      <div class="form-group">
+        <label for="contact_person">Contact Person</label>
+        <input type="text" id="contact_person" name="contact_person">
+      </div>
+      <div class="form-group">
+        <label for="phone">Phone</label>
+        <input type="text" id="phone" name="phone">
+      </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email">
+      </div>
+      <div class="form-group">
+        <label for="address">Address</label>
+        <textarea id="address" name="address" rows="2"></textarea>
+      </div>
+      <div class="form-group">
+        <label for="supply_type">Supply Type</label>
+        <input type="text" id="supply_type" name="supply_type" placeholder="e.g., Whole Chickens, Spices, Packaging">
+      </div>
+      <div class="form-group">
+        <label for="status">Status *</label>
+        <select id="status" name="status" required>
+          <option value="Active">Active</option>
+          <option value="Pending">Pending</option>
+          <option value="Inactive">Inactive</option>
+        </select>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn-delete" onclick="closeModal()">Cancel</button>
+        <button type="submit" class="btn-edit">Save</button>
+      </div>
+    </form>
+  </div>
+</div>
+
 <script>
-function deleteSupplier(id) {
-  if (!confirm('Are you sure you want to delete this supplier?')) return;
+let currentSupplierId = null;
+
+function showAlert(message, type) {
+  const container = document.getElementById('alert-container');
+  container.innerHTML = `<div class="alert alert-${type}">${message}</div>`;
+  setTimeout(() => {
+    container.innerHTML = '';
+  }, 5000);
+}
+
+function openAddModal() {
+  currentSupplierId = null;
+  document.getElementById('modalTitle').textContent = 'Add New Supplier';
+  document.getElementById('supplierForm').reset();
+  document.getElementById('supplier_id').value = '';
+  document.getElementById('supplierModal').style.display = 'block';
+}
+
+function openEditModal(supplier) {
+  currentSupplierId = supplier.id;
+  document.getElementById('modalTitle').textContent = 'Edit Supplier';
+  document.getElementById('supplier_id').value = supplier.id;
+  document.getElementById('supplier_name').value = supplier.supplier_name || '';
+  document.getElementById('contact_person').value = supplier.contact_person || '';
+  document.getElementById('phone').value = supplier.phone || '';
+  document.getElementById('email').value = supplier.email || '';
+  document.getElementById('address').value = supplier.address || '';
+  document.getElementById('supply_type').value = supplier.supply_type || '';
+  document.getElementById('status').value = supplier.status || 'Active';
+  document.getElementById('supplierModal').style.display = 'block';
+}
+
+function closeModal() {
+  document.getElementById('supplierModal').style.display = 'none';
+  currentSupplierId = null;
+}
+
+document.getElementById('supplierForm').addEventListener('submit', async function(e) {
+  e.preventDefault();
   
-  window.location.href = '<?= base_url('suppliers/delete/') ?>' + id;
+  const formData = new FormData(this);
+  const data = Object.fromEntries(formData.entries());
+  
+  const url = currentSupplierId 
+    ? `<?= base_url('suppliers/update/') ?>${currentSupplierId}`
+    : `<?= base_url('suppliers/create') ?>`;
+  
+  try {
+    const response = await fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-Requested-With': 'XMLHttpRequest'
+      },
+      body: JSON.stringify(data)
+    });
+    
+    const result = await response.json();
+    
+    if (result.success) {
+      showAlert(result.message, 'success');
+      closeModal();
+      setTimeout(() => location.reload(), 1000);
+    } else {
+      showAlert(result.message || 'Operation failed', 'error');
+    }
+  } catch (error) {
+    showAlert('Error: ' + error.message, 'error');
+  }
+});
+
+function deleteSupplier(id) {
+  if (!confirm('Are you sure you want to delete this supplier? This will soft delete the supplier.')) return;
+  
+  fetch(`<?= base_url('suppliers/delete/') ?>${id}`, {
+    method: 'POST',
+    headers: {
+      'X-Requested-With': 'XMLHttpRequest'
+    }
+  })
+  .then(r => r.json())
+  .then(result => {
+    if (result.success) {
+      showAlert(result.message, 'success');
+      setTimeout(() => location.reload(), 1000);
+    } else {
+      showAlert(result.message || 'Failed to delete supplier', 'error');
+    }
+  })
+  .catch(error => {
+    showAlert('Error: ' + error.message, 'error');
+  });
+}
+
+function restoreSupplier(id) {
+  if (!confirm('Are you sure you want to restore this supplier?')) return;
+  
+  fetch(`<?= base_url('suppliers/restore/') ?>${id}`, {
+    method: 'POST',
+    headers: {
+      'X-Requested-With': 'XMLHttpRequest'
+    }
+  })
+  .then(r => r.json())
+  .then(result => {
+    if (result.success) {
+      showAlert(result.message, 'success');
+      setTimeout(() => location.reload(), 1000);
+    } else {
+      showAlert(result.message || 'Failed to restore supplier', 'error');
+    }
+  })
+  .catch(error => {
+    showAlert('Error: ' + error.message, 'error');
+  });
+}
+
+// Close modal when clicking outside
+window.onclick = function(event) {
+  const modal = document.getElementById('supplierModal');
+  if (event.target == modal) {
+    closeModal();
+  }
 }
 </script>
 

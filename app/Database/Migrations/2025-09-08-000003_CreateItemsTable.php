@@ -19,6 +19,13 @@ class CreateItemsTable extends Migration
                 'type'       => 'VARCHAR',
                 'constraint' => '100',
             ],
+            'category' => [
+                'type'       => 'VARCHAR',
+                'constraint' => '50',
+                'null'       => true,
+                'default'    => 'General',
+                'comment'    => 'Item category (Meat, Seasoning, Fuel, Packaging, etc.)',
+            ],
             'unit' => [
                 'type'       => 'VARCHAR',
                 'constraint' => '50',

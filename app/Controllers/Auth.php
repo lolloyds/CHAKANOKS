@@ -35,6 +35,7 @@ class Auth extends BaseController
                     'username' => $user['username'],
                     'role' => $user['role'],
                     'branch_id' => $user['branch_id'] ?? null,
+                    'supplier_id' => $user['supplier_id'] ?? null,
                 ]);
 
                 switch ($user['role']) {
@@ -130,8 +131,13 @@ class Auth extends BaseController
                 ->whereIn('status', ['pending', 'approved'])
                 ->countAllResults(false);
             
-            // Get total suppliers
+            // Get total suppliers (including deleted)
             $totalSuppliers = $db->table('suppliers')->countAllResults(false);
+            
+            // Get deleted suppliers count
+            $deletedSuppliers = $db->table('suppliers')
+                ->where('deleted_at IS NOT NULL', null, false)
+                ->countAllResults(false);
             
             // Get today's highlights
             $today = date('Y-m-d');
@@ -176,6 +182,7 @@ class Auth extends BaseController
                 'activeDeliveries' => $activeDeliveries,
                 'pendingOrders' => $pendingOrders,
                 'totalSuppliers' => $totalSuppliers,
+                'deletedSuppliers' => $deletedSuppliers,
                 'scheduledDeliveries' => $scheduledDeliveries,
                 'pendingPRs' => $pendingPRs,
                 'lowStockItems' => $lowStockItems,

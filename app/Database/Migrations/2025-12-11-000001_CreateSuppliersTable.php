@@ -58,6 +58,10 @@ class CreateSuppliersTable extends Migration
                 'type'    => 'DATETIME',
                 'null'    => true,
             ],
+            'deleted_at' => [
+                'type'    => 'DATETIME',
+                'null'    => true,
+            ],
         ]);
 
         $this->forge->addKey('id', true);
@@ -69,8 +73,3 @@ class CreateSuppliersTable extends Migration
         $this->forge->dropTable('suppliers');
     }
 }
-
-
-
-
-

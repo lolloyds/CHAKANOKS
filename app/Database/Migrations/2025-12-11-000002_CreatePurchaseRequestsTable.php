@@ -34,7 +34,7 @@ class CreatePurchaseRequestsTable extends Migration
             ],
             'status' => [
                 'type'       => 'ENUM',
-                'constraint' => ['pending', 'approved', 'rejected', 'converted'],
+                'constraint' => ['pending', 'pending central office review', 'approved', 'rejected', 'converted'],
                 'default'    => 'pending',
                 'comment'    => 'Request status',
             ],
@@ -85,8 +85,3 @@ class CreatePurchaseRequestsTable extends Migration
         $this->forge->dropTable('purchase_requests');
     }
 }
-
-
-
-
-

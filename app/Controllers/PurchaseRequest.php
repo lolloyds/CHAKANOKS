@@ -76,7 +76,10 @@ class PurchaseRequest extends BaseController
             return $this->response->setJSON(['success' => false, 'message' => 'Unauthorized']);
         }
 
-        $branchId = $this->request->getPost('branch_id');
+        // Get JSON data instead of POST data
+        $jsonData = $this->request->getJSON(true);
+        
+        $branchId = $jsonData['branch_id'] ?? null;
         if (in_array($user['role'], ['Inventory Staff', 'Branch Manager']) && isset($user['branch_id'])) {
             $branchId = $user['branch_id']; // Branch users can only create for their branch
         }
@@ -98,34 +101,81 @@ class PurchaseRequest extends BaseController
             $requestData = [
                 'request_id' => $requestId,
                 'branch_id' => $branchId,
-                'date_needed' => $this->request->getPost('date_needed'),
+                'date_needed' => $jsonData['date_needed'] ?? null,
                 'status' => $status,
-                'notes' => $this->request->getPost('notes'),
+                'notes' => $jsonData['notes'] ?? null,
                 'requested_by' => $user['id'],
             ];
 
             $purchaseRequestId = $this->purchaseRequestModel->insert($requestData);
 
             // Add items
-            $items = $this->request->getPost('items');
-            if (is_array($items)) {
-                foreach ($items as $item) {
-                    if (!empty($item['item_name']) && !empty($item['quantity'])) {
-                        // Try to find item by name
-                        $itemRecord = $this->itemModel
-                            ->where('LOWER(name)', strtolower($item['item_name']))
-                            ->first();
+            $items = $jsonData['items'] ?? [];
 
-                        $this->purchaseRequestItemModel->insert([
-                            'purchase_request_id' => $purchaseRequestId,
-                            'item_id' => $itemRecord ? $itemRecord['id'] : null,
-                            'item_name' => $item['item_name'],
-                            'quantity' => $item['quantity'],
-                            'unit' => $item['unit'] ?? ($itemRecord ? $itemRecord['unit'] : 'pcs'),
-                            'notes' => $item['notes'] ?? null,
-                        ]);
+            // Debug logging
+            log_message('debug', 'JSON Data received: ' . json_encode($jsonData));
+            log_message('debug', 'Items array: ' . json_encode($items));
+            log_message('debug', 'Items count: ' . count($items));
+
+            if (is_array($items) && count($items) > 0) {
+                foreach ($items as $index => $item) {
+                    log_message('debug', "Processing item $index: " . json_encode($item));
+                    log_message('debug', "Item name value: '" . ($item['item_name'] ?? 'NULL') . "'");
+                    log_message('debug', "Item quantity value: '" . ($item['quantity'] ?? 'NULL') . "'");
+
+                    // Ensure item_name and quantity are properly trimmed and validated
+                    $itemName = trim($item['item_name'] ?? '');
+                    $itemQuantity = $item['quantity'] ?? null;
+
+                    log_message('debug', "Trimmed item name: '$itemName', quantity: '$itemQuantity'");
+
+                    if (!empty($itemName) && !empty($itemQuantity) && is_numeric($itemQuantity)) {
+                        try {
+                            // Try to find item by name
+                            $itemRecord = $this->itemModel
+                                ->where('LOWER(name)', strtolower($itemName))
+                                ->first();
+
+                            $itemData = [
+                                'purchase_request_id' => $purchaseRequestId,
+                                'item_id' => $itemRecord ? $itemRecord['id'] : null,
+                                'item_name' => $itemName, // Use trimmed name
+                                'quantity' => floatval($itemQuantity), // Ensure numeric conversion
+                                'unit' => trim($item['unit'] ?? ($itemRecord ? $itemRecord['unit'] : 'pcs')),
+                                'notes' => trim($item['notes'] ?? ''),
+                            ];
+
+                            log_message('debug', 'Inserting item data: ' . json_encode($itemData));
+
+                            $itemInsertResult = $this->purchaseRequestItemModel->insert($itemData);
+                            log_message('debug', 'Item insert result: ' . ($itemInsertResult ? 'SUCCESS with ID: ' . $itemInsertResult : 'FAILED'));
+
+                            if (!$itemInsertResult) {
+                                $errors = $this->purchaseRequestItemModel->errors();
+                                log_message('error', 'Failed to insert item: ' . json_encode($errors));
+
+                                // Revert the transaction on any item insert failure
+                                $db->transRollback();
+                                return $this->response->setJSON([
+                                    'success' => false,
+                                    'message' => 'Failed to save item: ' . implode(', ', $errors)
+                                ]);
+                            }
+                        } catch (\Exception $e) {
+                            log_message('error', 'Exception while inserting item: ' . $e->getMessage());
+                            $db->transRollback();
+                            return $this->response->setJSON([
+                                'success' => false,
+                                'message' => 'Error saving items: ' . $e->getMessage()
+                            ]);
+                        }
+                    } else {
+                        log_message('debug', "Skipping item $index - name empty or invalid: '$itemName', quantity: '$itemQuantity', is_numeric: " . (is_numeric($itemQuantity) ? 'TRUE' : 'FALSE'));
                     }
                 }
+            } else {
+                log_message('debug', 'No items to process or items is not an array');
+                // If no items, the PR should still be created successfully
             }
 
             $db->transComplete();
@@ -151,11 +201,13 @@ class PurchaseRequest extends BaseController
 
     /**
      * Approve purchase request and create Purchase Order
+     * Branch Managers can approve PRs from their branch and auto-create POs
+     * Central Office Admins can approve any PR and create POs
      */
     public function approve($id)
     {
         $user = session()->get('user');
-        if (!$user || !in_array($user['role'], ['Central Office Admin', 'System Administrator'])) {
+        if (!$user) {
             return $this->response->setJSON(['success' => false, 'message' => 'Unauthorized']);
         }
 
@@ -172,9 +224,34 @@ class PurchaseRequest extends BaseController
                 return $this->response->setJSON(['success' => false, 'message' => 'Request is not pending review']);
             }
 
+            // Authorization check: Branch Managers can only approve PRs from their branch
+            $isAuthorized = false;
+            if (in_array($user['role'], ['Central Office Admin', 'System Administrator'])) {
+                $isAuthorized = true; // Central office can approve any PR
+            } elseif ($user['role'] === 'Branch Manager' && isset($user['branch_id']) && $request['branch_id'] == $user['branch_id']) {
+                $isAuthorized = true; // Branch Manager can only approve PRs from their branch
+            }
+
+            if (!$isAuthorized) {
+                return $this->response->setJSON(['success' => false, 'message' => 'Unauthorized to approve this request']);
+            }
+
             // Get supplier_id from request (required for creating PO)
-            $supplierId = $this->request->getPost('supplier_id') ?? $this->request->getJSON(true)['supplier_id'] ?? null;
-            if (!$supplierId) {
+            $jsonData = $this->request->getJSON(true);
+            $supplierId = $this->request->getPost('supplier_id') ?? $jsonData['supplier_id'] ?? null;
+
+            log_message('debug', 'Approve request - JSON data received: ' . json_encode($jsonData));
+            log_message('debug', 'Approve request - POST data: ' . json_encode($this->request->getPost()));
+            log_message('debug', 'Approve request - Supplier ID: ' . $supplierId);
+
+            // Validate that supplier exists and is active
+            if ($supplierId) {
+                $supplier = $this->supplierModel->where('id', $supplierId)->where('status', 'Active')->first();
+                if (!$supplier) {
+                    return $this->response->setJSON(['success' => false, 'message' => 'Selected supplier not found or inactive']);
+                }
+                log_message('debug', 'Approve request - Supplier validated: ' . $supplier['supplier_name']);
+            } else {
                 return $this->response->setJSON(['success' => false, 'message' => 'Supplier is required to create Purchase Order']);
             }
 
@@ -200,11 +277,18 @@ class PurchaseRequest extends BaseController
                 'branch_id' => $request['branch_id'],
                 'order_date' => date('Y-m-d'),
                 'expected_delivery_date' => $request['date_needed'] ?? null,
-                'status' => 'po_issued_to_supplier',
-                'notes' => 'Auto-created from approved Purchase Request: ' . $request['request_id'],
-                'created_by' => $user['id'],
             ];
 
+            // Set initial status based on user role
+            if ($user['role'] === 'Branch Manager') {
+                $orderData['status'] = 'pending'; // Branch-approved POs need central review
+                $orderData['notes'] = 'Branch-approved PR auto-converted to PO: ' . $request['request_id'] . ' - Pending Central Office review';
+            } else {
+                $orderData['status'] = 'po_issued_to_supplier'; // Central office approval goes direct to supplier
+                $orderData['notes'] = 'Central Office approved PR converted to PO: ' . $request['request_id'];
+            }
+
+            $orderData['created_by'] = $user['id'];
             $purchaseOrderId = $this->purchaseOrderModel->insert($orderData);
 
             // Copy items from PR to PO
@@ -248,9 +332,14 @@ class PurchaseRequest extends BaseController
                 throw new \Exception('Database transaction failed');
             }
 
+            $approverType = $user['role'] === 'Branch Manager' ? 'Branch Manager' : 'Central Office';
+            $statusMessage = $user['role'] === 'Branch Manager' ?
+                'Purchase request approved and Purchase Order created (pending Central Office review)!' :
+                'Purchase request approved and Purchase Order created!';
+
             return $this->response->setJSON([
                 'success' => true,
-                'message' => 'Purchase request approved and Purchase Order created!',
+                'message' => $statusMessage,
                 'po_id' => $poId
             ]);
 
@@ -265,11 +354,13 @@ class PurchaseRequest extends BaseController
 
     /**
      * Reject purchase request
+     * Branch Managers can reject PRs from their branch
+     * Central Office Admins can reject any PR
      */
     public function reject($id)
     {
         $user = session()->get('user');
-        if (!$user || !in_array($user['role'], ['Central Office Admin', 'System Administrator'])) {
+        if (!$user) {
             return $this->response->setJSON(['success' => false, 'message' => 'Unauthorized']);
         }
 
@@ -281,6 +372,18 @@ class PurchaseRequest extends BaseController
 
             if (!in_array($request['status'], ['pending', 'pending central office review'])) {
                 return $this->response->setJSON(['success' => false, 'message' => 'Request is not pending review']);
+            }
+
+            // Authorization check: Branch Managers can only reject PRs from their branch
+            $isAuthorized = false;
+            if (in_array($user['role'], ['Central Office Admin', 'System Administrator'])) {
+                $isAuthorized = true; // Central office can reject any PR
+            } elseif ($user['role'] === 'Branch Manager' && isset($user['branch_id']) && $request['branch_id'] == $user['branch_id']) {
+                $isAuthorized = true; // Branch Manager can only reject PRs from their branch
+            }
+
+            if (!$isAuthorized) {
+                return $this->response->setJSON(['success' => false, 'message' => 'Unauthorized to reject this request']);
             }
 
             // Get rejection reason from POST or JSON
@@ -323,7 +426,3 @@ class PurchaseRequest extends BaseController
         return $this->response->setJSON(['success' => true, 'data' => $request]);
     }
 }
-
-
-
-

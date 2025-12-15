@@ -375,24 +375,13 @@
       </div>
     </div>
 
+    <?php if (in_array($userRole ?? '', ['Central Office Admin', 'System Administrator'])): ?>
     <div class="box">
-      <h3 style="margin-bottom: 20px; padding-bottom: 10px; border-bottom: 2px solid #e0e0e0;">📝 Create New PO</h3>
+      <h3 style="margin-bottom: 20px; padding-bottom: 10px; border-bottom: 2px solid #e0e0e0;">📝 Create Custom Order</h3>
+      <div style="background: #e8f5e8; border: 1px solid #4caf50; padding: 12px; border-radius: 6px; margin-bottom: 15px;">
+        <strong>Central Office Only:</strong> Create custom purchase orders that are not based on existing purchase requests. This allows for strategic purchasing decisions.
+      </div>
       <form id="poForm">
-        <div class="form-group">
-          <label for="purchase_request_id">From Purchase Request (Optional)</label>
-          <select id="purchase_request_id" name="purchase_request_id" class="form-select">
-            <option value="">None - Create New</option>
-            <?php if (!empty($approvedRequests)): ?>
-              <?php foreach ($approvedRequests as $pr): ?>
-                <option value="<?= $pr['id'] ?>" data-branch="<?= $pr['branch_id'] ?? '' ?>">
-                  <?= esc($pr['request_id'] ?? 'N/A') ?> - <?= esc($pr['date_needed'] ? date('M d, Y', strtotime($pr['date_needed'])) : 'No date') ?>
-                </option>
-              <?php endforeach; ?>
-            <?php else: ?>
-              <option value="" disabled>No approved purchase requests available</option>
-            <?php endif; ?>
-          </select>
-        </div>
         <div class="form-group">
           <label for="supplier_id">Supplier *</label>
           <select id="supplier_id" name="supplier_id" required class="form-select">
@@ -412,9 +401,9 @@
           </select>
         </div>
         <div class="form-group">
-          <label for="branch_id">Branch (Optional)</label>
-          <select id="branch_id" name="branch_id" class="form-select">
-            <option value="">All Branches</option>
+          <label for="branch_id">Delivery Branch *</label>
+          <select id="branch_id" name="branch_id" class="form-select" required>
+            <option value="">-- Select Branch --</option>
             <?php if (!empty($branches)): ?>
               <?php foreach ($branches as $branch): ?>
                 <option value="<?= $branch['id'] ?>"><?= esc($branch['name']) ?></option>
@@ -433,11 +422,11 @@
           <input type="date" id="expected_delivery_date" name="expected_delivery_date">
         </div>
         <div class="form-group">
-          <label for="notes">Notes</label>
-          <textarea id="notes" name="notes" rows="2"></textarea>
+          <label for="notes">Order Notes</label>
+          <textarea id="notes" name="notes" rows="2" placeholder="Strategic purchasing rationale or special instructions"></textarea>
         </div>
         <div id="items-container" style="margin-top: 20px; padding-top: 20px; border-top: 1px solid #e0e0e0;">
-          <h4 style="margin-bottom: 15px; color: #333;">Items</h4>
+          <h4 style="margin-bottom: 15px; color: #333;">Items to Order</h4>
           <div class="item-row">
             <input type="text" class="item-name" placeholder="Item name" required>
             <input type="number" class="item-quantity" placeholder="Qty" step="0.01" required onchange="calculateTotal()">
@@ -472,6 +461,16 @@
         <button type="submit" class="btn-submit">Generate PO</button>
       </form>
     </div>
+    <?php else: ?>
+    <div class="box">
+      <h3 style="margin-bottom: 20px; padding-bottom: 10px; border-bottom: 2px solid #e0e0e0;">📋 Purchase Orders</h3>
+      <div style="background: #fff3cd; border: 1px solid #ffc107; padding: 15px; border-radius: 6px; text-align: center;">
+        <strong>Central Office Feature</strong><br>
+        Custom order creation is available to Central Office administrators only.
+        Branch Managers should create Purchase Requests instead.
+      </div>
+    </div>
+    <?php endif; ?>
   </div>
 
   <div class="box" style="margin-top: 20px;">

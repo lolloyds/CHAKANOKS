@@ -325,6 +325,7 @@
       </div>
     </div>
 
+    <?php if (in_array($userRole ?? '', ['Branch Manager', 'Inventory Staff'])): ?>
     <div class="box">
       <h3>📝 New Request</h3>
       <form id="prForm">
@@ -382,6 +383,7 @@
         <button type="submit" class="btn-submit">Submit Request</button>
       </form>
     </div>
+    <?php endif; ?>
   </div>
 
   <div class="box">
@@ -425,13 +427,21 @@
                 </span>
               </td>
               <td>
-                <?php if (in_array($request['status'] ?? '', ['pending', 'pending central office review']) && in_array($userRole ?? '', ['Central Office Admin', 'System Administrator'])): ?>
-                  <button class="btn-approve" onclick="approveRequest(<?= $request['id'] ?>)">Approve</button>
-                  <button class="btn-reject" onclick="rejectRequest(<?= $request['id'] ?>)">Reject</button>
+                <?php if (in_array($request['status'] ?? '', ['pending', 'pending central office review'])): ?>
+                  <?php if (in_array($userRole ?? '', ['Central Office Admin', 'System Administrator'])): ?>
+                    <!-- Central Office approval - shows modal for supplier selection -->
+                    <button class="btn-approve" onclick="approveRequest(<?= $request['id'] ?>)">Approve</button>
+                    <button class="btn-reject" onclick="rejectRequest(<?= $request['id'] ?>)">Reject</button>
+                  <?php else: ?>
+                    <!-- No permission notice -->
+                    <span style="color: #999; font-size: 12px;">No approval permission</span>
+                  <?php endif; ?>
                 <?php elseif (($request['status'] ?? '') === 'approved'): ?>
                   <a href="<?= base_url('purchase-orders?pr_id=' . $request['id']) ?>">
-                    <button class="btn-create">Create PO</button>
+                    <button class="btn-create">View PO</button>
                   </a>
+                <?php else: ?>
+                  <span style="color: #999; font-size: 12px;">Status: <?= esc($request['status'] ?? 'unknown') ?></span>
                 <?php endif; ?>
               </td>
             </tr>
@@ -529,10 +539,53 @@ document.getElementById('prForm').addEventListener('submit', async function(e) {
 
 let currentApproveId = null;
 
-function approveRequest(id) {
+function approveRequest(id, approvalType = 'central') {
+  console.log('approveRequest called with id:', id, 'type:', approvalType);
   currentApproveId = id;
-  document.getElementById('approvalModal').style.display = 'block';
-  document.getElementById('approval_supplier_id').value = '';
+
+  if (approvalType === 'branch') {
+    // Branch Manager approval - directly call approve endpoint without modal
+    if (!confirm('Are you sure you want to approve this purchase request and create a purchase order?')) {
+      console.log('User cancelled approval');
+      return;
+    }
+
+    console.log('Making approve API call for id:', id);
+    fetch(`<?= base_url('purchase-request/approve/') ?>${id}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-Requested-With': 'XMLHttpRequest'
+      },
+      body: JSON.stringify({})
+    })
+    .then(r => r.json())
+    .then(result => {
+      console.log('API response:', result);
+      if (result.success) {
+        showAlert(result.message, 'success');
+        setTimeout(() => location.reload(), 1500);
+      } else {
+        showAlert(result.message, 'error');
+      }
+    })
+    .catch(error => {
+      console.error('Approve error:', error);
+      showAlert('Error: ' + error.message, 'error');
+    });
+  } else {
+    // Central Office approval - show modal for supplier selection
+    console.log('Opening approval modal');
+    const modal = document.getElementById('approvalModal');
+    if (modal) {
+      modal.style.display = 'block';
+      document.getElementById('approval_supplier_id').value = '';
+      console.log('Modal opened successfully');
+    } else {
+      console.error('Modal element not found');
+      showAlert('Error: Approval modal not found', 'error');
+    }
+  }
 }
 
 function closeApprovalModal() {

@@ -7,21 +7,40 @@ class SupplierModel extends Model
 {
     protected $table = 'suppliers';
     protected $primaryKey = 'id';
-    protected $allowedFields = ['supplier_name','contact_person','phone','email','supply_type','status'];
+    protected $useSoftDeletes = true;
+    protected $deletedField = 'deleted_at';
+    protected $allowedFields = ['supplier_name','contact_person','phone','email','address','supply_type','status','deleted_at'];
 
-    // Get stats
+    // Get stats including deleted
     public function getStats()
     {
-        $total = $this->countAllResults(false);
-        $active = $this->where('status', 'Active')->countAllResults(false);
-        $pending = $this->where('status', 'Pending')->countAllResults(false);
-        $inactive = $this->where('status', 'Inactive')->countAllResults(false);
+        // Total including deleted
+        $total = $this->withDeleted()->countAllResults(false);
+        
+        // Active (not deleted)
+        $active = $this->where('status', 'Active')->where('deleted_at', null)->countAllResults(false);
+        
+        // Pending (not deleted)
+        $pending = $this->where('status', 'Pending')->where('deleted_at', null)->countAllResults(false);
+        
+        // Inactive (not deleted)
+        $inactive = $this->where('status', 'Inactive')->where('deleted_at', null)->countAllResults(false);
+        
+        // Deleted count
+        $deleted = $this->onlyDeleted()->countAllResults(false);
 
         return [
             'total' => $total,
             'active' => $active,
             'pending' => $pending,
-            'inactive' => $inactive
+            'inactive' => $inactive,
+            'deleted' => $deleted
         ];
+    }
+    
+    // Get all suppliers including deleted
+    public function getAllWithDeleted()
+    {
+        return $this->withDeleted()->orderBy('id', 'DESC')->findAll();
     }
 }

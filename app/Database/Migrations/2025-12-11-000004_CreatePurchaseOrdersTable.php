@@ -52,7 +52,7 @@ class CreatePurchaseOrdersTable extends Migration
             ],
             'status' => [
                 'type'       => 'ENUM',
-                'constraint' => ['pending', 'approved', 'ordered', 'in_transit', 'delivered', 'cancelled'],
+                'constraint' => ['pending', 'approved', 'po_issued_to_supplier', 'scheduled_for_delivery', 'ordered', 'in_transit', 'delayed', 'arriving', 'delivered', 'delivered_to_branch', 'completed', 'cancelled'],
                 'default'    => 'pending',
             ],
             'total_cost' => [
@@ -104,8 +104,3 @@ class CreatePurchaseOrdersTable extends Migration
         $this->forge->dropTable('purchase_orders');
     }
 }
-
-
-
-
-
