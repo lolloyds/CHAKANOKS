@@ -9,6 +9,7 @@ use App\Models\PurchaseOrderItemModel;
 use App\Models\ItemModel;
 use App\Models\BranchModel;
 use App\Models\SupplierModel;
+use CodeIgniter\I18n\Time;
 
 class PurchaseRequest extends BaseController
 {
@@ -75,8 +76,11 @@ class PurchaseRequest extends BaseController
         if (!$user) {
             return $this->response->setJSON(['success' => false, 'message' => 'Unauthorized']);
         }
+        // Support both form-encoded POST and JSON payloads from the front-end
+        $jsonBody = $this->request->getJSON(true);
+        $postBody = $this->request->getPost();
 
-        $branchId = $this->request->getPost('branch_id');
+        $branchId = $jsonBody['branch_id'] ?? $postBody['branch_id'] ?? null;
         if (in_array($user['role'], ['Inventory Staff', 'Branch Manager']) && isset($user['branch_id'])) {
             $branchId = $user['branch_id']; // Branch users can only create for their branch
         }
@@ -95,34 +99,47 @@ class PurchaseRequest extends BaseController
             // Set status based on user role: Branch Manager creates PR with "pending central office review" status
             $status = ($user['role'] === 'Branch Manager') ? 'pending central office review' : 'pending';
             
+            $dateNeeded = $jsonBody['date_needed'] ?? $postBody['date_needed'] ?? null;
+            $notes = $jsonBody['notes'] ?? $postBody['notes'] ?? null;
+
             $requestData = [
                 'request_id' => $requestId,
                 'branch_id' => $branchId,
-                'date_needed' => $this->request->getPost('date_needed'),
+                'date_needed' => $dateNeeded,
                 'status' => $status,
-                'notes' => $this->request->getPost('notes'),
+                'notes' => $notes,
                 'requested_by' => $user['id'],
             ];
+
+            // Ensure created_at is set to current server time (explicit) so it reflects creation moment
+            $requestData['created_at'] = Time::now()->toDateTimeString();
+            $requestData['updated_at'] = $requestData['created_at'];
 
             $purchaseRequestId = $this->purchaseRequestModel->insert($requestData);
 
             // Add items
-            $items = $this->request->getPost('items');
+            // Accept items from JSON body or form POST
+            $items = $jsonBody['items'] ?? $postBody['items'] ?? null;
             if (is_array($items)) {
                 foreach ($items as $item) {
-                    if (!empty($item['item_name']) && !empty($item['quantity'])) {
+                    $name = $item['item_name'] ?? ($item['name'] ?? null);
+                    $qty = $item['quantity'] ?? $item['qty'] ?? null;
+                    if (!empty($name) && !empty($qty)) {
                         // Try to find item by name
                         $itemRecord = $this->itemModel
-                            ->where('LOWER(name)', strtolower($item['item_name']))
+                            ->where('LOWER(name)', strtolower($name))
                             ->first();
 
+                        $now = Time::now()->toDateTimeString();
                         $this->purchaseRequestItemModel->insert([
                             'purchase_request_id' => $purchaseRequestId,
                             'item_id' => $itemRecord ? $itemRecord['id'] : null,
-                            'item_name' => $item['item_name'],
-                            'quantity' => $item['quantity'],
+                            'item_name' => $name,
+                            'quantity' => $qty,
                             'unit' => $item['unit'] ?? ($itemRecord ? $itemRecord['unit'] : 'pcs'),
                             'notes' => $item['notes'] ?? null,
+                            'created_at' => $now,
+                            'updated_at' => $now,
                         ]);
                     }
                 }

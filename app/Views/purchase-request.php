@@ -449,6 +449,7 @@
                 </span>
               </td>
               <td>
+                <button class="btn-create" onclick="viewRequest(<?= $request['id'] ?>)">View</button>
                 <?php if (in_array($request['status'] ?? '', ['pending', 'pending central office review']) && in_array($userRole ?? '', ['Central Office Admin', 'System Administrator'])): ?>
                   <button class="btn-approve" onclick="approveRequest(<?= $request['id'] ?>)">Approve</button>
                   <button class="btn-reject" onclick="rejectRequest(<?= $request['id'] ?>)">Reject</button>
@@ -467,6 +468,21 @@
 </main>
 
 <script>
+
+// PR Details Modal HTML append
+const prDetailsModalHtml = `
+  <div id="prDetailsModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">Purchase Request Details</div>
+      <div id="prDetailsContent"></div>
+      <div class="modal-footer">
+        <button type="button" class="btn-reject" onclick="document.getElementById('prDetailsModal').style.display='none'">Close</button>
+      </div>
+    </div>
+  </div>
+`;
+document.body.insertAdjacentHTML('beforeend', prDetailsModalHtml);
+
 function addItemRow() {
   const container = document.getElementById('items-container');
   const newRow = document.createElement('div');
@@ -497,6 +513,32 @@ function addItemRow() {
     <button type="button" class="btn-remove-item" style="background: #e53935; color: #fff; border-radius: 6px;" onclick="this.parentElement.remove()">Remove</button>
   `;
   container.appendChild(newRow);
+}
+
+async function viewRequest(id) {
+  try {
+    const res = await fetch(`<?= base_url('purchase-request/get/') ?>${id}`);
+    const result = await res.json();
+    if (!result.success) return showAlert(result.message || 'Request not found', 'error');
+
+    const pr = result.data;
+    const container = document.getElementById('prDetailsContent');
+    const itemsHtml = (pr.items || []).map(i => `<li>${i.quantity} ${i.item_name}${i.unit ? ' ('+i.unit+')' : ''} ${i.notes ? '- '+i.notes : ''}</li>`).join('');
+
+    container.innerHTML = `
+      <div style="margin-bottom:10px;"><strong>Request ID:</strong> ${pr.request_id || 'N/A'}</div>
+      <div style="margin-bottom:10px;"><strong>Branch:</strong> ${pr.branch_name || 'N/A'}</div>
+      <div style="margin-bottom:10px;"><strong>Date Needed:</strong> ${pr.date_needed ? new Date(pr.date_needed).toLocaleDateString() : 'N/A'}</div>
+      <div style="margin-bottom:10px;"><strong>Requested At:</strong> ${pr.created_at ? new Date(pr.created_at).toLocaleString() : 'N/A'}</div>
+      <div style="margin-bottom:10px;"><strong>Status:</strong> ${pr.status || 'N/A'}</div>
+      <div style="margin-bottom:10px;"><strong>Notes:</strong> ${pr.notes ? pr.notes : 'None'}</div>
+      <div style="margin-top:10px;"><strong>Items:</strong><ul>${itemsHtml || '<li>No items</li>'}</ul></div>
+    `;
+
+    document.getElementById('prDetailsModal').style.display = 'block';
+  } catch (err) {
+    showAlert('Error fetching request: ' + err.message, 'error');
+  }
 }
 
 document.getElementById('prForm').addEventListener('submit', async function(e) {
@@ -589,7 +631,14 @@ function confirmApprove() {
     if (result.success) {
       showAlert(result.message, 'success');
       closeApprovalModal();
-      setTimeout(() => location.reload(), 1500);
+      // If PO created, redirect to purchase orders page and open the created PO
+      if (result.po_id) {
+        setTimeout(() => {
+          window.location.href = '<?= base_url('purchase-orders') ?>?po_id=' + encodeURIComponent(result.po_id);
+        }, 800);
+      } else {
+        setTimeout(() => location.reload(), 1200);
+      }
     } else {
       showAlert(result.message, 'error');
     }

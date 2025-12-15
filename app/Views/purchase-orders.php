@@ -551,6 +551,17 @@
   </div>
 </main>
 
+<!-- PO Details Modal -->
+<div id="poDetailsModal" class="modal">
+  <div class="modal-content">
+    <div class="modal-header">Purchase Order Details</div>
+    <div id="poDetailsContent"></div>
+    <div class="modal-footer">
+      <button type="button" class="btn-reject" onclick="document.getElementById('poDetailsModal').style.display='none'">Close</button>
+    </div>
+  </div>
+</div>
+
 <script>
 function addItemRow() {
   const container = document.getElementById('items-container');
@@ -956,6 +967,37 @@ function showAlert(message, type) {
   container.innerHTML = `<div class="alert alert-${type}">${message}</div>`;
   setTimeout(() => container.innerHTML = '', 5000);
 }
+
+// If URL contains po_id, fetch and show the created PO details
+document.addEventListener('DOMContentLoaded', function() {
+  try {
+    const params = new URLSearchParams(window.location.search);
+    const poId = params.get('po_id');
+    if (poId) {
+      fetch(`<?= base_url('purchase-orders/get/') ?>${poId}`)
+        .then(r => r.json())
+        .then(result => {
+          if (result.success && result.data) {
+            const po = result.data;
+            const container = document.getElementById('poDetailsContent');
+            const itemsHtml = (po.items || []).map(i => `<li>${i.quantity} ${i.item_name}${i.unit ? ' ('+i.unit+')' : ''} - ₱${Number(i.unit_price || 0).toFixed(2)}</li>`).join('');
+            container.innerHTML = `
+              <div style="margin-bottom:10px;"><strong>PO ID:</strong> ${po.po_id || 'N/A'}</div>
+              <div style="margin-bottom:10px;"><strong>Supplier:</strong> ${po.supplier_name || 'N/A'}</div>
+              <div style="margin-bottom:10px;"><strong>Branch:</strong> ${po.branch_name || 'N/A'}</div>
+              <div style="margin-bottom:10px;"><strong>Order Date:</strong> ${po.order_date || 'N/A'}</div>
+              <div style="margin-bottom:10px;"><strong>Expected Delivery:</strong> ${po.expected_delivery_date || 'N/A'}</div>
+              <div style="margin-top:10px;"><strong>Items:</strong><ul>${itemsHtml || '<li>No items</li>'}</ul></div>
+            `;
+            document.getElementById('poDetailsModal').style.display = 'block';
+          }
+        })
+        .catch(err => console.error('Error fetching PO:', err));
+    }
+  } catch (e) {
+    console.error(e);
+  }
+});
 </script>
 
 <?php include __DIR__ . '/includes/footer.php'; ?>
