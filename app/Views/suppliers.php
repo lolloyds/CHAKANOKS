@@ -578,6 +578,64 @@ window.onclick = function(event) {
     closeModal();
   }
 }
+
+// Search and Filter Functionality
+document.addEventListener('DOMContentLoaded', function() {
+  const searchInput = document.getElementById('supplierSearch');
+  const statusFilter = document.getElementById('statusFilter');
+  const supplyTypeFilter = document.getElementById('supplyTypeFilter');
+  const table = document.getElementById('suppliersTable');
+  const rows = table.getElementsByTagName('tbody')[0].getElementsByTagName('tr');
+
+  function filterTable() {
+    const searchTerm = searchInput.value.toLowerCase();
+    const statusValue = statusFilter.value.toLowerCase();
+    const supplyTypeValue = supplyTypeFilter.value.toLowerCase();
+
+    for (let i = 0; i < rows.length; i++) {
+      const row = rows[i];
+      const cells = row.getElementsByTagName('td');
+      let showRow = true;
+
+      if (cells.length > 0) {
+        // Search across all columns
+        const textContent = Array.from(cells).map(cell => cell.textContent.toLowerCase()).join(' ');
+        if (searchTerm && !textContent.includes(searchTerm)) {
+          showRow = false;
+        }
+
+        // Status filter
+        if (statusValue) {
+          const statusCell = cells[6]; // Status column
+          if (statusCell) {
+            const statusText = statusCell.textContent.toLowerCase().trim();
+            if (!statusText.includes(statusValue)) {
+              showRow = false;
+            }
+          }
+        }
+
+        // Supply type filter
+        if (supplyTypeValue) {
+          const supplyTypeCell = cells[5]; // Supply Type column
+          if (supplyTypeCell) {
+            const supplyTypeText = supplyTypeCell.textContent.toLowerCase().trim();
+            if (!supplyTypeText.includes(supplyTypeValue)) {
+              showRow = false;
+            }
+          }
+        }
+      }
+
+      row.style.display = showRow ? '' : 'none';
+    }
+  }
+
+  // Add event listeners
+  searchInput.addEventListener('input', filterTable);
+  statusFilter.addEventListener('change', filterTable);
+  supplyTypeFilter.addEventListener('change', filterTable);
+});
 </script>
 
 <?php include __DIR__ . '/includes/footer.php'; ?>

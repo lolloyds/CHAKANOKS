@@ -68,11 +68,11 @@
   /* Enhanced Filters */
   .filters {
     display: flex;
-    gap: 12px;
+    gap: 8px;
     align-items: center;
     flex-wrap: wrap;
     margin: 20px 0;
-    padding: 16px;
+    padding: 12px;
     background: #fff5f8;
     border-radius: 10px;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
@@ -81,11 +81,12 @@
 
   .filters input[type="text"] {
     flex: 1;
-    min-width: 250px;
-    padding: 12px 16px;
+    min-width: 180px;
+    max-width: 200px;
+    padding: 8px 12px;
     border: 2px solid #ffd6e8;
-    border-radius: 8px;
-    font-size: 14px;
+    border-radius: 6px;
+    font-size: 13px;
     transition: border-color 0.2s ease, box-shadow 0.2s ease;
     background: #fff;
   }
@@ -547,8 +548,11 @@
 
   <!-- Search & Filters -->
   <div class="filters">
-    <input type="text" placeholder="Search items..." />
-    <select>
+    <div style="position: relative;">
+      <input type="text" id="inventorySearch" placeholder="Search items..." />
+      <i class="fas fa-search" style="position: absolute; right: 12px; top: 50%; transform: translateY(-50%); color: #666; font-size: 16px;"></i>
+    </div>
+    <select id="categoryFilter">
       <option value="">Category</option>
       <option value="Meat">Meat</option>
       <option value="Seasoning">Seasoning</option>
@@ -556,7 +560,7 @@
       <option value="Packaging">Packaging</option>
       <option value="Beverage">Beverage</option>
     </select>
-    <select>
+    <select id="statusFilter">
       <option value="">Status</option>
       <option value="In Stock">In Stock</option>
       <option value="Low Stock">Low Stock</option>
@@ -890,6 +894,62 @@
             });
         });
       });
+
+      // Search and Filter Functionality
+      const searchInput = document.getElementById('inventorySearch');
+      const categoryFilter = document.getElementById('categoryFilter');
+      const statusFilter = document.getElementById('statusFilter');
+      const table = document.querySelector('.inventory-table');
+      const rows = table ? table.getElementsByTagName('tbody')[0].getElementsByTagName('tr') : [];
+
+      function filterTable() {
+        const searchTerm = searchInput ? searchInput.value.toLowerCase() : '';
+        const categoryValue = categoryFilter ? categoryFilter.value.toLowerCase() : '';
+        const statusValue = statusFilter ? statusFilter.value.toLowerCase() : '';
+
+        for (let i = 0; i < rows.length; i++) {
+          const row = rows[i];
+          const cells = row.getElementsByTagName('td');
+          let showRow = true;
+
+          if (cells.length > 0) {
+            // Search across all columns
+            const textContent = Array.from(cells).map(cell => cell.textContent.toLowerCase()).join(' ');
+            if (searchTerm && !textContent.includes(searchTerm)) {
+              showRow = false;
+            }
+
+            // Category filter
+            if (categoryValue) {
+              const categoryCell = cells[2]; // Category column
+              if (categoryCell) {
+                const categoryText = categoryCell.textContent.toLowerCase().trim();
+                if (!categoryText.includes(categoryValue)) {
+                  showRow = false;
+                }
+              }
+            }
+
+            // Status filter
+            if (statusValue) {
+              const statusCell = cells[6]; // Status column
+              if (statusCell) {
+                const statusText = statusCell.textContent.toLowerCase().trim();
+                if (!statusText.includes(statusValue)) {
+                  showRow = false;
+                }
+              }
+            }
+          }
+
+          row.style.display = showRow ? '' : 'none';
+        }
+      }
+
+      // Add event listeners if elements exist
+      if (searchInput) searchInput.addEventListener('input', filterTable);
+      if (categoryFilter) categoryFilter.addEventListener('change', filterTable);
+      if (statusFilter) statusFilter.addEventListener('change', filterTable);
     });
   </script>
   <?php endif; ?>

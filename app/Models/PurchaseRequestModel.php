@@ -87,18 +87,39 @@ class PurchaseRequestModel extends Model
      */
     public function getRequestWithItems($requestId)
     {
-        $request = $this->find($requestId);
+        $db = \Config\Database::connect();
+
+        // Get request with branch and requester/approver names
+        $request = $db->table('purchase_requests pr')
+            ->select('pr.*, b.name as branch_name, u1.username as requested_by_name, u2.username as approved_by_name')
+            ->join('branches b', 'pr.branch_id = b.id', 'left')
+            ->join('users u1', 'pr.requested_by = u1.id', 'left')
+            ->join('users u2', 'pr.approved_by = u2.id', 'left')
+            ->where('pr.id', $requestId)
+            ->get()
+            ->getRowArray();
+
         if (!$request) {
             return null;
         }
 
-        $db = \Config\Database::connect();
+        // Load items for this request and normalize field names
         $items = $db->table('purchase_request_items pri')
             ->select('pri.*, i.name as item_name_from_db, i.unit as item_unit_from_db')
             ->join('items i', 'pri.item_id = i.id', 'left')
             ->where('pri.purchase_request_id', $requestId)
             ->get()
             ->getResultArray();
+
+        // Normalize item fields so view code can use 'item_name' and 'unit'
+        foreach ($items as &$it) {
+            if (empty($it['item_name']) && !empty($it['item_name_from_db'])) {
+                $it['item_name'] = $it['item_name_from_db'];
+            }
+            if (empty($it['unit']) && !empty($it['item_unit_from_db'])) {
+                $it['unit'] = $it['item_unit_from_db'];
+            }
+        }
 
         $request['items'] = $items;
         return $request;

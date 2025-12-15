@@ -386,9 +386,33 @@
     <?php endif; ?>
   </div>
 
+  <!-- Search & Filters -->
+  <div class="box" style="margin-bottom: 15px; padding: 12px; background: #fff;">
+    <div style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap;">
+      <div style="position: relative;">
+        <input type="text" id="prSearch" placeholder="Search requests..." style="width: 180px; padding: 8px 35px 8px 12px; border: 2px solid #ffd6e8; border-radius: 6px; font-size: 13px;">
+        <i class="fas fa-search" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); color: #666; font-size: 14px;"></i>
+      </div>
+      <select id="statusFilter" style="padding: 8px 12px; border: 2px solid #ffd6e8; border-radius: 6px; font-size: 13px; min-width: 130px;">
+        <option value="">All Status</option>
+        <option value="pending">Pending</option>
+        <option value="pending central office review">Pending Central Office Review</option>
+        <option value="approved">Approved</option>
+        <option value="rejected">Rejected</option>
+        <option value="converted">Converted</option>
+      </select>
+      <select id="branchFilter" style="padding: 8px 12px; border: 2px solid #ffd6e8; border-radius: 6px; font-size: 13px; min-width: 130px;">
+        <option value="">All Branches</option>
+        <?php foreach ($branches ?? [] as $branch): ?>
+          <option value="<?= esc($branch['name']) ?>"><?= esc($branch['name']) ?></option>
+        <?php endforeach; ?>
+      </select>
+    </div>
+  </div>
+
   <div class="box">
     <h3>⏳ Purchase Requests</h3>
-    <table class="table">
+    <table class="table" id="prTable">
       <thead>
         <tr>
           <th>Request ID</th>
@@ -453,6 +477,21 @@
 </main>
 
 <script>
+
+// PR Details Modal HTML append
+const prDetailsModalHtml = `
+  <div id="prDetailsModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">Purchase Request Details</div>
+      <div id="prDetailsContent"></div>
+      <div class="modal-footer">
+        <button type="button" class="btn-reject" onclick="document.getElementById('prDetailsModal').style.display='none'">Close</button>
+      </div>
+    </div>
+  </div>
+`;
+document.body.insertAdjacentHTML('beforeend', prDetailsModalHtml);
+
 function addItemRow() {
   const container = document.getElementById('items-container');
   const newRow = document.createElement('div');
@@ -483,6 +522,32 @@ function addItemRow() {
     <button type="button" class="btn-remove-item" style="background: #e53935; color: #fff; border-radius: 6px;" onclick="this.parentElement.remove()">Remove</button>
   `;
   container.appendChild(newRow);
+}
+
+async function viewRequest(id) {
+  try {
+    const res = await fetch(`<?= base_url('purchase-request/get/') ?>${id}`);
+    const result = await res.json();
+    if (!result.success) return showAlert(result.message || 'Request not found', 'error');
+
+    const pr = result.data;
+    const container = document.getElementById('prDetailsContent');
+    const itemsHtml = (pr.items || []).map(i => `<li>${i.quantity} ${i.item_name}${i.unit ? ' ('+i.unit+')' : ''} ${i.notes ? '- '+i.notes : ''}</li>`).join('');
+
+    container.innerHTML = `
+      <div style="margin-bottom:10px;"><strong>Request ID:</strong> ${pr.request_id || 'N/A'}</div>
+      <div style="margin-bottom:10px;"><strong>Branch:</strong> ${pr.branch_name || 'N/A'}</div>
+      <div style="margin-bottom:10px;"><strong>Date Needed:</strong> ${pr.date_needed ? new Date(pr.date_needed).toLocaleDateString() : 'N/A'}</div>
+      <div style="margin-bottom:10px;"><strong>Requested At:</strong> ${pr.created_at ? new Date(pr.created_at).toLocaleString() : 'N/A'}</div>
+      <div style="margin-bottom:10px;"><strong>Status:</strong> ${pr.status || 'N/A'}</div>
+      <div style="margin-bottom:10px;"><strong>Notes:</strong> ${pr.notes ? pr.notes : 'None'}</div>
+      <div style="margin-top:10px;"><strong>Items:</strong><ul>${itemsHtml || '<li>No items</li>'}</ul></div>
+    `;
+
+    document.getElementById('prDetailsModal').style.display = 'block';
+  } catch (err) {
+    showAlert('Error fetching request: ' + err.message, 'error');
+  }
 }
 
 document.getElementById('prForm').addEventListener('submit', async function(e) {
@@ -618,7 +683,14 @@ function confirmApprove() {
     if (result.success) {
       showAlert(result.message, 'success');
       closeApprovalModal();
-      setTimeout(() => location.reload(), 1500);
+      // If PO created, redirect to purchase orders page and open the created PO
+      if (result.po_id) {
+        setTimeout(() => {
+          window.location.href = '<?= base_url('purchase-orders') ?>?po_id=' + encodeURIComponent(result.po_id);
+        }, 800);
+      } else {
+        setTimeout(() => location.reload(), 1200);
+      }
     } else {
       showAlert(result.message, 'error');
     }
@@ -664,6 +736,64 @@ function showAlert(message, type) {
   container.innerHTML = `<div class="alert alert-${type}">${message}</div>`;
   setTimeout(() => container.innerHTML = '', 5000);
 }
+
+// Search and Filter Functionality
+document.addEventListener('DOMContentLoaded', function() {
+  const searchInput = document.getElementById('prSearch');
+  const statusFilter = document.getElementById('statusFilter');
+  const branchFilter = document.getElementById('branchFilter');
+  const table = document.getElementById('prTable');
+  const rows = table.getElementsByTagName('tbody')[0].getElementsByTagName('tr');
+
+  function filterTable() {
+    const searchTerm = searchInput.value.toLowerCase();
+    const statusValue = statusFilter.value.toLowerCase();
+    const branchValue = branchFilter.value.toLowerCase();
+
+    for (let i = 0; i < rows.length; i++) {
+      const row = rows[i];
+      const cells = row.getElementsByTagName('td');
+      let showRow = true;
+
+      if (cells.length > 0) {
+        // Search across all columns
+        const textContent = Array.from(cells).map(cell => cell.textContent.toLowerCase()).join(' ');
+        if (searchTerm && !textContent.includes(searchTerm)) {
+          showRow = false;
+        }
+
+        // Status filter
+        if (statusValue) {
+          const statusCell = cells[5]; // Status column
+          if (statusCell) {
+            const statusText = statusCell.textContent.toLowerCase().trim();
+            if (!statusText.includes(statusValue)) {
+              showRow = false;
+            }
+          }
+        }
+
+        // Branch filter
+        if (branchValue) {
+          const branchCell = cells[1]; // Branch column
+          if (branchCell) {
+            const branchText = branchCell.textContent.toLowerCase().trim();
+            if (!branchText.includes(branchValue)) {
+              showRow = false;
+            }
+          }
+        }
+      }
+
+      row.style.display = showRow ? '' : 'none';
+    }
+  }
+
+  // Add event listeners
+  searchInput.addEventListener('input', filterTable);
+  statusFilter.addEventListener('change', filterTable);
+  branchFilter.addEventListener('change', filterTable);
+});
 </script>
 
 <?php include __DIR__ . '/includes/footer.php'; ?>
