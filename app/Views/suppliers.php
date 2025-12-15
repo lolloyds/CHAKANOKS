@@ -128,24 +128,24 @@
     display: inline-block;
   }
 
-  .badge.active { 
-    background: #d4edda; 
-    color: #155724; 
+  .badge.active {
+    background: #d4edda;
+    color: #155724;
     border: 1px solid #c3e6cb;
   }
-  .badge.pending { 
-    background: #fff3cd; 
-    color: #856404; 
+  .badge.pending {
+    background: #fff3cd;
+    color: #856404;
     border: 1px solid #ffeeba;
   }
-  .badge.inactive { 
-    background: #f8d7da; 
-    color: #721c24; 
+  .badge.inactive {
+    background: #f8d7da;
+    color: #721c24;
     border: 1px solid #f5c6cb;
   }
-  .badge.deleted { 
-    background: #e0e0e0; 
-    color: #666; 
+  .badge.deleted {
+    background: #e0e0e0;
+    color: #666;
     border: 1px solid #ccc;
   }
 
@@ -167,7 +167,7 @@
     display: inline-block;
   }
 
-  .btn-edit { 
+  .btn-edit {
     background: linear-gradient(135deg, #42a5f5 0%, #2196F3 100%);
     color: #fff;
     box-shadow: 0 2px 6px rgba(66, 165, 245, 0.3);
@@ -179,7 +179,7 @@
     box-shadow: 0 4px 8px rgba(66, 165, 245, 0.4);
   }
 
-  .btn-delete { 
+  .btn-delete {
     background: linear-gradient(135deg, #e53935 0%, #c62828 100%);
     color: #fff;
     box-shadow: 0 2px 6px rgba(229, 57, 53, 0.3);
@@ -315,6 +315,108 @@
 </style>
 
 <main>
+  <?php if (isset($isSupplierView) && $isSupplierView): ?>
+  <!-- SUPPLIER PROFILE VIEW -->
+  <div class="box">
+    <h2>🏢 <?= esc($supplier['supplier_name'] ?? 'Supplier Profile') ?></h2>
+    <p style="color: #666; line-height: 1.6; margin: 0;">
+      Your company profile and order statistics. Update your contact information and track your performance.
+    </p>
+  </div>
+
+  <div class="stats">
+    <div class="stat">
+      <div style="font-size: 13px; color: #666; margin-bottom: 5px;">Total Orders</div>
+      <b style="color: #2196F3;"><?= $stats['total_orders'] ?? 0 ?></b>
+    </div>
+    <div class="stat">
+      <div style="font-size: 13px; color: #666; margin-bottom: 5px;">Pending Orders</div>
+      <b style="color: #ff9800;"><?= $stats['pending_orders'] ?? 0 ?></b>
+    </div>
+    <div class="stat">
+      <div style="font-size: 13px; color: #666; margin-bottom: 5px;">Active Deliveries</div>
+      <b style="color: #4caf50;"><?= $stats['active_orders'] ?? 0 ?></b>
+    </div>
+    <div class="stat">
+      <div style="font-size: 13px; color: #666; margin-bottom: 5px;">Completed Orders</div>
+      <b style="color: #9c27b0;"><?= $stats['completed_orders'] ?? 0 ?></b>
+    </div>
+    <div class="stat">
+      <div style="font-size: 13px; color: #666; margin-bottom: 5px;">Company Status</div>
+      <span class="badge <?= strtolower($supplier['status'] ?? 'active') ?>">
+        <?= esc($supplier['status'] ?? 'Active') ?>
+      </span>
+    </div>
+  </div>
+
+  <div class="box">
+    <h3>📋 Company Information</h3>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
+      <div>
+        <strong>Supplier Name:</strong><br>
+        <span style="color: #333;"><?= esc($supplier['supplier_name'] ?? 'N/A') ?></span>
+      </div>
+      <div>
+        <strong>Contact Person:</strong><br>
+        <span style="color: #333;"><?= esc($supplier['contact_person'] ?? 'N/A') ?></span>
+      </div>
+      <div>
+        <strong>Phone:</strong><br>
+        <span style="color: #333;"><?= esc($supplier['phone'] ?? 'N/A') ?></span>
+      </div>
+      <div>
+        <strong>Email:</strong><br>
+        <span style="color: #333;"><?= esc($supplier['email'] ?? 'N/A') ?></span>
+      </div>
+      <div>
+        <strong>Supply Type:</strong><br>
+        <span style="color: #333;"><?= esc($supplier['supply_type'] ?? 'N/A') ?></span>
+      </div>
+      <div>
+        <strong>Address:</strong><br>
+        <span style="color: #333;"><?= esc($supplier['address'] ?? 'N/A') ?></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="box">
+    <h3>📈 Recent Orders</h3>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>PO ID</th>
+          <th>Branch</th>
+          <th>Order Date</th>
+          <th>Expected Delivery</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <?php if (empty($recentOrders)): ?>
+          <tr>
+            <td colspan="5" style="text-align: center; padding: 20px; color: #666;">No recent orders</td>
+          </tr>
+        <?php else: ?>
+          <?php foreach ($recentOrders as $order): ?>
+            <tr>
+              <td><?= esc($order['po_id'] ?? 'N/A') ?></td>
+              <td><?= esc($order['branch_name'] ?? 'N/A') ?></td>
+              <td><?= $order['order_date'] ? date('M d, Y', strtotime($order['order_date'])) : 'N/A' ?></td>
+              <td><?= $order['expected_delivery_date'] ? date('M d, Y', strtotime($order['expected_delivery_date'])) : 'N/A' ?></td>
+              <td>
+                <span class="badge <?= strtolower(str_replace('_', '-', $order['status'] ?? 'pending')) ?>">
+                  <?= ucwords(str_replace('_', ' ', $order['status'] ?? 'pending')) ?>
+                </span>
+              </td>
+            </tr>
+          <?php endforeach; ?>
+        <?php endif; ?>
+      </tbody>
+    </table>
+  </div>
+
+  <?php else: ?>
+  <!-- ADMIN MANAGEMENT VIEW -->
   <div class="box">
     <h2>📦 Suppliers</h2>
     <p style="color: #666; line-height: 1.6; margin: 0;">
@@ -347,8 +449,6 @@
     </div>
   </div>
 
-  <button class="btn-add" onclick="openAddModal()">+ Add New Supplier</button>
-
   <div class="box">
     <h3>📋 Supplier List</h3>
     <div id="alert-container"></div>
@@ -368,7 +468,10 @@
       <tbody>
         <?php if (empty($suppliers)): ?>
           <tr>
-            <td colspan="8" style="text-align: center; padding: 20px; color: #666;">No suppliers found</td>
+            <td colspan="8" style="text-align: center; padding: 20px; color: #666;">
+              No suppliers found
+              <br><small>Debug: <?php echo 'isSupplierView: ' . (isset($isSupplierView) ? ($isSupplierView ? 'true' : 'false') : 'not set'); ?>, Supplier count: <?php echo count($suppliers ?? []); ?>, Controller data: <?php print_r($suppliers); ?></small>
+            </td>
           </tr>
         <?php else: ?>
           <?php foreach ($suppliers as $supplier): ?>
@@ -405,6 +508,8 @@
       </tbody>
     </table>
   </div>
+
+  <?php endif; ?>
 </main>
 
 <!-- Add/Edit Modal -->
@@ -493,14 +598,14 @@ function closeModal() {
 
 document.getElementById('supplierForm').addEventListener('submit', async function(e) {
   e.preventDefault();
-  
+
   const formData = new FormData(this);
   const data = Object.fromEntries(formData.entries());
-  
-  const url = currentSupplierId 
+
+  const url = currentSupplierId
     ? `<?= base_url('suppliers/update/') ?>${currentSupplierId}`
     : `<?= base_url('suppliers/create') ?>`;
-  
+
   try {
     const response = await fetch(url, {
       method: 'POST',
@@ -510,9 +615,9 @@ document.getElementById('supplierForm').addEventListener('submit', async functio
       },
       body: JSON.stringify(data)
     });
-    
+
     const result = await response.json();
-    
+
     if (result.success) {
       showAlert(result.message, 'success');
       closeModal();
@@ -527,7 +632,7 @@ document.getElementById('supplierForm').addEventListener('submit', async functio
 
 function deleteSupplier(id) {
   if (!confirm('Are you sure you want to delete this supplier? This will soft delete the supplier.')) return;
-  
+
   fetch(`<?= base_url('suppliers/delete/') ?>${id}`, {
     method: 'POST',
     headers: {
@@ -550,7 +655,7 @@ function deleteSupplier(id) {
 
 function restoreSupplier(id) {
   if (!confirm('Are you sure you want to restore this supplier?')) return;
-  
+
   fetch(`<?= base_url('suppliers/restore/') ?>${id}`, {
     method: 'POST',
     headers: {

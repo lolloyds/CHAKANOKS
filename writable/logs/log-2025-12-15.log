@@ -740,3 +740,131 @@ DEBUG - 2025-12-15 13:17:15 --> Session: Class initialized using 'CodeIgniter\Se
 DEBUG - 2025-12-15 13:17:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
 DEBUG - 2025-12-15 13:17:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
 DEBUG - 2025-12-15 13:17:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-15 13:45:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-15 13:45:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-15 13:45:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-15 13:50:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-15 13:50:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-15 13:50:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-15 13:50:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-15 13:50:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-15 13:50:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-15 13:50:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-15 13:50:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-15 13:50:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-15 13:51:34 --> User 'supplier1' logged in successfully
+DEBUG - 2025-12-15 13:51:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-15 13:51:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-15 13:51:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-15 13:51:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-15 13:54:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-12-15 13:59:26 --> mysqli_sql_exception: Duplicate entry 'branch_manager1' for key 'users.username' in C:\xampp1\htdocs\CHAKANOKS\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\xampp1\htdocs\CHAKANOKS\system\Database\MySQLi\Connection.php(327): mysqli->query('INSERT INTO `us...', 0)
+#1 C:\xampp1\htdocs\CHAKANOKS\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `us...')
+#2 C:\xampp1\htdocs\CHAKANOKS\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `us...')
+#3 C:\xampp1\htdocs\CHAKANOKS\system\Database\BaseBuilder.php(1841): CodeIgniter\Database\BaseConnection->query('INSERT INTO `us...', NULL, false)
+#4 C:\xampp1\htdocs\CHAKANOKS\system\Database\BaseBuilder.php(2230): CodeIgniter\Database\BaseBuilder->batchExecute('_insertBatch', 100)
+#5 C:\xampp1\htdocs\CHAKANOKS\app\Database\Seeds\UsersSeeder.php(98): CodeIgniter\Database\BaseBuilder->insertBatch(Array)
+#6 C:\xampp1\htdocs\CHAKANOKS\system\Database\Seeder.php(149): App\Database\Seeds\UsersSeeder->run()
+#7 C:\xampp1\htdocs\CHAKANOKS\app\Database\Seeds\DatabaseSeeder.php(18): CodeIgniter\Database\Seeder->call('App\\Database\\Se...')
+#8 C:\xampp1\htdocs\CHAKANOKS\system\Database\Seeder.php(149): App\Database\Seeds\DatabaseSeeder->run()
+#9 C:\xampp1\htdocs\CHAKANOKS\system\Commands\Database\Seed.php(79): CodeIgniter\Database\Seeder->call('App\\Database\\Se...')
+#10 C:\xampp1\htdocs\CHAKANOKS\system\CLI\Commands.php(74): CodeIgniter\Commands\Database\Seed->run(Array)
+#11 C:\xampp1\htdocs\CHAKANOKS\system\CLI\Console.php(47): CodeIgniter\CLI\Commands->run('db:seed', Array)
+#12 C:\xampp1\htdocs\CHAKANOKS\system\Boot.php(388): CodeIgniter\CLI\Console->run()
+#13 C:\xampp1\htdocs\CHAKANOKS\system\Boot.php(133): CodeIgniter\Boot::runCommand(Object(CodeIgniter\CLI\Console))
+#14 C:\xampp1\htdocs\CHAKANOKS\spark(87): CodeIgniter\Boot::bootSpark(Object(Config\Paths))
+#15 {main}
+DEBUG - 2025-12-15 14:01:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-15 14:02:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-15 14:04:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-15 14:05:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-12-15 14:05:12 --> mysqli_sql_exception: Column 'supplier_name' cannot be null in C:\xampp1\htdocs\CHAKANOKS\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\xampp1\htdocs\CHAKANOKS\system\Database\MySQLi\Connection.php(327): mysqli->query('INSERT INTO `su...', 0)
+#1 C:\xampp1\htdocs\CHAKANOKS\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `su...')
+#2 C:\xampp1\htdocs\CHAKANOKS\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `su...')
+#3 C:\xampp1\htdocs\CHAKANOKS\system\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `su...', Array, false)
+#4 C:\xampp1\htdocs\CHAKANOKS\system\Model.php(394): CodeIgniter\Database\BaseBuilder->insert()
+#5 C:\xampp1\htdocs\CHAKANOKS\system\BaseModel.php(838): CodeIgniter\Model->doInsert(Array)
+#6 C:\xampp1\htdocs\CHAKANOKS\system\Model.php(797): CodeIgniter\BaseModel->insert(Array, true)
+#7 C:\xampp1\htdocs\CHAKANOKS\app\Controllers\Suppliers.php(93): CodeIgniter\Model->insert(Array)
+#8 C:\xampp1\htdocs\CHAKANOKS\system\CodeIgniter.php(933): App\Controllers\Suppliers->create()
+#9 C:\xampp1\htdocs\CHAKANOKS\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Suppliers))
+#10 C:\xampp1\htdocs\CHAKANOKS\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\xampp1\htdocs\CHAKANOKS\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#12 C:\xampp1\htdocs\CHAKANOKS\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#13 C:\xampp1\htdocs\CHAKANOKS\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#14 {main}
+CRITICAL - 2025-12-15 14:05:12 --> CodeIgniter\Database\Exceptions\DatabaseException: Column 'supplier_name' cannot be null
+[Method: POST, Route: suppliers/create]
+in SYSTEMPATH\Database\BaseConnection.php on line 684.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `suppliers` (`supplier_name`, `contact_person`, `phone`, `email`, `address`, `supply_type`, `status`) VALUES (:supplier_name:, :contact_person:, :phone:, :email:, :address:, :supply_type:, :status:)', [...], false)
+ 2 SYSTEMPATH\Model.php(394): CodeIgniter\Database\BaseBuilder->insert()
+ 3 SYSTEMPATH\BaseModel.php(838): CodeIgniter\Model->doInsert([...])
+ 4 SYSTEMPATH\Model.php(797): CodeIgniter\BaseModel->insert([...], true)
+ 5 APPPATH\Controllers\Suppliers.php(93): CodeIgniter\Model->insert([...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Suppliers->create()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Suppliers))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-12-15 14:05:12 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Column 'supplier_name' cannot be null
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `suppliers` (`supplier_name`, `contact_person`, `phone`, `email`, `address`, `supply_type`, `status`) VALUES (NULL, NULL, NULL, NULL, NULL, NULL, \'Active\')')
+ 2 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `suppliers` (`supplier_name`, `contact_person`, `phone`, `email`, `address`, `supply_type`, `status`) VALUES (NULL, NULL, NULL, NULL, NULL, NULL, \'Active\')')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `suppliers` (`supplier_name`, `contact_person`, `phone`, `email`, `address`, `supply_type`, `status`) VALUES (:supplier_name:, :contact_person:, :phone:, :email:, :address:, :supply_type:, :status:)', [...], false)
+ 4 SYSTEMPATH\Model.php(394): CodeIgniter\Database\BaseBuilder->insert()
+ 5 SYSTEMPATH\BaseModel.php(838): CodeIgniter\Model->doInsert([...])
+ 6 SYSTEMPATH\Model.php(797): CodeIgniter\BaseModel->insert([...], true)
+ 7 APPPATH\Controllers\Suppliers.php(93): CodeIgniter\Model->insert([...])
+ 8 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Suppliers->create()
+ 9 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Suppliers))
+10 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-12-15 14:05:12 --> [Caused by] mysqli_sql_exception: Column 'supplier_name' cannot be null
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query('INSERT INTO `suppliers` (`supplier_name`, `contact_person`, `phone`, `email`, `address`, `supply_type`, `status`) VALUES (NULL, NULL, NULL, NULL, NULL, NULL, \'Active\')', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `suppliers` (`supplier_name`, `contact_person`, `phone`, `email`, `address`, `supply_type`, `status`) VALUES (NULL, NULL, NULL, NULL, NULL, NULL, \'Active\')')
+ 3 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `suppliers` (`supplier_name`, `contact_person`, `phone`, `email`, `address`, `supply_type`, `status`) VALUES (NULL, NULL, NULL, NULL, NULL, NULL, \'Active\')')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `suppliers` (`supplier_name`, `contact_person`, `phone`, `email`, `address`, `supply_type`, `status`) VALUES (:supplier_name:, :contact_person:, :phone:, :email:, :address:, :supply_type:, :status:)', [...], false)
+ 5 SYSTEMPATH\Model.php(394): CodeIgniter\Database\BaseBuilder->insert()
+ 6 SYSTEMPATH\BaseModel.php(838): CodeIgniter\Model->doInsert([...])
+ 7 SYSTEMPATH\Model.php(797): CodeIgniter\BaseModel->insert([...], true)
+ 8 APPPATH\Controllers\Suppliers.php(93): CodeIgniter\Model->insert([...])
+ 9 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Suppliers->create()
+10 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Suppliers))
+11 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-12-15 14:08:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-15 14:09:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-15 14:09:55 --> Admin supplier view - User: Central Office Admin
+DEBUG - 2025-12-15 14:09:55 --> Suppliers count: 0
+DEBUG - 2025-12-15 14:13:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-15 14:13:20 --> Admin supplier view - User: Central Office Admin
+DEBUG - 2025-12-15 14:13:20 --> Suppliers count with direct query: 7
+DEBUG - 2025-12-15 14:13:20 --> First supplier with direct: {"id":"7","supplier_name":"Rice & Grains Wholesale","contact_person":"Sofia Martinez","phone":"+63 923 789 0123","email":"sofia.martinez@ricegrains.com","address":"147 Grain Street, Davao City","supply_type":"Rice and Grains","status":"Active","created_at":"2025-12-15 14:02:31","updated_at":"2025-12-15 14:02:31","deleted_at":null,"is_deleted":"0"}
+DEBUG - 2025-12-15 14:14:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-15 14:14:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-15 14:15:10 --> User 'branch_manager1' logged in successfully
+DEBUG - 2025-12-15 14:15:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-15 14:15:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-15 14:15:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-15 14:16:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-15 14:16:12 --> JSON Data received: {"branch_id":"1","date_needed":"2016-01-12","notes":"send food","items":[{"item_name":"water","quantity":"1","unit":"gallon","notes":""}]}
+DEBUG - 2025-12-15 14:16:12 --> Items array: [{"item_name":"water","quantity":"1","unit":"gallon","notes":""}]
+DEBUG - 2025-12-15 14:16:12 --> Items count: 1
+DEBUG - 2025-12-15 14:16:12 --> Processing item 0: {"item_name":"water","quantity":"1","unit":"gallon","notes":""}
+DEBUG - 2025-12-15 14:16:12 --> Item name value: 'water'
+DEBUG - 2025-12-15 14:16:12 --> Item quantity value: '1'
+DEBUG - 2025-12-15 14:16:12 --> Trimmed item name: 'water', quantity: '1'
+DEBUG - 2025-12-15 14:16:12 --> Inserting item data: {"purchase_request_id":1,"item_id":null,"item_name":"water","quantity":1,"unit":"gallon","notes":""}
+DEBUG - 2025-12-15 14:16:12 --> Item insert result: SUCCESS with ID: 1
+DEBUG - 2025-12-15 14:16:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-15 14:16:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.

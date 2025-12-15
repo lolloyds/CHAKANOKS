@@ -14,10 +14,81 @@ class Suppliers extends BaseController
 
         $model = new SupplierModel();
 
-        $data['stats'] = $model->getStats();
-        // Get all suppliers including deleted ones
-        $data['suppliers'] = $model->getAllWithDeleted();
-        $data['userRole'] = $user['role'];
+        // If user is a supplier, show their profile instead of full list
+        if ($user['role'] === 'Supplier' && isset($user['supplier_id'])) {
+            $supplier = $model->find($user['supplier_id']);
+            if (!$supplier) {
+                return redirect()->to(base_url('dashboard'))->with('error', 'Supplier profile not found');
+            }
+
+            // Get supplier-specific stats
+            $db = \Config\Database::connect();
+            $supplierStats = [
+                'total_orders' => $db->table('purchase_orders')
+                    ->where('supplier_id', $user['supplier_id'])
+                    ->countAllResults(),
+                'pending_orders' => $db->table('purchase_orders')
+                    ->where('supplier_id', $user['supplier_id'])
+                    ->whereIn('status', ['pending', 'po_issued_to_supplier'])
+                    ->countAllResults(),
+                'active_orders' => $db->table('purchase_orders')
+                    ->where('supplier_id', $user['supplier_id'])
+                    ->whereIn('status', ['scheduled_for_delivery', 'in_transit', 'arriving'])
+                    ->countAllResults(),
+                'completed_orders' => $db->table('purchase_orders')
+                    ->where('supplier_id', $user['supplier_id'])
+                    ->where('status', 'completed')
+                    ->countAllResults(),
+                'supplier_info' => $supplier
+            ];
+
+            // Get recent orders for this supplier
+            $recentOrders = $db->table('purchase_orders po')
+                ->select('po.*, b.name as branch_name, pr.request_id')
+                ->join('branches b', 'po.branch_id = b.id', 'left')
+                ->join('purchase_requests pr', 'po.purchase_request_id = pr.id', 'left')
+                ->where('po.supplier_id', $user['supplier_id'])
+                ->orderBy('po.created_at', 'DESC')
+                ->limit(10)
+                ->get()
+                ->getResultArray();
+
+            $data = [
+                'isSupplierView' => true,
+                'supplier' => $supplier,
+                'stats' => $supplierStats,
+                'recentOrders' => $recentOrders,
+                'userRole' => $user['role'],
+            ];
+
+        } else {
+            // Admin/central office view - show full supplier list
+            $data['stats'] = $model->getStats();
+
+            // Try direct query to ensure suppliers are fetched
+            $db = \Config\Database::connect();
+            try {
+                $suppliers = $db->table('suppliers')
+                    ->select('suppliers.*, CASE WHEN suppliers.deleted_at IS NOT NULL THEN 1 ELSE 0 END as is_deleted', false)
+                    ->orderBy('suppliers.id', 'DESC')
+                    ->get()
+                    ->getResultArray();
+            } catch (\Exception $e) {
+                log_message('error', 'Suppliers query failed: ' . $e->getMessage());
+                $suppliers = [];
+            }
+
+            $data['suppliers'] = $suppliers;
+            $data['userRole'] = $user['role'];
+            $data['isSupplierView'] = false;
+
+            // Debug logging
+            log_message('debug', 'Admin supplier view - User: ' . $user['role']);
+            log_message('debug', 'Suppliers count with direct query: ' . count($suppliers));
+            if (count($suppliers) > 0) {
+                log_message('debug', 'First supplier with direct: ' . json_encode($suppliers[0]));
+            }
+        }
 
         return view('suppliers', $data);
     }
