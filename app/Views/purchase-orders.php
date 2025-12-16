@@ -352,6 +352,42 @@
     </div>
   </div>
 
+  <!-- Change Supplier Modal -->
+  <div id="changeSupplierModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">Change Supplier</div>
+      <form id="changeSupplierForm">
+        <input type="hidden" id="change_supplier_po_id" name="po_id">
+        <div class="form-group">
+          <label>Select New Supplier</label>
+          <select id="change_supplier_id" name="supplier_id" class="form-select" required>
+            <option value="">-- Select Supplier --</option>
+            <?php if (!empty($suppliers)): ?>
+              <?php foreach ($suppliers as $supplier): ?>
+                <option value="<?= $supplier['id'] ?>" data-name="<?= esc($supplier['supplier_name']) ?>">
+                  <?= esc($supplier['supplier_name']) ?>
+                  <?php if (!empty($supplier['contact_person'])): ?>
+                    - <?= esc($supplier['contact_person']) ?>
+                  <?php endif; ?>
+                </option>
+              <?php endforeach; ?>
+            <?php else: ?>
+              <option value="" disabled>No suppliers available</option>
+            <?php endif; ?>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="supplier_change_notes">Change Reason (Optional)</label>
+          <textarea id="supplier_change_notes" name="change_notes" rows="2" placeholder="Reason for supplier change..."></textarea>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn-reject" onclick="closeChangeSupplierModal()">Cancel</button>
+          <button type="button" class="btn-schedule" onclick="submitChangeSupplier()">Change Supplier</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
   <div class="grid grid-2">
     <div class="box" style="height: fit-content;">
       <h3 style="margin-bottom: 20px; padding-bottom: 10px; border-bottom: 2px solid #e0e0e0;">📊 Quick Summary</h3>
@@ -491,7 +527,7 @@
       <tbody>
         <?php if (empty($orders)): ?>
           <tr>
-            <td colspan="8" style="text-align: center; padding: 20px;">No purchase orders found</td>
+            <td colspan="7" style="text-align: center; padding: 20px;">No purchase orders found</td>
           </tr>
         <?php else: ?>
           <?php foreach ($orders as $order): ?>
@@ -524,22 +560,15 @@
                   <button class="btn-receive" onclick="openReceiveModal(<?= $order['id'] ?>)">Receive Delivery</button>
                 <?php elseif (($userRole ?? '') === 'Branch Manager' && ($order['status'] ?? '') === 'delivered_to_branch'): ?>
                   <button class="btn-confirm" onclick="openConfirmModal(<?= $order['id'] ?>)">Confirm Delivery</button>
+                <?php elseif (in_array($userRole ?? '', ['Central Office Admin', 'System Administrator'])): ?>
+                  <!-- Central Office actions: Change Supplier and Cancel Order -->
+                  <button class="btn-schedule" onclick="changeSupplier(<?= $order['id'] ?>, '<?= esc($order['supplier_name'] ?? '') ?>')">Change Supplier</button>
+                  <?php if (!in_array($order['status'] ?? '', ['delivered_to_branch', 'completed', 'cancelled'])): ?>
+                  <button class="btn-reject" onclick="cancelOrder(<?= $order['id'] ?>)">Cancel Order</button>
+                  <?php endif; ?>
                 <?php else: ?>
-                  <select onchange="updateStatus(<?= $order['id'] ?>, this.value)">
-                    <option value="">Change Status</option>
-                    <option value="pending" <?= ($order['status'] ?? '') === 'pending' ? 'selected' : '' ?>>Pending</option>
-                    <option value="approved" <?= ($order['status'] ?? '') === 'approved' ? 'selected' : '' ?>>Approved</option>
-                    <option value="po_issued_to_supplier" <?= ($order['status'] ?? '') === 'po_issued_to_supplier' ? 'selected' : '' ?>>PO Issued to Supplier</option>
-                    <option value="scheduled_for_delivery" <?= ($order['status'] ?? '') === 'scheduled_for_delivery' ? 'selected' : '' ?>>Scheduled for Delivery</option>
-                    <option value="ordered" <?= ($order['status'] ?? '') === 'ordered' ? 'selected' : '' ?>>Ordered</option>
-                    <option value="in_transit" <?= ($order['status'] ?? '') === 'in_transit' ? 'selected' : '' ?>>In Transit</option>
-                    <option value="delayed" <?= ($order['status'] ?? '') === 'delayed' ? 'selected' : '' ?>>Delayed</option>
-                    <option value="arriving" <?= ($order['status'] ?? '') === 'arriving' ? 'selected' : '' ?>>Arriving</option>
-                    <option value="delivered" <?= ($order['status'] ?? '') === 'delivered' ? 'selected' : '' ?>>Delivered</option>
-                    <option value="delivered_to_branch" <?= ($order['status'] ?? '') === 'delivered_to_branch' ? 'selected' : '' ?>>Delivered to Branch</option>
-                    <option value="completed" <?= ($order['status'] ?? '') === 'completed' ? 'selected' : '' ?>>Completed</option>
-                    <option value="cancelled" <?= ($order['status'] ?? '') === 'cancelled' ? 'selected' : '' ?>>Cancelled</option>
-                  </select>
+                  <!-- No actions available for this user/role/status combination -->
+                  <span style="color: #999; font-size: 12px;">No actions available</span>
                 <?php endif; ?>
               </td>
             </tr>
@@ -551,6 +580,13 @@
 </main>
 
 <script>
+// Global variables for modals
+let currentLogisticsPoId = null;
+let currentReceivePoId = null;
+let currentConfirmPoId = null;
+let currentChangePoId = null;
+let currentSupplierName = null;
+
 function addItemRow() {
   const container = document.getElementById('items-container');
   const newRow = document.createElement('div');
@@ -714,8 +750,6 @@ function scheduleDelivery(id) {
   });
 }
 
-let currentLogisticsPoId = null;
-
 function openLogisticsModal(poId, currentStatus, expectedDate) {
   currentLogisticsPoId = poId;
   document.getElementById('logistics_po_id').value = poId;
@@ -768,8 +802,6 @@ function updateDeliveryTimeline() {
     showAlert('Error: ' + error.message, 'error');
   });
 }
-
-let currentReceivePoId = null;
 
 function openReceiveModal(poId) {
   currentReceivePoId = poId;
@@ -885,8 +917,6 @@ function submitReceiveDelivery() {
   });
 }
 
-let currentConfirmPoId = null;
-
 function openConfirmModal(poId) {
   currentConfirmPoId = poId;
   document.getElementById('confirm_po_id').value = poId;
@@ -939,6 +969,7 @@ window.onclick = function(event) {
   const logisticsModal = document.getElementById('logisticsModal');
   const receiveModal = document.getElementById('receiveModal');
   const confirmModal = document.getElementById('confirmModal');
+  const changeSupplierModal = document.getElementById('changeSupplierModal');
   if (event.target == logisticsModal) {
     closeLogisticsModal();
   }
@@ -948,6 +979,107 @@ window.onclick = function(event) {
   if (event.target == confirmModal) {
     closeConfirmModal();
   }
+  if (event.target == changeSupplierModal) {
+    closeChangeSupplierModal();
+  }
+}
+
+function changeSupplier(poId, currentSupplier) {
+  currentChangePoId = poId;
+  currentSupplierName = currentSupplier;
+  document.getElementById('change_supplier_po_id').value = poId;
+  document.getElementById('supplier_change_notes').value = '';
+
+  // Pre-select current supplier in dropdown
+  const supplierSelect = document.getElementById('change_supplier_id');
+  // Find the option with matching text (supplier name)
+  for (let i = 0; i < supplierSelect.options.length; i++) {
+    const option = supplierSelect.options[i];
+    if (option.text.includes(currentSupplier)) {
+      option.selected = true;
+      break;
+    }
+  }
+
+  document.getElementById('changeSupplierModal').style.display = 'block';
+}
+
+function closeChangeSupplierModal() {
+  document.getElementById('changeSupplierModal').style.display = 'none';
+  currentChangePoId = null;
+  currentSupplierName = null;
+}
+
+function submitChangeSupplier() {
+  if (!currentChangePoId) {
+    showAlert('Error: PO ID not found', 'error');
+    return;
+  }
+
+  const newSupplierId = document.getElementById('change_supplier_id').value;
+  const changeNotes = document.getElementById('supplier_change_notes').value || null;
+
+  if (!newSupplierId) {
+    showAlert('Please select a new supplier', 'error');
+    return;
+  }
+
+  if (!confirm('Are you sure you want to change the supplier for this purchase order?')) {
+    return;
+  }
+
+  fetch(`<?= base_url('purchase-orders/change-supplier/') ?>${currentChangePoId}`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'X-Requested-With': 'XMLHttpRequest'
+    },
+    body: JSON.stringify({
+      supplier_id: newSupplierId,
+      change_notes: changeNotes
+    })
+  })
+  .then(r => r.json())
+  .then(result => {
+    if (result.success) {
+      showAlert(result.message, 'success');
+      closeChangeSupplierModal();
+      setTimeout(() => location.reload(), 1500);
+    } else {
+      showAlert(result.message, 'error');
+    }
+  })
+  .catch(error => {
+    showAlert('Error: ' + error.message, 'error');
+  });
+}
+
+function cancelOrder(poId) {
+  const reason = prompt('Enter reason for cancellation (optional):');
+  if (reason === null) return; // Cancelled
+
+  if (!confirm('Are you sure you want to cancel this purchase order? This action cannot be undone.')) return;
+
+  fetch(`<?= base_url('purchase-orders/cancel/') ?>${poId}`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'X-Requested-With': 'XMLHttpRequest'
+    },
+    body: JSON.stringify({ cancellation_reason: reason || null })
+  })
+  .then(r => r.json())
+  .then(result => {
+    if (result.success) {
+      showAlert(result.message, 'success');
+      setTimeout(() => location.reload(), 1500);
+    } else {
+      showAlert(result.message, 'error');
+    }
+  })
+  .catch(error => {
+    showAlert('Error: ' + error.message, 'error');
+  });
 }
 
 function showAlert(message, type) {

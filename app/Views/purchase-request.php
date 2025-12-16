@@ -408,13 +408,15 @@
           <th>Date Needed</th>
           <th>Date Requested</th>
           <th>Status</th>
+          <?php if ($userRole !== 'Branch Manager'): ?>
           <th>Action</th>
+          <?php endif; ?>
         </tr>
       </thead>
       <tbody>
         <?php if (empty($requests)): ?>
           <tr>
-            <td colspan="7" style="text-align: center; padding: 20px;">No purchase requests found</td>
+            <td colspan="<?= $userRole === 'Branch Manager' ? '6' : '7' ?>" style="text-align: center; padding: 20px;">No purchase requests found</td>
           </tr>
         <?php else: ?>
           <?php foreach ($requests as $request): ?>
@@ -437,6 +439,7 @@
                   <?= esc(ucwords($request['status'] ?? 'pending')) ?>
                 </span>
               </td>
+              <?php if ($userRole !== 'Branch Manager'): ?>
               <td>
                 <?php if (in_array($request['status'] ?? '', ['pending', 'pending central office review'])): ?>
                   <?php if (in_array($userRole ?? '', ['Central Office Admin', 'System Administrator'])): ?>
@@ -455,6 +458,7 @@
                   <span style="color: #999; font-size: 12px;">Status: <?= esc($request['status'] ?? 'unknown') ?></span>
                 <?php endif; ?>
               </td>
+              <?php endif; ?>
             </tr>
           <?php endforeach; ?>
         <?php endif; ?>
