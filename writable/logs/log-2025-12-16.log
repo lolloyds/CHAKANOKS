@@ -3461,3 +3461,125 @@ DEBUG - 2025-12-16 20:43:38 --> Session: Class initialized using 'CodeIgniter\Se
 DEBUG - 2025-12-16 20:44:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
 DEBUG - 2025-12-16 20:44:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
 DEBUG - 2025-12-16 20:44:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 23:39:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-16 23:39:49 --> User 'sysadmin' logged in successfully
+DEBUG - 2025-12-16 23:39:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 23:39:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 23:39:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 23:40:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 23:42:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-12-16 23:42:14 --> ErrorException: include(C:\xampp1\htdocs\CHAKANOKS\app\Views\users/includes/header.php): Failed to open stream: No such file or directory
+[Method: GET, Route: users]
+in APPPATH\Views\users\index.php on line 1.
+ 1 APPPATH\Views\users\index.php(1): CodeIgniter\Debug\Exceptions->errorHandler(2, 'include(C:\\xampp1\\htdocs\\CHAKANOKS\\app\\Views\\users/includes/header.php): Failed to open stream: No such file or directory', 'C:\\xampp1\\htdocs\\CHAKANOKS\\app\\Views\\users\\index.php', 1)
+ 2 APPPATH\Views\users\index.php(1): include()
+ 3 SYSTEMPATH\View\View.php(226): include('C:\\xampp1\\htdocs\\CHAKANOKS\\app\\Views\\users\\index.php')
+ 4 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 5 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('users/index', [], true)
+ 6 APPPATH\Controllers\UserController.php(49): view('users/index', [...])
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\UserController->index()
+ 8 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 9 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-12-16 23:48:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 23:48:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 23:48:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 23:49:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-12-16 23:49:38 --> ErrorException: Undefined array key "email"
+[Method: GET, Route: users/edit/8]
+in APPPATH\Views\users\edit.php on line 143.
+ 1 APPPATH\Views\users\edit.php(143): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "email"', 'C:\\xampp1\\htdocs\\CHAKANOKS\\app\\Views\\users\\edit.php', 143)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\xampp1\\htdocs\\CHAKANOKS\\app\\Views\\users\\edit.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('users/edit', [], true)
+ 5 APPPATH\Controllers\UserController.php(127): view('users/edit', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\UserController->edit('8')
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-12-16 23:52:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 23:52:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-12-16 23:52:59 --> ErrorException: Undefined array key "email"
+[Method: GET, Route: users/edit/7]
+in APPPATH\Views\users\edit.php on line 143.
+ 1 APPPATH\Views\users\edit.php(143): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "email"', 'C:\\xampp1\\htdocs\\CHAKANOKS\\app\\Views\\users\\edit.php', 143)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\xampp1\\htdocs\\CHAKANOKS\\app\\Views\\users\\edit.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('users/edit', [], true)
+ 5 APPPATH\Controllers\UserController.php(130): view('users/edit', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\UserController->edit('7')
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-12-16 23:53:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 23:53:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 23:53:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 23:53:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 23:53:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-12-16 23:53:27 --> ErrorException: Undefined array key "email"
+[Method: GET, Route: users/edit/10]
+in APPPATH\Views\users\edit.php on line 143.
+ 1 APPPATH\Views\users\edit.php(143): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "email"', 'C:\\xampp1\\htdocs\\CHAKANOKS\\app\\Views\\users\\edit.php', 143)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\xampp1\\htdocs\\CHAKANOKS\\app\\Views\\users\\edit.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('users/edit', [], true)
+ 5 APPPATH\Controllers\UserController.php(130): view('users/edit', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\UserController->edit('10')
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-12-16 23:56:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 23:56:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-12-16 23:56:10 --> ErrorException: Undefined array key "email"
+[Method: GET, Route: users/edit/10]
+in APPPATH\Views\users\edit.php on line 143.
+ 1 APPPATH\Views\users\edit.php(143): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "email"', 'C:\\xampp1\\htdocs\\CHAKANOKS\\app\\Views\\users\\edit.php', 143)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\xampp1\\htdocs\\CHAKANOKS\\app\\Views\\users\\edit.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('users/edit', [], true)
+ 5 APPPATH\Controllers\UserController.php(144): view('users/edit', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\UserController->edit('10')
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-12-16 23:56:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 23:56:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-12-16 23:56:53 --> ErrorException: Undefined array key "email"
+[Method: GET, Route: users/edit/7]
+in APPPATH\Views\users\edit.php on line 157.
+ 1 APPPATH\Views\users\edit.php(157): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "email"', 'C:\\xampp1\\htdocs\\CHAKANOKS\\app\\Views\\users\\edit.php', 157)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\xampp1\\htdocs\\CHAKANOKS\\app\\Views\\users\\edit.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('users/edit', [], true)
+ 5 APPPATH\Controllers\UserController.php(144): view('users/edit', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\UserController->edit('7')
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-12-16 23:59:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-12-16 23:59:26 --> ErrorException: Undefined array key "email"
+[Method: GET, Route: users/edit/10]
+in APPPATH\Views\users\edit.php on line 143.
+ 1 APPPATH\Views\users\edit.php(143): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "email"', 'C:\\xampp1\\htdocs\\CHAKANOKS\\app\\Views\\users\\edit.php', 143)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\xampp1\\htdocs\\CHAKANOKS\\app\\Views\\users\\edit.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('users/edit', [], true)
+ 5 APPPATH\Controllers\UserController.php(140): view('users/edit', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\UserController->edit('10')
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))

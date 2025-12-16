@@ -33,6 +33,9 @@
                 <div><a href="<?= base_url('suppliers'); ?>">Suppliers</a></div>
                 <div><a href="<?= base_url('transfer'); ?>">Transfers</a></div>
                 <div><a href="<?= base_url('franchise'); ?>">Franchise</a></div>
+                <?php if ($user['role'] === 'System Administrator'): ?>
+                    <div><a href="<?= base_url('users'); ?>">User Management</a></div>
+                <?php endif; ?>
                 <div><a href="<?= base_url('settings'); ?>">Settings</a></div>
                 <div><a href="<?= base_url('logout'); ?>" onclick="return confirm('Are you sure you want to logout?')">Logout</a></div>
                 <?php

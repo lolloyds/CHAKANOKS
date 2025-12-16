@@ -111,17 +111,6 @@ class UsersSeeder extends Seeder
                 'created_at'    => $now,
                 'updated_at'    => $now,
             ],
-            [
-                'username'      => 'supplier3',
-                'email'         => 'supplier3@gmail.com',
-                'password'      => password_hash('password', PASSWORD_DEFAULT),
-                'role'          => 'Supplier',
-                'branch_id'     => null,
-                'supplier_id'   => 3,
-                'status'        => 'active',
-                'created_at'    => $now,
-                'updated_at'    => $now,
-            ]
         ];
 
         $this->db->table('users')->insertBatch($users);

@@ -87,3 +87,13 @@ $routes->get('suppliers/edit/(:num)', 'Suppliers::edit/$1');
 $routes->post('suppliers/update/(:num)', 'Suppliers::update/$1');
 $routes->post('suppliers/delete/(:num)', 'Suppliers::delete/$1');
 $routes->post('suppliers/restore/(:num)', 'Suppliers::restore/$1');
+
+// ==================== USER MANAGEMENT ====================
+$routes->get('users', 'UserController::index');
+$routes->get('users/create', 'UserController::create');
+$routes->post('users/store', 'UserController::store');
+$routes->get('users/edit/(:num)', 'UserController::edit/$1');
+$routes->post('users/update/(:num)', 'UserController::update/$1');
+$routes->post('users/deactivate/(:num)', 'UserController::deactivate/$1');
+$routes->post('users/activate/(:num)', 'UserController::activate/$1');
+$routes->post('users/reset-password/(:num)', 'UserController::resetPassword/$1');

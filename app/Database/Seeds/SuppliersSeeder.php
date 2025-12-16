@@ -12,35 +12,25 @@ class SuppliersSeeder extends Seeder
         
         $suppliers = [
             [
-                'supplier_name' => 'Fresh Poultry Farm',
-                'contact_person' => 'Juan Dela Cruz',
+                'supplier_name' => 'Fresh Poultry Trading',
+                'contact_person' => 'Virgilio',
                 'phone' => '+63 917 123 4567',
-                'email' => 'juan.delacruz@freshpoultry.com',
+                'email' => 'virgilio@freshpoultry.com',
                 'address' => '123 Poultry Road, Davao City',
                 'status' => 'Active',
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s'),
             ],
             [
-                'supplier_name' => 'Spice Masters Trading',
-                'contact_person' => 'Maria Santos',
+                'supplier_name' => 'Edriane Farm',
+                'contact_person' => 'Edriane',
                 'phone' => '+63 918 234 5678',
-                'email' => 'maria.santos@spicemasters.com',
+                'email' => 'edriane@edrianefarm.com',
                 'address' => '456 Spice Avenue, Davao City',
                 'status' => 'Active',
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s'),
             ],
-            [
-                'supplier_name' => 'Rice & Grains Co.',
-                'contact_person' => 'Pedro Reyes',
-                'phone' => '+63 919 345 6789',
-                'email' => 'pedro.reyes@ricegrains.com',
-                'address' => '789 Grain Street, Davao City',
-                'status' => 'Active',
-                'created_at' => date('Y-m-d H:i:s'),
-                'updated_at' => date('Y-m-d H:i:s'),
-            ]
         ];
 
         // Insert suppliers
