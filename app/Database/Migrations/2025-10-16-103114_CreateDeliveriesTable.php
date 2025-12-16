@@ -48,9 +48,9 @@ class CreateDeliveriesTable extends Migration
             ],
             'status' => [
                 'type'       => 'ENUM',
-                'constraint' => ['scheduled', 'in_transit', 'delivered', 'received'],
+                'constraint' => ['scheduled', 'in_transit', 'delayed', 'arrived', 'delivered', 'received'],
                 'default'    => 'scheduled',
-                'comment'    => 'Delivery status',
+                'comment'    => 'Delivery status: scheduled -> in_transit/delayed -> arrived -> delivered (after claim) -> received',
             ],
             'scheduled_time' => [
                 'type'    => 'DATETIME',

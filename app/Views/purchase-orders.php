@@ -166,7 +166,7 @@
     .badge.ordered { background: #42a5f5; color: #fff; }
     .badge.in_transit { background: #ab47bc; color: #fff; }
     .badge.delayed { background: #f44336; color: #fff; }
-    .badge.arriving { background: #4caf50; color: #fff; }
+    .badge.arrived { background: #4caf50; color: #fff; }
     .badge.delivered { background: #26a69a; color: #fff; }
     .badge.delivered_to_branch { background: #00bcd4; color: #fff; }
     .badge.completed { background: #2e7d32; color: #fff; }

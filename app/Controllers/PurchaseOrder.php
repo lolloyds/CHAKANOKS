@@ -256,19 +256,19 @@ class PurchaseOrder extends BaseController
 
             // Define allowed status transitions based on user role
             if ($user['role'] === 'Supplier') {
-                // Suppliers can only start delivery (scheduled_for_delivery -> in_transit)
-                $validStatuses = ['in_transit'];
-                $requiredCurrentStatus = 'scheduled_for_delivery';
+                // Suppliers can manage delivery statuses
+                $validStatuses = ['in_transit', 'delayed', 'arrived'];
+                $allowedCurrentStatuses = ['scheduled_for_delivery', 'in_transit', 'delayed'];
 
-                if ($order['status'] !== $requiredCurrentStatus) {
+                if (!in_array($order['status'], $allowedCurrentStatuses)) {
                     return $this->response->setJSON([
                         'success' => false,
-                        'message' => 'Order must be scheduled for delivery before you can start transit. Current status: ' . $order['status']
+                        'message' => 'Cannot update delivery status from current status: ' . $order['status']
                     ]);
                 }
             } elseif ($user['role'] === 'Logistics Coordinator') {
                 // Logistics Coordinators can update various statuses
-                $validStatuses = ['scheduled_for_delivery', 'in_transit', 'delayed', 'arriving'];
+                $validStatuses = ['scheduled_for_delivery', 'in_transit', 'delayed', 'arrived'];
             } else {
                 // Fallback for any other authorized role
                 $validStatuses = ['in_transit'];
@@ -307,6 +307,9 @@ class PurchaseOrder extends BaseController
             if ($newStatus === 'in_transit') {
                 $this->createDeliveryFromPO($order, $user);
             }
+
+            // Update corresponding delivery record status if it exists
+            $this->updateDeliveryStatus($id, $newStatus);
 
             return $this->response->setJSON([
                 'success' => true,
@@ -751,6 +754,54 @@ class PurchaseOrder extends BaseController
             // Log error but don't fail the PO status update
             log_message('error', 'Failed to create delivery from PO: ' . $e->getMessage());
         }
+    }
+
+    /**
+     * Update delivery status when PO status changes
+     */
+    private function updateDeliveryStatus($purchaseOrderId, $newStatus)
+    {
+        try {
+            // Find delivery record linked to this PO
+            $delivery = $this->deliveryModel->where('purchase_order_id', $purchaseOrderId)->first();
+            
+            if ($delivery) {
+                // Map PO status to delivery status
+                $deliveryStatus = $this->mapPOStatusToDeliveryStatus($newStatus);
+                
+                if ($deliveryStatus) {
+                    $this->deliveryModel->update($delivery['id'], [
+                        'status' => $deliveryStatus,
+                        'updated_at' => date('Y-m-d H:i:s')
+                    ]);
+                    
+                    // Also update delivery items status
+                    $this->deliveryItemModel->where('delivery_id', $delivery['delivery_id'])
+                        ->set(['status' => $deliveryStatus, 'updated_at' => date('Y-m-d H:i:s')])
+                        ->update();
+                    
+                    log_message('info', "Updated delivery {$delivery['delivery_id']} status to {$deliveryStatus}");
+                }
+            }
+        } catch (\Exception $e) {
+            log_message('error', 'Failed to update delivery status: ' . $e->getMessage());
+        }
+    }
+
+    /**
+     * Map Purchase Order status to Delivery status
+     */
+    private function mapPOStatusToDeliveryStatus($poStatus)
+    {
+        $statusMap = [
+            'in_transit' => 'in_transit',
+            'delayed' => 'delayed',
+            'arrived' => 'arrived', // Arrived at destination, ready to claim
+            'delivered' => 'delivered', // After claimed and invoice sent
+            'completed' => 'received'
+        ];
+        
+        return $statusMap[$poStatus] ?? null;
     }
 
     /**

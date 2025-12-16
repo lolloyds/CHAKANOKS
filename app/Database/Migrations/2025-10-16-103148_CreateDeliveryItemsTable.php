@@ -58,9 +58,9 @@ class CreateDeliveryItemsTable extends Migration
             ],
             'status' => [
                 'type'       => 'ENUM',
-                'constraint' => ['in_transit', 'delivered', 'received', 'damaged', 'expired'],
+                'constraint' => ['scheduled', 'in_transit', 'delayed', 'arrived', 'delivered', 'received'],
                 'default'    => 'in_transit',
-                'comment'    => 'Individual item status within delivery',
+                'comment'    => 'Individual item status within delivery - matches deliveries table',
             ],
             'created_at' => [
                 'type'    => 'DATETIME',

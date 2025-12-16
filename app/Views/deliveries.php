@@ -158,6 +158,15 @@
 
   <div class="box">
     <h3><?php echo ($isBranchUser ? '📍 Your Branch Deliveries' : '📋 Upcoming Deliveries'); ?></h3>
+    
+    <!-- DEBUG INFO -->
+    <div style="background: #f0f0f0; padding: 10px; margin: 10px 0; border-radius: 5px; font-size: 12px;">
+      <strong>DEBUG INFO:</strong><br>
+      User Role: <?= $userRole ?? 'Not Set' ?><br>
+      Is Branch User: <?= ($isBranchUser ?? false) ? 'Yes' : 'No' ?><br>
+      User Branch ID: <?= $user['branch_id'] ?? 'Not Set' ?><br>
+      Show Action Column: <?= ($isBranchUser && $userRole === 'Inventory Staff') ? 'Yes' : 'No' ?><br>
+    </div>
     <table class="table">
       <thead>
         <tr>
@@ -195,19 +204,22 @@
                   echo '<span class="badge ' . $statusClass . '">' . esc(ucwords(str_replace('_', ' ', $delivery['status'] ?? 'scheduled'))) . '</span>';
                 ?>
               </td>
-              <?php if ($isBranchUser && $userRole === 'Inventory Staff' && isset($delivery['can_approve']) && $delivery['can_approve'] && $delivery['status'] === 'delivered'): ?>
+              <?php if ($isBranchUser && $userRole === 'Inventory Staff'): ?>
                 <td>
-                  <button onclick="receiveDelivery('<?php echo htmlspecialchars($delivery['delivery_id']); ?>', <?php echo $delivery['branch_id']; ?>)"
-                          class="btn-action">Receive</button>
-                </td>
-              <?php elseif ($isBranchUser && $userRole === 'Inventory Staff'): ?>
-                <td>
-                  <?php if ($delivery['status'] === 'received'): ?>
-                    <span style="color: #2e7d32; font-weight: 600;">✓ Already Received</span>
+                  <!-- DEBUG: Show status and conditions -->
+                  <small style="color: #999;">Status: <?= $delivery['status'] ?> | Role: <?= $userRole ?> | Branch: <?= $isBranchUser ? 'Yes' : 'No' ?></small><br>
+                  
+                  <?php if ($delivery['status'] === 'arrived' && $delivery['branch_id'] == ($user['branch_id'] ?? 0)): ?>
+                    <!-- DEBUG: Button values -->
+                    <small style="color: #999;">Button values: delivery_id='<?= $delivery['delivery_id'] ?? 'EMPTY' ?>', branch_id='<?= $delivery['branch_id'] ?? 'EMPTY' ?>'</small><br>
+                    <button onclick="claimDelivery('<?php echo htmlspecialchars($delivery['delivery_id']); ?>', <?php echo $delivery['branch_id']; ?>)"
+                            class="btn-action">Claim</button>
                   <?php elseif ($delivery['status'] === 'delivered'): ?>
-                    <span style="color: #ff9800; font-weight: 600;">Ready to Receive</span>
+                    <span style="color: #2e7d32; font-weight: 600;">✓ Already Claimed</span>
+                  <?php elseif ($delivery['status'] === 'arrived'): ?>
+                    <span style="color: #ff9800; font-weight: 600;">Ready to Claim (Different Branch)</span>
                   <?php else: ?>
-                    <span style="color: #666;">Not Delivered</span>
+                    <span style="color: #666;">Not Arrived (Status: <?= $delivery['status'] ?>)</span>
                   <?php endif; ?>
                 </td>
               <?php endif; ?>
@@ -225,8 +237,8 @@
   </div>
 
     <script>
-      function receiveDelivery(deliveryId, branchId) {
-        if (confirm('Confirm receipt of delivery? This will add all items to your branch inventory.')) {
+      function claimDelivery(deliveryId, branchId) {
+        if (confirm('Confirm claiming of delivery? This will add all items to your branch inventory.')) {
           fetch('<?php echo base_url('deliveries/approve'); ?>', {
             method: 'POST',
             headers: {
@@ -241,7 +253,7 @@
           .then(response => response.json())
           .then(data => {
             if (data.success) {
-              alert('Delivery received! Items added to inventory.');
+              alert('Delivery claimed! Items added to inventory.');
               location.reload();
             } else {
               alert(data.message || 'Error receiving delivery');

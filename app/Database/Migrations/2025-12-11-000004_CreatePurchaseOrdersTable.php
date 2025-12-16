@@ -52,7 +52,7 @@ class CreatePurchaseOrdersTable extends Migration
             ],
             'status' => [
                 'type'       => 'ENUM',
-                'constraint' => ['pending', 'approved', 'pending_delivery_schedule', 'scheduled_for_delivery', 'ordered', 'in_transit', 'delayed', 'arriving', 'delivered', 'delivered_to_branch', 'completed', 'cancelled'],
+                'constraint' => ['pending', 'approved', 'pending_delivery_schedule', 'scheduled_for_delivery', 'ordered', 'in_transit', 'delayed', 'arrived', 'delivered', 'delivered_to_branch', 'completed', 'cancelled'],
                 'default'    => 'pending',
             ],
             'total_cost' => [
