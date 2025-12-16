@@ -149,7 +149,7 @@
                   <button class="btn-schedule" onclick="scheduleDelivery(<?= $order['id'] ?>)">Schedule Delivery</button>
                 <?php elseif (in_array($order['status'] ?? '', ['scheduled_for_delivery', 'in_transit', 'delayed'])): ?>
                   <button class="btn-update" onclick="updateStatus(<?= $order['id'] ?>, '<?= $order['status'] ?>')">Update Status</button>
-                <?php elseif (($order['status'] ?? '') === 'arriving'): ?>
+                <?php elseif (($order['status'] ?? '') === 'delivered'): ?>
                   <button class="btn-submit" onclick="submitInvoice(<?= $order['id'] ?>)">Submit Invoice</button>
                 <?php else: ?>
                   <span style="color: #999; font-size: 12px;">-</span>

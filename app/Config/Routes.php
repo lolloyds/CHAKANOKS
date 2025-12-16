@@ -79,8 +79,6 @@ $routes->get('purchase-orders/get/(:num)', 'PurchaseOrder::get/$1');
 
 // ==================== SUPPLIER ROUTES ====================
 $routes->get('supplier-orders', 'PurchaseOrder::supplierOrders');
-$routes->get('supplier-deliveries', 'PurchaseOrder::supplierDeliveries');
-$routes->get('supplier-invoices', 'PurchaseOrder::supplierInvoices');
 
 // ==================== SUPPLIERS ====================
 $routes->post('suppliers/create', 'Suppliers::create');

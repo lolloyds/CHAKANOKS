@@ -552,7 +552,7 @@
                 </span>
               </td>
               <td>
-                <?php if (($userRole ?? '') === 'Supplier' && ($order['status'] ?? '') === 'po_issued_to_supplier'): ?>
+                <?php if (($userRole ?? '') === 'Logistics Coordinator' && ($order['status'] ?? '') === 'po_issued_to_supplier'): ?>
                   <button class="btn-schedule" onclick="scheduleDelivery(<?= $order['id'] ?>)">Schedule Delivery</button>
                 <?php elseif (($userRole ?? '') === 'Logistics Coordinator' && in_array($order['status'] ?? '', ['scheduled_for_delivery', 'in_transit', 'delayed', 'arriving'])): ?>
                   <button class="btn-logistics" onclick="openLogisticsModal(<?= $order['id'] ?>, '<?= esc($order['status'] ?? '') ?>', '<?= esc($order['expected_delivery_date'] ?? '') ?>')">Manage Timeline</button>

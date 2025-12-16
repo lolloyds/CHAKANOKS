@@ -8,8 +8,6 @@
                 ?>
                 <div><a href="<?= base_url('dashboard'); ?>">Dashboard</a></div>
                 <div><a href="<?= base_url('supplier-orders'); ?>">Orders</a></div>
-                <div><a href="<?= base_url('supplier-deliveries'); ?>">Delivery Status</a></div>
-                <div><a href="<?= base_url('supplier-invoices'); ?>">Invoices</a></div>
                 <div><a href="<?= base_url('settings'); ?>">Settings</a></div>
                 <div><a href="<?= base_url('logout'); ?>" onclick="return confirm('Are you sure you want to logout?')">Logout</a></div>
                 <?php
