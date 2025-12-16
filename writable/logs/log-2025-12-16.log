@@ -1008,3 +1008,1121 @@ Stack trace:
 DEBUG - 2025-12-16 11:29:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
 ERROR - 2025-12-16 11:29:15 --> Login error: Table 'chakanoks_db.users' doesn't exist
 DEBUG - 2025-12-16 11:29:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-16 11:33:40 --> User 'central_admin' logged in successfully
+DEBUG - 2025-12-16 11:33:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 11:33:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 11:33:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 11:33:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 11:34:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-16 11:34:11 --> User 'branch_manager1' logged in successfully
+DEBUG - 2025-12-16 11:34:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 11:34:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 11:34:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 11:35:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 11:36:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 11:36:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 11:36:56 --> JSON Data received: {"branch_id":"1","date_needed":"2025-12-20","notes":"","items":[{"item_name":"chickent","quantity":"10","unit":"pcs","notes":""}]}
+DEBUG - 2025-12-16 11:36:56 --> Items array: [{"item_name":"chickent","quantity":"10","unit":"pcs","notes":""}]
+DEBUG - 2025-12-16 11:36:56 --> Items count: 1
+DEBUG - 2025-12-16 11:36:56 --> Processing item 0: {"item_name":"chickent","quantity":"10","unit":"pcs","notes":""}
+DEBUG - 2025-12-16 11:36:56 --> Item name value: 'chickent'
+DEBUG - 2025-12-16 11:36:56 --> Item quantity value: '10'
+DEBUG - 2025-12-16 11:36:56 --> Trimmed item name: 'chickent', quantity: '10'
+DEBUG - 2025-12-16 11:36:56 --> Inserting item data: {"purchase_request_id":1,"item_id":null,"item_name":"chickent","quantity":10,"unit":"pcs","notes":""}
+DEBUG - 2025-12-16 11:36:56 --> Item insert result: SUCCESS with ID: 1
+DEBUG - 2025-12-16 11:36:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 11:37:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 11:37:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 11:37:16 --> Approve request - JSON data received: {"supplier_id":"1"}
+DEBUG - 2025-12-16 11:37:16 --> Approve request - POST data: []
+DEBUG - 2025-12-16 11:37:16 --> Approve request - Supplier ID: 1
+DEBUG - 2025-12-16 11:37:16 --> Approve request - Supplier validated: Fresh Poultry Farm
+DEBUG - 2025-12-16 11:37:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 11:40:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-16 11:41:30 --> User 'logistics_coordinator' logged in successfully
+DEBUG - 2025-12-16 11:41:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 11:41:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 11:41:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 11:41:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 11:42:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 11:42:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 11:42:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 11:42:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 11:42:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-16 11:42:48 --> User 'supplier1' logged in successfully
+DEBUG - 2025-12-16 11:42:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 11:42:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 11:42:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 11:42:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-12-16 11:42:58 --> mysqli_sql_exception: Column 'item_id' cannot be null in C:\xampp1\htdocs\CHAKANOKS\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\xampp1\htdocs\CHAKANOKS\system\Database\MySQLi\Connection.php(327): mysqli->query('INSERT INTO `de...', 0)
+#1 C:\xampp1\htdocs\CHAKANOKS\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `de...')
+#2 C:\xampp1\htdocs\CHAKANOKS\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `de...')
+#3 C:\xampp1\htdocs\CHAKANOKS\system\Database\BaseBuilder.php(1841): CodeIgniter\Database\BaseConnection->query('INSERT INTO `de...', NULL, false)
+#4 C:\xampp1\htdocs\CHAKANOKS\system\Database\BaseBuilder.php(2230): CodeIgniter\Database\BaseBuilder->batchExecute('_insertBatch', 100)
+#5 C:\xampp1\htdocs\CHAKANOKS\app\Controllers\PurchaseOrder.php(740): CodeIgniter\Database\BaseBuilder->insertBatch(Array)
+#6 C:\xampp1\htdocs\CHAKANOKS\app\Controllers\PurchaseOrder.php(297): App\Controllers\PurchaseOrder->createDeliveryFromPO(Array, Array)
+#7 C:\xampp1\htdocs\CHAKANOKS\system\CodeIgniter.php(933): App\Controllers\PurchaseOrder->updateDeliveryTimeline('1')
+#8 C:\xampp1\htdocs\CHAKANOKS\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PurchaseOrder))
+#9 C:\xampp1\htdocs\CHAKANOKS\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp1\htdocs\CHAKANOKS\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#11 C:\xampp1\htdocs\CHAKANOKS\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 C:\xampp1\htdocs\CHAKANOKS\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 {main}
+ERROR - 2025-12-16 11:42:58 --> Failed to create delivery from PO: Column 'item_id' cannot be null
+DEBUG - 2025-12-16 11:43:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 11:43:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-12-16 11:43:05 --> mysqli_sql_exception: Unknown column 'd.item_name' in 'field list' in C:\xampp1\htdocs\CHAKANOKS\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\xampp1\htdocs\CHAKANOKS\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT `d`.*, C...', 0)
+#1 C:\xampp1\htdocs\CHAKANOKS\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `d`.*, C...')
+#2 C:\xampp1\htdocs\CHAKANOKS\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `d`.*, C...')
+#3 C:\xampp1\htdocs\CHAKANOKS\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `d`.*, C...', Array, false)
+#4 C:\xampp1\htdocs\CHAKANOKS\app\Controllers\Inventory.php(345): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp1\htdocs\CHAKANOKS\app\Controllers\Inventory.php(313): App\Controllers\Inventory->getDeliveriesFromDatabase(NULL)
+#6 C:\xampp1\htdocs\CHAKANOKS\app\Controllers\Inventory.php(222): App\Controllers\Inventory->getAllDeliveries()
+#7 C:\xampp1\htdocs\CHAKANOKS\system\CodeIgniter.php(933): App\Controllers\Inventory->deliveries()
+#8 C:\xampp1\htdocs\CHAKANOKS\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventory))
+#9 C:\xampp1\htdocs\CHAKANOKS\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp1\htdocs\CHAKANOKS\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#11 C:\xampp1\htdocs\CHAKANOKS\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 C:\xampp1\htdocs\CHAKANOKS\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 {main}
+DEBUG - 2025-12-16 11:43:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-12-16 11:43:08 --> mysqli_sql_exception: Unknown column 'd.item_name' in 'field list' in C:\xampp1\htdocs\CHAKANOKS\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\xampp1\htdocs\CHAKANOKS\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT `d`.*, C...', 0)
+#1 C:\xampp1\htdocs\CHAKANOKS\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `d`.*, C...')
+#2 C:\xampp1\htdocs\CHAKANOKS\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `d`.*, C...')
+#3 C:\xampp1\htdocs\CHAKANOKS\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `d`.*, C...', Array, false)
+#4 C:\xampp1\htdocs\CHAKANOKS\app\Controllers\Inventory.php(345): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp1\htdocs\CHAKANOKS\app\Controllers\Inventory.php(313): App\Controllers\Inventory->getDeliveriesFromDatabase(NULL)
+#6 C:\xampp1\htdocs\CHAKANOKS\app\Controllers\Inventory.php(222): App\Controllers\Inventory->getAllDeliveries()
+#7 C:\xampp1\htdocs\CHAKANOKS\system\CodeIgniter.php(933): App\Controllers\Inventory->deliveries()
+#8 C:\xampp1\htdocs\CHAKANOKS\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventory))
+#9 C:\xampp1\htdocs\CHAKANOKS\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp1\htdocs\CHAKANOKS\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#11 C:\xampp1\htdocs\CHAKANOKS\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 C:\xampp1\htdocs\CHAKANOKS\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 {main}
+ERROR - 2025-12-16 12:07:54 --> mysqli_sql_exception: Failed to open the referenced table 'suppliers' in C:\xampp1\htdocs\CHAKANOKS\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\xampp1\htdocs\CHAKANOKS\system\Database\MySQLi\Connection.php(327): mysqli->query('CREATE TABLE `d...', 0)
+#1 C:\xampp1\htdocs\CHAKANOKS\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('CREATE TABLE `d...')
+#2 C:\xampp1\htdocs\CHAKANOKS\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('CREATE TABLE `d...')
+#3 C:\xampp1\htdocs\CHAKANOKS\system\Database\Forge.php(570): CodeIgniter\Database\BaseConnection->query('CREATE TABLE `d...')
+#4 C:\xampp1\htdocs\CHAKANOKS\app\Database\Migrations\2025-10-16-103114_CreateDeliveriesTable.php(103): CodeIgniter\Database\Forge->createTable('deliveries')
+#5 C:\xampp1\htdocs\CHAKANOKS\system\Database\MigrationRunner.php(876): App\Database\Migrations\CreateDeliveriesTable->up()
+#6 C:\xampp1\htdocs\CHAKANOKS\system\Database\MigrationRunner.php(182): CodeIgniter\Database\MigrationRunner->migrate('up', Object(stdClass))
+#7 C:\xampp1\htdocs\CHAKANOKS\system\Commands\Database\Migrate.php(85): CodeIgniter\Database\MigrationRunner->latest(NULL)
+#8 C:\xampp1\htdocs\CHAKANOKS\system\CLI\Commands.php(74): CodeIgniter\Commands\Database\Migrate->run(Array)
+#9 C:\xampp1\htdocs\CHAKANOKS\system\CLI\Console.php(47): CodeIgniter\CLI\Commands->run('migrate', Array)
+#10 C:\xampp1\htdocs\CHAKANOKS\system\Boot.php(388): CodeIgniter\CLI\Console->run()
+#11 C:\xampp1\htdocs\CHAKANOKS\system\Boot.php(133): CodeIgniter\Boot::runCommand(Object(CodeIgniter\CLI\Console))
+#12 C:\xampp1\htdocs\CHAKANOKS\spark(87): CodeIgniter\Boot::bootSpark(Object(Config\Paths))
+#13 {main}
+DEBUG - 2025-12-16 12:12:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 12:12:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-16 12:13:09 --> User 'branch_manager1' logged in successfully
+DEBUG - 2025-12-16 12:13:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 12:13:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 12:13:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 12:13:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 12:13:58 --> JSON Data received: {"branch_id":"1","date_needed":"2025-12-17","notes":"","items":[{"item_name":"chicken","quantity":"10","unit":"pcs","notes":""}]}
+DEBUG - 2025-12-16 12:13:58 --> Items array: [{"item_name":"chicken","quantity":"10","unit":"pcs","notes":""}]
+DEBUG - 2025-12-16 12:13:58 --> Items count: 1
+DEBUG - 2025-12-16 12:13:58 --> Processing item 0: {"item_name":"chicken","quantity":"10","unit":"pcs","notes":""}
+DEBUG - 2025-12-16 12:13:58 --> Item name value: 'chicken'
+DEBUG - 2025-12-16 12:13:58 --> Item quantity value: '10'
+DEBUG - 2025-12-16 12:13:58 --> Trimmed item name: 'chicken', quantity: '10'
+DEBUG - 2025-12-16 12:13:58 --> Inserting item data: {"purchase_request_id":1,"item_id":null,"item_name":"chicken","quantity":10,"unit":"pcs","notes":""}
+DEBUG - 2025-12-16 12:13:58 --> Item insert result: SUCCESS with ID: 1
+DEBUG - 2025-12-16 12:14:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 12:14:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 12:14:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 12:14:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-16 12:14:30 --> User 'central_admin' logged in successfully
+DEBUG - 2025-12-16 12:14:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 12:14:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 12:17:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 12:17:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 12:17:18 --> Approve request - JSON data received: {"supplier_id":"1"}
+DEBUG - 2025-12-16 12:17:18 --> Approve request - POST data: []
+DEBUG - 2025-12-16 12:17:18 --> Approve request - Supplier ID: 1
+DEBUG - 2025-12-16 12:17:18 --> Approve request - Supplier validated: Fresh Poultry Farm
+DEBUG - 2025-12-16 12:17:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 12:18:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 12:18:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-16 12:18:12 --> User 'logistics_coordinator' logged in successfully
+DEBUG - 2025-12-16 12:18:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 12:18:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-12-16 12:19:07 --> ErrorException: Cannot redeclare App\Controllers\PurchaseOrder::createDeliveryFromPO()
+[Method: GET, Route: purchase-orders]
+in APPPATH\Controllers\PurchaseOrder.php on line 779.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+DEBUG - 2025-12-16 12:21:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 12:23:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 12:24:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 12:24:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 12:29:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 12:29:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-16 12:30:01 --> User 'supplier1' logged in successfully
+DEBUG - 2025-12-16 12:30:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 12:30:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 12:30:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 12:30:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-12-16 12:30:10 --> mysqli_sql_exception: Column 'item_id' cannot be null in C:\xampp1\htdocs\CHAKANOKS\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\xampp1\htdocs\CHAKANOKS\system\Database\MySQLi\Connection.php(327): mysqli->query('INSERT INTO `de...', 0)
+#1 C:\xampp1\htdocs\CHAKANOKS\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `de...')
+#2 C:\xampp1\htdocs\CHAKANOKS\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `de...')
+#3 C:\xampp1\htdocs\CHAKANOKS\system\Database\BaseBuilder.php(1841): CodeIgniter\Database\BaseConnection->query('INSERT INTO `de...', NULL, false)
+#4 C:\xampp1\htdocs\CHAKANOKS\system\Database\BaseBuilder.php(2230): CodeIgniter\Database\BaseBuilder->batchExecute('_insertBatch', 100)
+#5 C:\xampp1\htdocs\CHAKANOKS\app\Controllers\PurchaseOrder.php(751): CodeIgniter\Database\BaseBuilder->insertBatch(Array)
+#6 C:\xampp1\htdocs\CHAKANOKS\app\Controllers\PurchaseOrder.php(308): App\Controllers\PurchaseOrder->createDeliveryFromPO(Array, Array)
+#7 C:\xampp1\htdocs\CHAKANOKS\system\CodeIgniter.php(933): App\Controllers\PurchaseOrder->updateDeliveryTimeline('1')
+#8 C:\xampp1\htdocs\CHAKANOKS\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PurchaseOrder))
+#9 C:\xampp1\htdocs\CHAKANOKS\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp1\htdocs\CHAKANOKS\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#11 C:\xampp1\htdocs\CHAKANOKS\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 C:\xampp1\htdocs\CHAKANOKS\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 {main}
+ERROR - 2025-12-16 12:30:10 --> Failed to create delivery from PO: Column 'item_id' cannot be null
+DEBUG - 2025-12-16 12:30:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 12:30:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 12:30:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 12:30:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-12-16 12:30:31 --> mysqli_sql_exception: Unknown column 'd.item_name' in 'field list' in C:\xampp1\htdocs\CHAKANOKS\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\xampp1\htdocs\CHAKANOKS\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT `d`.*, C...', 0)
+#1 C:\xampp1\htdocs\CHAKANOKS\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `d`.*, C...')
+#2 C:\xampp1\htdocs\CHAKANOKS\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `d`.*, C...')
+#3 C:\xampp1\htdocs\CHAKANOKS\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `d`.*, C...', Array, false)
+#4 C:\xampp1\htdocs\CHAKANOKS\app\Controllers\Inventory.php(345): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp1\htdocs\CHAKANOKS\app\Controllers\Inventory.php(313): App\Controllers\Inventory->getDeliveriesFromDatabase(NULL)
+#6 C:\xampp1\htdocs\CHAKANOKS\app\Controllers\Inventory.php(222): App\Controllers\Inventory->getAllDeliveries()
+#7 C:\xampp1\htdocs\CHAKANOKS\system\CodeIgniter.php(933): App\Controllers\Inventory->deliveries()
+#8 C:\xampp1\htdocs\CHAKANOKS\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventory))
+#9 C:\xampp1\htdocs\CHAKANOKS\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp1\htdocs\CHAKANOKS\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#11 C:\xampp1\htdocs\CHAKANOKS\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 C:\xampp1\htdocs\CHAKANOKS\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 {main}
+DEBUG - 2025-12-16 12:30:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-12-16 12:30:34 --> mysqli_sql_exception: Unknown column 'd.item_name' in 'field list' in C:\xampp1\htdocs\CHAKANOKS\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\xampp1\htdocs\CHAKANOKS\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT `d`.*, C...', 0)
+#1 C:\xampp1\htdocs\CHAKANOKS\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `d`.*, C...')
+#2 C:\xampp1\htdocs\CHAKANOKS\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `d`.*, C...')
+#3 C:\xampp1\htdocs\CHAKANOKS\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `d`.*, C...', Array, false)
+#4 C:\xampp1\htdocs\CHAKANOKS\app\Controllers\Inventory.php(345): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp1\htdocs\CHAKANOKS\app\Controllers\Inventory.php(313): App\Controllers\Inventory->getDeliveriesFromDatabase(NULL)
+#6 C:\xampp1\htdocs\CHAKANOKS\app\Controllers\Inventory.php(222): App\Controllers\Inventory->getAllDeliveries()
+#7 C:\xampp1\htdocs\CHAKANOKS\system\CodeIgniter.php(933): App\Controllers\Inventory->deliveries()
+#8 C:\xampp1\htdocs\CHAKANOKS\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventory))
+#9 C:\xampp1\htdocs\CHAKANOKS\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp1\htdocs\CHAKANOKS\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#11 C:\xampp1\htdocs\CHAKANOKS\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 C:\xampp1\htdocs\CHAKANOKS\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 {main}
+DEBUG - 2025-12-16 12:30:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-12-16 12:30:52 --> mysqli_sql_exception: Unknown column 'd.item_name' in 'field list' in C:\xampp1\htdocs\CHAKANOKS\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\xampp1\htdocs\CHAKANOKS\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT `d`.*, C...', 0)
+#1 C:\xampp1\htdocs\CHAKANOKS\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `d`.*, C...')
+#2 C:\xampp1\htdocs\CHAKANOKS\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `d`.*, C...')
+#3 C:\xampp1\htdocs\CHAKANOKS\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `d`.*, C...', Array, false)
+#4 C:\xampp1\htdocs\CHAKANOKS\app\Controllers\Inventory.php(345): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp1\htdocs\CHAKANOKS\app\Controllers\Inventory.php(308): App\Controllers\Inventory->getDeliveriesFromDatabase('1')
+#6 C:\xampp1\htdocs\CHAKANOKS\app\Controllers\Inventory.php(216): App\Controllers\Inventory->getBranchDeliveries('1')
+#7 C:\xampp1\htdocs\CHAKANOKS\system\CodeIgniter.php(933): App\Controllers\Inventory->deliveries()
+#8 C:\xampp1\htdocs\CHAKANOKS\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventory))
+#9 C:\xampp1\htdocs\CHAKANOKS\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp1\htdocs\CHAKANOKS\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#11 C:\xampp1\htdocs\CHAKANOKS\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 C:\xampp1\htdocs\CHAKANOKS\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 {main}
+DEBUG - 2025-12-16 12:38:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-12-16 12:38:29 --> mysqli_sql_exception: Unknown column 'd.item_name' in 'field list' in C:\xampp1\htdocs\CHAKANOKS\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\xampp1\htdocs\CHAKANOKS\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT `d`.*, C...', 0)
+#1 C:\xampp1\htdocs\CHAKANOKS\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `d`.*, C...')
+#2 C:\xampp1\htdocs\CHAKANOKS\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `d`.*, C...')
+#3 C:\xampp1\htdocs\CHAKANOKS\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `d`.*, C...', Array, false)
+#4 C:\xampp1\htdocs\CHAKANOKS\app\Controllers\Inventory.php(345): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp1\htdocs\CHAKANOKS\app\Controllers\Inventory.php(308): App\Controllers\Inventory->getDeliveriesFromDatabase('1')
+#6 C:\xampp1\htdocs\CHAKANOKS\app\Controllers\Inventory.php(216): App\Controllers\Inventory->getBranchDeliveries('1')
+#7 C:\xampp1\htdocs\CHAKANOKS\system\CodeIgniter.php(933): App\Controllers\Inventory->deliveries()
+#8 C:\xampp1\htdocs\CHAKANOKS\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventory))
+#9 C:\xampp1\htdocs\CHAKANOKS\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp1\htdocs\CHAKANOKS\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#11 C:\xampp1\htdocs\CHAKANOKS\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 C:\xampp1\htdocs\CHAKANOKS\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 {main}
+DEBUG - 2025-12-16 12:38:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-12-16 12:38:32 --> mysqli_sql_exception: Unknown column 'd.item_name' in 'field list' in C:\xampp1\htdocs\CHAKANOKS\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\xampp1\htdocs\CHAKANOKS\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT `d`.*, C...', 0)
+#1 C:\xampp1\htdocs\CHAKANOKS\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `d`.*, C...')
+#2 C:\xampp1\htdocs\CHAKANOKS\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `d`.*, C...')
+#3 C:\xampp1\htdocs\CHAKANOKS\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `d`.*, C...', Array, false)
+#4 C:\xampp1\htdocs\CHAKANOKS\app\Controllers\Inventory.php(345): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp1\htdocs\CHAKANOKS\app\Controllers\Inventory.php(308): App\Controllers\Inventory->getDeliveriesFromDatabase('1')
+#6 C:\xampp1\htdocs\CHAKANOKS\app\Controllers\Inventory.php(216): App\Controllers\Inventory->getBranchDeliveries('1')
+#7 C:\xampp1\htdocs\CHAKANOKS\system\CodeIgniter.php(933): App\Controllers\Inventory->deliveries()
+#8 C:\xampp1\htdocs\CHAKANOKS\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventory))
+#9 C:\xampp1\htdocs\CHAKANOKS\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp1\htdocs\CHAKANOKS\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#11 C:\xampp1\htdocs\CHAKANOKS\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 C:\xampp1\htdocs\CHAKANOKS\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 {main}
+DEBUG - 2025-12-16 12:41:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 12:41:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 12:55:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 12:56:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 12:56:56 --> JSON Data received: {"branch_id":"1","date_needed":"2025-12-18","notes":"","items":[{"item_name":"chicken","quantity":"10","unit":"pcs","notes":""}]}
+DEBUG - 2025-12-16 12:56:56 --> Items array: [{"item_name":"chicken","quantity":"10","unit":"pcs","notes":""}]
+DEBUG - 2025-12-16 12:56:56 --> Items count: 1
+DEBUG - 2025-12-16 12:56:56 --> Processing item 0: {"item_name":"chicken","quantity":"10","unit":"pcs","notes":""}
+DEBUG - 2025-12-16 12:56:56 --> Item name value: 'chicken'
+DEBUG - 2025-12-16 12:56:56 --> Item quantity value: '10'
+DEBUG - 2025-12-16 12:56:56 --> Trimmed item name: 'chicken', quantity: '10'
+DEBUG - 2025-12-16 12:56:56 --> Inserting item data: {"purchase_request_id":1,"item_id":null,"item_name":"chicken","quantity":10,"unit":"pcs","notes":""}
+DEBUG - 2025-12-16 12:56:56 --> Item insert result: SUCCESS with ID: 1
+DEBUG - 2025-12-16 12:56:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 12:57:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 12:57:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 12:57:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 12:57:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-16 12:57:47 --> User 'central_admin' logged in successfully
+DEBUG - 2025-12-16 12:57:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 12:57:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 12:57:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 12:57:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 12:57:57 --> Approve request - JSON data received: {"supplier_id":"1"}
+DEBUG - 2025-12-16 12:57:57 --> Approve request - POST data: []
+DEBUG - 2025-12-16 12:57:57 --> Approve request - Supplier ID: 1
+DEBUG - 2025-12-16 12:57:57 --> Approve request - Supplier validated: Fresh Poultry Farm
+DEBUG - 2025-12-16 12:57:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 12:58:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 12:58:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-16 12:58:12 --> User 'logistics_coordinator' logged in successfully
+DEBUG - 2025-12-16 12:58:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 12:58:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 12:58:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-12-16 12:58:17 --> mysqli_sql_exception: Unknown column 'd.item_name' in 'field list' in C:\xampp1\htdocs\CHAKANOKS\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\xampp1\htdocs\CHAKANOKS\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT `d`.*, C...', 0)
+#1 C:\xampp1\htdocs\CHAKANOKS\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `d`.*, C...')
+#2 C:\xampp1\htdocs\CHAKANOKS\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `d`.*, C...')
+#3 C:\xampp1\htdocs\CHAKANOKS\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `d`.*, C...', Array, false)
+#4 C:\xampp1\htdocs\CHAKANOKS\app\Controllers\Inventory.php(345): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp1\htdocs\CHAKANOKS\app\Controllers\Inventory.php(313): App\Controllers\Inventory->getDeliveriesFromDatabase(NULL)
+#6 C:\xampp1\htdocs\CHAKANOKS\app\Controllers\Inventory.php(222): App\Controllers\Inventory->getAllDeliveries()
+#7 C:\xampp1\htdocs\CHAKANOKS\system\CodeIgniter.php(933): App\Controllers\Inventory->deliveries()
+#8 C:\xampp1\htdocs\CHAKANOKS\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventory))
+#9 C:\xampp1\htdocs\CHAKANOKS\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp1\htdocs\CHAKANOKS\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#11 C:\xampp1\htdocs\CHAKANOKS\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 C:\xampp1\htdocs\CHAKANOKS\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 {main}
+DEBUG - 2025-12-16 12:58:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 12:58:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 12:58:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 12:58:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-12-16 12:58:34 --> mysqli_sql_exception: Unknown column 'd.item_name' in 'field list' in C:\xampp1\htdocs\CHAKANOKS\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\xampp1\htdocs\CHAKANOKS\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT `d`.*, C...', 0)
+#1 C:\xampp1\htdocs\CHAKANOKS\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `d`.*, C...')
+#2 C:\xampp1\htdocs\CHAKANOKS\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `d`.*, C...')
+#3 C:\xampp1\htdocs\CHAKANOKS\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `d`.*, C...', Array, false)
+#4 C:\xampp1\htdocs\CHAKANOKS\app\Controllers\Inventory.php(345): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp1\htdocs\CHAKANOKS\app\Controllers\Inventory.php(313): App\Controllers\Inventory->getDeliveriesFromDatabase(NULL)
+#6 C:\xampp1\htdocs\CHAKANOKS\app\Controllers\Inventory.php(222): App\Controllers\Inventory->getAllDeliveries()
+#7 C:\xampp1\htdocs\CHAKANOKS\system\CodeIgniter.php(933): App\Controllers\Inventory->deliveries()
+#8 C:\xampp1\htdocs\CHAKANOKS\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventory))
+#9 C:\xampp1\htdocs\CHAKANOKS\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp1\htdocs\CHAKANOKS\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#11 C:\xampp1\htdocs\CHAKANOKS\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 C:\xampp1\htdocs\CHAKANOKS\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 {main}
+DEBUG - 2025-12-16 12:58:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 12:58:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-12-16 12:58:44 --> mysqli_sql_exception: Column 'item_id' cannot be null in C:\xampp1\htdocs\CHAKANOKS\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\xampp1\htdocs\CHAKANOKS\system\Database\MySQLi\Connection.php(327): mysqli->query('INSERT INTO `de...', 0)
+#1 C:\xampp1\htdocs\CHAKANOKS\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `de...')
+#2 C:\xampp1\htdocs\CHAKANOKS\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `de...')
+#3 C:\xampp1\htdocs\CHAKANOKS\system\Database\BaseBuilder.php(1841): CodeIgniter\Database\BaseConnection->query('INSERT INTO `de...', NULL, false)
+#4 C:\xampp1\htdocs\CHAKANOKS\system\Database\BaseBuilder.php(2230): CodeIgniter\Database\BaseBuilder->batchExecute('_insertBatch', 100)
+#5 C:\xampp1\htdocs\CHAKANOKS\app\Controllers\PurchaseOrder.php(751): CodeIgniter\Database\BaseBuilder->insertBatch(Array)
+#6 C:\xampp1\htdocs\CHAKANOKS\app\Controllers\PurchaseOrder.php(308): App\Controllers\PurchaseOrder->createDeliveryFromPO(Array, Array)
+#7 C:\xampp1\htdocs\CHAKANOKS\system\CodeIgniter.php(933): App\Controllers\PurchaseOrder->updateDeliveryTimeline('1')
+#8 C:\xampp1\htdocs\CHAKANOKS\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PurchaseOrder))
+#9 C:\xampp1\htdocs\CHAKANOKS\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp1\htdocs\CHAKANOKS\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#11 C:\xampp1\htdocs\CHAKANOKS\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 C:\xampp1\htdocs\CHAKANOKS\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 {main}
+ERROR - 2025-12-16 12:58:44 --> Failed to create delivery from PO: Column 'item_id' cannot be null
+DEBUG - 2025-12-16 12:58:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 12:58:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-12-16 12:58:52 --> mysqli_sql_exception: Unknown column 'd.item_name' in 'field list' in C:\xampp1\htdocs\CHAKANOKS\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\xampp1\htdocs\CHAKANOKS\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT `d`.*, C...', 0)
+#1 C:\xampp1\htdocs\CHAKANOKS\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `d`.*, C...')
+#2 C:\xampp1\htdocs\CHAKANOKS\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `d`.*, C...')
+#3 C:\xampp1\htdocs\CHAKANOKS\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `d`.*, C...', Array, false)
+#4 C:\xampp1\htdocs\CHAKANOKS\app\Controllers\Inventory.php(345): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp1\htdocs\CHAKANOKS\app\Controllers\Inventory.php(313): App\Controllers\Inventory->getDeliveriesFromDatabase(NULL)
+#6 C:\xampp1\htdocs\CHAKANOKS\app\Controllers\Inventory.php(222): App\Controllers\Inventory->getAllDeliveries()
+#7 C:\xampp1\htdocs\CHAKANOKS\system\CodeIgniter.php(933): App\Controllers\Inventory->deliveries()
+#8 C:\xampp1\htdocs\CHAKANOKS\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventory))
+#9 C:\xampp1\htdocs\CHAKANOKS\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp1\htdocs\CHAKANOKS\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#11 C:\xampp1\htdocs\CHAKANOKS\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 C:\xampp1\htdocs\CHAKANOKS\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 {main}
+DEBUG - 2025-12-16 12:58:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-12-16 12:58:54 --> mysqli_sql_exception: Unknown column 'd.item_name' in 'field list' in C:\xampp1\htdocs\CHAKANOKS\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\xampp1\htdocs\CHAKANOKS\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT `d`.*, C...', 0)
+#1 C:\xampp1\htdocs\CHAKANOKS\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `d`.*, C...')
+#2 C:\xampp1\htdocs\CHAKANOKS\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `d`.*, C...')
+#3 C:\xampp1\htdocs\CHAKANOKS\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `d`.*, C...', Array, false)
+#4 C:\xampp1\htdocs\CHAKANOKS\app\Controllers\Inventory.php(345): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp1\htdocs\CHAKANOKS\app\Controllers\Inventory.php(313): App\Controllers\Inventory->getDeliveriesFromDatabase(NULL)
+#6 C:\xampp1\htdocs\CHAKANOKS\app\Controllers\Inventory.php(222): App\Controllers\Inventory->getAllDeliveries()
+#7 C:\xampp1\htdocs\CHAKANOKS\system\CodeIgniter.php(933): App\Controllers\Inventory->deliveries()
+#8 C:\xampp1\htdocs\CHAKANOKS\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventory))
+#9 C:\xampp1\htdocs\CHAKANOKS\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp1\htdocs\CHAKANOKS\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#11 C:\xampp1\htdocs\CHAKANOKS\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 C:\xampp1\htdocs\CHAKANOKS\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 {main}
+DEBUG - 2025-12-16 12:58:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-12-16 12:58:54 --> mysqli_sql_exception: Unknown column 'd.item_name' in 'field list' in C:\xampp1\htdocs\CHAKANOKS\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\xampp1\htdocs\CHAKANOKS\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT `d`.*, C...', 0)
+#1 C:\xampp1\htdocs\CHAKANOKS\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `d`.*, C...')
+#2 C:\xampp1\htdocs\CHAKANOKS\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `d`.*, C...')
+#3 C:\xampp1\htdocs\CHAKANOKS\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `d`.*, C...', Array, false)
+#4 C:\xampp1\htdocs\CHAKANOKS\app\Controllers\Inventory.php(345): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp1\htdocs\CHAKANOKS\app\Controllers\Inventory.php(313): App\Controllers\Inventory->getDeliveriesFromDatabase(NULL)
+#6 C:\xampp1\htdocs\CHAKANOKS\app\Controllers\Inventory.php(222): App\Controllers\Inventory->getAllDeliveries()
+#7 C:\xampp1\htdocs\CHAKANOKS\system\CodeIgniter.php(933): App\Controllers\Inventory->deliveries()
+#8 C:\xampp1\htdocs\CHAKANOKS\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventory))
+#9 C:\xampp1\htdocs\CHAKANOKS\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp1\htdocs\CHAKANOKS\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#11 C:\xampp1\htdocs\CHAKANOKS\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 C:\xampp1\htdocs\CHAKANOKS\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 {main}
+DEBUG - 2025-12-16 12:58:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-12-16 12:58:55 --> mysqli_sql_exception: Unknown column 'd.item_name' in 'field list' in C:\xampp1\htdocs\CHAKANOKS\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\xampp1\htdocs\CHAKANOKS\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT `d`.*, C...', 0)
+#1 C:\xampp1\htdocs\CHAKANOKS\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `d`.*, C...')
+#2 C:\xampp1\htdocs\CHAKANOKS\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `d`.*, C...')
+#3 C:\xampp1\htdocs\CHAKANOKS\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `d`.*, C...', Array, false)
+#4 C:\xampp1\htdocs\CHAKANOKS\app\Controllers\Inventory.php(345): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp1\htdocs\CHAKANOKS\app\Controllers\Inventory.php(313): App\Controllers\Inventory->getDeliveriesFromDatabase(NULL)
+#6 C:\xampp1\htdocs\CHAKANOKS\app\Controllers\Inventory.php(222): App\Controllers\Inventory->getAllDeliveries()
+#7 C:\xampp1\htdocs\CHAKANOKS\system\CodeIgniter.php(933): App\Controllers\Inventory->deliveries()
+#8 C:\xampp1\htdocs\CHAKANOKS\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventory))
+#9 C:\xampp1\htdocs\CHAKANOKS\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp1\htdocs\CHAKANOKS\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#11 C:\xampp1\htdocs\CHAKANOKS\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 C:\xampp1\htdocs\CHAKANOKS\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 {main}
+DEBUG - 2025-12-16 12:58:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-12-16 12:58:55 --> mysqli_sql_exception: Unknown column 'd.item_name' in 'field list' in C:\xampp1\htdocs\CHAKANOKS\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\xampp1\htdocs\CHAKANOKS\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT `d`.*, C...', 0)
+#1 C:\xampp1\htdocs\CHAKANOKS\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `d`.*, C...')
+#2 C:\xampp1\htdocs\CHAKANOKS\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `d`.*, C...')
+#3 C:\xampp1\htdocs\CHAKANOKS\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `d`.*, C...', Array, false)
+#4 C:\xampp1\htdocs\CHAKANOKS\app\Controllers\Inventory.php(345): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp1\htdocs\CHAKANOKS\app\Controllers\Inventory.php(313): App\Controllers\Inventory->getDeliveriesFromDatabase(NULL)
+#6 C:\xampp1\htdocs\CHAKANOKS\app\Controllers\Inventory.php(222): App\Controllers\Inventory->getAllDeliveries()
+#7 C:\xampp1\htdocs\CHAKANOKS\system\CodeIgniter.php(933): App\Controllers\Inventory->deliveries()
+#8 C:\xampp1\htdocs\CHAKANOKS\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventory))
+#9 C:\xampp1\htdocs\CHAKANOKS\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp1\htdocs\CHAKANOKS\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#11 C:\xampp1\htdocs\CHAKANOKS\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 C:\xampp1\htdocs\CHAKANOKS\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 {main}
+DEBUG - 2025-12-16 12:58:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-12-16 12:58:55 --> mysqli_sql_exception: Unknown column 'd.item_name' in 'field list' in C:\xampp1\htdocs\CHAKANOKS\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\xampp1\htdocs\CHAKANOKS\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT `d`.*, C...', 0)
+#1 C:\xampp1\htdocs\CHAKANOKS\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `d`.*, C...')
+#2 C:\xampp1\htdocs\CHAKANOKS\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `d`.*, C...')
+#3 C:\xampp1\htdocs\CHAKANOKS\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `d`.*, C...', Array, false)
+#4 C:\xampp1\htdocs\CHAKANOKS\app\Controllers\Inventory.php(345): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp1\htdocs\CHAKANOKS\app\Controllers\Inventory.php(313): App\Controllers\Inventory->getDeliveriesFromDatabase(NULL)
+#6 C:\xampp1\htdocs\CHAKANOKS\app\Controllers\Inventory.php(222): App\Controllers\Inventory->getAllDeliveries()
+#7 C:\xampp1\htdocs\CHAKANOKS\system\CodeIgniter.php(933): App\Controllers\Inventory->deliveries()
+#8 C:\xampp1\htdocs\CHAKANOKS\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventory))
+#9 C:\xampp1\htdocs\CHAKANOKS\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp1\htdocs\CHAKANOKS\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#11 C:\xampp1\htdocs\CHAKANOKS\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 C:\xampp1\htdocs\CHAKANOKS\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 {main}
+DEBUG - 2025-12-16 12:58:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-12-16 12:58:56 --> mysqli_sql_exception: Unknown column 'd.item_name' in 'field list' in C:\xampp1\htdocs\CHAKANOKS\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\xampp1\htdocs\CHAKANOKS\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT `d`.*, C...', 0)
+#1 C:\xampp1\htdocs\CHAKANOKS\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `d`.*, C...')
+#2 C:\xampp1\htdocs\CHAKANOKS\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `d`.*, C...')
+#3 C:\xampp1\htdocs\CHAKANOKS\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `d`.*, C...', Array, false)
+#4 C:\xampp1\htdocs\CHAKANOKS\app\Controllers\Inventory.php(345): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp1\htdocs\CHAKANOKS\app\Controllers\Inventory.php(313): App\Controllers\Inventory->getDeliveriesFromDatabase(NULL)
+#6 C:\xampp1\htdocs\CHAKANOKS\app\Controllers\Inventory.php(222): App\Controllers\Inventory->getAllDeliveries()
+#7 C:\xampp1\htdocs\CHAKANOKS\system\CodeIgniter.php(933): App\Controllers\Inventory->deliveries()
+#8 C:\xampp1\htdocs\CHAKANOKS\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventory))
+#9 C:\xampp1\htdocs\CHAKANOKS\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp1\htdocs\CHAKANOKS\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#11 C:\xampp1\htdocs\CHAKANOKS\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 C:\xampp1\htdocs\CHAKANOKS\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 {main}
+DEBUG - 2025-12-16 12:58:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-12-16 12:58:56 --> mysqli_sql_exception: Unknown column 'd.item_name' in 'field list' in C:\xampp1\htdocs\CHAKANOKS\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\xampp1\htdocs\CHAKANOKS\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT `d`.*, C...', 0)
+#1 C:\xampp1\htdocs\CHAKANOKS\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `d`.*, C...')
+#2 C:\xampp1\htdocs\CHAKANOKS\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `d`.*, C...')
+#3 C:\xampp1\htdocs\CHAKANOKS\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `d`.*, C...', Array, false)
+#4 C:\xampp1\htdocs\CHAKANOKS\app\Controllers\Inventory.php(345): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp1\htdocs\CHAKANOKS\app\Controllers\Inventory.php(313): App\Controllers\Inventory->getDeliveriesFromDatabase(NULL)
+#6 C:\xampp1\htdocs\CHAKANOKS\app\Controllers\Inventory.php(222): App\Controllers\Inventory->getAllDeliveries()
+#7 C:\xampp1\htdocs\CHAKANOKS\system\CodeIgniter.php(933): App\Controllers\Inventory->deliveries()
+#8 C:\xampp1\htdocs\CHAKANOKS\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventory))
+#9 C:\xampp1\htdocs\CHAKANOKS\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp1\htdocs\CHAKANOKS\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#11 C:\xampp1\htdocs\CHAKANOKS\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 C:\xampp1\htdocs\CHAKANOKS\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 {main}
+DEBUG - 2025-12-16 13:02:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-12-16 13:02:34 --> mysqli_sql_exception: Unknown column 'd.item_name' in 'field list' in C:\xampp1\htdocs\CHAKANOKS\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\xampp1\htdocs\CHAKANOKS\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT `d`.*, C...', 0)
+#1 C:\xampp1\htdocs\CHAKANOKS\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `d`.*, C...')
+#2 C:\xampp1\htdocs\CHAKANOKS\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `d`.*, C...')
+#3 C:\xampp1\htdocs\CHAKANOKS\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `d`.*, C...', Array, false)
+#4 C:\xampp1\htdocs\CHAKANOKS\app\Controllers\Inventory.php(405): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp1\htdocs\CHAKANOKS\app\Controllers\Inventory.php(373): App\Controllers\Inventory->getDeliveriesFromDatabase(NULL)
+#6 C:\xampp1\htdocs\CHAKANOKS\app\Controllers\Inventory.php(242): App\Controllers\Inventory->getAllDeliveries()
+#7 C:\xampp1\htdocs\CHAKANOKS\system\CodeIgniter.php(933): App\Controllers\Inventory->deliveries()
+#8 C:\xampp1\htdocs\CHAKANOKS\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inventory))
+#9 C:\xampp1\htdocs\CHAKANOKS\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp1\htdocs\CHAKANOKS\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#11 C:\xampp1\htdocs\CHAKANOKS\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 C:\xampp1\htdocs\CHAKANOKS\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 {main}
+DEBUG - 2025-12-16 13:08:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:08:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:09:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:09:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:09:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:09:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:09:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:09:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:09:56 --> JSON Data received: {"branch_id":"1","date_needed":"2025-12-19","notes":"","items":[{"item_name":"chicken","quantity":"10","unit":"pcs","notes":""}]}
+DEBUG - 2025-12-16 13:09:56 --> Items array: [{"item_name":"chicken","quantity":"10","unit":"pcs","notes":""}]
+DEBUG - 2025-12-16 13:09:56 --> Items count: 1
+DEBUG - 2025-12-16 13:09:56 --> Processing item 0: {"item_name":"chicken","quantity":"10","unit":"pcs","notes":""}
+DEBUG - 2025-12-16 13:09:56 --> Item name value: 'chicken'
+DEBUG - 2025-12-16 13:09:56 --> Item quantity value: '10'
+DEBUG - 2025-12-16 13:09:56 --> Trimmed item name: 'chicken', quantity: '10'
+DEBUG - 2025-12-16 13:09:56 --> Inserting item data: {"purchase_request_id":1,"item_id":null,"item_name":"chicken","quantity":10,"unit":"pcs","notes":""}
+DEBUG - 2025-12-16 13:09:56 --> Item insert result: SUCCESS with ID: 1
+DEBUG - 2025-12-16 13:09:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-16 13:10:09 --> User 'central_admin' logged in successfully
+DEBUG - 2025-12-16 13:10:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:10:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:10:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:10:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:10:19 --> Approve request - JSON data received: {"supplier_id":"1"}
+DEBUG - 2025-12-16 13:10:19 --> Approve request - POST data: []
+DEBUG - 2025-12-16 13:10:19 --> Approve request - Supplier ID: 1
+DEBUG - 2025-12-16 13:10:19 --> Approve request - Supplier validated: Fresh Poultry Farm
+DEBUG - 2025-12-16 13:10:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:11:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:11:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:11:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:11:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:11:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-16 13:11:44 --> User 'logistics_coordinator' logged in successfully
+DEBUG - 2025-12-16 13:11:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:11:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:11:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:11:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:12:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:12:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:12:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:12:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:12:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:13:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:13:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:13:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-16 13:13:52 --> User 'supplier1' logged in successfully
+DEBUG - 2025-12-16 13:13:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:13:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:13:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:14:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-12-16 13:14:02 --> mysqli_sql_exception: Column 'item_id' cannot be null in C:\xampp1\htdocs\CHAKANOKS\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\xampp1\htdocs\CHAKANOKS\system\Database\MySQLi\Connection.php(327): mysqli->query('INSERT INTO `de...', 0)
+#1 C:\xampp1\htdocs\CHAKANOKS\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `de...')
+#2 C:\xampp1\htdocs\CHAKANOKS\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `de...')
+#3 C:\xampp1\htdocs\CHAKANOKS\system\Database\BaseBuilder.php(1841): CodeIgniter\Database\BaseConnection->query('INSERT INTO `de...', NULL, false)
+#4 C:\xampp1\htdocs\CHAKANOKS\system\Database\BaseBuilder.php(2230): CodeIgniter\Database\BaseBuilder->batchExecute('_insertBatch', 100)
+#5 C:\xampp1\htdocs\CHAKANOKS\app\Controllers\PurchaseOrder.php(751): CodeIgniter\Database\BaseBuilder->insertBatch(Array)
+#6 C:\xampp1\htdocs\CHAKANOKS\app\Controllers\PurchaseOrder.php(308): App\Controllers\PurchaseOrder->createDeliveryFromPO(Array, Array)
+#7 C:\xampp1\htdocs\CHAKANOKS\system\CodeIgniter.php(933): App\Controllers\PurchaseOrder->updateDeliveryTimeline('1')
+#8 C:\xampp1\htdocs\CHAKANOKS\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PurchaseOrder))
+#9 C:\xampp1\htdocs\CHAKANOKS\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp1\htdocs\CHAKANOKS\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#11 C:\xampp1\htdocs\CHAKANOKS\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 C:\xampp1\htdocs\CHAKANOKS\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 {main}
+ERROR - 2025-12-16 13:14:02 --> Failed to create delivery from PO: Column 'item_id' cannot be null
+DEBUG - 2025-12-16 13:14:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:14:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:14:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:14:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:14:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:20:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:20:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:20:21 --> JSON Data received: {"branch_id":"1","date_needed":"2025-12-25","notes":"","items":[{"item_name":"coke","quantity":"10","unit":"bottle","notes":""}]}
+DEBUG - 2025-12-16 13:20:21 --> Items array: [{"item_name":"coke","quantity":"10","unit":"bottle","notes":""}]
+DEBUG - 2025-12-16 13:20:21 --> Items count: 1
+DEBUG - 2025-12-16 13:20:21 --> Processing item 0: {"item_name":"coke","quantity":"10","unit":"bottle","notes":""}
+DEBUG - 2025-12-16 13:20:21 --> Item name value: 'coke'
+DEBUG - 2025-12-16 13:20:21 --> Item quantity value: '10'
+DEBUG - 2025-12-16 13:20:21 --> Trimmed item name: 'coke', quantity: '10'
+DEBUG - 2025-12-16 13:20:21 --> Inserting item data: {"purchase_request_id":2,"item_id":null,"item_name":"coke","quantity":10,"unit":"bottle","notes":""}
+DEBUG - 2025-12-16 13:20:21 --> Item insert result: SUCCESS with ID: 2
+DEBUG - 2025-12-16 13:20:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:20:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:20:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:20:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:20:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-16 13:20:50 --> User 'logistics_coordinator' logged in successfully
+DEBUG - 2025-12-16 13:20:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:20:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:20:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:21:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:21:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-16 13:21:13 --> User 'central_admin' logged in successfully
+DEBUG - 2025-12-16 13:21:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:21:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:21:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:21:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:21:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:21:26 --> Approve request - JSON data received: {"supplier_id":"1"}
+DEBUG - 2025-12-16 13:21:26 --> Approve request - POST data: []
+DEBUG - 2025-12-16 13:21:26 --> Approve request - Supplier ID: 1
+DEBUG - 2025-12-16 13:21:26 --> Approve request - Supplier validated: Fresh Poultry Farm
+DEBUG - 2025-12-16 13:21:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:21:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:21:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:21:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:21:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:21:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-16 13:21:57 --> User 'logistics_coordinator' logged in successfully
+DEBUG - 2025-12-16 13:21:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:21:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:22:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:22:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:22:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:22:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:22:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-16 13:22:32 --> Found 1 PO items for delivery creation
+INFO - 2025-12-16 13:22:32 --> Created delivery record with ID: DLV-002
+ERROR - 2025-12-16 13:22:32 --> mysqli_sql_exception: Column 'item_id' cannot be null in C:\xampp1\htdocs\CHAKANOKS\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\xampp1\htdocs\CHAKANOKS\system\Database\MySQLi\Connection.php(327): mysqli->query('INSERT INTO `de...', 0)
+#1 C:\xampp1\htdocs\CHAKANOKS\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `de...')
+#2 C:\xampp1\htdocs\CHAKANOKS\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `de...')
+#3 C:\xampp1\htdocs\CHAKANOKS\system\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `de...', Array, false)
+#4 C:\xampp1\htdocs\CHAKANOKS\system\Model.php(394): CodeIgniter\Database\BaseBuilder->insert()
+#5 C:\xampp1\htdocs\CHAKANOKS\system\BaseModel.php(838): CodeIgniter\Model->doInsert(Array)
+#6 C:\xampp1\htdocs\CHAKANOKS\system\Model.php(797): CodeIgniter\BaseModel->insert(Array, true)
+#7 C:\xampp1\htdocs\CHAKANOKS\app\Controllers\PurchaseOrder.php(750): CodeIgniter\Model->insert(Array)
+#8 C:\xampp1\htdocs\CHAKANOKS\app\Controllers\PurchaseOrder.php(308): App\Controllers\PurchaseOrder->createDeliveryFromPO(Array, Array)
+#9 C:\xampp1\htdocs\CHAKANOKS\system\CodeIgniter.php(933): App\Controllers\PurchaseOrder->updateDeliveryTimeline('2')
+#10 C:\xampp1\htdocs\CHAKANOKS\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PurchaseOrder))
+#11 C:\xampp1\htdocs\CHAKANOKS\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#12 C:\xampp1\htdocs\CHAKANOKS\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#13 C:\xampp1\htdocs\CHAKANOKS\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#14 C:\xampp1\htdocs\CHAKANOKS\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#15 {main}
+ERROR - 2025-12-16 13:22:32 --> Failed to create delivery from PO: Column 'item_id' cannot be null
+DEBUG - 2025-12-16 13:22:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:22:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:24:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:25:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:25:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:25:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:25:44 --> JSON Data received: {"branch_id":"1","date_needed":"2025-12-19","notes":"","items":[{"item_name":"rice","quantity":"1","unit":"sack","notes":""}]}
+DEBUG - 2025-12-16 13:25:44 --> Items array: [{"item_name":"rice","quantity":"1","unit":"sack","notes":""}]
+DEBUG - 2025-12-16 13:25:44 --> Items count: 1
+DEBUG - 2025-12-16 13:25:44 --> Processing item 0: {"item_name":"rice","quantity":"1","unit":"sack","notes":""}
+DEBUG - 2025-12-16 13:25:44 --> Item name value: 'rice'
+DEBUG - 2025-12-16 13:25:44 --> Item quantity value: '1'
+DEBUG - 2025-12-16 13:25:44 --> Trimmed item name: 'rice', quantity: '1'
+DEBUG - 2025-12-16 13:25:44 --> Inserting item data: {"purchase_request_id":3,"item_id":null,"item_name":"rice","quantity":1,"unit":"sack","notes":""}
+DEBUG - 2025-12-16 13:25:44 --> Item insert result: SUCCESS with ID: 3
+DEBUG - 2025-12-16 13:25:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:25:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:25:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-16 13:26:01 --> User 'central_admin' logged in successfully
+DEBUG - 2025-12-16 13:26:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:26:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:26:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:26:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:26:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:26:14 --> Approve request - JSON data received: {"supplier_id":"2"}
+DEBUG - 2025-12-16 13:26:14 --> Approve request - POST data: []
+DEBUG - 2025-12-16 13:26:14 --> Approve request - Supplier ID: 2
+DEBUG - 2025-12-16 13:26:14 --> Approve request - Supplier validated: Spice Masters Trading
+DEBUG - 2025-12-16 13:26:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:26:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:26:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:26:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-16 13:26:47 --> User 'logistics_coordinator' logged in successfully
+DEBUG - 2025-12-16 13:26:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:26:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:26:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:27:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:27:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:27:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:27:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:27:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:27:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:27:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:27:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:27:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:28:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:28:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:28:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:28:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:28:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:28:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:28:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-16 13:28:29 --> User 'supplier1' logged in successfully
+DEBUG - 2025-12-16 13:28:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:28:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:28:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:28:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:28:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:28:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:28:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:29:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:29:43 --> JSON Data received: {"branch_id":"1","date_needed":"2025-12-18","notes":"","items":[{"item_name":"potato","quantity":"1","unit":"pcs","notes":""}]}
+DEBUG - 2025-12-16 13:29:43 --> Items array: [{"item_name":"potato","quantity":"1","unit":"pcs","notes":""}]
+DEBUG - 2025-12-16 13:29:43 --> Items count: 1
+DEBUG - 2025-12-16 13:29:43 --> Processing item 0: {"item_name":"potato","quantity":"1","unit":"pcs","notes":""}
+DEBUG - 2025-12-16 13:29:43 --> Item name value: 'potato'
+DEBUG - 2025-12-16 13:29:43 --> Item quantity value: '1'
+DEBUG - 2025-12-16 13:29:43 --> Trimmed item name: 'potato', quantity: '1'
+DEBUG - 2025-12-16 13:29:43 --> Inserting item data: {"purchase_request_id":4,"item_id":null,"item_name":"potato","quantity":1,"unit":"pcs","notes":""}
+DEBUG - 2025-12-16 13:29:43 --> Item insert result: SUCCESS with ID: 4
+DEBUG - 2025-12-16 13:29:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:29:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:29:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-16 13:29:59 --> User 'central_admin' logged in successfully
+DEBUG - 2025-12-16 13:29:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:30:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:30:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:30:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:30:07 --> Approve request - JSON data received: {"supplier_id":"1"}
+DEBUG - 2025-12-16 13:30:07 --> Approve request - POST data: []
+DEBUG - 2025-12-16 13:30:07 --> Approve request - Supplier ID: 1
+DEBUG - 2025-12-16 13:30:07 --> Approve request - Supplier validated: Fresh Poultry Farm
+DEBUG - 2025-12-16 13:30:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:30:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:30:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:30:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-16 13:30:49 --> User 'logistics_coordinator' logged in successfully
+DEBUG - 2025-12-16 13:30:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:30:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:30:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:30:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:31:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:31:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:31:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:31:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:31:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-16 13:31:45 --> Found 1 PO items for delivery creation
+INFO - 2025-12-16 13:31:45 --> Created delivery record with ID: DLV-003
+ERROR - 2025-12-16 13:31:45 --> mysqli_sql_exception: Column 'item_id' cannot be null in C:\xampp1\htdocs\CHAKANOKS\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\xampp1\htdocs\CHAKANOKS\system\Database\MySQLi\Connection.php(327): mysqli->query('INSERT INTO `de...', 0)
+#1 C:\xampp1\htdocs\CHAKANOKS\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `de...')
+#2 C:\xampp1\htdocs\CHAKANOKS\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `de...')
+#3 C:\xampp1\htdocs\CHAKANOKS\system\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `de...', Array, false)
+#4 C:\xampp1\htdocs\CHAKANOKS\system\Model.php(394): CodeIgniter\Database\BaseBuilder->insert()
+#5 C:\xampp1\htdocs\CHAKANOKS\system\BaseModel.php(838): CodeIgniter\Model->doInsert(Array)
+#6 C:\xampp1\htdocs\CHAKANOKS\system\Model.php(797): CodeIgniter\BaseModel->insert(Array, true)
+#7 C:\xampp1\htdocs\CHAKANOKS\app\Controllers\PurchaseOrder.php(750): CodeIgniter\Model->insert(Array)
+#8 C:\xampp1\htdocs\CHAKANOKS\app\Controllers\PurchaseOrder.php(308): App\Controllers\PurchaseOrder->createDeliveryFromPO(Array, Array)
+#9 C:\xampp1\htdocs\CHAKANOKS\system\CodeIgniter.php(933): App\Controllers\PurchaseOrder->updateDeliveryTimeline('4')
+#10 C:\xampp1\htdocs\CHAKANOKS\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PurchaseOrder))
+#11 C:\xampp1\htdocs\CHAKANOKS\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#12 C:\xampp1\htdocs\CHAKANOKS\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#13 C:\xampp1\htdocs\CHAKANOKS\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#14 C:\xampp1\htdocs\CHAKANOKS\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#15 {main}
+ERROR - 2025-12-16 13:31:45 --> Failed to create delivery from PO: Column 'item_id' cannot be null
+DEBUG - 2025-12-16 13:31:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:32:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:33:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:38:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:41:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:41:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:41:43 --> JSON Data received: {"branch_id":"1","date_needed":"2025-12-19","notes":"","items":[{"item_name":"chicken","quantity":"10","unit":"pcs","notes":""}]}
+DEBUG - 2025-12-16 13:41:43 --> Items array: [{"item_name":"chicken","quantity":"10","unit":"pcs","notes":""}]
+DEBUG - 2025-12-16 13:41:43 --> Items count: 1
+DEBUG - 2025-12-16 13:41:43 --> Processing item 0: {"item_name":"chicken","quantity":"10","unit":"pcs","notes":""}
+DEBUG - 2025-12-16 13:41:43 --> Item name value: 'chicken'
+DEBUG - 2025-12-16 13:41:43 --> Item quantity value: '10'
+DEBUG - 2025-12-16 13:41:43 --> Trimmed item name: 'chicken', quantity: '10'
+DEBUG - 2025-12-16 13:41:43 --> Inserting item data: {"purchase_request_id":1,"item_id":null,"item_name":"chicken","quantity":10,"unit":"pcs","notes":""}
+DEBUG - 2025-12-16 13:41:43 --> Item insert result: SUCCESS with ID: 1
+DEBUG - 2025-12-16 13:41:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:41:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:41:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:42:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:42:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-16 13:42:11 --> User 'central_admin' logged in successfully
+DEBUG - 2025-12-16 13:42:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:42:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:42:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:42:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:42:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:42:25 --> Approve request - JSON data received: {"supplier_id":"1"}
+DEBUG - 2025-12-16 13:42:25 --> Approve request - POST data: []
+DEBUG - 2025-12-16 13:42:25 --> Approve request - Supplier ID: 1
+DEBUG - 2025-12-16 13:42:25 --> Approve request - Supplier validated: Fresh Poultry Farm
+DEBUG - 2025-12-16 13:42:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:42:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:42:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-16 13:42:38 --> User 'logistics_coordinator' logged in successfully
+DEBUG - 2025-12-16 13:42:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:42:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:42:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:42:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:42:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:43:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:43:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-16 13:43:13 --> Found 1 PO items for delivery creation
+ERROR - 2025-12-16 13:43:13 --> mysqli_sql_exception: Unknown column 'item_name' in 'field list' in C:\xampp1\htdocs\CHAKANOKS\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\xampp1\htdocs\CHAKANOKS\system\Database\MySQLi\Connection.php(327): mysqli->query('INSERT INTO `de...', 0)
+#1 C:\xampp1\htdocs\CHAKANOKS\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `de...')
+#2 C:\xampp1\htdocs\CHAKANOKS\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `de...')
+#3 C:\xampp1\htdocs\CHAKANOKS\system\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `de...', Array, false)
+#4 C:\xampp1\htdocs\CHAKANOKS\system\Model.php(394): CodeIgniter\Database\BaseBuilder->insert()
+#5 C:\xampp1\htdocs\CHAKANOKS\system\BaseModel.php(838): CodeIgniter\Model->doInsert(Array)
+#6 C:\xampp1\htdocs\CHAKANOKS\system\Model.php(797): CodeIgniter\BaseModel->insert(Array, true)
+#7 C:\xampp1\htdocs\CHAKANOKS\app\Controllers\PurchaseOrder.php(746): CodeIgniter\Model->insert(Array)
+#8 C:\xampp1\htdocs\CHAKANOKS\app\Controllers\PurchaseOrder.php(308): App\Controllers\PurchaseOrder->createDeliveryFromPO(Array, Array)
+#9 C:\xampp1\htdocs\CHAKANOKS\system\CodeIgniter.php(933): App\Controllers\PurchaseOrder->updateDeliveryTimeline('1')
+#10 C:\xampp1\htdocs\CHAKANOKS\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PurchaseOrder))
+#11 C:\xampp1\htdocs\CHAKANOKS\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#12 C:\xampp1\htdocs\CHAKANOKS\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#13 C:\xampp1\htdocs\CHAKANOKS\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#14 C:\xampp1\htdocs\CHAKANOKS\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#15 {main}
+ERROR - 2025-12-16 13:43:13 --> Failed to create delivery from PO: Unknown column 'item_name' in 'field list'
+DEBUG - 2025-12-16 13:43:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:43:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:43:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:45:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:45:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:45:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:46:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:46:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:46:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:46:29 --> JSON Data received: {"branch_id":"1","date_needed":"2025-12-19","notes":"","items":[{"item_name":"chicken","quantity":"10","unit":"pcs","notes":""}]}
+DEBUG - 2025-12-16 13:46:29 --> Items array: [{"item_name":"chicken","quantity":"10","unit":"pcs","notes":""}]
+DEBUG - 2025-12-16 13:46:29 --> Items count: 1
+DEBUG - 2025-12-16 13:46:29 --> Processing item 0: {"item_name":"chicken","quantity":"10","unit":"pcs","notes":""}
+DEBUG - 2025-12-16 13:46:29 --> Item name value: 'chicken'
+DEBUG - 2025-12-16 13:46:29 --> Item quantity value: '10'
+DEBUG - 2025-12-16 13:46:29 --> Trimmed item name: 'chicken', quantity: '10'
+DEBUG - 2025-12-16 13:46:29 --> Inserting item data: {"purchase_request_id":1,"item_id":null,"item_name":"chicken","quantity":10,"unit":"pcs","notes":""}
+DEBUG - 2025-12-16 13:46:29 --> Item insert result: SUCCESS with ID: 1
+DEBUG - 2025-12-16 13:46:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:46:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:46:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-16 13:46:54 --> User 'central_admin' logged in successfully
+DEBUG - 2025-12-16 13:46:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:46:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:46:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:47:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:47:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:47:09 --> Approve request - JSON data received: {"supplier_id":"1"}
+DEBUG - 2025-12-16 13:47:09 --> Approve request - POST data: []
+DEBUG - 2025-12-16 13:47:09 --> Approve request - Supplier ID: 1
+DEBUG - 2025-12-16 13:47:09 --> Approve request - Supplier validated: Fresh Poultry Farm
+DEBUG - 2025-12-16 13:47:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:47:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:47:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-16 13:47:23 --> User 'logistics_coordinator' logged in successfully
+DEBUG - 2025-12-16 13:47:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:47:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:47:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:47:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:47:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:47:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:47:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-12-16 13:47:52 --> mysqli_sql_exception: Unknown column 'item_name' in 'field list' in C:\xampp1\htdocs\CHAKANOKS\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\xampp1\htdocs\CHAKANOKS\system\Database\MySQLi\Connection.php(327): mysqli->query('INSERT INTO `de...', 0)
+#1 C:\xampp1\htdocs\CHAKANOKS\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `de...')
+#2 C:\xampp1\htdocs\CHAKANOKS\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `de...')
+#3 C:\xampp1\htdocs\CHAKANOKS\system\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `de...', Array, false)
+#4 C:\xampp1\htdocs\CHAKANOKS\system\Model.php(394): CodeIgniter\Database\BaseBuilder->insert()
+#5 C:\xampp1\htdocs\CHAKANOKS\system\BaseModel.php(838): CodeIgniter\Model->doInsert(Array)
+#6 C:\xampp1\htdocs\CHAKANOKS\system\Model.php(797): CodeIgniter\BaseModel->insert(Array, true)
+#7 C:\xampp1\htdocs\CHAKANOKS\app\Controllers\PurchaseOrder.php(739): CodeIgniter\Model->insert(Array)
+#8 C:\xampp1\htdocs\CHAKANOKS\app\Controllers\PurchaseOrder.php(308): App\Controllers\PurchaseOrder->createDeliveryFromPO(Array, Array)
+#9 C:\xampp1\htdocs\CHAKANOKS\system\CodeIgniter.php(933): App\Controllers\PurchaseOrder->updateDeliveryTimeline('1')
+#10 C:\xampp1\htdocs\CHAKANOKS\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PurchaseOrder))
+#11 C:\xampp1\htdocs\CHAKANOKS\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#12 C:\xampp1\htdocs\CHAKANOKS\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#13 C:\xampp1\htdocs\CHAKANOKS\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#14 C:\xampp1\htdocs\CHAKANOKS\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#15 {main}
+ERROR - 2025-12-16 13:47:52 --> Failed to create delivery from PO: Unknown column 'item_name' in 'field list'
+DEBUG - 2025-12-16 13:47:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:48:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:48:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:54:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:55:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:55:02 --> JSON Data received: {"branch_id":"1","date_needed":"2025-12-24","notes":"","items":[{"item_name":"rice","quantity":"1","unit":"kg","notes":""}]}
+DEBUG - 2025-12-16 13:55:02 --> Items array: [{"item_name":"rice","quantity":"1","unit":"kg","notes":""}]
+DEBUG - 2025-12-16 13:55:02 --> Items count: 1
+DEBUG - 2025-12-16 13:55:02 --> Processing item 0: {"item_name":"rice","quantity":"1","unit":"kg","notes":""}
+DEBUG - 2025-12-16 13:55:02 --> Item name value: 'rice'
+DEBUG - 2025-12-16 13:55:02 --> Item quantity value: '1'
+DEBUG - 2025-12-16 13:55:02 --> Trimmed item name: 'rice', quantity: '1'
+DEBUG - 2025-12-16 13:55:02 --> Inserting item data: {"purchase_request_id":2,"item_id":null,"item_name":"rice","quantity":1,"unit":"kg","notes":""}
+DEBUG - 2025-12-16 13:55:02 --> Item insert result: SUCCESS with ID: 2
+DEBUG - 2025-12-16 13:55:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:55:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:55:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-16 13:55:20 --> User 'central_admin' logged in successfully
+DEBUG - 2025-12-16 13:55:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:55:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:55:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:55:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:55:29 --> Approve request - JSON data received: {"supplier_id":"1"}
+DEBUG - 2025-12-16 13:55:29 --> Approve request - POST data: []
+DEBUG - 2025-12-16 13:55:29 --> Approve request - Supplier ID: 1
+DEBUG - 2025-12-16 13:55:29 --> Approve request - Supplier validated: Fresh Poultry Farm
+DEBUG - 2025-12-16 13:55:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:55:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:55:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-16 13:55:42 --> User 'supplier1' logged in successfully
+DEBUG - 2025-12-16 13:55:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:55:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:55:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:55:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:55:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-16 13:56:00 --> User 'logistics_coordinator' logged in successfully
+DEBUG - 2025-12-16 13:56:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:56:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:56:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:56:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:56:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:56:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:56:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-16 13:56:34 --> Delivery DLV-001 created from PO PO-002
+DEBUG - 2025-12-16 13:56:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:56:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:58:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:58:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-16 13:58:34 --> User 'central_admin' logged in successfully
+DEBUG - 2025-12-16 13:58:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:58:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:58:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:59:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:59:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:59:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:59:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:59:48 --> JSON Data received: {"branch_id":"1","date_needed":"2025-12-23","notes":"","items":[{"item_name":"pepsi","quantity":"1","unit":"bottle","notes":""}]}
+DEBUG - 2025-12-16 13:59:48 --> Items array: [{"item_name":"pepsi","quantity":"1","unit":"bottle","notes":""}]
+DEBUG - 2025-12-16 13:59:48 --> Items count: 1
+DEBUG - 2025-12-16 13:59:48 --> Processing item 0: {"item_name":"pepsi","quantity":"1","unit":"bottle","notes":""}
+DEBUG - 2025-12-16 13:59:48 --> Item name value: 'pepsi'
+DEBUG - 2025-12-16 13:59:48 --> Item quantity value: '1'
+DEBUG - 2025-12-16 13:59:48 --> Trimmed item name: 'pepsi', quantity: '1'
+DEBUG - 2025-12-16 13:59:48 --> Inserting item data: {"purchase_request_id":3,"item_id":null,"item_name":"pepsi","quantity":1,"unit":"bottle","notes":""}
+DEBUG - 2025-12-16 13:59:48 --> Item insert result: SUCCESS with ID: 3
+DEBUG - 2025-12-16 13:59:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 13:59:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 14:00:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 14:00:01 --> Approve request - JSON data received: {"supplier_id":"1"}
+DEBUG - 2025-12-16 14:00:01 --> Approve request - POST data: []
+DEBUG - 2025-12-16 14:00:01 --> Approve request - Supplier ID: 1
+DEBUG - 2025-12-16 14:00:01 --> Approve request - Supplier validated: Fresh Poultry Farm
+DEBUG - 2025-12-16 14:00:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 14:00:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 14:00:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 14:00:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-16 14:00:28 --> User 'logistics_coordinator' logged in successfully
+DEBUG - 2025-12-16 14:00:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 14:00:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 14:00:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 14:00:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 14:00:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 14:00:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 14:00:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-12-16 14:00:58 --> mysqli_sql_exception: Unknown column 'item_name' in 'field list' in C:\xampp1\htdocs\CHAKANOKS\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\xampp1\htdocs\CHAKANOKS\system\Database\MySQLi\Connection.php(327): mysqli->query('INSERT INTO `de...', 0)
+#1 C:\xampp1\htdocs\CHAKANOKS\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `de...')
+#2 C:\xampp1\htdocs\CHAKANOKS\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `de...')
+#3 C:\xampp1\htdocs\CHAKANOKS\system\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `de...', Array, false)
+#4 C:\xampp1\htdocs\CHAKANOKS\system\Model.php(394): CodeIgniter\Database\BaseBuilder->insert()
+#5 C:\xampp1\htdocs\CHAKANOKS\system\BaseModel.php(838): CodeIgniter\Model->doInsert(Array)
+#6 C:\xampp1\htdocs\CHAKANOKS\system\Model.php(797): CodeIgniter\BaseModel->insert(Array, true)
+#7 C:\xampp1\htdocs\CHAKANOKS\app\Controllers\PurchaseOrder.php(740): CodeIgniter\Model->insert(Array)
+#8 C:\xampp1\htdocs\CHAKANOKS\app\Controllers\PurchaseOrder.php(308): App\Controllers\PurchaseOrder->createDeliveryFromPO(Array, Array)
+#9 C:\xampp1\htdocs\CHAKANOKS\system\CodeIgniter.php(933): App\Controllers\PurchaseOrder->updateDeliveryTimeline('3')
+#10 C:\xampp1\htdocs\CHAKANOKS\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PurchaseOrder))
+#11 C:\xampp1\htdocs\CHAKANOKS\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#12 C:\xampp1\htdocs\CHAKANOKS\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#13 C:\xampp1\htdocs\CHAKANOKS\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#14 C:\xampp1\htdocs\CHAKANOKS\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#15 {main}
+ERROR - 2025-12-16 14:00:58 --> Failed to create delivery from PO: Unknown column 'item_name' in 'field list'
+DEBUG - 2025-12-16 14:01:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 14:01:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 14:01:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 14:01:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 14:01:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 14:01:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 14:01:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 14:04:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 14:09:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 14:09:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 14:09:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 14:09:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 14:09:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 14:09:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 14:09:36 --> JSON Data received: {"branch_id":"1","date_needed":"2025-12-19","notes":"","items":[{"item_name":"ajfbafnkakf","quantity":"12","unit":"gallon","notes":""}]}
+DEBUG - 2025-12-16 14:09:36 --> Items array: [{"item_name":"ajfbafnkakf","quantity":"12","unit":"gallon","notes":""}]
+DEBUG - 2025-12-16 14:09:36 --> Items count: 1
+DEBUG - 2025-12-16 14:09:36 --> Processing item 0: {"item_name":"ajfbafnkakf","quantity":"12","unit":"gallon","notes":""}
+DEBUG - 2025-12-16 14:09:36 --> Item name value: 'ajfbafnkakf'
+DEBUG - 2025-12-16 14:09:36 --> Item quantity value: '12'
+DEBUG - 2025-12-16 14:09:36 --> Trimmed item name: 'ajfbafnkakf', quantity: '12'
+DEBUG - 2025-12-16 14:09:36 --> Inserting item data: {"purchase_request_id":4,"item_id":null,"item_name":"ajfbafnkakf","quantity":12,"unit":"gallon","notes":""}
+DEBUG - 2025-12-16 14:09:36 --> Item insert result: SUCCESS with ID: 4
+DEBUG - 2025-12-16 14:09:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 14:09:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 14:09:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-16 14:09:57 --> User 'central_admin' logged in successfully
+DEBUG - 2025-12-16 14:09:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 14:09:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 14:10:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 14:10:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 14:10:05 --> Approve request - JSON data received: {"supplier_id":"1"}
+DEBUG - 2025-12-16 14:10:05 --> Approve request - POST data: []
+DEBUG - 2025-12-16 14:10:05 --> Approve request - Supplier ID: 1
+DEBUG - 2025-12-16 14:10:05 --> Approve request - Supplier validated: Fresh Poultry Farm
+DEBUG - 2025-12-16 14:10:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 14:10:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 14:10:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-16 14:10:33 --> User 'logistics_coordinator' logged in successfully
+DEBUG - 2025-12-16 14:10:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 14:10:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 14:10:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 14:10:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 14:10:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 14:10:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 14:11:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 14:11:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-12-16 14:11:07 --> mysqli_sql_exception: Column 'item_id' cannot be null in C:\xampp1\htdocs\CHAKANOKS\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\xampp1\htdocs\CHAKANOKS\system\Database\MySQLi\Connection.php(327): mysqli->query('INSERT INTO `de...', 0)
+#1 C:\xampp1\htdocs\CHAKANOKS\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `de...')
+#2 C:\xampp1\htdocs\CHAKANOKS\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `de...')
+#3 C:\xampp1\htdocs\CHAKANOKS\system\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `de...', Array, false)
+#4 C:\xampp1\htdocs\CHAKANOKS\system\Model.php(394): CodeIgniter\Database\BaseBuilder->insert()
+#5 C:\xampp1\htdocs\CHAKANOKS\system\BaseModel.php(838): CodeIgniter\Model->doInsert(Array)
+#6 C:\xampp1\htdocs\CHAKANOKS\system\Model.php(797): CodeIgniter\BaseModel->insert(Array, true)
+#7 C:\xampp1\htdocs\CHAKANOKS\app\Controllers\PurchaseOrder.php(741): CodeIgniter\Model->insert(Array)
+#8 C:\xampp1\htdocs\CHAKANOKS\app\Controllers\PurchaseOrder.php(308): App\Controllers\PurchaseOrder->createDeliveryFromPO(Array, Array)
+#9 C:\xampp1\htdocs\CHAKANOKS\system\CodeIgniter.php(933): App\Controllers\PurchaseOrder->updateDeliveryTimeline('4')
+#10 C:\xampp1\htdocs\CHAKANOKS\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PurchaseOrder))
+#11 C:\xampp1\htdocs\CHAKANOKS\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#12 C:\xampp1\htdocs\CHAKANOKS\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#13 C:\xampp1\htdocs\CHAKANOKS\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#14 C:\xampp1\htdocs\CHAKANOKS\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#15 {main}
+ERROR - 2025-12-16 14:11:07 --> Failed to create delivery from PO: Column 'item_id' cannot be null
+DEBUG - 2025-12-16 14:11:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 14:11:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 14:11:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-12-16 14:16:03 --> mysqli_sql_exception: Table 'chakanoks_db.branches' doesn't exist in C:\xampp1\htdocs\CHAKANOKS\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\xampp1\htdocs\CHAKANOKS\system\Database\MySQLi\Connection.php(327): mysqli->query('INSERT INTO `br...', 0)
+#1 C:\xampp1\htdocs\CHAKANOKS\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `br...')
+#2 C:\xampp1\htdocs\CHAKANOKS\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `br...')
+#3 C:\xampp1\htdocs\CHAKANOKS\system\Database\BaseBuilder.php(1841): CodeIgniter\Database\BaseConnection->query('INSERT INTO `br...', NULL, false)
+#4 C:\xampp1\htdocs\CHAKANOKS\system\Database\BaseBuilder.php(2230): CodeIgniter\Database\BaseBuilder->batchExecute('_insertBatch', 100)
+#5 C:\xampp1\htdocs\CHAKANOKS\app\Database\Seeds\BranchesSeeder.php(29): CodeIgniter\Database\BaseBuilder->insertBatch(Array)
+#6 C:\xampp1\htdocs\CHAKANOKS\system\Database\Seeder.php(149): App\Database\Seeds\BranchesSeeder->run()
+#7 C:\xampp1\htdocs\CHAKANOKS\app\Database\Seeds\DatabaseSeeder.php(12): CodeIgniter\Database\Seeder->call('App\\Database\\Se...')
+#8 C:\xampp1\htdocs\CHAKANOKS\system\Database\Seeder.php(149): App\Database\Seeds\DatabaseSeeder->run()
+#9 C:\xampp1\htdocs\CHAKANOKS\system\Commands\Database\Seed.php(79): CodeIgniter\Database\Seeder->call('App\\Database\\Se...')
+#10 C:\xampp1\htdocs\CHAKANOKS\system\CLI\Commands.php(74): CodeIgniter\Commands\Database\Seed->run(Array)
+#11 C:\xampp1\htdocs\CHAKANOKS\system\CLI\Console.php(47): CodeIgniter\CLI\Commands->run('db:seed', Array)
+#12 C:\xampp1\htdocs\CHAKANOKS\system\Boot.php(388): CodeIgniter\CLI\Console->run()
+#13 C:\xampp1\htdocs\CHAKANOKS\system\Boot.php(133): CodeIgniter\Boot::runCommand(Object(CodeIgniter\CLI\Console))
+#14 C:\xampp1\htdocs\CHAKANOKS\spark(87): CodeIgniter\Boot::bootSpark(Object(Config\Paths))
+#15 {main}
+DEBUG - 2025-12-16 14:16:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 14:16:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 14:16:50 --> JSON Data received: {"branch_id":"1","date_needed":"2025-12-20","notes":"","items":[{"item_name":"chhickenq","quantity":"122","unit":"pcs","notes":""}]}
+DEBUG - 2025-12-16 14:16:50 --> Items array: [{"item_name":"chhickenq","quantity":"122","unit":"pcs","notes":""}]
+DEBUG - 2025-12-16 14:16:50 --> Items count: 1
+DEBUG - 2025-12-16 14:16:50 --> Processing item 0: {"item_name":"chhickenq","quantity":"122","unit":"pcs","notes":""}
+DEBUG - 2025-12-16 14:16:50 --> Item name value: 'chhickenq'
+DEBUG - 2025-12-16 14:16:50 --> Item quantity value: '122'
+DEBUG - 2025-12-16 14:16:50 --> Trimmed item name: 'chhickenq', quantity: '122'
+DEBUG - 2025-12-16 14:16:50 --> Inserting item data: {"purchase_request_id":1,"item_id":null,"item_name":"chhickenq","quantity":122,"unit":"pcs","notes":""}
+DEBUG - 2025-12-16 14:16:50 --> Item insert result: SUCCESS with ID: 1
+DEBUG - 2025-12-16 14:16:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 14:17:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 14:17:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-16 14:17:10 --> User 'central_admin' logged in successfully
+DEBUG - 2025-12-16 14:17:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 14:17:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 14:17:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 14:17:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 14:17:18 --> Approve request - JSON data received: {"supplier_id":"1"}
+DEBUG - 2025-12-16 14:17:18 --> Approve request - POST data: []
+DEBUG - 2025-12-16 14:17:18 --> Approve request - Supplier ID: 1
+DEBUG - 2025-12-16 14:17:18 --> Approve request - Supplier validated: Fresh Poultry Farm
+DEBUG - 2025-12-16 14:17:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 14:17:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 14:17:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-16 14:17:33 --> User 'logistics_coordinator' logged in successfully
+DEBUG - 2025-12-16 14:17:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 14:17:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 14:17:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 14:17:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 14:17:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 14:18:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 14:18:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-16 14:18:09 --> Delivery DLV-001 created from PO PO-001
+DEBUG - 2025-12-16 14:18:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 14:18:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.

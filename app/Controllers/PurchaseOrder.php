@@ -8,6 +8,8 @@ use App\Models\PurchaseRequestModel;
 use App\Models\SupplierModel;
 use App\Models\ItemModel;
 use App\Models\BranchModel;
+use App\Models\DeliveryModel;
+use App\Models\DeliveryItemModel;
 use App\Services\InventoryService;
 
 class PurchaseOrder extends BaseController
@@ -18,6 +20,8 @@ class PurchaseOrder extends BaseController
     protected $supplierModel;
     protected $itemModel;
     protected $branchModel;
+    protected $deliveryModel;
+    protected $deliveryItemModel;
     protected $inventoryService;
 
     public function __construct()
@@ -28,6 +32,8 @@ class PurchaseOrder extends BaseController
         $this->supplierModel = new SupplierModel();
         $this->itemModel = new ItemModel();
         $this->branchModel = new BranchModel();
+        $this->deliveryModel = new DeliveryModel();
+        $this->deliveryItemModel = new DeliveryItemModel();
         $this->inventoryService = new InventoryService();
     }
 
@@ -211,6 +217,11 @@ class PurchaseOrder extends BaseController
             }
 
             $this->purchaseOrderModel->update($id, $updateData);
+
+            // If status changed to in_transit, create delivery record
+            if ($newStatus === 'in_transit') {
+                $this->createDeliveryFromPO($order, $user);
+            }
 
             return $this->response->setJSON([
                 'success' => true,
@@ -705,39 +716,32 @@ class PurchaseOrder extends BaseController
             // Get PO items
             $poItems = $this->purchaseOrderItemModel->where('purchase_order_id', $order['id'])->findAll();
 
-            // Create delivery record
+            // Create delivery record (main delivery info only)
             $deliveryData = [
                 'delivery_id' => $deliveryId,
                 'purchase_order_id' => $order['id'],
                 'branch_id' => $order['branch_id'],
                 'supplier_id' => $order['supplier_id'],
-                'driver' => 'Delivery Driver', // Default driver name, could be made configurable
+                'driver' => 'Delivery Driver',
                 'status' => 'in_transit',
-                'scheduled_time' => date('Y-m-d H:i:s'), // Current time as scheduled time
+                'scheduled_time' => date('Y-m-d H:i:s'),
                 'notes' => "Delivery for PO: {$order['po_id']}",
                 'created_by' => $user['id'],
             ];
 
             $deliveryRecordId = $deliveryModel->insert($deliveryData);
 
-            // Create delivery items
-            $db = \Config\Database::connect();
-            $deliveryItems = [];
+            // Create delivery items (exactly like purchase_order_items)
             foreach ($poItems as $item) {
-                $deliveryItems[] = [
-                    'delivery_id' => $deliveryId,
+                $this->deliveryItemModel->insert([
+                    'delivery_id' => $deliveryId, // Use delivery_id string, not the record ID
                     'item_id' => $item['item_id'],
+                    'item_name' => $item['item_name'],
                     'quantity' => $item['quantity'],
+                    'unit' => $item['unit'] ?? null,
                     'unit_price' => $item['unit_price'] ?? 0,
-                    'expiry_date' => null, // Could be set later when received
-                    'status' => 'in_transit', // Item status starts as in_transit
-                    'created_at' => date('Y-m-d H:i:s'),
-                    'updated_at' => date('Y-m-d H:i:s'),
-                ];
-            }
-
-            if (!empty($deliveryItems)) {
-                $db->table('delivery_items')->insertBatch($deliveryItems);
+                    'status' => 'in_transit',
+                ]);
             }
 
             // Log the creation
@@ -761,4 +765,6 @@ class PurchaseOrder extends BaseController
 
         return $this->response->setJSON(['success' => true, 'data' => $order]);
     }
+
+
 }

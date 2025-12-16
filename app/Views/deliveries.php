@@ -135,6 +135,8 @@
     <div style="font-size: 15px; color: #555; line-height: 1.6; margin-bottom: 20px;">
       Track and manage deliveries to branches. Monitor delivery status and receive items at branch locations.
     </div>
+    
+
   </div>
 
   <?php if (!$isBranchUser): ?>
@@ -175,7 +177,16 @@
             <tr>
               <td><strong><?php echo esc($delivery['delivery_id'] ?? $delivery['id']); ?></strong></td>
               <td><?php echo esc($delivery['branch_name']); ?></td>
-              <td><?php echo esc($delivery['items']); ?></td>
+              <td>
+                <?php
+                  $itemsList = [];
+                  foreach ($delivery['items'] ?? [] as $item) {
+                    $itemName = $item['item_name_from_db'] ?? $item['item_name'] ?? 'Unknown Item';
+                    $itemsList[] = $item['quantity'] . ' ' . $itemName;
+                  }
+                  echo esc(implode(', ', $itemsList) ?: 'No items');
+                ?>
+              </td>
               <td><?php echo esc($delivery['driver'] ?? 'N/A'); ?></td>
               <td>
                 <?php

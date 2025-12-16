@@ -24,12 +24,26 @@ class CreateDeliveryItemsTable extends Migration
                 'type'           => 'INT',
                 'constraint'     => 11,
                 'unsigned'       => true,
+                'null'           => true,
                 'comment'        => 'Item being delivered',
             ],
+            'item_name' => [
+                'type'       => 'VARCHAR',
+                'constraint' => '255',
+                'null'       => false,
+                'comment'    => 'Name of the item being delivered',
+            ],
             'quantity' => [
-                'type'       => 'INT',
-                'constraint' => 11,
+                'type'       => 'DECIMAL',
+                'constraint' => '10,2',
+                'null'       => false,
                 'comment'    => 'Quantity of this item in delivery',
+            ],
+            'unit' => [
+                'type'       => 'VARCHAR',
+                'constraint' => '50',
+                'null'       => true,
+                'comment'    => 'Unit of measurement',
             ],
             'unit_price' => [
                 'type'       => 'DECIMAL',
@@ -60,9 +74,7 @@ class CreateDeliveryItemsTable extends Migration
 
         $this->forge->addKey('id', true);
         $this->forge->createTable('delivery_items');
-        // FK constraints - add after both tables exist (in a separate migration if needed)
-        // $this->forge->addForeignKey('delivery_id', 'deliveries', 'delivery_id', 'CASCADE', 'CASCADE');
-        // $this->forge->addForeignKey('item_id', 'items', 'id', 'CASCADE', 'CASCADE');
+        // Note: delivery_id FK will be added after deliveries table is created
     }
 
     public function down()

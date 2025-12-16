@@ -95,10 +95,6 @@ class CreateDeliveriesTable extends Migration
         ]);
 
         $this->forge->addKey('id', true);
-        $this->forge->addForeignKey('branch_id', 'branches', 'id', 'CASCADE', 'CASCADE');
-        $this->forge->addForeignKey('supplier_id', 'users', 'id', 'SET NULL', 'CASCADE');
-        $this->forge->addForeignKey('created_by', 'users', 'id', 'CASCADE', 'CASCADE');
-        $this->forge->addForeignKey('approved_by', 'users', 'id', 'SET NULL', 'CASCADE');
         $this->forge->createTable('deliveries');
         // Add unique key after table creation to avoid conflicts
         $this->forge->addUniqueKey('deliveries', 'delivery_id');

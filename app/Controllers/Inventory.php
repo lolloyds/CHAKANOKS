@@ -210,6 +210,8 @@ class Inventory extends BaseController
         // Get user role for access control
         $data['userRole'] = $user['role'];
 
+
+
         // Get branch deliveries for branch staff, all deliveries for central office
         if (in_array($user['role'], ['Inventory Staff', 'Branch Manager']) && isset($user['branch_id'])) {
             // Branch user - show only their branch deliveries
@@ -229,8 +231,12 @@ class Inventory extends BaseController
             $data['delivered'] = $this->countDeliveriesByStatus('delivered');
         }
 
+
+
         return view('deliveries', $data);
     }
+
+
 
     public function approveDelivery()
     {
@@ -327,14 +333,10 @@ class Inventory extends BaseController
         try {
             $db = \Config\Database::connect();
 
-            // Build query to get deliveries with branch names and all delivery items
+            // First, get basic deliveries without complex joins
             $query = $db->table('deliveries d')
-                ->select('d.*, COALESCE(b.name, CONCAT("Branch ID: ", d.branch_id)) as branch_name,
-                         COALESCE(GROUP_CONCAT(CONCAT(di.quantity, " ", i.name) SEPARATOR ", "), d.item_name) as items')
+                ->select('d.*, COALESCE(b.name, CONCAT("Branch ID: ", d.branch_id)) as branch_name')
                 ->join('branches b', 'd.branch_id = b.id', 'left')
-                ->join('delivery_items di', 'd.delivery_id = di.delivery_id', 'left')
-                ->join('items i', 'di.item_id = i.id', 'left')
-                ->groupBy('d.id')
                 ->orderBy('d.scheduled_time', 'ASC');
 
             // Filter by branch if provided
@@ -344,11 +346,17 @@ class Inventory extends BaseController
 
             $deliveries = $query->get()->getResultArray();
 
-            // Add approve permission flag for branch users
+            // Load items for each delivery (exactly like Purchase Orders does it)
             foreach ($deliveries as &$delivery) {
+                $delivery['items'] = $db->table('delivery_items di')
+                    ->select('di.*, i.name as item_name_from_db, i.unit as item_unit_from_db')
+                    ->join('items i', 'di.item_id = i.id', 'left')
+                    ->where('di.delivery_id', $delivery['delivery_id'])
+                    ->get()
+                    ->getResultArray();
+
+                // Add approve permission flag for branch users
                 $delivery['can_approve'] = $branchId && $delivery['branch_id'] == $branchId && $delivery['status'] === 'delivered';
-                // Ensure items exists and is not null
-                $delivery['items'] = $delivery['items'] ?: 'No items listed';
             }
 
             return $deliveries;

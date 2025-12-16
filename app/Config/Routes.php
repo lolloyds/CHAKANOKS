@@ -23,6 +23,7 @@ $routes->get('dashboard/deliveries-summary', 'Home::deliveriesSummary');
 $routes->get('purchase-request', 'PurchaseRequest::index');
 $routes->get('purchase-orders', 'PurchaseOrder::index');
 $routes->get('deliveries', 'Inventory::deliveries');
+
 $routes->get('inventory', 'Inventory::inventory');
 $routes->get('suppliers', 'Suppliers::index');
 $routes->get('transfer', 'Home::transfer');
