@@ -159,14 +159,7 @@
   <div class="box">
     <h3><?php echo ($isBranchUser ? '📍 Your Branch Deliveries' : '📋 Upcoming Deliveries'); ?></h3>
     
-    <!-- DEBUG INFO -->
-    <div style="background: #f0f0f0; padding: 10px; margin: 10px 0; border-radius: 5px; font-size: 12px;">
-      <strong>DEBUG INFO:</strong><br>
-      User Role: <?= $userRole ?? 'Not Set' ?><br>
-      Is Branch User: <?= ($isBranchUser ?? false) ? 'Yes' : 'No' ?><br>
-      User Branch ID: <?= $user['branch_id'] ?? 'Not Set' ?><br>
-      Show Action Column: <?= ($isBranchUser && $userRole === 'Inventory Staff') ? 'Yes' : 'No' ?><br>
-    </div>
+
     <table class="table">
       <thead>
         <tr>
@@ -196,7 +189,7 @@
                   echo esc(implode(', ', $itemsList) ?: 'No items');
                 ?>
               </td>
-              <td><?php echo esc($delivery['driver'] ?? 'N/A'); ?></td>
+              <td><?php echo esc($delivery['driver_name'] ?? 'N/A'); ?></td>
               <td>
                 <?php
                   $status = strtolower(str_replace('_', '-', $delivery['status'] ?? 'scheduled'));
@@ -206,12 +199,7 @@
               </td>
               <?php if ($isBranchUser && $userRole === 'Inventory Staff'): ?>
                 <td>
-                  <!-- DEBUG: Show status and conditions -->
-                  <small style="color: #999;">Status: <?= $delivery['status'] ?> | Role: <?= $userRole ?> | Branch: <?= $isBranchUser ? 'Yes' : 'No' ?></small><br>
-                  
                   <?php if ($delivery['status'] === 'arrived' && $delivery['branch_id'] == ($user['branch_id'] ?? 0)): ?>
-                    <!-- DEBUG: Button values -->
-                    <small style="color: #999;">Button values: delivery_id='<?= $delivery['delivery_id'] ?? 'EMPTY' ?>', branch_id='<?= $delivery['branch_id'] ?? 'EMPTY' ?>'</small><br>
                     <button onclick="claimDelivery('<?php echo htmlspecialchars($delivery['delivery_id']); ?>', <?php echo $delivery['branch_id']; ?>)"
                             class="btn-action">Claim</button>
                   <?php elseif ($delivery['status'] === 'delivered'): ?>

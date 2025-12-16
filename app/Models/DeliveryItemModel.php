@@ -13,8 +13,8 @@ class DeliveryItemModel extends Model
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
     protected $allowedFields    = [
-        'delivery_id', 'item_id', 'item_name', 'quantity', 'unit', 'unit_price', 'expiry_date', 'status',
-        'created_at', 'updated_at'
+        'delivery_id', 'item_id', 'item_name', 'quantity', 'unit', 'unit_price', 'total_price', 
+        'expiry_date', 'status', 'notes', 'created_at', 'updated_at'
     ];
 
     protected bool $allowEmptyInserts = false;

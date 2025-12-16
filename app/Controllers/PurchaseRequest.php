@@ -96,15 +96,17 @@ class PurchaseRequest extends BaseController
             $requestId = $this->purchaseRequestModel->generateRequestId();
             
             // Set status based on user role: Branch Manager creates PR with "pending central office review" status
-            $status = ($user['role'] === 'Branch Manager') ? 'pending central office review' : 'pending';
+            $status = 'pending_central_office_review';
             
             $requestData = [
-                'request_id' => $requestId,
+                'pr_id' => $requestId,
                 'branch_id' => $branchId,
-                'date_needed' => $jsonData['date_needed'] ?? null,
+                'request_date' => date('Y-m-d'),
+                'needed_by_date' => $jsonData['needed_by_date'] ?? null,
                 'status' => $status,
+                'priority' => $jsonData['priority'] ?? 'medium',
                 'notes' => $jsonData['notes'] ?? null,
-                'requested_by' => $user['id'],
+                'created_by' => $user['id'],
             ];
 
             $purchaseRequestId = $this->purchaseRequestModel->insert($requestData);
@@ -187,7 +189,7 @@ class PurchaseRequest extends BaseController
             return $this->response->setJSON([
                 'success' => true,
                 'message' => 'Purchase request created successfully!',
-                'request_id' => $requestId
+                'pr_id' => $requestId
             ]);
 
         } catch (\Exception $e) {
@@ -220,7 +222,7 @@ class PurchaseRequest extends BaseController
                 return $this->response->setJSON(['success' => false, 'message' => 'Request not found']);
             }
 
-            if (!in_array($request['status'], ['pending', 'pending central office review'])) {
+            if (!in_array($request['status'], ['pending_central_office_review'])) {
                 return $this->response->setJSON(['success' => false, 'message' => 'Request is not pending review']);
             }
 
@@ -276,16 +278,16 @@ class PurchaseRequest extends BaseController
                 'supplier_id' => $supplierId,
                 'branch_id' => $request['branch_id'],
                 'order_date' => date('Y-m-d'),
-                'expected_delivery_date' => $request['date_needed'] ?? null,
+                'expected_delivery_date' => $request['needed_by_date'] ?? null,
             ];
 
             // Set initial status based on user role
             if ($user['role'] === 'Branch Manager') {
                 $orderData['status'] = 'pending'; // Branch-approved POs need central review
-                $orderData['notes'] = 'Branch-approved PR auto-converted to PO: ' . $request['request_id'] . ' - Pending Central Office review';
+                $orderData['notes'] = 'Branch-approved PR auto-converted to PO: ' . $request['pr_id'] . ' - Pending Central Office review';
             } else {
                 $orderData['status'] = 'pending_delivery_schedule'; // Central office approval goes direct to supplier
-                $orderData['notes'] = 'Central Office approved PR converted to PO: ' . $request['request_id'];
+                $orderData['notes'] = 'Central Office approved PR converted to PO: ' . $request['pr_id'];
             }
 
             $orderData['created_by'] = $user['id'];
@@ -370,7 +372,7 @@ class PurchaseRequest extends BaseController
                 return $this->response->setJSON(['success' => false, 'message' => 'Request not found']);
             }
 
-            if (!in_array($request['status'], ['pending', 'pending central office review'])) {
+            if (!in_array($request['status'], ['pending_central_office_review'])) {
                 return $this->response->setJSON(['success' => false, 'message' => 'Request is not pending review']);
             }
 

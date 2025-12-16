@@ -13,13 +13,13 @@ class AlertModel extends Model
         'branch_id',
         'item_id',
         'alert_type',
+        'severity',
         'title',
         'message',
-        'severity',
-        'status',
-        'acknowledged_by',
-        'acknowledged_at',
-        'resolved_at',
+        'is_read',
+        'read_by',
+        'read_at',
+        'expires_at',
         'created_at',
         'updated_at'
     ];
@@ -29,7 +29,7 @@ class AlertModel extends Model
 
     public function getActiveAlerts($branchId = null)
     {
-        $builder = $this->where('status', 'active');
+        $builder = $this->where('is_read', false);
 
         if ($branchId !== null) {
             $builder->where('branch_id', $branchId);
@@ -56,9 +56,9 @@ class AlertModel extends Model
     public function acknowledgeAlert($alertId, $userId)
     {
         return $this->update($alertId, [
-            'status' => 'acknowledged',
-            'acknowledged_by' => $userId,
-            'acknowledged_at' => date('Y-m-d H:i:s')
+            'is_read' => true,
+            'read_by' => $userId,
+            'read_at' => date('Y-m-d H:i:s')
         ]);
     }
 
@@ -110,7 +110,7 @@ class AlertModel extends Model
     public function getAlertCounts($branchId = null)
     {
         $builder = $this->select('severity, COUNT(*) as count')
-                       ->where('status', 'active');
+                       ->where('is_read', false);
 
         if ($branchId !== null) {
             $builder->where('branch_id', $branchId);
@@ -120,9 +120,8 @@ class AlertModel extends Model
                            ->findAll();
 
         $counts = [
-            'low' => 0,
-            'medium' => 0,
-            'high' => 0,
+            'info' => 0,
+            'warning' => 0,
             'critical' => 0
         ];
 

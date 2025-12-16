@@ -204,10 +204,10 @@
       <?php if (($lowStockItems ?? 0) > 0): ?>
         <li>Inventory running low on <b><?= $lowStockItems ?> item<?= $lowStockItems > 1 ? 's' : '' ?></b></li>
       <?php endif; ?>
-      <?php if (($deletedSuppliers ?? 0) > 0): ?>
-        <li><b><?= $deletedSuppliers ?> deleted supplier<?= $deletedSuppliers > 1 ? 's' : '' ?></b> (can be restored from Suppliers page)</li>
+      <?php if (($inactiveSuppliers ?? 0) > 0): ?>
+        <li><b><?= $inactiveSuppliers ?> inactive supplier<?= $inactiveSuppliers > 1 ? 's' : '' ?></b> (can be activated from Suppliers page)</li>
       <?php endif; ?>
-      <?php if (($scheduledDeliveries ?? 0) == 0 && ($pendingPRs ?? 0) == 0 && ($lowStockItems ?? 0) == 0 && ($deletedSuppliers ?? 0) == 0): ?>
+      <?php if (($scheduledDeliveries ?? 0) == 0 && ($pendingPRs ?? 0) == 0 && ($lowStockItems ?? 0) == 0 && ($inactiveSuppliers ?? 0) == 0): ?>
         <li>All systems operating normally. No urgent actions required.</li>
       <?php endif; ?>
     </ul>

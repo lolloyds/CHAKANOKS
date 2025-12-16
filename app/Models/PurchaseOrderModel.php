@@ -70,7 +70,7 @@ class PurchaseOrderModel extends Model
             ->select('po.*, s.supplier_name, b.name as branch_name,
                      u1.username as created_by_name,
                      u2.username as approved_by_name,
-                     pr.request_id as pr_request_id')
+                     pr.pr_id as pr_request_id')
             ->join('suppliers s', 'po.supplier_id = s.id', 'left')
             ->join('branches b', 'po.branch_id = b.id', 'left')
             ->join('users u1', 'po.created_by = u1.id', 'left')
@@ -133,7 +133,7 @@ class PurchaseOrderModel extends Model
             'ordered' => $query->where('status', 'ordered')->countAllResults(false),
             'in_transit' => $query->where('status', 'in_transit')->countAllResults(false),
             'delayed' => $query->where('status', 'delayed')->countAllResults(false),
-            'arriving' => $query->where('status', 'arriving')->countAllResults(false),
+            'arrived' => $query->where('status', 'arrived')->countAllResults(false),
             'delivered' => $query->where('status', 'delivered')->countAllResults(false),
             'delivered_to_branch' => $query->where('status', 'delivered_to_branch')->countAllResults(false),
             'completed' => $query->where('status', 'completed')->countAllResults(false),

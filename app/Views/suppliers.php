@@ -110,7 +110,7 @@
   }
 
   .table tbody tr.deleted-row {
-    background: #ffe0e0;
+    background: #fff3cd;
     opacity: 0.7;
   }
 
@@ -368,10 +368,7 @@
         <strong>Email:</strong><br>
         <span style="color: #333;"><?= esc($supplier['email'] ?? 'N/A') ?></span>
       </div>
-      <div>
-        <strong>Supply Type:</strong><br>
-        <span style="color: #333;"><?= esc($supplier['supply_type'] ?? 'N/A') ?></span>
-      </div>
+
       <div>
         <strong>Address:</strong><br>
         <span style="color: #333;"><?= esc($supplier['address'] ?? 'N/A') ?></span>
@@ -460,7 +457,7 @@
           <th>Contact Person</th>
           <th>Phone</th>
           <th>Email</th>
-          <th>Supply Type</th>
+
           <th>Status</th>
           <th>Actions</th>
         </tr>
@@ -468,24 +465,24 @@
       <tbody>
         <?php if (empty($suppliers)): ?>
           <tr>
-            <td colspan="8" style="text-align: center; padding: 20px; color: #666;">
+            <td colspan="7" style="text-align: center; padding: 20px; color: #666;">
               No suppliers found
               <br><small>Debug: <?php echo 'isSupplierView: ' . (isset($isSupplierView) ? ($isSupplierView ? 'true' : 'false') : 'not set'); ?>, Supplier count: <?php echo count($suppliers ?? []); ?>, Controller data: <?php print_r($suppliers); ?></small>
             </td>
           </tr>
         <?php else: ?>
           <?php foreach ($suppliers as $supplier): ?>
-            <?php $isDeleted = !empty($supplier['deleted_at']); ?>
-            <tr class="<?= $isDeleted ? 'deleted-row' : '' ?>">
+            <?php $isInactive = ($supplier['status'] ?? 'Active') === 'Inactive'; ?>
+            <tr class="<?= $isInactive ? 'deleted-row' : '' ?>">
               <td>SUP-<?= str_pad($supplier['id'], 3, '0', STR_PAD_LEFT) ?></td>
               <td><?= esc($supplier['supplier_name'] ?? 'N/A') ?></td>
               <td><?= esc($supplier['contact_person'] ?? 'N/A') ?></td>
               <td><?= esc($supplier['phone'] ?? 'N/A') ?></td>
               <td><?= esc($supplier['email'] ?? 'N/A') ?></td>
-              <td><?= esc($supplier['supply_type'] ?? 'N/A') ?></td>
+
               <td>
-                <?php if ($isDeleted): ?>
-                  <span class="badge deleted">Deleted</span>
+                <?php if ($isInactive): ?>
+                  <span class="badge deleted">Inactive</span>
                 <?php else: ?>
                   <span class="badge <?= strtolower($supplier['status'] ?? 'active') ?>">
                     <?= esc($supplier['status'] ?? 'Active') ?>
@@ -494,8 +491,8 @@
               </td>
               <td>
                 <div class="action-buttons">
-                  <?php if ($isDeleted): ?>
-                    <button class="btn-restore" onclick="restoreSupplier(<?= $supplier['id'] ?>)">Restore</button>
+                  <?php if ($isInactive): ?>
+                    <button class="btn-restore" onclick="restoreSupplier(<?= $supplier['id'] ?>)">Activate</button>
                   <?php else: ?>
                     <button class="btn-edit" onclick="openEditModal(<?= htmlspecialchars(json_encode($supplier), ENT_QUOTES, 'UTF-8') ?>)">Edit</button>
                     <button class="btn-delete" onclick="deleteSupplier(<?= $supplier['id'] ?>)">Delete</button>
@@ -538,10 +535,7 @@
         <label for="address">Address</label>
         <textarea id="address" name="address" rows="2"></textarea>
       </div>
-      <div class="form-group">
-        <label for="supply_type">Supply Type</label>
-        <input type="text" id="supply_type" name="supply_type" placeholder="e.g., Whole Chickens, Spices, Packaging">
-      </div>
+
       <div class="form-group">
         <label for="status">Status *</label>
         <select id="status" name="status" required>
@@ -586,7 +580,7 @@ function openEditModal(supplier) {
   document.getElementById('phone').value = supplier.phone || '';
   document.getElementById('email').value = supplier.email || '';
   document.getElementById('address').value = supplier.address || '';
-  document.getElementById('supply_type').value = supplier.supply_type || '';
+
   document.getElementById('status').value = supplier.status || 'Active';
   document.getElementById('supplierModal').style.display = 'block';
 }
@@ -654,7 +648,7 @@ function deleteSupplier(id) {
 }
 
 function restoreSupplier(id) {
-  if (!confirm('Are you sure you want to restore this supplier?')) return;
+  if (!confirm('Are you sure you want to activate this supplier?')) return;
 
   fetch(`<?= base_url('suppliers/restore/') ?>${id}`, {
     method: 'POST',
@@ -668,7 +662,7 @@ function restoreSupplier(id) {
       showAlert(result.message, 'success');
       setTimeout(() => location.reload(), 1000);
     } else {
-      showAlert(result.message || 'Failed to restore supplier', 'error');
+      showAlert(result.message || 'Failed to activate supplier', 'error');
     }
   })
   .catch(error => {

@@ -22,7 +22,7 @@ class Auth extends BaseController
                     return redirect()->to(base_url('login'));
                 }
 
-                if (!password_verify($password, $user['password_hash'])) {
+                if (!password_verify($password, $user['password'])) {
                     log_message('error', "Login attempt failed: Invalid password for user '$username'");
                     session()->setFlashdata('error', 'Invalid username or password.');
                     return redirect()->to(base_url('login'));
@@ -134,9 +134,9 @@ class Auth extends BaseController
             // Get total suppliers (including deleted)
             $totalSuppliers = $db->table('suppliers')->countAllResults(false);
             
-            // Get deleted suppliers count
-            $deletedSuppliers = $db->table('suppliers')
-                ->where('deleted_at IS NOT NULL', null, false)
+            // Get inactive suppliers count
+            $inactiveSuppliers = $db->table('suppliers')
+                ->where('status', 'Inactive')
                 ->countAllResults(false);
             
             // Get today's highlights
@@ -147,7 +147,7 @@ class Auth extends BaseController
                 ->countAllResults(false);
             
             $pendingPRs = $db->table('purchase_requests')
-                ->whereIn('status', ['pending', 'pending central office review'])
+                ->whereIn('status', ['pending_central_office_review'])
                 ->countAllResults(false);
             
             // Get low stock items
@@ -182,7 +182,7 @@ class Auth extends BaseController
                 'activeDeliveries' => $activeDeliveries,
                 'pendingOrders' => $pendingOrders,
                 'totalSuppliers' => $totalSuppliers,
-                'deletedSuppliers' => $deletedSuppliers,
+                'inactiveSuppliers' => $inactiveSuppliers,
                 'scheduledDeliveries' => $scheduledDeliveries,
                 'pendingPRs' => $pendingPRs,
                 'lowStockItems' => $lowStockItems,

@@ -65,18 +65,8 @@ class Suppliers extends BaseController
             // Admin/central office view - show full supplier list
             $data['stats'] = $model->getStats();
 
-            // Try direct query to ensure suppliers are fetched
-            $db = \Config\Database::connect();
-            try {
-                $suppliers = $db->table('suppliers')
-                    ->select('suppliers.*, CASE WHEN suppliers.deleted_at IS NOT NULL THEN 1 ELSE 0 END as is_deleted', false)
-                    ->orderBy('suppliers.id', 'DESC')
-                    ->get()
-                    ->getResultArray();
-            } catch (\Exception $e) {
-                log_message('error', 'Suppliers query failed: ' . $e->getMessage());
-                $suppliers = [];
-            }
+            // Get all suppliers
+            $suppliers = $model->orderBy('id', 'DESC')->findAll();
 
             $data['suppliers'] = $suppliers;
             $data['userRole'] = $user['role'];
@@ -107,7 +97,6 @@ class Suppliers extends BaseController
             'phone' => $this->request->getPost('phone'),
             'email' => $this->request->getPost('email'),
             'address' => $this->request->getPost('address'),
-            'supply_type' => $this->request->getPost('supply_type'),
             'status' => $this->request->getPost('status') ?: 'Active'
         ];
 
@@ -126,7 +115,7 @@ class Suppliers extends BaseController
         }
 
         $model = new SupplierModel();
-        $data['supplier'] = $model->withDeleted()->find($id);
+        $data['supplier'] = $model->find($id);
         
         if (!$data['supplier']) {
             return redirect()->to('/suppliers')->with('error', 'Supplier not found');
@@ -149,7 +138,6 @@ class Suppliers extends BaseController
             'phone' => $this->request->getPost('phone'),
             'email' => $this->request->getPost('email'),
             'address' => $this->request->getPost('address'),
-            'supply_type' => $this->request->getPost('supply_type'),
             'status' => $this->request->getPost('status')
         ];
         
@@ -174,16 +162,16 @@ class Suppliers extends BaseController
 
         $model = new SupplierModel();
         
-        // Soft delete - just set deleted_at
+        // Set status to Inactive instead of deleting
         if ($this->request->isAJAX()) {
-            if ($model->delete($id)) {
-                return $this->response->setJSON(['success' => true, 'message' => 'Supplier deleted successfully']);
+            if ($model->update($id, ['status' => 'Inactive'])) {
+                return $this->response->setJSON(['success' => true, 'message' => 'Supplier deactivated successfully']);
             } else {
-                return $this->response->setJSON(['success' => false, 'message' => 'Failed to delete supplier']);
+                return $this->response->setJSON(['success' => false, 'message' => 'Failed to deactivate supplier']);
             }
         } else {
-            $model->delete($id);
-            return redirect()->to('/suppliers')->with('success', 'Supplier deleted successfully');
+            $model->update($id, ['status' => 'Inactive']);
+            return redirect()->to('/suppliers')->with('success', 'Supplier deactivated successfully');
         }
     }
     
@@ -195,15 +183,17 @@ class Suppliers extends BaseController
         }
 
         $model = new SupplierModel();
-        $db = \Config\Database::connect();
         
-        // Restore by setting deleted_at to null
-        $db->table('suppliers')->where('id', $id)->update(['deleted_at' => null]);
-        
+        // Restore by setting status to Active
         if ($this->request->isAJAX()) {
-            return $this->response->setJSON(['success' => true, 'message' => 'Supplier restored successfully']);
+            if ($model->update($id, ['status' => 'Active'])) {
+                return $this->response->setJSON(['success' => true, 'message' => 'Supplier activated successfully']);
+            } else {
+                return $this->response->setJSON(['success' => false, 'message' => 'Failed to activate supplier']);
+            }
         } else {
-            return redirect()->to('/suppliers')->with('success', 'Supplier restored successfully');
+            $model->update($id, ['status' => 'Active']);
+            return redirect()->to('/suppliers')->with('success', 'Supplier activated successfully');
         }
     }
 }

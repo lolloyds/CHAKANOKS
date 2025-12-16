@@ -13,9 +13,8 @@ class PurchaseRequestModel extends Model
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
     protected $allowedFields    = [
-        'request_id', 'branch_id', 'date_needed', 'status', 'notes',
-        'requested_by', 'approved_by', 'approved_at', 'rejection_reason',
-        'created_at', 'updated_at'
+        'pr_id', 'branch_id', 'request_date', 'needed_by_date', 'status', 'priority', 'notes',
+        'created_by', 'approved_by', 'approved_at', 'rejection_reason', 'created_at', 'updated_at'
     ];
 
     protected bool $allowEmptyInserts = false;
@@ -51,8 +50,8 @@ class PurchaseRequestModel extends Model
     public function generateRequestId()
     {
         $lastRequest = $this->orderBy('id', 'DESC')->first();
-        if ($lastRequest && isset($lastRequest['request_id'])) {
-            $lastNumber = (int) substr($lastRequest['request_id'], 3);
+        if ($lastRequest && isset($lastRequest['pr_id'])) {
+            $lastNumber = (int) substr($lastRequest['pr_id'], 3);
             $nextNumber = $lastNumber + 1;
         } else {
             $nextNumber = 1;
@@ -68,10 +67,10 @@ class PurchaseRequestModel extends Model
         $db = \Config\Database::connect();
         $query = $db->table('purchase_requests pr')
             ->select('pr.*, b.name as branch_name, 
-                     u1.username as requested_by_name,
+                     u1.username as created_by_name,
                      u2.username as approved_by_name')
             ->join('branches b', 'pr.branch_id = b.id', 'left')
-            ->join('users u1', 'pr.requested_by = u1.id', 'left')
+            ->join('users u1', 'pr.created_by = u1.id', 'left')
             ->join('users u2', 'pr.approved_by = u2.id', 'left')
             ->orderBy('pr.created_at', 'DESC');
 
@@ -116,8 +115,7 @@ class PurchaseRequestModel extends Model
 
         return [
             'total' => $query->countAllResults(false),
-            'pending' => $query->where('status', 'pending')->countAllResults(false),
-            'pending_central_office_review' => $query->where('status', 'pending central office review')->countAllResults(false),
+            'pending_central_office_review' => $query->where('status', 'pending_central_office_review')->countAllResults(false),
             'approved' => $query->where('status', 'approved')->countAllResults(false),
             'rejected' => $query->where('status', 'rejected')->countAllResults(false),
             'converted' => $query->where('status', 'converted')->countAllResults(false),

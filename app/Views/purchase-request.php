@@ -152,7 +152,7 @@
       text-transform: uppercase;
     }
     .badge.pending { background: #ffb74d; color: #fff; }
-    .badge.pending-central-office-review { background: #ff9800; color: #fff; }
+    .badge.pending_central_office_review { background: #ff9800; color: #fff; }
     .badge.approved { background: #66bb6a; color: #fff; }
     .badge.rejected { background: #e57373; color: #fff; }
     .badge.converted { background: #42a5f5; color: #fff; }
@@ -349,8 +349,8 @@
           <?php endif; ?>
         </div>
         <div class="form-group">
-          <label for="date_needed">Date Needed</label>
-          <input type="date" id="date_needed" name="date_needed" required>
+          <label for="needed_by_date">Date Needed</label>
+          <input type="date" id="needed_by_date" name="needed_by_date" required>
         </div>
         <div class="form-group">
           <label for="notes">Notes</label>
@@ -426,7 +426,7 @@
                   echo esc(implode(', ', $itemsList) ?: 'No items');
                 ?>
               </td>
-              <td><?= $request['date_needed'] ? date('M d, Y', strtotime($request['date_needed'])) : 'N/A' ?></td>
+              <td><?= $request['needed_by_date'] ? date('M d, Y', strtotime($request['needed_by_date'])) : 'N/A' ?></td>
               <td><?= $request['created_at'] ? date('M d, Y', strtotime($request['created_at'])) : 'N/A' ?></td>
               <td>
                 <span class="badge <?= strtolower(str_replace(' ', '-', $request['status'] ?? 'pending')) ?>">
@@ -435,7 +435,7 @@
               </td>
               <?php if ($userRole !== 'Branch Manager'): ?>
               <td>
-                <?php if (in_array($request['status'] ?? '', ['pending', 'pending central office review'])): ?>
+                <?php if (in_array($request['status'] ?? '', ['pending_central_office_review'])): ?>
                   <?php if (in_array($userRole ?? '', ['Central Office Admin', 'System Administrator'])): ?>
                     <!-- Central Office approval - shows modal for supplier selection -->
                     <button class="btn-approve" onclick="approveRequest(<?= $request['id'] ?>)">Approve</button>
@@ -532,7 +532,7 @@ document.getElementById('prForm').addEventListener('submit', async function(e) {
   
   const data = {
     branch_id: formData.get('branch_id'),
-    date_needed: formData.get('date_needed'),
+    needed_by_date: formData.get('needed_by_date'),
     notes: formData.get('notes'),
     items: items
   };

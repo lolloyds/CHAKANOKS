@@ -11,6 +11,7 @@ class ItemModel extends Model
 	protected $returnType = 'array';
 	protected $allowedFields = [
 		'name',
+		'category',
 		'unit',
 		'barcode',
 		'perishable',

@@ -11,7 +11,7 @@ class StockMovementModel extends Model
     protected $returnType = 'array';
     protected $allowedFields = [
         'branch_id', 'item_id', 'movement_type', 'quantity',
-        'remarks', 'created_by', 'created_at', 'updated_at'
+        'reference_type', 'reference_id', 'remarks', 'created_by', 'created_at', 'updated_at'
     ];
     protected $useTimestamps = true;
 }

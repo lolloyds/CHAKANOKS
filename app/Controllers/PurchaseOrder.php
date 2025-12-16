@@ -725,9 +725,10 @@ class PurchaseOrder extends BaseController
                 'purchase_order_id' => $order['id'],
                 'branch_id' => $order['branch_id'],
                 'supplier_id' => $order['supplier_id'],
-                'driver' => 'Delivery Driver',
+                'driver_name' => 'Delivery Driver',
                 'status' => 'in_transit',
                 'scheduled_time' => date('Y-m-d H:i:s'),
+                'departure_time' => date('Y-m-d H:i:s'),
                 'notes' => "Delivery for PO: {$order['po_id']}",
                 'created_by' => $user['id'],
             ];
@@ -736,15 +737,25 @@ class PurchaseOrder extends BaseController
 
             // Create delivery items (exactly like purchase_order_items)
             foreach ($poItems as $item) {
-                $this->deliveryItemModel->insert([
+                $deliveryItemData = [
                     'delivery_id' => $deliveryId, // Use delivery_id string, not the record ID
                     'item_id' => $item['item_id'],
                     'item_name' => $item['item_name'],
                     'quantity' => $item['quantity'],
-                    'unit' => $item['unit'] ?? null,
+                    'unit' => $item['unit'] ?? 'pcs',
                     'unit_price' => $item['unit_price'] ?? 0,
+                    'total_price' => ($item['quantity'] * ($item['unit_price'] ?? 0)),
                     'status' => 'in_transit',
-                ]);
+                    'created_at' => date('Y-m-d H:i:s'),
+                    'updated_at' => date('Y-m-d H:i:s'),
+                ];
+                
+                $insertResult = $this->deliveryItemModel->insert($deliveryItemData);
+                if (!$insertResult) {
+                    log_message('error', 'Failed to insert delivery item: ' . json_encode($deliveryItemData));
+                } else {
+                    log_message('info', 'Created delivery item: ' . json_encode($deliveryItemData));
+                }
             }
 
             // Log the creation

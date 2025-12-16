@@ -333,7 +333,7 @@
             <option value="scheduled_for_delivery">Scheduled for Delivery</option>
             <option value="in_transit" selected>In Transit</option>
             <option value="delayed">Delayed</option>
-            <option value="arriving">Arriving</option>
+            <option value="arrived">Arrived</option>
           </select>
         </div>
         <div class="form-group">
@@ -578,9 +578,9 @@
               <td>
                 <?php if (($userRole ?? '') === 'Logistics Coordinator' && ($order['status'] ?? '') === 'pending_delivery_schedule'): ?>
                   <button class="btn-schedule" onclick="openScheduleModal(<?= $order['id'] ?>)">Schedule Delivery</button>
-                <?php elseif (($userRole ?? '') === 'Logistics Coordinator' && in_array($order['status'] ?? '', ['scheduled_for_delivery', 'in_transit', 'delayed', 'arriving'])): ?>
+                <?php elseif (($userRole ?? '') === 'Logistics Coordinator' && in_array($order['status'] ?? '', ['scheduled_for_delivery', 'in_transit', 'delayed', 'arrived'])): ?>
                   <button class="btn-logistics" onclick="openLogisticsModal(<?= $order['id'] ?>, '<?= esc($order['status'] ?? '') ?>', '<?= esc($order['expected_delivery_date'] ?? '') ?>')">Manage Timeline</button>
-                <?php elseif (($userRole ?? '') === 'Inventory Staff' && in_array($order['status'] ?? '', ['arriving', 'delivered'])): ?>
+                <?php elseif (($userRole ?? '') === 'Inventory Staff' && in_array($order['status'] ?? '', ['arrived', 'delivered'])): ?>
                   <button class="btn-receive" onclick="openReceiveModal(<?= $order['id'] ?>)">Receive Delivery</button>
                 <?php elseif (($userRole ?? '') === 'Branch Manager' && ($order['status'] ?? '') === 'delivered_to_branch'): ?>
                   <button class="btn-confirm" onclick="openConfirmModal(<?= $order['id'] ?>)">Confirm Delivery</button>

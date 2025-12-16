@@ -251,13 +251,6 @@ class Inventory extends BaseController
 
             $db = \Config\Database::connect();
 
-            // Debug: Check what delivery records exist
-            $allDeliveries = $this->deliveryModel->where('delivery_id', $deliveryId)->findAll();
-            $debugInfo = [];
-            foreach ($allDeliveries as $d) {
-                $debugInfo[] = "ID: {$d['delivery_id']}, Status: {$d['status']}, Branch: {$d['branch_id']}";
-            }
-            
             // Check if delivery exists and is in correct status
             $delivery = $this->deliveryModel->where('delivery_id', $deliveryId)
                 ->where('branch_id', $branchId)
@@ -265,22 +258,19 @@ class Inventory extends BaseController
                 ->first();
 
             if (!$delivery) {
-                $debugMsg = 'Delivery not found or not ready for approval. ';
-                $debugMsg .= 'Looking for: delivery_id=' . $deliveryId . ', branch_id=' . $branchId . ', status=arrived. ';
-                $debugMsg .= 'Found deliveries: ' . implode('; ', $debugInfo);
-                return $this->response->setJSON(['success' => false, 'message' => $debugMsg]);
+                return $this->response->setJSON(['success' => false, 'message' => 'Delivery not found or not ready for approval']);
             }
 
-            // Check if already approved
-            if (!empty($delivery['approved_by'])) {
-                return $this->response->setJSON(['success' => false, 'message' => 'Delivery already approved']);
+            // Check if already claimed
+            if (!empty($delivery['claimed_by'])) {
+                return $this->response->setJSON(['success' => false, 'message' => 'Delivery already claimed']);
             }
 
             // Update delivery status to 'delivered' (claimed by branch)
             $this->deliveryModel->update($delivery['id'], [
                 'status' => 'delivered',
-                'approved_by' => $user['id'],
-                'approved_at' => date('Y-m-d H:i:s'),
+                'claimed_by' => $user['id'],
+                'claimed_time' => date('Y-m-d H:i:s'),
                 'arrival_time' => date('Y-m-d H:i:s')
             ]);
 
@@ -292,63 +282,144 @@ class Inventory extends BaseController
                 ->get()
                 ->getResultArray();
 
+            // If no delivery items found, create them from the purchase order
+            if (empty($deliveryItems) && $delivery['purchase_order_id']) {
+                log_message('info', 'No delivery items found, creating from PO: ' . $delivery['purchase_order_id']);
+                
+                $poItems = $db->table('purchase_order_items poi')
+                    ->select('poi.*, i.name')
+                    ->join('items i', 'poi.item_id = i.id', 'left')
+                    ->where('poi.purchase_order_id', $delivery['purchase_order_id'])
+                    ->get()
+                    ->getResultArray();
+
+                foreach ($poItems as $item) {
+                    $db->table('delivery_items')->insert([
+                        'delivery_id' => $deliveryId,
+                        'item_id' => $item['item_id'],
+                        'item_name' => $item['item_name'],
+                        'quantity' => $item['quantity'],
+                        'unit' => $item['unit'] ?? 'pcs',
+                        'unit_price' => $item['unit_price'] ?? 0,
+                        'total_price' => ($item['quantity'] * ($item['unit_price'] ?? 0)),
+                        'status' => 'arrived',
+                        'created_at' => date('Y-m-d H:i:s'),
+                        'updated_at' => date('Y-m-d H:i:s')
+                    ]);
+                }
+
+                // Re-fetch delivery items
+                $deliveryItems = $db->table('delivery_items')
+                    ->where('delivery_id', $deliveryId)
+                    ->join('items', 'delivery_items.item_id = items.id', 'left')
+                    ->select('delivery_items.*, items.name')
+                    ->get()
+                    ->getResultArray();
+            }
+
             $debugItems = [];
             foreach ($deliveryItems as $item) {
                 $debugItems[] = "ID: {$item['item_id']}, Name: {$item['name']}, Qty: {$item['quantity']}";
             }
 
+            // Start database transaction
+            $db->transStart();
+
             $addedItems = [];
             $errors = [];
+            $actuallyProcessed = 0;
+
             foreach ($deliveryItems as $item) {
-                if ($item['item_id']) {
-                    try {
-                        // Check if item already exists in branch stock
-                        $existingStock = $db->table('branch_stock')
-                            ->where('branch_id', $branchId)
-                            ->where('item_id', $item['item_id'])
+                try {
+                    // Find or get item_id
+                    $itemId = $item['item_id'];
+                    $itemName = $item['item_name'] ?? $item['name'];
+
+                    // If item_id is null, try to find item by name
+                    if (!$itemId && $itemName) {
+                        $itemRecord = $db->table('items')
+                            ->where('LOWER(name)', strtolower($itemName))
+                            ->where('status', 'active')
                             ->get()
                             ->getRow();
 
-                        if ($existingStock) {
-                            // Update existing stock
-                            $newQuantity = $existingStock->quantity + $item['quantity'];
-                            $db->table('branch_stock')
-                                ->where('id', $existingStock->id)
-                                ->update([
-                                    'quantity' => $newQuantity,
-                                    'updated_at' => date('Y-m-d H:i:s')
-                                ]);
-                        } else {
-                            // Insert new stock record
-                            $db->table('branch_stock')->insert([
-                                'branch_id' => $branchId,
-                                'item_id' => $item['item_id'],
-                                'quantity' => $item['quantity'],
-                                'expiry_date' => $item['expiry_date'] ?? null,
+                        if ($itemRecord) {
+                            $itemId = $itemRecord->id;
+                        }
+                    }
+
+                    // Skip if we still don't have a valid item_id
+                    if (!$itemId) {
+                        $errors[] = "Item '{$itemName}' not found in items table. Please add this item to the system first.";
+                        continue;
+                    }
+
+                    // Check if item already exists in branch stock
+                    $existingStock = $db->table('branch_stock')
+                        ->where('branch_id', $branchId)
+                        ->where('item_id', $itemId)
+                        ->get()
+                        ->getRow();
+
+                    if ($existingStock) {
+                        // Update existing stock
+                        $newQuantity = $existingStock->quantity + $item['quantity'];
+                        $updateResult = $db->table('branch_stock')
+                            ->where('id', $existingStock->id)
+                            ->update([
+                                'quantity' => $newQuantity,
                                 'updated_at' => date('Y-m-d H:i:s')
                             ]);
-                        }
 
-                        // Record stock movement
-                        $db->table('stock_movements')->insert([
+                        if (!$updateResult) {
+                            $errors[] = "Failed to update stock for {$itemName}";
+                            continue;
+                        }
+                    } else {
+                        // Insert new stock record
+                        $insertResult = $db->table('branch_stock')->insert([
                             'branch_id' => $branchId,
-                            'item_id' => $item['item_id'],
-                            'movement_type' => 'in',
+                            'item_id' => $itemId,
                             'quantity' => $item['quantity'],
-                            'reference_type' => 'delivery',
-                            'reference_id' => $deliveryId,
-                            'notes' => "Delivery received: {$item['quantity']} {$item['name']} from {$delivery['driver']}",
-                            'created_by' => $user['id'],
-                            'created_at' => date('Y-m-d H:i:s')
+                            'expiry_date' => $item['expiry_date'] ?? null,
+                            'updated_at' => date('Y-m-d H:i:s')
                         ]);
 
-                        $addedItems[] = "{$item['quantity']} {$item['name']}";
-                    } catch (\Exception $e) {
-                        $errors[] = "Error adding {$item['name']}: " . $e->getMessage();
+                        if (!$insertResult) {
+                            $errors[] = "Failed to insert stock for {$itemName}";
+                            continue;
+                        }
                     }
-                } else {
-                    $errors[] = "No item_id for: {$item['item_name']}";
+
+                    // Record stock movement
+                    $movementResult = $db->table('stock_movements')->insert([
+                        'branch_id' => $branchId,
+                        'item_id' => $itemId,
+                        'movement_type' => 'receive',
+                        'quantity' => (int)$item['quantity'],
+                        'remarks' => "Delivery received: {$item['quantity']} {$item['name']} from delivery {$deliveryId}",
+                        'created_by' => $user['id'],
+                        'created_at' => date('Y-m-d H:i:s')
+                    ]);
+
+                    if (!$movementResult) {
+                        $errors[] = "Failed to record movement for {$itemName}";
+                        continue;
+                    }
+
+                    $addedItems[] = "{$item['quantity']} {$itemName}";
+                    $actuallyProcessed++;
+
+                } catch (\Exception $e) {
+                    $errors[] = "Error adding {$itemName}: " . $e->getMessage();
                 }
+            }
+
+            // Complete transaction
+            $db->transComplete();
+            
+            if ($db->transStatus() === false) {
+                $errors[] = "Database transaction failed";
             }
 
             $itemsJoined = !empty($addedItems) ? implode(', ', $addedItems) : 'items';
@@ -361,16 +432,24 @@ class Inventory extends BaseController
                 ]);
             }
 
-            $debugMsg = "Delivery claimed! ";
-            $debugMsg .= "Found " . count($deliveryItems) . " delivery items: " . implode('; ', $debugItems) . ". ";
-            $debugMsg .= "Added to inventory: {$itemsJoined}. ";
-            if (!empty($errors)) {
-                $debugMsg .= "Errors: " . implode('; ', $errors);
+            // Detailed success/failure message
+            $message = "Delivery claimed! ";
+            $message .= "Found " . count($deliveryItems) . " delivery items. ";
+            $message .= "Successfully processed: {$actuallyProcessed}. ";
+            
+            if (!empty($addedItems)) {
+                $message .= "Added to inventory: " . implode(', ', $addedItems) . ". ";
             }
+            
+            if (!empty($errors)) {
+                $message .= "Errors: " . implode('; ', $errors) . ". ";
+            }
+            
+            $message .= "Transaction status: " . ($db->transStatus() ? 'SUCCESS' : 'FAILED');
 
             return $this->response->setJSON([
-                'success' => true,
-                'message' => $debugMsg
+                'success' => $db->transStatus() !== false,
+                'message' => $message . " [UPDATED CODE RUNNING]"
             ]);
 
         } catch (\Exception $e) {

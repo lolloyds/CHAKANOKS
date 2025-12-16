@@ -13,9 +13,10 @@ class DeliveryModel extends Model
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
     protected $allowedFields    = [
-        'delivery_id', 'branch_id', 'supplier_id', 'purchase_order_id', 'driver', 'status',
-        'scheduled_time', 'arrival_time', 'notes', 'created_by', 'approved_by', 'approved_at',
-        'item_name', 'quantity', 'delivery_date', 'created_at', 'updated_at'
+        'delivery_id', 'purchase_order_id', 'branch_id', 'supplier_id', 
+        'driver_name', 'driver_phone', 'vehicle_info', 'status',
+        'scheduled_time', 'departure_time', 'arrival_time', 'claimed_time',
+        'notes', 'created_by', 'claimed_by', 'created_at', 'updated_at'
     ];
 
     protected bool $allowEmptyInserts = false;

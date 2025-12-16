@@ -2604,3 +2604,860 @@ DEBUG - 2025-12-16 17:38:15 --> Session: Class initialized using 'CodeIgniter\Se
 DEBUG - 2025-12-16 17:38:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
 DEBUG - 2025-12-16 17:38:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
 DEBUG - 2025-12-16 17:38:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 18:35:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 18:35:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 18:35:45 --> JSON Data received: {"branch_id":"1","date_needed":"2025-12-31","notes":"","items":[{"item_name":"SDsd","quantity":"1","unit":"bag","notes":""}]}
+DEBUG - 2025-12-16 18:35:45 --> Items array: [{"item_name":"SDsd","quantity":"1","unit":"bag","notes":""}]
+DEBUG - 2025-12-16 18:35:45 --> Items count: 1
+DEBUG - 2025-12-16 18:35:45 --> Processing item 0: {"item_name":"SDsd","quantity":"1","unit":"bag","notes":""}
+DEBUG - 2025-12-16 18:35:45 --> Item name value: 'SDsd'
+DEBUG - 2025-12-16 18:35:45 --> Item quantity value: '1'
+DEBUG - 2025-12-16 18:35:45 --> Trimmed item name: 'SDsd', quantity: '1'
+DEBUG - 2025-12-16 18:35:45 --> Inserting item data: {"purchase_request_id":1,"item_id":null,"item_name":"SDsd","quantity":1,"unit":"bag","notes":""}
+DEBUG - 2025-12-16 18:35:45 --> Item insert result: SUCCESS with ID: 1
+DEBUG - 2025-12-16 18:35:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 18:35:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 18:35:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-16 18:36:02 --> User 'central_admin' logged in successfully
+DEBUG - 2025-12-16 18:36:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 18:36:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 18:36:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 18:36:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 18:36:14 --> Approve request - JSON data received: {"supplier_id":"1"}
+DEBUG - 2025-12-16 18:36:14 --> Approve request - POST data: []
+DEBUG - 2025-12-16 18:36:14 --> Approve request - Supplier ID: 1
+DEBUG - 2025-12-16 18:36:14 --> Approve request - Supplier validated: Fresh Poultry Farm
+DEBUG - 2025-12-16 18:36:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 18:36:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 18:36:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-12-16 18:36:30 --> Login attempt failed: Invalid password for user 'logistics_coordinator'
+DEBUG - 2025-12-16 18:36:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 18:36:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-16 18:36:37 --> User 'logistics_coordinator' logged in successfully
+DEBUG - 2025-12-16 18:36:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 18:36:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 18:36:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 18:37:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 18:37:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 18:37:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 18:37:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 18:37:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-16 18:37:31 --> Delivery DLV-001 created from PO PO-001
+INFO - 2025-12-16 18:37:31 --> Updated delivery DLV-001 status to in_transit
+DEBUG - 2025-12-16 18:37:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 18:37:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 18:37:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-16 18:37:44 --> Updated delivery DLV-001 status to arrived
+DEBUG - 2025-12-16 18:37:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 18:37:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 18:37:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 18:37:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 18:38:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 18:38:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 18:38:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 18:38:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 18:38:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 18:38:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 18:40:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 18:41:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 18:41:06 --> JSON Data received: {"branch_id":"1","date_needed":"2025-12-26","notes":"","items":[{"item_name":"kbfauhduahdui","quantity":"1","unit":"box","notes":""}]}
+DEBUG - 2025-12-16 18:41:06 --> Items array: [{"item_name":"kbfauhduahdui","quantity":"1","unit":"box","notes":""}]
+DEBUG - 2025-12-16 18:41:06 --> Items count: 1
+DEBUG - 2025-12-16 18:41:06 --> Processing item 0: {"item_name":"kbfauhduahdui","quantity":"1","unit":"box","notes":""}
+DEBUG - 2025-12-16 18:41:06 --> Item name value: 'kbfauhduahdui'
+DEBUG - 2025-12-16 18:41:06 --> Item quantity value: '1'
+DEBUG - 2025-12-16 18:41:06 --> Trimmed item name: 'kbfauhduahdui', quantity: '1'
+DEBUG - 2025-12-16 18:41:06 --> Inserting item data: {"purchase_request_id":2,"item_id":null,"item_name":"kbfauhduahdui","quantity":1,"unit":"box","notes":""}
+DEBUG - 2025-12-16 18:41:06 --> Item insert result: SUCCESS with ID: 2
+DEBUG - 2025-12-16 18:41:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 18:43:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 18:43:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-16 18:43:46 --> User 'central_admin' logged in successfully
+DEBUG - 2025-12-16 18:43:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 18:43:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 18:43:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 18:44:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 18:44:00 --> Approve request - JSON data received: {"supplier_id":"1"}
+DEBUG - 2025-12-16 18:44:00 --> Approve request - POST data: []
+DEBUG - 2025-12-16 18:44:00 --> Approve request - Supplier ID: 1
+DEBUG - 2025-12-16 18:44:00 --> Approve request - Supplier validated: Fresh Poultry Farm
+DEBUG - 2025-12-16 18:44:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 18:44:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 18:44:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 18:44:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-16 18:44:24 --> User 'logistics_coordinator' logged in successfully
+DEBUG - 2025-12-16 18:44:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 18:44:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 18:44:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 18:44:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 18:44:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 18:44:36 --> Admin supplier view - User: Logistics Coordinator
+DEBUG - 2025-12-16 18:44:36 --> Suppliers count with direct query: 2
+DEBUG - 2025-12-16 18:44:36 --> First supplier with direct: {"id":"2","supplier_name":"Spice Masters Trading","contact_person":"Maria Santos","phone":"+63 918 234 5678","email":"maria.santos@spicemasters.com","address":"456 Spice Avenue, Davao City","supply_type":"Spices and Seasonings","status":"Active","created_at":"2025-12-16 18:35:16","updated_at":"2025-12-16 18:35:16","deleted_at":null,"is_deleted":"0"}
+DEBUG - 2025-12-16 18:44:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 18:44:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 18:44:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 18:44:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 18:44:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-16 18:44:59 --> Created delivery item: {"delivery_id":"DLV-002","item_id":null,"item_name":"kbfauhduahdui","quantity":"1.00","unit":"box","unit_price":"0.00","status":"in_transit"}
+INFO - 2025-12-16 18:44:59 --> Delivery DLV-002 created from PO PO-002
+INFO - 2025-12-16 18:44:59 --> Updated delivery DLV-002 status to in_transit
+DEBUG - 2025-12-16 18:45:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 18:45:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-16 18:45:05 --> Updated delivery DLV-002 status to arrived
+DEBUG - 2025-12-16 18:45:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 18:45:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 18:45:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 18:45:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 18:45:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 18:45:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 18:45:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 18:45:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 18:47:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 18:47:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 18:49:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 18:49:29 --> JSON Data received: {"branch_id":"1","date_needed":"2025-12-18","notes":"","items":[{"item_name":"sfdsffs","quantity":"1","unit":"can","notes":""}]}
+DEBUG - 2025-12-16 18:49:29 --> Items array: [{"item_name":"sfdsffs","quantity":"1","unit":"can","notes":""}]
+DEBUG - 2025-12-16 18:49:29 --> Items count: 1
+DEBUG - 2025-12-16 18:49:29 --> Processing item 0: {"item_name":"sfdsffs","quantity":"1","unit":"can","notes":""}
+DEBUG - 2025-12-16 18:49:29 --> Item name value: 'sfdsffs'
+DEBUG - 2025-12-16 18:49:29 --> Item quantity value: '1'
+DEBUG - 2025-12-16 18:49:29 --> Trimmed item name: 'sfdsffs', quantity: '1'
+DEBUG - 2025-12-16 18:49:29 --> Inserting item data: {"purchase_request_id":3,"item_id":null,"item_name":"sfdsffs","quantity":1,"unit":"can","notes":""}
+DEBUG - 2025-12-16 18:49:29 --> Item insert result: SUCCESS with ID: 3
+DEBUG - 2025-12-16 18:49:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 18:49:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 18:49:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-16 18:49:45 --> User 'central_admin' logged in successfully
+DEBUG - 2025-12-16 18:49:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 18:49:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 18:49:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 18:49:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 18:49:55 --> Approve request - JSON data received: {"supplier_id":"1"}
+DEBUG - 2025-12-16 18:49:55 --> Approve request - POST data: []
+DEBUG - 2025-12-16 18:49:55 --> Approve request - Supplier ID: 1
+DEBUG - 2025-12-16 18:49:55 --> Approve request - Supplier validated: Fresh Poultry Farm
+DEBUG - 2025-12-16 18:49:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 18:50:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 18:50:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 18:50:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-16 18:50:19 --> User 'logistics_coordinator' logged in successfully
+DEBUG - 2025-12-16 18:50:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 18:50:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 18:50:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 18:50:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 18:50:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 18:50:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 18:50:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-16 18:50:50 --> Created delivery item: {"delivery_id":"DLV-003","item_id":null,"item_name":"sfdsffs","quantity":"1.00","unit":"can","unit_price":"0.00","status":"in_transit"}
+INFO - 2025-12-16 18:50:50 --> Delivery DLV-003 created from PO PO-003
+INFO - 2025-12-16 18:50:50 --> Updated delivery DLV-003 status to in_transit
+DEBUG - 2025-12-16 18:50:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 18:50:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-16 18:50:56 --> Updated delivery DLV-003 status to arrived
+DEBUG - 2025-12-16 18:50:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 18:51:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 18:51:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 18:51:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 18:51:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 18:51:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 18:51:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 18:51:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 18:51:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 18:52:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 18:52:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 18:52:47 --> JSON Data received: {"branch_id":"1","date_needed":"2025-12-19","notes":"","items":[{"item_name":"sadnjknad","quantity":"11","unit":"ml","notes":""}]}
+DEBUG - 2025-12-16 18:52:47 --> Items array: [{"item_name":"sadnjknad","quantity":"11","unit":"ml","notes":""}]
+DEBUG - 2025-12-16 18:52:47 --> Items count: 1
+DEBUG - 2025-12-16 18:52:47 --> Processing item 0: {"item_name":"sadnjknad","quantity":"11","unit":"ml","notes":""}
+DEBUG - 2025-12-16 18:52:47 --> Item name value: 'sadnjknad'
+DEBUG - 2025-12-16 18:52:47 --> Item quantity value: '11'
+DEBUG - 2025-12-16 18:52:47 --> Trimmed item name: 'sadnjknad', quantity: '11'
+DEBUG - 2025-12-16 18:52:47 --> Inserting item data: {"purchase_request_id":4,"item_id":null,"item_name":"sadnjknad","quantity":11,"unit":"ml","notes":""}
+DEBUG - 2025-12-16 18:52:47 --> Item insert result: SUCCESS with ID: 4
+DEBUG - 2025-12-16 18:52:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 18:52:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 18:53:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 18:53:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-16 18:53:10 --> User 'central_admin' logged in successfully
+DEBUG - 2025-12-16 18:53:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 18:53:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 18:53:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 18:53:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 18:53:24 --> Approve request - JSON data received: {"supplier_id":"1"}
+DEBUG - 2025-12-16 18:53:24 --> Approve request - POST data: []
+DEBUG - 2025-12-16 18:53:24 --> Approve request - Supplier ID: 1
+DEBUG - 2025-12-16 18:53:24 --> Approve request - Supplier validated: Fresh Poultry Farm
+DEBUG - 2025-12-16 18:53:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 18:53:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 18:53:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-16 18:53:35 --> User 'logistics_coordinator' logged in successfully
+DEBUG - 2025-12-16 18:53:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 18:53:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 18:53:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 18:53:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 18:53:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 18:53:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 18:54:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-16 18:54:02 --> Created delivery item: {"delivery_id":"DLV-004","item_id":null,"item_name":"sadnjknad","quantity":"11.00","unit":"ml","unit_price":"0.00","status":"in_transit"}
+INFO - 2025-12-16 18:54:02 --> Delivery DLV-004 created from PO PO-004
+INFO - 2025-12-16 18:54:02 --> Updated delivery DLV-004 status to in_transit
+DEBUG - 2025-12-16 18:54:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 18:54:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-16 18:54:12 --> Updated delivery DLV-004 status to arrived
+DEBUG - 2025-12-16 18:54:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 18:54:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 18:54:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 18:54:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 18:55:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 18:55:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 18:55:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 19:01:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 19:01:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 19:01:58 --> JSON Data received: {"branch_id":"1","date_needed":"2025-12-19","notes":"","items":[{"item_name":"sdasdasd","quantity":"1","unit":"pcs","notes":""}]}
+DEBUG - 2025-12-16 19:01:58 --> Items array: [{"item_name":"sdasdasd","quantity":"1","unit":"pcs","notes":""}]
+DEBUG - 2025-12-16 19:01:58 --> Items count: 1
+DEBUG - 2025-12-16 19:01:58 --> Processing item 0: {"item_name":"sdasdasd","quantity":"1","unit":"pcs","notes":""}
+DEBUG - 2025-12-16 19:01:58 --> Item name value: 'sdasdasd'
+DEBUG - 2025-12-16 19:01:58 --> Item quantity value: '1'
+DEBUG - 2025-12-16 19:01:58 --> Trimmed item name: 'sdasdasd', quantity: '1'
+DEBUG - 2025-12-16 19:01:58 --> Inserting item data: {"purchase_request_id":5,"item_id":null,"item_name":"sdasdasd","quantity":1,"unit":"pcs","notes":""}
+DEBUG - 2025-12-16 19:01:58 --> Item insert result: SUCCESS with ID: 5
+DEBUG - 2025-12-16 19:02:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 19:02:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 19:02:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-16 19:02:15 --> User 'central_admin' logged in successfully
+DEBUG - 2025-12-16 19:02:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 19:02:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 19:02:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 19:02:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 19:02:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 19:02:25 --> Approve request - JSON data received: {"supplier_id":"1"}
+DEBUG - 2025-12-16 19:02:25 --> Approve request - POST data: []
+DEBUG - 2025-12-16 19:02:25 --> Approve request - Supplier ID: 1
+DEBUG - 2025-12-16 19:02:25 --> Approve request - Supplier validated: Fresh Poultry Farm
+DEBUG - 2025-12-16 19:02:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 19:02:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 19:02:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 19:02:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-16 19:02:44 --> User 'logistics_coordinator' logged in successfully
+DEBUG - 2025-12-16 19:02:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 19:02:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 19:02:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 19:02:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 19:03:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 19:03:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 19:03:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 19:03:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-16 19:03:27 --> Created delivery item: {"delivery_id":"DLV-005","item_id":null,"item_name":"sdasdasd","quantity":"1.00","unit":"pcs","unit_price":"0.00","status":"in_transit"}
+INFO - 2025-12-16 19:03:27 --> Delivery DLV-005 created from PO PO-005
+INFO - 2025-12-16 19:03:27 --> Updated delivery DLV-005 status to in_transit
+DEBUG - 2025-12-16 19:03:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 19:03:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-16 19:03:33 --> Updated delivery DLV-005 status to arrived
+DEBUG - 2025-12-16 19:03:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 19:03:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 19:03:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 19:03:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 19:03:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 19:03:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 19:04:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 19:04:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 19:04:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 19:04:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 19:07:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 19:07:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 19:07:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 19:07:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 19:07:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 19:07:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 19:08:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 19:08:00 --> JSON Data received: {"branch_id":"1","date_needed":"2025-12-19","notes":"","items":[{"item_name":"mjabwndnkdankd","quantity":"1","unit":"g","notes":""},{"item_name":"zmmsfnkdzndknks","quantity":"1","unit":"pack","notes":""},{"item_name":"eafae","quantity":"2","unit":"case","notes":""}]}
+DEBUG - 2025-12-16 19:08:00 --> Items array: [{"item_name":"mjabwndnkdankd","quantity":"1","unit":"g","notes":""},{"item_name":"zmmsfnkdzndknks","quantity":"1","unit":"pack","notes":""},{"item_name":"eafae","quantity":"2","unit":"case","notes":""}]
+DEBUG - 2025-12-16 19:08:00 --> Items count: 3
+DEBUG - 2025-12-16 19:08:00 --> Processing item 0: {"item_name":"mjabwndnkdankd","quantity":"1","unit":"g","notes":""}
+DEBUG - 2025-12-16 19:08:00 --> Item name value: 'mjabwndnkdankd'
+DEBUG - 2025-12-16 19:08:00 --> Item quantity value: '1'
+DEBUG - 2025-12-16 19:08:00 --> Trimmed item name: 'mjabwndnkdankd', quantity: '1'
+DEBUG - 2025-12-16 19:08:00 --> Inserting item data: {"purchase_request_id":6,"item_id":null,"item_name":"mjabwndnkdankd","quantity":1,"unit":"g","notes":""}
+DEBUG - 2025-12-16 19:08:00 --> Item insert result: SUCCESS with ID: 6
+DEBUG - 2025-12-16 19:08:00 --> Processing item 1: {"item_name":"zmmsfnkdzndknks","quantity":"1","unit":"pack","notes":""}
+DEBUG - 2025-12-16 19:08:00 --> Item name value: 'zmmsfnkdzndknks'
+DEBUG - 2025-12-16 19:08:00 --> Item quantity value: '1'
+DEBUG - 2025-12-16 19:08:00 --> Trimmed item name: 'zmmsfnkdzndknks', quantity: '1'
+DEBUG - 2025-12-16 19:08:00 --> Inserting item data: {"purchase_request_id":6,"item_id":null,"item_name":"zmmsfnkdzndknks","quantity":1,"unit":"pack","notes":""}
+DEBUG - 2025-12-16 19:08:00 --> Item insert result: SUCCESS with ID: 7
+DEBUG - 2025-12-16 19:08:00 --> Processing item 2: {"item_name":"eafae","quantity":"2","unit":"case","notes":""}
+DEBUG - 2025-12-16 19:08:00 --> Item name value: 'eafae'
+DEBUG - 2025-12-16 19:08:00 --> Item quantity value: '2'
+DEBUG - 2025-12-16 19:08:00 --> Trimmed item name: 'eafae', quantity: '2'
+DEBUG - 2025-12-16 19:08:00 --> Inserting item data: {"purchase_request_id":6,"item_id":null,"item_name":"eafae","quantity":2,"unit":"case","notes":""}
+DEBUG - 2025-12-16 19:08:00 --> Item insert result: SUCCESS with ID: 8
+DEBUG - 2025-12-16 19:08:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 19:08:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 19:08:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-16 19:08:21 --> User 'central_admin' logged in successfully
+DEBUG - 2025-12-16 19:08:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 19:08:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 19:08:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 19:08:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 19:08:30 --> Approve request - JSON data received: {"supplier_id":"1"}
+DEBUG - 2025-12-16 19:08:30 --> Approve request - POST data: []
+DEBUG - 2025-12-16 19:08:30 --> Approve request - Supplier ID: 1
+DEBUG - 2025-12-16 19:08:30 --> Approve request - Supplier validated: Fresh Poultry Farm
+DEBUG - 2025-12-16 19:08:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 19:08:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 19:08:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-16 19:08:45 --> User 'logistics_coordinator' logged in successfully
+DEBUG - 2025-12-16 19:08:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 19:08:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 19:08:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 19:09:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 19:09:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 19:09:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 19:09:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-16 19:09:39 --> Created delivery item: {"delivery_id":"DLV-006","item_id":null,"item_name":"mjabwndnkdankd","quantity":"1.00","unit":"g","unit_price":"0.00","status":"in_transit"}
+INFO - 2025-12-16 19:09:39 --> Created delivery item: {"delivery_id":"DLV-006","item_id":null,"item_name":"zmmsfnkdzndknks","quantity":"1.00","unit":"pack","unit_price":"0.00","status":"in_transit"}
+INFO - 2025-12-16 19:09:39 --> Created delivery item: {"delivery_id":"DLV-006","item_id":null,"item_name":"eafae","quantity":"2.00","unit":"case","unit_price":"0.00","status":"in_transit"}
+INFO - 2025-12-16 19:09:39 --> Delivery DLV-006 created from PO PO-006
+INFO - 2025-12-16 19:09:39 --> Updated delivery DLV-006 status to in_transit
+DEBUG - 2025-12-16 19:09:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 19:09:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-16 19:09:46 --> Updated delivery DLV-006 status to arrived
+DEBUG - 2025-12-16 19:09:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 19:09:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 19:10:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 19:10:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 19:10:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 19:10:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 19:10:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 19:10:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 19:16:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 19:16:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 19:16:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 19:16:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 19:16:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 19:17:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 19:17:03 --> JSON Data received: {"branch_id":"1","date_needed":"2025-12-20","notes":"","items":[{"item_name":"SDd","quantity":"112","unit":"gallon","notes":""}]}
+DEBUG - 2025-12-16 19:17:03 --> Items array: [{"item_name":"SDd","quantity":"112","unit":"gallon","notes":""}]
+DEBUG - 2025-12-16 19:17:03 --> Items count: 1
+DEBUG - 2025-12-16 19:17:03 --> Processing item 0: {"item_name":"SDd","quantity":"112","unit":"gallon","notes":""}
+DEBUG - 2025-12-16 19:17:03 --> Item name value: 'SDd'
+DEBUG - 2025-12-16 19:17:03 --> Item quantity value: '112'
+DEBUG - 2025-12-16 19:17:03 --> Trimmed item name: 'SDd', quantity: '112'
+DEBUG - 2025-12-16 19:17:03 --> Inserting item data: {"purchase_request_id":7,"item_id":null,"item_name":"SDd","quantity":112,"unit":"gallon","notes":""}
+DEBUG - 2025-12-16 19:17:03 --> Item insert result: SUCCESS with ID: 9
+DEBUG - 2025-12-16 19:17:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 19:17:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 19:17:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-16 19:17:21 --> User 'central_admin' logged in successfully
+DEBUG - 2025-12-16 19:17:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 19:17:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 19:17:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 19:17:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 19:17:33 --> Approve request - JSON data received: {"supplier_id":"1"}
+DEBUG - 2025-12-16 19:17:33 --> Approve request - POST data: []
+DEBUG - 2025-12-16 19:17:33 --> Approve request - Supplier ID: 1
+DEBUG - 2025-12-16 19:17:33 --> Approve request - Supplier validated: Fresh Poultry Farm
+DEBUG - 2025-12-16 19:17:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 19:19:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 19:19:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-16 19:19:28 --> User 'logistics_coordinator' logged in successfully
+DEBUG - 2025-12-16 19:19:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 19:19:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 19:19:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 19:19:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 19:19:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 19:19:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 19:19:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 19:19:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-16 19:19:57 --> Created delivery item: {"delivery_id":"DLV-007","item_id":null,"item_name":"SDd","quantity":"112.00","unit":"gallon","unit_price":"0.00","status":"in_transit"}
+INFO - 2025-12-16 19:19:57 --> Delivery DLV-007 created from PO PO-007
+INFO - 2025-12-16 19:19:57 --> Updated delivery DLV-007 status to in_transit
+DEBUG - 2025-12-16 19:19:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 19:20:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-16 19:20:03 --> Updated delivery DLV-007 status to arrived
+DEBUG - 2025-12-16 19:20:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 19:20:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 19:20:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 19:20:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 19:20:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 19:20:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 19:20:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 19:20:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-12-16 19:46:38 --> mysqli_sql_exception: Column 'created_by' cannot be NOT NULL: needed in a foreign key constraint 'stock_movements_created_by_foreign' SET NULL in C:\xampp1\htdocs\CHAKANOKS\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\xampp1\htdocs\CHAKANOKS\system\Database\MySQLi\Connection.php(327): mysqli->query('CREATE TABLE `s...', 0)
+#1 C:\xampp1\htdocs\CHAKANOKS\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('CREATE TABLE `s...')
+#2 C:\xampp1\htdocs\CHAKANOKS\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('CREATE TABLE `s...')
+#3 C:\xampp1\htdocs\CHAKANOKS\system\Database\Forge.php(570): CodeIgniter\Database\BaseConnection->query('CREATE TABLE `s...')
+#4 C:\xampp1\htdocs\CHAKANOKS\app\Database\Migrations\2025-12-17-000005_CreateStockMovementsTable.php(80): CodeIgniter\Database\Forge->createTable('stock_movements')
+#5 C:\xampp1\htdocs\CHAKANOKS\system\Database\MigrationRunner.php(876): App\Database\Migrations\CreateStockMovementsTable->up()
+#6 C:\xampp1\htdocs\CHAKANOKS\system\Database\MigrationRunner.php(182): CodeIgniter\Database\MigrationRunner->migrate('up', Object(stdClass))
+#7 C:\xampp1\htdocs\CHAKANOKS\system\Commands\Database\Migrate.php(85): CodeIgniter\Database\MigrationRunner->latest(NULL)
+#8 C:\xampp1\htdocs\CHAKANOKS\system\CLI\Commands.php(74): CodeIgniter\Commands\Database\Migrate->run(Array)
+#9 C:\xampp1\htdocs\CHAKANOKS\system\CLI\Console.php(47): CodeIgniter\CLI\Commands->run('migrate', Array)
+#10 C:\xampp1\htdocs\CHAKANOKS\system\Boot.php(388): CodeIgniter\CLI\Console->run()
+#11 C:\xampp1\htdocs\CHAKANOKS\system\Boot.php(133): CodeIgniter\Boot::runCommand(Object(CodeIgniter\CLI\Console))
+#12 C:\xampp1\htdocs\CHAKANOKS\spark(87): CodeIgniter\Boot::bootSpark(Object(Config\Paths))
+#13 {main}
+ERROR - 2025-12-16 19:49:37 --> mysqli_sql_exception: Failed to open the referenced table 'users' in C:\xampp1\htdocs\CHAKANOKS\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\xampp1\htdocs\CHAKANOKS\system\Database\MySQLi\Connection.php(327): mysqli->query('CREATE TABLE `s...', 0)
+#1 C:\xampp1\htdocs\CHAKANOKS\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('CREATE TABLE `s...')
+#2 C:\xampp1\htdocs\CHAKANOKS\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('CREATE TABLE `s...')
+#3 C:\xampp1\htdocs\CHAKANOKS\system\Database\Forge.php(570): CodeIgniter\Database\BaseConnection->query('CREATE TABLE `s...')
+#4 C:\xampp1\htdocs\CHAKANOKS\app\Database\Migrations\2025-12-17-000005_CreateStockMovementsTable.php(80): CodeIgniter\Database\Forge->createTable('stock_movements')
+#5 C:\xampp1\htdocs\CHAKANOKS\system\Database\MigrationRunner.php(876): App\Database\Migrations\CreateStockMovementsTable->up()
+#6 C:\xampp1\htdocs\CHAKANOKS\system\Database\MigrationRunner.php(182): CodeIgniter\Database\MigrationRunner->migrate('up', Object(stdClass))
+#7 C:\xampp1\htdocs\CHAKANOKS\system\Commands\Database\Migrate.php(85): CodeIgniter\Database\MigrationRunner->latest(NULL)
+#8 C:\xampp1\htdocs\CHAKANOKS\system\CLI\Commands.php(74): CodeIgniter\Commands\Database\Migrate->run(Array)
+#9 C:\xampp1\htdocs\CHAKANOKS\system\CLI\Console.php(47): CodeIgniter\CLI\Commands->run('migrate', Array)
+#10 C:\xampp1\htdocs\CHAKANOKS\system\Boot.php(388): CodeIgniter\CLI\Console->run()
+#11 C:\xampp1\htdocs\CHAKANOKS\system\Boot.php(133): CodeIgniter\Boot::runCommand(Object(CodeIgniter\CLI\Console))
+#12 C:\xampp1\htdocs\CHAKANOKS\spark(87): CodeIgniter\Boot::bootSpark(Object(Config\Paths))
+#13 {main}
+DEBUG - 2025-12-16 19:59:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 19:59:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-12-16 19:59:47 --> Login error: Undefined array key "password_hash"
+DEBUG - 2025-12-16 19:59:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 20:04:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 20:04:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-12-16 20:04:20 --> Login error: Undefined array key "password_hash"
+DEBUG - 2025-12-16 20:04:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 20:07:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-16 20:07:41 --> User 'branch_manager1' logged in successfully
+DEBUG - 2025-12-16 20:07:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 20:07:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 20:07:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-12-16 20:07:44 --> mysqli_sql_exception: Unknown column 'suppliers.deleted_at' in 'where clause' in C:\xampp1\htdocs\CHAKANOKS\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\xampp1\htdocs\CHAKANOKS\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\xampp1\htdocs\CHAKANOKS\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\xampp1\htdocs\CHAKANOKS\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\xampp1\htdocs\CHAKANOKS\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xampp1\htdocs\CHAKANOKS\system\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp1\htdocs\CHAKANOKS\system\BaseModel.php(677): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\xampp1\htdocs\CHAKANOKS\app\Controllers\PurchaseRequest.php(54): CodeIgniter\BaseModel->findAll()
+#7 C:\xampp1\htdocs\CHAKANOKS\system\CodeIgniter.php(933): App\Controllers\PurchaseRequest->index()
+#8 C:\xampp1\htdocs\CHAKANOKS\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PurchaseRequest))
+#9 C:\xampp1\htdocs\CHAKANOKS\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp1\htdocs\CHAKANOKS\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#11 C:\xampp1\htdocs\CHAKANOKS\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 C:\xampp1\htdocs\CHAKANOKS\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 {main}
+CRITICAL - 2025-12-16 20:07:44 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'suppliers.deleted_at' in 'where clause'
+[Method: GET, Route: purchase-request]
+in SYSTEMPATH\Database\BaseConnection.php on line 684.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `suppliers`
+WHERE `status` = :status:
+AND `suppliers`.`deleted_at` IS NULL', [...], false)
+ 2 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(677): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\PurchaseRequest.php(54): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\PurchaseRequest->index()
+ 6 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PurchaseRequest))
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-12-16 20:07:44 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'suppliers.deleted_at' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `suppliers`
+WHERE `status` = \'Active\'
+AND `suppliers`.`deleted_at` IS NULL')
+ 2 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `suppliers`
+WHERE `status` = \'Active\'
+AND `suppliers`.`deleted_at` IS NULL')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `suppliers`
+WHERE `status` = :status:
+AND `suppliers`.`deleted_at` IS NULL', [...], false)
+ 4 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(677): CodeIgniter\Model->doFindAll(0, 0)
+ 6 APPPATH\Controllers\PurchaseRequest.php(54): CodeIgniter\BaseModel->findAll()
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\PurchaseRequest->index()
+ 8 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PurchaseRequest))
+ 9 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-12-16 20:07:44 --> [Caused by] mysqli_sql_exception: Unknown column 'suppliers.deleted_at' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query('SELECT *
+FROM `suppliers`
+WHERE `status` = \'Active\'
+AND `suppliers`.`deleted_at` IS NULL', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `suppliers`
+WHERE `status` = \'Active\'
+AND `suppliers`.`deleted_at` IS NULL')
+ 3 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `suppliers`
+WHERE `status` = \'Active\'
+AND `suppliers`.`deleted_at` IS NULL')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `suppliers`
+WHERE `status` = :status:
+AND `suppliers`.`deleted_at` IS NULL', [...], false)
+ 5 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(677): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Controllers\PurchaseRequest.php(54): CodeIgniter\BaseModel->findAll()
+ 8 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\PurchaseRequest->index()
+ 9 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PurchaseRequest))
+10 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-12-16 20:09:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-12-16 20:09:59 --> mysqli_sql_exception: Unknown column 'suppliers.deleted_at' in 'where clause' in C:\xampp1\htdocs\CHAKANOKS\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\xampp1\htdocs\CHAKANOKS\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\xampp1\htdocs\CHAKANOKS\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\xampp1\htdocs\CHAKANOKS\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\xampp1\htdocs\CHAKANOKS\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xampp1\htdocs\CHAKANOKS\system\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp1\htdocs\CHAKANOKS\system\BaseModel.php(677): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\xampp1\htdocs\CHAKANOKS\app\Controllers\PurchaseRequest.php(54): CodeIgniter\BaseModel->findAll()
+#7 C:\xampp1\htdocs\CHAKANOKS\system\CodeIgniter.php(933): App\Controllers\PurchaseRequest->index()
+#8 C:\xampp1\htdocs\CHAKANOKS\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PurchaseRequest))
+#9 C:\xampp1\htdocs\CHAKANOKS\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp1\htdocs\CHAKANOKS\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#11 C:\xampp1\htdocs\CHAKANOKS\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 C:\xampp1\htdocs\CHAKANOKS\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 {main}
+CRITICAL - 2025-12-16 20:09:59 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'suppliers.deleted_at' in 'where clause'
+[Method: GET, Route: purchase-request]
+in SYSTEMPATH\Database\BaseConnection.php on line 684.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `suppliers`
+WHERE `status` = :status:
+AND `suppliers`.`deleted_at` IS NULL', [...], false)
+ 2 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(677): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\PurchaseRequest.php(54): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\PurchaseRequest->index()
+ 6 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PurchaseRequest))
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-12-16 20:09:59 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'suppliers.deleted_at' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `suppliers`
+WHERE `status` = \'Active\'
+AND `suppliers`.`deleted_at` IS NULL')
+ 2 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `suppliers`
+WHERE `status` = \'Active\'
+AND `suppliers`.`deleted_at` IS NULL')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `suppliers`
+WHERE `status` = :status:
+AND `suppliers`.`deleted_at` IS NULL', [...], false)
+ 4 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(677): CodeIgniter\Model->doFindAll(0, 0)
+ 6 APPPATH\Controllers\PurchaseRequest.php(54): CodeIgniter\BaseModel->findAll()
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\PurchaseRequest->index()
+ 8 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PurchaseRequest))
+ 9 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-12-16 20:09:59 --> [Caused by] mysqli_sql_exception: Unknown column 'suppliers.deleted_at' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query('SELECT *
+FROM `suppliers`
+WHERE `status` = \'Active\'
+AND `suppliers`.`deleted_at` IS NULL', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `suppliers`
+WHERE `status` = \'Active\'
+AND `suppliers`.`deleted_at` IS NULL')
+ 3 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `suppliers`
+WHERE `status` = \'Active\'
+AND `suppliers`.`deleted_at` IS NULL')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `suppliers`
+WHERE `status` = :status:
+AND `suppliers`.`deleted_at` IS NULL', [...], false)
+ 5 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(677): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Controllers\PurchaseRequest.php(54): CodeIgniter\BaseModel->findAll()
+ 8 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\PurchaseRequest->index()
+ 9 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PurchaseRequest))
+10 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-12-16 20:10:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-12-16 20:10:04 --> mysqli_sql_exception: Unknown column 'suppliers.deleted_at' in 'where clause' in C:\xampp1\htdocs\CHAKANOKS\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\xampp1\htdocs\CHAKANOKS\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\xampp1\htdocs\CHAKANOKS\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\xampp1\htdocs\CHAKANOKS\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\xampp1\htdocs\CHAKANOKS\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xampp1\htdocs\CHAKANOKS\system\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp1\htdocs\CHAKANOKS\system\BaseModel.php(677): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\xampp1\htdocs\CHAKANOKS\app\Controllers\PurchaseRequest.php(54): CodeIgniter\BaseModel->findAll()
+#7 C:\xampp1\htdocs\CHAKANOKS\system\CodeIgniter.php(933): App\Controllers\PurchaseRequest->index()
+#8 C:\xampp1\htdocs\CHAKANOKS\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PurchaseRequest))
+#9 C:\xampp1\htdocs\CHAKANOKS\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp1\htdocs\CHAKANOKS\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#11 C:\xampp1\htdocs\CHAKANOKS\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 C:\xampp1\htdocs\CHAKANOKS\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 {main}
+CRITICAL - 2025-12-16 20:10:04 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'suppliers.deleted_at' in 'where clause'
+[Method: GET, Route: purchase-request]
+in SYSTEMPATH\Database\BaseConnection.php on line 684.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `suppliers`
+WHERE `status` = :status:
+AND `suppliers`.`deleted_at` IS NULL', [...], false)
+ 2 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(677): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\PurchaseRequest.php(54): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\PurchaseRequest->index()
+ 6 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PurchaseRequest))
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-12-16 20:10:04 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'suppliers.deleted_at' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `suppliers`
+WHERE `status` = \'Active\'
+AND `suppliers`.`deleted_at` IS NULL')
+ 2 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `suppliers`
+WHERE `status` = \'Active\'
+AND `suppliers`.`deleted_at` IS NULL')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `suppliers`
+WHERE `status` = :status:
+AND `suppliers`.`deleted_at` IS NULL', [...], false)
+ 4 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(677): CodeIgniter\Model->doFindAll(0, 0)
+ 6 APPPATH\Controllers\PurchaseRequest.php(54): CodeIgniter\BaseModel->findAll()
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\PurchaseRequest->index()
+ 8 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PurchaseRequest))
+ 9 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-12-16 20:10:04 --> [Caused by] mysqli_sql_exception: Unknown column 'suppliers.deleted_at' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query('SELECT *
+FROM `suppliers`
+WHERE `status` = \'Active\'
+AND `suppliers`.`deleted_at` IS NULL', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `suppliers`
+WHERE `status` = \'Active\'
+AND `suppliers`.`deleted_at` IS NULL')
+ 3 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `suppliers`
+WHERE `status` = \'Active\'
+AND `suppliers`.`deleted_at` IS NULL')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `suppliers`
+WHERE `status` = :status:
+AND `suppliers`.`deleted_at` IS NULL', [...], false)
+ 5 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(677): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Controllers\PurchaseRequest.php(54): CodeIgniter\BaseModel->findAll()
+ 8 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\PurchaseRequest->index()
+ 9 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PurchaseRequest))
+10 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-12-16 20:16:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 20:16:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 20:16:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 20:16:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 20:16:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 20:16:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 20:16:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 20:16:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 20:16:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 20:16:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-16 20:16:38 --> User 'central_admin' logged in successfully
+DEBUG - 2025-12-16 20:16:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 20:16:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 20:16:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 20:16:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 20:16:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 20:16:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 20:16:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 20:16:46 --> Admin supplier view - User: Central Office Admin
+DEBUG - 2025-12-16 20:16:46 --> Suppliers count with direct query: 0
+DEBUG - 2025-12-16 20:16:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 20:16:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 20:16:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 20:17:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 20:17:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-16 20:17:12 --> User 'supplier1' logged in successfully
+DEBUG - 2025-12-16 20:17:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 20:17:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 20:17:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 20:17:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 20:17:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 20:17:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 20:17:53 --> JSON Data received: {"branch_id":"1","date_needed":"2025-12-20","notes":"","items":[{"item_name":"wdad","quantity":"19","unit":"can","notes":""}]}
+DEBUG - 2025-12-16 20:17:53 --> Items array: [{"item_name":"wdad","quantity":"19","unit":"can","notes":""}]
+DEBUG - 2025-12-16 20:17:53 --> Items count: 1
+DEBUG - 2025-12-16 20:17:53 --> Processing item 0: {"item_name":"wdad","quantity":"19","unit":"can","notes":""}
+DEBUG - 2025-12-16 20:17:53 --> Item name value: 'wdad'
+DEBUG - 2025-12-16 20:17:53 --> Item quantity value: '19'
+DEBUG - 2025-12-16 20:17:53 --> Trimmed item name: 'wdad', quantity: '19'
+DEBUG - 2025-12-16 20:17:53 --> Inserting item data: {"purchase_request_id":1,"item_id":null,"item_name":"wdad","quantity":19,"unit":"can","notes":""}
+DEBUG - 2025-12-16 20:17:53 --> Item insert result: SUCCESS with ID: 1
+DEBUG - 2025-12-16 20:17:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-12-16 20:17:55 --> ErrorException: Undefined array key "date_needed"
+[Method: GET, Route: purchase-request]
+in APPPATH\Views\purchase-request.php on line 429.
+ 1 APPPATH\Views\purchase-request.php(429): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "date_needed"', 'C:\\xampp1\\htdocs\\CHAKANOKS\\app\\Views\\purchase-request.php', 429)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\xampp1\\htdocs\\CHAKANOKS\\app\\Views\\purchase-request.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('purchase-request', [], true)
+ 5 APPPATH\Controllers\PurchaseRequest.php(66): view('purchase-request', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\PurchaseRequest->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PurchaseRequest))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-12-16 20:18:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 20:18:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-12-16 20:18:11 --> ErrorException: Undefined array key "date_needed"
+[Method: GET, Route: purchase-request]
+in APPPATH\Views\purchase-request.php on line 429.
+ 1 APPPATH\Views\purchase-request.php(429): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "date_needed"', 'C:\\xampp1\\htdocs\\CHAKANOKS\\app\\Views\\purchase-request.php', 429)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\xampp1\\htdocs\\CHAKANOKS\\app\\Views\\purchase-request.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('purchase-request', [], true)
+ 5 APPPATH\Controllers\PurchaseRequest.php(66): view('purchase-request', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\PurchaseRequest->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PurchaseRequest))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-12-16 20:25:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 20:25:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 20:26:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 20:26:09 --> JSON Data received: {"branch_id":"1","needed_by_date":"2025-12-19","notes":"","items":[{"item_name":"saldmald","quantity":"12","unit":"can","notes":""}]}
+DEBUG - 2025-12-16 20:26:09 --> Items array: [{"item_name":"saldmald","quantity":"12","unit":"can","notes":""}]
+DEBUG - 2025-12-16 20:26:09 --> Items count: 1
+DEBUG - 2025-12-16 20:26:09 --> Processing item 0: {"item_name":"saldmald","quantity":"12","unit":"can","notes":""}
+DEBUG - 2025-12-16 20:26:09 --> Item name value: 'saldmald'
+DEBUG - 2025-12-16 20:26:09 --> Item quantity value: '12'
+DEBUG - 2025-12-16 20:26:09 --> Trimmed item name: 'saldmald', quantity: '12'
+DEBUG - 2025-12-16 20:26:09 --> Inserting item data: {"purchase_request_id":2,"item_id":null,"item_name":"saldmald","quantity":12,"unit":"can","notes":""}
+DEBUG - 2025-12-16 20:26:09 --> Item insert result: SUCCESS with ID: 2
+DEBUG - 2025-12-16 20:26:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 20:26:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 20:26:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 20:26:38 --> Approve request - JSON data received: {"supplier_id":"1"}
+DEBUG - 2025-12-16 20:26:38 --> Approve request - POST data: []
+DEBUG - 2025-12-16 20:26:38 --> Approve request - Supplier ID: 1
+DEBUG - 2025-12-16 20:26:38 --> Approve request - Supplier validated: Fresh Poultry Farm
+DEBUG - 2025-12-16 20:26:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 20:26:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 20:26:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 20:26:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 20:26:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-16 20:27:00 --> User 'logistics_coordinator' logged in successfully
+DEBUG - 2025-12-16 20:27:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 20:27:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 20:27:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 20:27:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 20:27:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 20:27:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 20:27:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 20:27:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-16 20:27:35 --> Created delivery item: {"delivery_id":"DLV-001","item_id":null,"item_name":"saldmald","quantity":"12.00","unit":"can","unit_price":"0.00","total_price":0,"status":"in_transit","created_at":"2025-12-16 20:27:35","updated_at":"2025-12-16 20:27:35"}
+INFO - 2025-12-16 20:27:35 --> Delivery DLV-001 created from PO PO-001
+INFO - 2025-12-16 20:27:35 --> Updated delivery DLV-001 status to in_transit
+DEBUG - 2025-12-16 20:27:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 20:27:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-16 20:27:42 --> Updated delivery DLV-001 status to arrived
+DEBUG - 2025-12-16 20:27:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 20:27:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 20:27:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 20:28:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 20:28:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-16 20:28:12 --> User 'inventory_staff1' logged in successfully
+DEBUG - 2025-12-16 20:28:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 20:28:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 20:28:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 20:28:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 20:28:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 20:28:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 20:28:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 20:28:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 20:28:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 20:39:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 20:39:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 20:40:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 20:40:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 20:40:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 20:40:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 20:41:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 20:41:07 --> JSON Data received: {"branch_id":"1","needed_by_date":"2025-12-19","notes":"","items":[{"item_name":"whole chicken","quantity":"100","unit":"pcs","notes":""}]}
+DEBUG - 2025-12-16 20:41:07 --> Items array: [{"item_name":"whole chicken","quantity":"100","unit":"pcs","notes":""}]
+DEBUG - 2025-12-16 20:41:07 --> Items count: 1
+DEBUG - 2025-12-16 20:41:07 --> Processing item 0: {"item_name":"whole chicken","quantity":"100","unit":"pcs","notes":""}
+DEBUG - 2025-12-16 20:41:07 --> Item name value: 'whole chicken'
+DEBUG - 2025-12-16 20:41:07 --> Item quantity value: '100'
+DEBUG - 2025-12-16 20:41:07 --> Trimmed item name: 'whole chicken', quantity: '100'
+DEBUG - 2025-12-16 20:41:07 --> Inserting item data: {"purchase_request_id":1,"item_id":"1","item_name":"whole chicken","quantity":100,"unit":"pcs","notes":""}
+DEBUG - 2025-12-16 20:41:07 --> Item insert result: SUCCESS with ID: 1
+DEBUG - 2025-12-16 20:41:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 20:41:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 20:41:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-16 20:42:04 --> User 'central_admin' logged in successfully
+DEBUG - 2025-12-16 20:42:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 20:42:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 20:42:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 20:42:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 20:42:15 --> Approve request - JSON data received: {"supplier_id":"1"}
+DEBUG - 2025-12-16 20:42:15 --> Approve request - POST data: []
+DEBUG - 2025-12-16 20:42:15 --> Approve request - Supplier ID: 1
+DEBUG - 2025-12-16 20:42:15 --> Approve request - Supplier validated: Fresh Poultry Farm
+DEBUG - 2025-12-16 20:42:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 20:42:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 20:42:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 20:42:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-16 20:42:38 --> User 'logistics_coordinator' logged in successfully
+DEBUG - 2025-12-16 20:42:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 20:42:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 20:42:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 20:42:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 20:42:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 20:42:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 20:43:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-16 20:43:03 --> Created delivery item: {"delivery_id":"DLV-001","item_id":"1","item_name":"whole chicken","quantity":"100.00","unit":"pcs","unit_price":"0.00","total_price":0,"status":"in_transit","created_at":"2025-12-16 20:43:03","updated_at":"2025-12-16 20:43:03"}
+INFO - 2025-12-16 20:43:03 --> Delivery DLV-001 created from PO PO-001
+INFO - 2025-12-16 20:43:03 --> Updated delivery DLV-001 status to in_transit
+DEBUG - 2025-12-16 20:43:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 20:43:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-16 20:43:11 --> Updated delivery DLV-001 status to arrived
+DEBUG - 2025-12-16 20:43:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 20:43:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 20:43:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 20:43:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 20:43:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 20:43:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 20:43:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 20:43:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 20:44:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 20:44:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 20:44:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.

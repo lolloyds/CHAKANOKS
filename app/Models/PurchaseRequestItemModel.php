@@ -13,8 +13,8 @@ class PurchaseRequestItemModel extends Model
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
     protected $allowedFields    = [
-        'purchase_request_id', 'item_id', 'item_name', 'quantity', 'unit', 'notes',
-        'created_at', 'updated_at'
+        'purchase_request_id', 'item_id', 'item_name', 'quantity', 'unit', 
+        'estimated_price', 'justification', 'created_at', 'updated_at'
     ];
 
     protected bool $allowEmptyInserts = false;
