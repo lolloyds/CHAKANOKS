@@ -1,0 +1,78 @@
+DEBUG - 2025-12-16 00:46:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-16 00:46:54 --> User 'branch_manager1' logged in successfully
+DEBUG - 2025-12-16 00:46:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 00:46:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 00:46:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 00:47:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-16 00:47:58 --> User 'central_admin' logged in successfully
+DEBUG - 2025-12-16 00:47:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 00:47:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 00:48:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 00:51:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 00:51:59 --> Admin supplier view - User: Central Office Admin
+DEBUG - 2025-12-16 00:51:59 --> Suppliers count with direct query: 7
+DEBUG - 2025-12-16 00:51:59 --> First supplier with direct: {"id":"7","supplier_name":"Rice & Grains Wholesale","contact_person":"Sofia Martinez","phone":"+63 923 789 0123","email":"sofia.martinez@ricegrains.com","address":"147 Grain Street, Davao City","supply_type":"Rice and Grains","status":"Active","created_at":"2025-12-15 14:02:31","updated_at":"2025-12-15 14:02:31","deleted_at":null,"is_deleted":"0"}
+DEBUG - 2025-12-16 00:52:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 00:52:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 00:52:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 00:52:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 00:53:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 00:53:12 --> JSON Data received: {"branch_id":"1","date_needed":"2026-01-01","notes":"","items":[{"item_name":"Whole Chicken","quantity":"1","unit":"pcs","notes":""}]}
+DEBUG - 2025-12-16 00:53:12 --> Items array: [{"item_name":"Whole Chicken","quantity":"1","unit":"pcs","notes":""}]
+DEBUG - 2025-12-16 00:53:12 --> Items count: 1
+DEBUG - 2025-12-16 00:53:12 --> Processing item 0: {"item_name":"Whole Chicken","quantity":"1","unit":"pcs","notes":""}
+DEBUG - 2025-12-16 00:53:12 --> Item name value: 'Whole Chicken'
+DEBUG - 2025-12-16 00:53:12 --> Item quantity value: '1'
+DEBUG - 2025-12-16 00:53:12 --> Trimmed item name: 'Whole Chicken', quantity: '1'
+DEBUG - 2025-12-16 00:53:12 --> Inserting item data: {"purchase_request_id":2,"item_id":null,"item_name":"Whole Chicken","quantity":1,"unit":"pcs","notes":""}
+DEBUG - 2025-12-16 00:53:12 --> Item insert result: SUCCESS with ID: 2
+DEBUG - 2025-12-16 00:53:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 00:53:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 00:53:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 00:57:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 01:04:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 01:04:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 01:05:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 01:05:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 01:05:11 --> Admin supplier view - User: Central Office Admin
+DEBUG - 2025-12-16 01:05:11 --> Suppliers count with direct query: 7
+DEBUG - 2025-12-16 01:05:11 --> First supplier with direct: {"id":"7","supplier_name":"Rice & Grains Wholesale","contact_person":"Sofia Martinez","phone":"+63 923 789 0123","email":"sofia.martinez@ricegrains.com","address":"147 Grain Street, Davao City","supply_type":"Rice and Grains","status":"Active","created_at":"2025-12-15 14:02:31","updated_at":"2025-12-15 14:02:31","deleted_at":null,"is_deleted":"0"}
+DEBUG - 2025-12-16 01:05:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 01:07:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 01:08:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 01:13:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 01:13:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 01:13:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-16 01:13:34 --> User 'central_admin' logged in successfully
+DEBUG - 2025-12-16 01:13:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 01:13:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 01:13:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 01:14:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 01:14:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 01:15:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 01:17:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 01:18:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 01:19:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 01:19:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 01:28:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 01:28:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 01:35:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 01:35:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 01:38:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 01:38:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 01:38:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 01:41:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 01:42:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 01:42:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 01:46:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 01:47:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 01:47:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 01:47:41 --> Approve request - JSON data received: {"supplier_id":"1"}
+DEBUG - 2025-12-16 01:47:41 --> Approve request - POST data: []
+DEBUG - 2025-12-16 01:47:41 --> Approve request - Supplier ID: 1
+DEBUG - 2025-12-16 01:47:41 --> Approve request - Supplier validated: Fresh Poultry Farm
+DEBUG - 2025-12-16 01:47:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 01:47:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 01:47:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 01:49:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-16 01:49:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
