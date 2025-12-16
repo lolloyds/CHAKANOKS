@@ -43,7 +43,7 @@
       text-transform: uppercase;
     }
     .badge.pending { background: #ffb74d; color: #fff; }
-    .badge.po_issued_to_supplier { background: #2196f3; color: #fff; }
+    .badge.pending_delivery_schedule { background: #2196f3; color: #fff; }
     .badge.scheduled_for_delivery { background: #4caf50; color: #fff; }
     .badge.in_transit { background: #ff9800; color: #fff; }
     .badge.arriving { background: #795548; color: #fff; }
@@ -92,8 +92,8 @@
     <h3>📊 Quick Summary</h3>
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 15px;">
       <div style="text-align: center; padding: 12px; background: #fff0f5; border-radius: 8px;">
-        <div style="font-size: 20px; font-weight: bold; color: #1976d2;"><?= $stats['po_issued_to_supplier'] ?? 0 ?></div>
-        <div style="font-size: 12px; color: #666;">Issued to Supplier</div>
+        <div style="font-size: 20px; font-weight: bold; color: #1976d2;"><?= $stats['pending_delivery_schedule'] ?? 0 ?></div>
+        <div style="font-size: 12px; color: #666;">Pending Schedule</div>
       </div>
       <div style="text-align: center; padding: 12px; background: #fff0f5; border-radius: 8px;">
         <div style="font-size: 20px; font-weight: bold; color: #4caf50;"><?= $stats['scheduled_for_delivery'] ?? 0 ?></div>
@@ -145,14 +145,14 @@
                 </span>
               </td>
               <td>
-                <?php if (($order['status'] ?? '') === 'po_issued_to_supplier'): ?>
-                  <button class="btn-schedule" onclick="scheduleDelivery(<?= $order['id'] ?>)">Schedule Delivery</button>
-                <?php elseif (in_array($order['status'] ?? '', ['scheduled_for_delivery', 'in_transit', 'delayed'])): ?>
+                <?php if (($order['status'] ?? '') === 'scheduled_for_delivery'): ?>
+                  <button class="btn-update" onclick="startTransit(<?= $order['id'] ?>)">Start Delivery</button>
+                <?php elseif (in_array($order['status'] ?? '', ['in_transit', 'delayed'])): ?>
                   <button class="btn-update" onclick="updateStatus(<?= $order['id'] ?>, '<?= $order['status'] ?>')">Update Status</button>
                 <?php elseif (($order['status'] ?? '') === 'delivered'): ?>
                   <button class="btn-submit" onclick="submitInvoice(<?= $order['id'] ?>)">Submit Invoice</button>
                 <?php else: ?>
-                  <span style="color: #999; font-size: 12px;">-</span>
+                  <span style="color: #999; font-size: 12px;">Waiting for schedule</span>
                 <?php endif; ?>
               </td>
             </tr>
@@ -164,16 +164,19 @@
 </main>
 
 <script>
-// Schedule delivery
-function scheduleDelivery(orderId) {
-  fetch(`<?= base_url('purchase-orders/schedule-delivery/') ?>${orderId}`, {
+// Start delivery transit
+function startTransit(orderId) {
+  if (!confirm('Confirm that you have started delivery for this order?')) return;
+
+  fetch(`<?= base_url('purchase-orders/update-delivery-timeline/') ?>${orderId}`, {
     method: 'POST',
-    headers: { 'X-Requested-With': 'XMLHttpRequest' }
+    headers: { 'Content-Type': 'application/json', 'X-Requested-With': 'XMLHttpRequest' },
+    body: JSON.stringify({ status: 'in_transit' })
   })
   .then(r => r.json())
   .then(result => {
     if (result.success) {
-      alert('Delivery scheduled successfully!');
+      alert('Delivery started successfully!');
       location.reload();
     } else {
       alert('Error: ' + result.message);

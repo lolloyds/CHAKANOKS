@@ -93,8 +93,19 @@ class UsersSeeder extends Seeder
                 'created_at'    => $now,
                 'updated_at'    => $now,
             ],
+            [
+                'username'      => 'supplier2',
+                'password_hash' => password_hash('password', PASSWORD_DEFAULT),
+                'role'          => 'Supplier',
+                'branch_id'     => null,
+                'supplier_id'   => 2,
+                'created_at'    => $now,
+                'updated_at'    => $now,
+            ]
+            
         ];
 
         $this->db->table('users')->insertBatch($users);
     }
 }
+ 

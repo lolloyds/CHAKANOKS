@@ -13,7 +13,7 @@ class DeliveryModel extends Model
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
     protected $allowedFields    = [
-        'delivery_id', 'branch_id', 'supplier_id', 'driver', 'status',
+        'delivery_id', 'branch_id', 'supplier_id', 'purchase_order_id', 'driver', 'status',
         'scheduled_time', 'arrival_time', 'notes', 'created_by', 'approved_by', 'approved_at',
         'item_name', 'quantity', 'delivery_date', 'created_at', 'updated_at'
     ];
@@ -47,4 +47,19 @@ class DeliveryModel extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
+
+    /**
+     * Generate next delivery ID
+     */
+    public function generateDeliveryId()
+    {
+        $lastDelivery = $this->orderBy('id', 'DESC')->first();
+        if ($lastDelivery && isset($lastDelivery['delivery_id'])) {
+            $lastNumber = (int) substr($lastDelivery['delivery_id'], 4);
+            $nextNumber = $lastNumber + 1;
+        } else {
+            $nextNumber = 1;
+        }
+        return 'DLV-' . str_pad($nextNumber, 3, '0', STR_PAD_LEFT);
+    }
 }

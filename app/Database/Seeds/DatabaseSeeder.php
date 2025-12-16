@@ -11,14 +11,11 @@ class DatabaseSeeder extends Seeder
 
         $this->call('BranchesSeeder');
 
-        $this->call('ItemsSeeder');
-
         $this->call('SuppliersSeeder');
 
         $this->call('UsersSeeder');
 
-        $this->call('BranchStockSeeder');
+        $this->call('FranchisesSeeder');
 
-        $this->call('DeliveriesSeeder');
     }
 }

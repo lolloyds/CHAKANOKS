@@ -34,6 +34,13 @@ class CreateDeliveriesTable extends Migration
                 'null'       => true,
                 'comment'    => 'Supplier sending the delivery',
             ],
+            'purchase_order_id' => [
+                'type'       => 'INT',
+                'constraint' => 11,
+                'unsigned'   => true,
+                'null'       => true,
+                'comment'    => 'Reference to purchase_orders.id',
+            ],
             'driver' => [
                 'type'       => 'VARCHAR',
                 'constraint' => '100',

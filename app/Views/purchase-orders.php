@@ -161,7 +161,7 @@
     }
     .badge.pending { background: #ffb74d; color: #fff; }
     .badge.approved { background: #66bb6a; color: #fff; }
-    .badge.po_issued_to_supplier { background: #ff9800; color: #fff; }
+    .badge.pending_delivery_schedule { background: #ff9800; color: #fff; }
     .badge.scheduled_for_delivery { background: #9c27b0; color: #fff; }
     .badge.ordered { background: #42a5f5; color: #fff; }
     .badge.in_transit { background: #ab47bc; color: #fff; }
@@ -388,6 +388,31 @@
     </div>
   </div>
 
+  <!-- Schedule Delivery Modal -->
+  <div id="scheduleModal" class="modal">
+    <div class="modal-content" style="max-width: 600px;">
+      <div class="modal-header">Schedule Delivery</div>
+      <div id="schedule-details">
+        <!-- PO details will be loaded here -->
+      </div>
+      <form id="scheduleForm">
+        <input type="hidden" id="schedule_po_id" name="po_id">
+        <div class="form-group">
+          <label for="schedule_delivery_date">Delivery Date *</label>
+          <input type="date" id="schedule_delivery_date" name="delivery_date" required min="<?= date('Y-m-d') ?>">
+        </div>
+        <div class="form-group">
+          <label for="schedule_notes">Schedule Notes (Optional)</label>
+          <textarea id="schedule_notes" name="notes" rows="3" placeholder="Add any scheduling notes, route optimization, or delivery instructions..."></textarea>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn-reject" onclick="closeScheduleModal()">Cancel</button>
+          <button type="button" class="btn-schedule" onclick="createSchedule()">Create Schedule</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
   <div class="grid grid-2">
     <div class="box" style="height: fit-content;">
       <h3 style="margin-bottom: 20px; padding-bottom: 10px; border-bottom: 2px solid #e0e0e0;">📊 Quick Summary</h3>
@@ -503,7 +528,6 @@
       <div style="background: #fff3cd; border: 1px solid #ffc107; padding: 15px; border-radius: 6px; text-align: center;">
         <strong>Central Office Feature</strong><br>
         Custom order creation is available to Central Office administrators only.
-        Branch Managers should create Purchase Requests instead.
       </div>
     </div>
     <?php endif; ?>
@@ -552,8 +576,8 @@
                 </span>
               </td>
               <td>
-                <?php if (($userRole ?? '') === 'Logistics Coordinator' && ($order['status'] ?? '') === 'po_issued_to_supplier'): ?>
-                  <button class="btn-schedule" onclick="scheduleDelivery(<?= $order['id'] ?>)">Schedule Delivery</button>
+                <?php if (($userRole ?? '') === 'Logistics Coordinator' && ($order['status'] ?? '') === 'pending_delivery_schedule'): ?>
+                  <button class="btn-schedule" onclick="openScheduleModal(<?= $order['id'] ?>)">Schedule Delivery</button>
                 <?php elseif (($userRole ?? '') === 'Logistics Coordinator' && in_array($order['status'] ?? '', ['scheduled_for_delivery', 'in_transit', 'delayed', 'arriving'])): ?>
                   <button class="btn-logistics" onclick="openLogisticsModal(<?= $order['id'] ?>, '<?= esc($order['status'] ?? '') ?>', '<?= esc($order['expected_delivery_date'] ?? '') ?>')">Manage Timeline</button>
                 <?php elseif (($userRole ?? '') === 'Inventory Staff' && in_array($order['status'] ?? '', ['arriving', 'delivered'])): ?>
@@ -964,12 +988,117 @@ function submitConfirmDelivery() {
   });
 }
 
+// Schedule modal functions
+function openScheduleModal(poId) {
+  document.getElementById('schedule_po_id').value = poId;
+
+  // Fetch PO details
+  fetch(`<?= base_url('purchase-orders/get/') ?>${poId}`)
+    .then(r => r.json())
+    .then(result => {
+      if (result.success && result.data) {
+        const po = result.data;
+        const detailsContainer = document.getElementById('schedule-details');
+
+        detailsContainer.innerHTML = `
+          <div style="background: #fff0f5; padding: 15px; border-radius: 8px; margin-bottom: 20px; border: 1px solid #ffd6e8;">
+            <h4 style="margin: 0 0 10px 0; color: #333;">Purchase Order Details</h4>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; font-size: 14px;">
+              <div><strong>PO ID:</strong> ${po.po_id || 'N/A'}</div>
+              <div><strong>Supplier:</strong> ${po.supplier_name || 'N/A'}</div>
+              <div><strong>Branch:</strong> ${po.branch_name || 'N/A'}</div>
+              <div><strong>Order Date:</strong> ${po.order_date ? new Date(po.order_date).toLocaleDateString() : 'N/A'}</div>
+              <div><strong>Total Value:</strong> ₱${po.total_cost ? parseFloat(po.total_cost).toLocaleString() : '0.00'}</div>
+              <div><strong>Status:</strong> <span class="badge ${po.status ? po.status.toLowerCase().replace(' ', '_') : 'pending'}">${po.status ? po.status.replace('_', ' ').replace(/\b\w/g, l => l.toUpperCase()) : 'Pending'}</span></div>
+            </div>
+
+            <h5 style="margin: 15px 0 10px 0; color: #333;">Items Ordered:</h5>
+            <div style="max-height: 150px; overflow-y: auto;">
+              ${po.items && po.items.length > 0 ? po.items.map(item =>
+                `<div style="padding: 8px; background: #fff; margin-bottom: 5px; border-radius: 4px; border: 1px solid #eee;">
+                  ${item.quantity} ${item.unit || 'pcs'} × ${item.item_name} @ ₱${parseFloat(item.unit_price).toLocaleString()}
+                </div>`
+              ).join('') : '<div style="color: #999; font-style: italic;">No items found</div>'}
+            </div>
+          </div>
+        `;
+
+        // Set minimum date to today
+        const today = new Date().toISOString().split('T')[0];
+        document.getElementById('schedule_delivery_date').min = today;
+
+        // Clear form
+        document.getElementById('schedule_delivery_date').value = '';
+        document.getElementById('schedule_notes').value = '';
+
+        document.getElementById('scheduleModal').style.display = 'block';
+      } else {
+        showAlert('Error loading purchase order details', 'error');
+      }
+    })
+    .catch(error => {
+      showAlert('Error: ' + error.message, 'error');
+    });
+}
+
+function closeScheduleModal() {
+  document.getElementById('scheduleModal').style.display = 'none';
+  document.getElementById('schedule-details').innerHTML = '';
+  document.getElementById('schedule_po_id').value = '';
+}
+
+function createSchedule() {
+  const poId = document.getElementById('schedule_po_id').value;
+  const deliveryDate = document.getElementById('schedule_delivery_date').value;
+  const notes = document.getElementById('schedule_notes').value;
+
+  if (!poId) {
+    showAlert('Error: PO ID not found', 'error');
+    return;
+  }
+
+  if (!deliveryDate) {
+    showAlert('Please select a delivery date', 'error');
+    return;
+  }
+
+  if (!confirm('Create delivery schedule for this purchase order?')) {
+    return;
+  }
+
+  fetch(`<?= base_url('purchase-orders/schedule-delivery/') ?>${poId}`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'X-Requested-With': 'XMLHttpRequest'
+    },
+    body: JSON.stringify({
+      expected_delivery_date: deliveryDate,
+      notes: notes || null
+    })
+  })
+  .then(r => r.json())
+  .then(result => {
+    if (result.success) {
+      showAlert(result.message, 'success');
+      closeScheduleModal();
+      setTimeout(() => location.reload(), 1500);
+    } else {
+      showAlert(result.message, 'error');
+    }
+  })
+  .catch(error => {
+    showAlert('Error: ' + error.message, 'error');
+  });
+}
+
 // Close modal when clicking outside
 window.onclick = function(event) {
   const logisticsModal = document.getElementById('logisticsModal');
   const receiveModal = document.getElementById('receiveModal');
   const confirmModal = document.getElementById('confirmModal');
   const changeSupplierModal = document.getElementById('changeSupplierModal');
+  const scheduleModal = document.getElementById('scheduleModal');
   if (event.target == logisticsModal) {
     closeLogisticsModal();
   }
@@ -981,6 +1110,9 @@ window.onclick = function(event) {
   }
   if (event.target == changeSupplierModal) {
     closeChangeSupplierModal();
+  }
+  if (event.target == scheduleModal) {
+    closeScheduleModal();
   }
 }
 

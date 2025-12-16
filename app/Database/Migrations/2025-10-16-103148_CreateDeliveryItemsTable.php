@@ -42,6 +42,12 @@ class CreateDeliveryItemsTable extends Migration
                 'null'    => true,
                 'comment' => 'Expiry date of delivered items',
             ],
+            'status' => [
+                'type'       => 'ENUM',
+                'constraint' => ['in_transit', 'delivered', 'received', 'damaged', 'expired'],
+                'default'    => 'in_transit',
+                'comment'    => 'Individual item status within delivery',
+            ],
             'created_at' => [
                 'type'    => 'DATETIME',
                 'null'    => true,

@@ -287,19 +287,13 @@
         <label for="approval_supplier_id">Select Supplier (Required)</label>
         <select id="approval_supplier_id" class="form-group" required>
           <option value="">-- Select Supplier --</option>
-          <!-- Placeholder suppliers if controller doesn't load them -->
-          <option value="1">Fresh Poultry Farm</option>
-          <option value="2">Spice Masters Trading</option>
-          <option value="3">Packaging Solutions Inc.</option>
-          <option value="4">Beverage Distributors Co.</option>
-          <option value="5">Gas & Fuel Supply</option>
           <?php if (!empty($suppliers ?? [])): ?>
-            <!-- Add real suppliers if available -->
             <?php foreach ($suppliers as $supplier): ?>
               <option value="<?= $supplier['id'] ?>"><?= esc($supplier['supplier_name']) ?></option>
             <?php endforeach; ?>
+          <?php else: ?>
+            <option value="" disabled>No suppliers available</option>
           <?php endif; ?>
-
         </select>
       </div>
       <div class="modal-footer">

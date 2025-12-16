@@ -128,7 +128,7 @@ class PurchaseOrderModel extends Model
         return [
             'total' => $query->countAllResults(false),
             'pending' => $query->where('status', 'pending')->countAllResults(false),
-            'po_issued_to_supplier' => $query->where('status', 'po_issued_to_supplier')->countAllResults(false),
+            'pending_delivery_schedule' => $query->where('status', 'pending_delivery_schedule')->countAllResults(false),
             'scheduled_for_delivery' => $query->where('status', 'scheduled_for_delivery')->countAllResults(false),
             'ordered' => $query->where('status', 'ordered')->countAllResults(false),
             'in_transit' => $query->where('status', 'in_transit')->countAllResults(false),
@@ -140,7 +140,3 @@ class PurchaseOrderModel extends Model
         ];
     }
 }
-
-
-
-

@@ -284,7 +284,7 @@ class PurchaseRequest extends BaseController
                 $orderData['status'] = 'pending'; // Branch-approved POs need central review
                 $orderData['notes'] = 'Branch-approved PR auto-converted to PO: ' . $request['request_id'] . ' - Pending Central Office review';
             } else {
-                $orderData['status'] = 'po_issued_to_supplier'; // Central office approval goes direct to supplier
+                $orderData['status'] = 'pending_delivery_schedule'; // Central office approval goes direct to supplier
                 $orderData['notes'] = 'Central Office approved PR converted to PO: ' . $request['request_id'];
             }
 

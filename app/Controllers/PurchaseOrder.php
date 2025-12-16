@@ -64,11 +64,25 @@ class PurchaseOrder extends BaseController
             'supplierId' => $supplierId,
         ];
 
-        // Load items for each order
+        // Load items for each order with proper joins to ensure item data
+        $db = \Config\Database::connect();
         foreach ($data['orders'] as &$order) {
-            $order['items'] = $this->purchaseOrderItemModel
-                ->where('purchase_order_id', $order['id'])
-                ->findAll();
+            $order['items'] = $db->table('purchase_order_items poi')
+                ->select('poi.*, i.name as item_name_from_db, i.unit as item_unit_from_db')
+                ->join('items i', 'poi.item_id = i.id', 'left')
+                ->where('poi.purchase_order_id', $order['id'])
+                ->get()
+                ->getResultArray();
+
+            // Ensure each item has a name (prefer the stored item_name, fallback to DB name)
+            foreach ($order['items'] as &$item) {
+                if (empty($item['item_name']) && !empty($item['item_name_from_db'])) {
+                    $item['item_name'] = $item['item_name_from_db'];
+                }
+                if (empty($item['unit']) && !empty($item['item_unit_from_db'])) {
+                    $item['unit'] = $item['item_unit_from_db'];
+                }
+            }
         }
 
         return view('purchase-orders', $data);
@@ -181,8 +195,8 @@ class PurchaseOrder extends BaseController
                 return $this->response->setJSON(['success' => false, 'message' => 'Order not found']);
             }
 
-            $newStatus = $this->request->getPost('status');
-            $validStatuses = ['pending', 'approved', 'po_issued_to_supplier', 'scheduled_for_delivery', 'ordered', 'in_transit', 'delayed', 'arriving', 'delivered', 'delivered_to_branch', 'completed', 'cancelled'];
+            $newStatus = $this->request->getPost('status') ?? $this->request->getJSON(true)['status'] ?? null;
+            $validStatuses = ['pending', 'approved', 'pending_delivery_schedule', 'scheduled_for_delivery', 'ordered', 'in_transit', 'delayed', 'arriving', 'delivered', 'delivered_to_branch', 'completed', 'cancelled'];
 
             if (!in_array($newStatus, $validStatuses)) {
                 return $this->response->setJSON(['success' => false, 'message' => 'Invalid status']);
@@ -212,13 +226,13 @@ class PurchaseOrder extends BaseController
     }
 
     /**
-     * Logistics Coordinator updates delivery timeline
+     * Update delivery timeline (used by Logistics Coordinators and Suppliers)
      */
     public function updateDeliveryTimeline($id)
     {
         $user = session()->get('user');
-        if (!$user || $user['role'] !== 'Logistics Coordinator') {
-            return $this->response->setJSON(['success' => false, 'message' => 'Unauthorized - Logistics Coordinator access only']);
+        if (!$user || !in_array($user['role'], ['Logistics Coordinator', 'Supplier'])) {
+            return $this->response->setJSON(['success' => false, 'message' => 'Unauthorized - Logistics Coordinator or Supplier access only']);
         }
 
         try {
@@ -227,13 +241,32 @@ class PurchaseOrder extends BaseController
                 return $this->response->setJSON(['success' => false, 'message' => 'Order not found']);
             }
 
-            $newStatus = $this->request->getPost('status');
-            $validStatuses = ['scheduled_for_delivery', 'in_transit', 'delayed', 'arriving'];
-            
+            $newStatus = $this->request->getPost('status') ?? $this->request->getJSON(true)['status'] ?? null;
+
+            // Define allowed status transitions based on user role
+            if ($user['role'] === 'Supplier') {
+                // Suppliers can only start delivery (scheduled_for_delivery -> in_transit)
+                $validStatuses = ['in_transit'];
+                $requiredCurrentStatus = 'scheduled_for_delivery';
+
+                if ($order['status'] !== $requiredCurrentStatus) {
+                    return $this->response->setJSON([
+                        'success' => false,
+                        'message' => 'Order must be scheduled for delivery before you can start transit. Current status: ' . $order['status']
+                    ]);
+                }
+            } elseif ($user['role'] === 'Logistics Coordinator') {
+                // Logistics Coordinators can update various statuses
+                $validStatuses = ['scheduled_for_delivery', 'in_transit', 'delayed', 'arriving'];
+            } else {
+                // Fallback for any other authorized role
+                $validStatuses = ['in_transit'];
+            }
+
             if (!in_array($newStatus, $validStatuses)) {
                 return $this->response->setJSON([
                     'success' => false,
-                    'message' => 'Invalid status for delivery timeline update'
+                    'message' => 'Invalid status for delivery timeline update. Role: ' . $user['role'] . ', Valid statuses: ' . implode(', ', $validStatuses) . ', Requested status: ' . $newStatus
                 ]);
             }
 
@@ -259,6 +292,11 @@ class PurchaseOrder extends BaseController
 
             $this->purchaseOrderModel->update($id, $updateData);
 
+            // If status changed to 'in_transit', create a delivery record
+            if ($newStatus === 'in_transit') {
+                $this->createDeliveryFromPO($order, $user);
+            }
+
             return $this->response->setJSON([
                 'success' => true,
                 'message' => 'Delivery timeline updated successfully!'
@@ -273,13 +311,13 @@ class PurchaseOrder extends BaseController
     }
 
     /**
-     * Supplier marks PO as scheduled for delivery
+     * Schedule PO for delivery (used by Logistics Coordinator)
      */
     public function scheduleDelivery($id)
     {
         $user = session()->get('user');
-        if (!$user || $user['role'] !== 'Supplier') {
-            return $this->response->setJSON(['success' => false, 'message' => 'Unauthorized - Supplier access only']);
+        if (!$user || !in_array($user['role'], ['Logistics Coordinator', 'Supplier'])) {
+            return $this->response->setJSON(['success' => false, 'message' => 'Unauthorized - Logistics Coordinator or Supplier access only']);
         }
 
         try {
@@ -288,11 +326,11 @@ class PurchaseOrder extends BaseController
                 return $this->response->setJSON(['success' => false, 'message' => 'Order not found']);
             }
 
-            // Only allow updating if status is 'po_issued_to_supplier'
-            if ($order['status'] !== 'po_issued_to_supplier') {
+            // Only allow updating if status is 'pending_delivery_schedule'
+            if ($order['status'] !== 'pending_delivery_schedule') {
                 return $this->response->setJSON([
                     'success' => false,
-                    'message' => 'Order must be in "PO issued to supplier" status to schedule delivery'
+                    'message' => 'Order must be in "Pending Delivery Schedule" status to schedule delivery'
                 ]);
             }
 
@@ -572,11 +610,31 @@ class PurchaseOrder extends BaseController
             'supplier' => $supplier,
         ];
 
-        // Load items for each order
+        // Filter out orders that are still waiting for scheduling (pending_delivery_schedule)
+        // Suppliers should only see orders that have been scheduled or are in progress
+        $data['orders'] = array_filter($data['orders'], function($order) {
+            return $order['status'] !== 'pending_delivery_schedule';
+        });
+
+        // Load items for each order with proper joins to ensure item data
+        $db = \Config\Database::connect();
         foreach ($data['orders'] as &$order) {
-            $order['items'] = $this->purchaseOrderItemModel
-                ->where('purchase_order_id', $order['id'])
-                ->findAll();
+            $order['items'] = $db->table('purchase_order_items poi')
+                ->select('poi.*, i.name as item_name_from_db, i.unit as item_unit_from_db')
+                ->join('items i', 'poi.item_id = i.id', 'left')
+                ->where('poi.purchase_order_id', $order['id'])
+                ->get()
+                ->getResultArray();
+
+            // Ensure each item has a name (prefer the stored item_name, fallback to DB name)
+            foreach ($order['items'] as &$item) {
+                if (empty($item['item_name']) && !empty($item['item_name_from_db'])) {
+                    $item['item_name'] = $item['item_name_from_db'];
+                }
+                if (empty($item['unit']) && !empty($item['item_unit_from_db'])) {
+                    $item['unit'] = $item['item_unit_from_db'];
+                }
+            }
         }
 
         return view('supplier-orders', $data);
@@ -630,6 +688,65 @@ class PurchaseOrder extends BaseController
         ];
 
         return view('supplier-invoices', $data);
+    }
+
+    /**
+     * Create delivery record when PO status changes to in_transit
+     */
+    private function createDeliveryFromPO($order, $user)
+    {
+        try {
+            // Load required models
+            $deliveryModel = new \App\Models\DeliveryModel();
+
+            // Generate delivery ID
+            $deliveryId = $deliveryModel->generateDeliveryId();
+
+            // Get PO items
+            $poItems = $this->purchaseOrderItemModel->where('purchase_order_id', $order['id'])->findAll();
+
+            // Create delivery record
+            $deliveryData = [
+                'delivery_id' => $deliveryId,
+                'purchase_order_id' => $order['id'],
+                'branch_id' => $order['branch_id'],
+                'supplier_id' => $order['supplier_id'],
+                'driver' => 'Delivery Driver', // Default driver name, could be made configurable
+                'status' => 'in_transit',
+                'scheduled_time' => date('Y-m-d H:i:s'), // Current time as scheduled time
+                'notes' => "Delivery for PO: {$order['po_id']}",
+                'created_by' => $user['id'],
+            ];
+
+            $deliveryRecordId = $deliveryModel->insert($deliveryData);
+
+            // Create delivery items
+            $db = \Config\Database::connect();
+            $deliveryItems = [];
+            foreach ($poItems as $item) {
+                $deliveryItems[] = [
+                    'delivery_id' => $deliveryId,
+                    'item_id' => $item['item_id'],
+                    'quantity' => $item['quantity'],
+                    'unit_price' => $item['unit_price'] ?? 0,
+                    'expiry_date' => null, // Could be set later when received
+                    'status' => 'in_transit', // Item status starts as in_transit
+                    'created_at' => date('Y-m-d H:i:s'),
+                    'updated_at' => date('Y-m-d H:i:s'),
+                ];
+            }
+
+            if (!empty($deliveryItems)) {
+                $db->table('delivery_items')->insertBatch($deliveryItems);
+            }
+
+            // Log the creation
+            log_message('info', "Delivery {$deliveryId} created from PO {$order['po_id']}");
+
+        } catch (\Exception $e) {
+            // Log error but don't fail the PO status update
+            log_message('error', 'Failed to create delivery from PO: ' . $e->getMessage());
+        }
     }
 
     /**

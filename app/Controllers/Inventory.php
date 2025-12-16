@@ -329,8 +329,9 @@ class Inventory extends BaseController
 
             // Build query to get deliveries with branch names and all delivery items
             $query = $db->table('deliveries d')
-                ->select('d.*, b.name as branch_name, GROUP_CONCAT(CONCAT(di.quantity, " ", i.name) SEPARATOR ", ") as items')
-                ->join('branches b', 'd.branch_id = b.id')
+                ->select('d.*, COALESCE(b.name, CONCAT("Branch ID: ", d.branch_id)) as branch_name,
+                         COALESCE(GROUP_CONCAT(CONCAT(di.quantity, " ", i.name) SEPARATOR ", "), d.item_name) as items')
+                ->join('branches b', 'd.branch_id = b.id', 'left')
                 ->join('delivery_items di', 'd.delivery_id = di.delivery_id', 'left')
                 ->join('items i', 'di.item_id = i.id', 'left')
                 ->groupBy('d.id')
@@ -352,56 +353,10 @@ class Inventory extends BaseController
 
             return $deliveries;
         } catch (\Exception $e) {
-            // Fall back to sample data if tables don't exist yet
-            return $this->getFallbackDeliveries($branchId);
+            // Return empty array if database tables don't exist or query fails
+            return [];
         }
     }
-
-    private function getFallbackDeliveries($branchId = null)
-    {
-        // Dummy deliveries for testing if database is not set up yet
-        $deliveries = [
-            [
-                'id' => 'DLV-001',
-                'delivery_id' => 'DLV-001',
-                'branch_id' => 1,
-                'branch_name' => 'Chakanoks Davao - Bajada',
-                'items' => '50 Roasted Chickens, 30kg Rice',
-                'driver' => 'Juan Dela Cruz',
-                'status' => 'scheduled',
-                'scheduled_time' => date('Y-m-d H:i:s', strtotime('+1 day')),
-                'can_approve' => !empty($branchId) && $branchId == 1
-            ],
-            [
-                'id' => 'DLV-002',
-                'delivery_id' => 'DLV-002',
-                'branch_id' => 2,
-                'branch_name' => 'Chakanoks Davao - Matina',
-                'items' => '25 Roasted Chickens, 10kg Veggies',
-                'driver' => 'Pedro Santos',
-                'status' => 'in_transit',
-                'scheduled_time' => date('Y-m-d H:i:s'),
-                'can_approve' => !empty($branchId) && $branchId == 2
-            ],
-            [
-                'id' => 'DLV-003',
-                'delivery_id' => 'DLV-003',
-                'branch_id' => 3,
-                'branch_name' => 'Chakanoks Davao - Toril',
-                'items' => '40 Roasted Chickens, 20kg Rice',
-                'driver' => 'Carlos Reyes',
-                'status' => 'delivered',
-                'scheduled_time' => date('Y-m-d H:i:s', strtotime('-1 hour')),
-                'can_approve' => !empty($branchId) && $branchId == 3
-            ]
-        ];
-
-        return $branchId ? array_filter($deliveries, function($d) use ($branchId) {
-            return $d['branch_id'] == $branchId;
-        }) : $deliveries;
-    }
-
-
 
     // ===============================
     // 🚨 Alert Management
