@@ -165,10 +165,6 @@
   <!-- Central Office Dashboard -->
   <div class="box">
     <h2>📊 Dashboard</h2>
-    <div class="desc">
-      Welcome to the <b>CHAKANOKS Management Dashboard</b>.
-      Monitor <b>real-time operations</b> including <u>inventory, suppliers, purchase requests, deliveries, transfers, and franchise performance</u>.
-    </div>
   </div>
 
   <div class="box">

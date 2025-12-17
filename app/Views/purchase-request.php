@@ -14,6 +14,9 @@
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
       margin-bottom: 20px;
       border: 1px solid #ffd6e8;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
     }
     h2, h3 {
       margin-top: 0;
@@ -211,9 +214,7 @@
       border-color: #ff69b4;
       box-shadow: 0 0 0 2px rgba(255, 105, 180, 0.1);
     }
-    .item-row .item-notes {
-      min-width: 100px;
-    }
+
     .item-row .btn-remove-item {
       white-space: nowrap;
       min-width: 75px;
@@ -269,13 +270,12 @@
     }
   </style>
 
-  <div class="box">
-    <h2>📑 Purchase Request</h2>
-    <div class="desc">
-      Create and track requests from branches. Approved requests can be converted to Purchase Orders.
+  <div style="max-width: 1000px; margin: 0 auto; padding: 0 20px;">
+    <div class="box">
+      <h2>📑 Purchase Request</h2>
+      <div class="desc">
+      </div>
     </div>
-
-  </div>
 
   <div id="alert-container"></div>
 
@@ -303,34 +303,7 @@
     </div>
   </div>
 
-  <div class="grid grid-2">
-    <div class="box" style="height: fit-content;">
-      <h3>📊 Quick Summary</h3>
-      <div class="row">
-        <div class="form-group">
-          <label>Total Requests</label>
-          <input type="text" value="<?= $stats['total'] ?? 0 ?>" readonly style="color: #1976d2; font-weight: 600;">
-        </div>
-        <div class="form-group">
-          <label>Pending Approvals</label>
-          <input type="text" value="<?= $stats['pending'] ?? 0 ?>" readonly style="color: #ff9800; font-weight: 600;">
-        </div>
-        <div class="form-group">
-          <label>Pending Central Office Review</label>
-          <input type="text" value="<?= $stats['pending_central_office_review'] ?? 0 ?>" readonly style="color: #ff9800; font-weight: 600;">
-        </div>
-        <div class="form-group">
-          <label>Approved</label>
-          <input type="text" value="<?= $stats['approved'] ?? 0 ?>" readonly style="color: #4caf50; font-weight: 600;">
-        </div>
-        <div class="form-group">
-          <label>Rejected</label>
-          <input type="text" value="<?= $stats['rejected'] ?? 0 ?>" readonly style="color: #e57373; font-weight: 600;">
-        </div>
-      </div>
-    </div>
-
-    <?php if (in_array($userRole ?? '', ['Branch Manager', 'Inventory Staff'])): ?>
+  <?php if (in_array($userRole ?? '', ['Branch Manager', 'Inventory Staff'])): ?>
     <div class="box">
       <h3>📝 New Request</h3>
       <form id="prForm">
@@ -348,39 +321,30 @@
             <input type="hidden" name="branch_id" value="<?= $branchId ?>">
           <?php endif; ?>
         </div>
-        <div class="form-group">
-          <label for="needed_by_date">Date Needed</label>
-          <input type="date" id="needed_by_date" name="needed_by_date" required>
-        </div>
-        <div class="form-group">
-          <label for="notes">Notes</label>
-          <textarea id="notes" name="notes" rows="2" placeholder="Optional notes for approver"></textarea>
-        </div>
+
+
         <div id="items-container">
           <h4>📦 Items</h4>
           <div class="item-row">
-            <input type="text" class="item-name" placeholder="Item name" required>
+            <input type="text" class="item-name" placeholder="Type or select item name" list="items-list" required>
+            <datalist id="items-list">
+              <?php if (!empty($items)): ?>
+                <?php foreach ($items as $item): ?>
+                  <option value="<?= esc($item['name']) ?>" data-unit="<?= esc($item['unit']) ?>" data-category="<?= esc($item['category']) ?>">
+                    <?= esc($item['category']) ?> - <?= esc($item['name']) ?>
+                  </option>
+                <?php endforeach; ?>
+              <?php endif; ?>
+            </datalist>
             <input type="number" class="item-quantity" placeholder="Qty" step="0.01" required>
             <select class="item-unit" required>
               <option value="">Select Unit</option>
-              <option value="kg">kg (Kilogram)</option>
-              <option value="g">g (Gram)</option>
               <option value="pcs">pcs (Pieces)</option>
-              <option value="box">box</option>
-              <option value="pack">pack</option>
-              <option value="bottle">bottle</option>
-              <option value="can">can</option>
-              <option value="liter">liter</option>
-              <option value="ml">ml (Milliliter)</option>
-              <option value="gallon">gallon</option>
-              <option value="bag">bag</option>
-              <option value="sack">sack</option>
-              <option value="carton">carton</option>
-              <option value="case">case</option>
-              <option value="dozen">dozen</option>
-              <option value="unit">unit</option>
+              <option value="kg">kg (Kilogram)</option>
+              <option value="liters">liters</option>
+              <option value="bundles">bundles</option>
             </select>
-            <input type="text" class="item-notes" placeholder="Notes (optional)">
+
             <button type="button" class="btn-remove-item" style="background: #e53935; color: #fff; border-radius: 6px;" onclick="this.parentElement.remove()">Remove</button>
           </div>
         </div>
@@ -399,7 +363,7 @@
           <th>Request ID</th>
           <th>Branch</th>
           <th>Items</th>
-          <th>Date Needed</th>
+
           <th>Date Requested</th>
           <th>Status</th>
           <?php if ($userRole !== 'Branch Manager'): ?>
@@ -410,7 +374,7 @@
       <tbody>
         <?php if (empty($requests)): ?>
           <tr>
-            <td colspan="<?= $userRole === 'Branch Manager' ? '6' : '7' ?>" style="text-align: center; padding: 20px;">No purchase requests found</td>
+            <td colspan="<?= $userRole === 'Branch Manager' ? '5' : '6' ?>" style="text-align: center; padding: 20px;">No purchase requests found</td>
           </tr>
         <?php else: ?>
           <?php foreach ($requests as $request): ?>
@@ -426,7 +390,7 @@
                   echo esc(implode(', ', $itemsList) ?: 'No items');
                 ?>
               </td>
-              <td><?= $request['needed_by_date'] ? date('M d, Y', strtotime($request['needed_by_date'])) : 'N/A' ?></td>
+
               <td><?= $request['created_at'] ? date('M d, Y', strtotime($request['created_at'])) : 'N/A' ?></td>
               <td>
                 <span class="badge <?= strtolower(str_replace(' ', '-', $request['status'] ?? 'pending')) ?>">
@@ -474,38 +438,74 @@ document.addEventListener('DOMContentLoaded', function() {
     } else if (supplierCount === 0) {
         console.log('No suppliers loaded - $suppliers array is empty');
     }
+    
+    // Add event listener for the initial item row
+    setupItemRowListeners(document.querySelector('.item-row'));
 });
+
+function setupItemRowListeners(row) {
+    const itemInput = row.querySelector('.item-name');
+    const unitSelect = row.querySelector('.item-unit');
+    
+    if (itemInput && unitSelect) {
+        itemInput.addEventListener('input', function() {
+            const inputValue = this.value;
+            const datalist = document.getElementById('items-list');
+            const options = datalist.querySelectorAll('option');
+            
+            // Find matching option in datalist
+            for (let option of options) {
+                if (option.value === inputValue) {
+                    const itemUnit = option.getAttribute('data-unit');
+                    if (itemUnit) {
+                        unitSelect.value = itemUnit;
+                    }
+                    break;
+                }
+            }
+        });
+        
+        // Also listen for change event (when user selects from dropdown)
+        itemInput.addEventListener('change', function() {
+            const inputValue = this.value;
+            const datalist = document.getElementById('items-list');
+            const options = datalist.querySelectorAll('option');
+            
+            // Find matching option in datalist
+            for (let option of options) {
+                if (option.value === inputValue) {
+                    const itemUnit = option.getAttribute('data-unit');
+                    if (itemUnit) {
+                        unitSelect.value = itemUnit;
+                    }
+                    break;
+                }
+            }
+        });
+    }
+}
 
 function addItemRow() {
   const container = document.getElementById('items-container');
   const newRow = document.createElement('div');
   newRow.className = 'item-row';
   newRow.innerHTML = `
-    <input type="text" class="item-name" placeholder="Item name" required>
+    <input type="text" class="item-name" placeholder="Type or select item name" list="items-list" required>
     <input type="number" class="item-quantity" placeholder="Qty" step="0.01" required>
     <select class="item-unit" required>
       <option value="">Select Unit</option>
-      <option value="kg">kg (Kilogram)</option>
-      <option value="g">g (Gram)</option>
       <option value="pcs">pcs (Pieces)</option>
-      <option value="box">box</option>
-      <option value="pack">pack</option>
-      <option value="bottle">bottle</option>
-      <option value="can">can</option>
-      <option value="liter">liter</option>
-      <option value="ml">ml (Milliliter)</option>
-      <option value="gallon">gallon</option>
-      <option value="bag">bag</option>
-      <option value="sack">sack</option>
-      <option value="carton">carton</option>
-      <option value="case">case</option>
-      <option value="dozen">dozen</option>
-      <option value="unit">unit</option>
+      <option value="kg">kg (Kilogram)</option>
+      <option value="liters">liters</option>
+      <option value="bundles">bundles</option>
     </select>
-    <input type="text" class="item-notes" placeholder="Notes (optional)">
+
     <button type="button" class="btn-remove-item" style="background: #e53935; color: #fff; border-radius: 6px;" onclick="this.parentElement.remove()">Remove</button>
   `;
   container.appendChild(newRow);
+  
+  // Setup event listeners for the new row
+  setupItemRowListeners(newRow);
 }
 
 document.getElementById('prForm').addEventListener('submit', async function(e) {
@@ -518,10 +518,9 @@ document.getElementById('prForm').addEventListener('submit', async function(e) {
     const name = row.querySelector('.item-name').value;
     const quantity = row.querySelector('.item-quantity').value;
     const unit = row.querySelector('.item-unit').value;
-    const notes = row.querySelector('.item-notes').value;
     
     if (name && quantity) {
-      items.push({ item_name: name, quantity: quantity, unit: unit, notes: notes });
+      items.push({ item_name: name, quantity: quantity, unit: unit });
     }
   });
   
@@ -532,8 +531,6 @@ document.getElementById('prForm').addEventListener('submit', async function(e) {
   
   const data = {
     branch_id: formData.get('branch_id'),
-    needed_by_date: formData.get('needed_by_date'),
-    notes: formData.get('notes'),
     items: items
   };
   
@@ -717,8 +714,20 @@ window.onclick = function(event) {
 }
 
 function rejectRequest(id) {
-  const reason = prompt('Enter rejection reason:');
-  if (!reason) return;
+  const userRole = '<?= $userRole ?? '' ?>';
+  let reason = '';
+  
+  // Central Office Admin doesn't need to provide rejection reason
+  if (userRole === 'Central Office Admin') {
+    if (!confirm('Are you sure you want to reject this purchase request?')) {
+      return;
+    }
+    reason = 'Rejected by Central Office Admin';
+  } else {
+    // Other roles need to provide a reason
+    reason = prompt('Enter rejection reason:');
+    if (!reason) return;
+  }
   
   fetch(`<?= base_url('purchase-request/reject/') ?>${id}`, {
     method: 'POST',
@@ -777,5 +786,8 @@ function confirmApproveFallback(id) {
   });
 }
 </script>
+
+  </div> <!-- End container -->
+</main>
 
 <?php include __DIR__ . '/includes/footer.php'; ?>

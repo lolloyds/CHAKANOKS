@@ -420,11 +420,6 @@
   <!-- Central Office Inventory View -->
   <div class="box" style="margin-bottom: 20px;">
     <h2 style="margin-top: 0; padding-bottom: 10px; border-bottom: 2px solid #ffd6e8;">📦 Inventory</h2>
-    <p style="color: #666; line-height: 1.6; margin: 0;">
-      The Inventory section provides a complete list of all items available in Chakanok's Roasted Chicken House.
-      It tracks raw ingredients, cooking supplies, packaging materials, and beverages across all branches.
-      This helps ensure that fresh chicken and essential supplies are always available for daily operations.
-    </p>
   </div>
 
   <div class="stats">

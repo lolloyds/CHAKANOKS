@@ -81,6 +81,14 @@ $routes->get('purchase-orders/get/(:num)', 'PurchaseOrder::get/$1');
 // ==================== SUPPLIER ROUTES ====================
 $routes->get('supplier-orders', 'PurchaseOrder::supplierOrders');
 
+// Supplier Products Management
+$routes->get('supplier/products', 'SupplierProductController::index');
+$routes->get('supplier/products/create', 'SupplierProductController::create');
+$routes->post('supplier/products/store', 'SupplierProductController::store');
+$routes->get('supplier/products/edit/(:num)', 'SupplierProductController::edit/$1');
+$routes->post('supplier/products/update/(:num)', 'SupplierProductController::update/$1');
+$routes->post('supplier/products/delete/(:num)', 'SupplierProductController::delete/$1');
+
 // ==================== SUPPLIERS ====================
 $routes->post('suppliers/create', 'Suppliers::create');
 $routes->get('suppliers/edit/(:num)', 'Suppliers::edit/$1');

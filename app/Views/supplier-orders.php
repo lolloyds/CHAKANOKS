@@ -180,31 +180,7 @@
     </div>
   </div>
 
-  <div class="box">
-    <h3>📊 Quick Summary</h3>
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 15px;">
-      <div style="text-align: center; padding: 12px; background: #fff0f5; border-radius: 8px;">
-        <div style="font-size: 20px; font-weight: bold; color: #1976d2;"><?= $stats['pending_delivery_schedule'] ?? 0 ?></div>
-        <div style="font-size: 12px; color: #666;">Pending Schedule</div>
-      </div>
-      <div style="text-align: center; padding: 12px; background: #fff0f5; border-radius: 8px;">
-        <div style="font-size: 20px; font-weight: bold; color: #4caf50;"><?= $stats['scheduled_for_delivery'] ?? 0 ?></div>
-        <div style="font-size: 12px; color: #666;">Scheduled</div>
-      </div>
-      <div style="text-align: center; padding: 12px; background: #fff0f5; border-radius: 8px;">
-        <div style="font-size: 20px; font-weight: bold; color: #ff9800;"><?= $stats['in_transit'] ?? 0 ?></div>
-        <div style="font-size: 12px; color: #666;">In Transit</div>
-      </div>
-      <div style="text-align: center; padding: 12px; background: #fff0f5; border-radius: 8px;">
-        <div style="font-size: 20px; font-weight: bold; color: #795548;"><?= $stats['arrived'] ?? 0 ?></div>
-        <div style="font-size: 12px; color: #666;">Arrived</div>
-      </div>
-      <div style="text-align: center; padding: 12px; background: #fff0f5; border-radius: 8px;">
-        <div style="font-size: 20px; font-weight: bold; color: #607d8b;"><?= $stats['delivered'] ?? 0 ?></div>
-        <div style="font-size: 12px; color: #666;">Delivered</div>
-      </div>
-    </div>
-  </div>
+
 
   <div class="box">
     <h3>📋 Orders List</h3>

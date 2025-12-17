@@ -132,16 +132,20 @@
                         Username <span class="required">*</span>
                     </label>
                     <input type="text" id="username" name="username"
-                           value="<?= old('username') ?>" required>
-                    <small style="color: #666;">Unique username for login</small>
+                           value="<?= old('username') ?>" required
+                           pattern="[a-zA-Z0-9\s]+"
+                           title="Username can only contain letters, numbers, and spaces">
+                    <small style="color: #666;">Only letters, numbers, and spaces allowed</small>
                 </div>
                 <div class="form-group">
                     <label for="email">
                         Email <span class="required">*</span>
                     </label>
                     <input type="email" id="email" name="email"
-                           value="<?= old('email') ?>" required>
-                    <small style="color: #666;">Valid email address</small>
+                           value="<?= old('email') ?>" required
+                           pattern="[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}"
+                           title="Email can only contain letters, numbers, periods, underscores, and hyphens">
+                    <small style="color: #666;">Only letters, numbers, periods, underscores, and hyphens allowed</small>
                 </div>
                 <div class="form-group">
                     <label for="password">

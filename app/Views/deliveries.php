@@ -132,11 +132,6 @@
 
   <div class="box">
     <h2>🚚 Deliveries</h2>
-    <div style="font-size: 15px; color: #555; line-height: 1.6; margin-bottom: 20px;">
-      Track and manage deliveries to branches. Monitor delivery status and receive items at branch locations.
-    </div>
-    
-
   </div>
 
   <?php if (!$isBranchUser): ?>

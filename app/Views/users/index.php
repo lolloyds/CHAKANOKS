@@ -304,6 +304,8 @@
                 <?php foreach ($users as $user): ?>
                     <?php
                     $isCurrentUser = ($user['id'] == $currentUserId);
+                    $isAdminRole = in_array($user['role'], ['System Administrator', 'Central Office Admin']);
+                    $cannotDeactivate = $isCurrentUser || $isAdminRole;
                     $isInactive = ($user['status'] === 'inactive');
                     $rowClasses = [];
                     if ($isCurrentUser) $rowClasses[] = 'current-user';
@@ -345,9 +347,9 @@
 
                                 <?php if ($user['status'] === 'active'): ?>
                                     <button type="button" class="btn-delete
-                                        <?= $isCurrentUser ? ' btn-disabled' : '' ?>"
-                                        <?= $isCurrentUser ? 'disabled' : 'onclick="deactivateUser(' . $user['id'] . ', \'' . esc($user['username']) . '\')"' ?>
-                                        title="<?= $isCurrentUser ? 'Cannot deactivate yourself' : 'Deactivate' ?>">
+                                        <?= $cannotDeactivate ? ' btn-disabled' : '' ?>"
+                                        <?= $cannotDeactivate ? 'disabled' : 'onclick="deactivateUser(' . $user['id'] . ', \'' . esc($user['username']) . '\')"' ?>
+                                        title="<?= $isCurrentUser ? 'Cannot deactivate yourself' : ($isAdminRole ? 'Cannot deactivate admin users' : 'Deactivate') ?>">
                                         <i class="fas fa-ban"></i> Deactivate
                                     </button>
                                 <?php else: ?>

@@ -12,7 +12,7 @@ class SuppliersSeeder extends Seeder
         
         $suppliers = [
             [
-                'supplier_name' => 'Fresh Poultry Trading',
+                'supplier_name' => 'Fresh Poultry',
                 'contact_person' => 'Virgilio',
                 'phone' => '+63 917 123 4567',
                 'email' => 'virgilio@freshpoultry.com',
@@ -22,7 +22,7 @@ class SuppliersSeeder extends Seeder
                 'updated_at' => date('Y-m-d H:i:s'),
             ],
             [
-                'supplier_name' => 'Edriane Farm',
+                'supplier_name' => 'Edriane Trading',
                 'contact_person' => 'Edriane',
                 'phone' => '+63 918 234 5678',
                 'email' => 'edriane@edrianefarm.com',

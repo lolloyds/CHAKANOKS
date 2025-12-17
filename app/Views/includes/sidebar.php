@@ -7,6 +7,7 @@
                 // Limited menu for Supplier role
                 ?>
                 <div><a href="<?= base_url('dashboard'); ?>">Dashboard</a></div>
+                <div><a href="<?= base_url('supplier/products'); ?>">My Products</a></div>
                 <div><a href="<?= base_url('supplier-orders'); ?>">Orders</a></div>
                 <div><a href="<?= base_url('settings'); ?>">Settings</a></div>
                 <div><a href="<?= base_url('logout'); ?>" onclick="return confirm('Are you sure you want to logout?')">Logout</a></div>

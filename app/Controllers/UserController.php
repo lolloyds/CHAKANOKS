@@ -78,11 +78,23 @@ class UserController extends BaseController
         if ($redirect) return $redirect;
 
         $rules = [
-            'username' => 'required|min_length[3]|max_length[50]|is_unique[users.username]',
+            'username' => 'required|min_length[3]|max_length[50]|is_unique[users.username]|alpha_numeric_space',
             'email' => 'required|valid_email|is_unique[users.email]',
             'password' => 'required|min_length[6]',
             'role' => 'required|in_list[System Administrator,Central Office Admin,Branch Manager,Inventory Staff,Supplier,Logistics Coordinator,Franchise Manager]',
         ];
+
+        // Custom validation for username (no special characters except spaces)
+        $username = $this->request->getPost('username');
+        if ($username && !preg_match('/^[a-zA-Z0-9\s]+$/', $username)) {
+            return redirect()->back()->withInput()->with('errors', ['username' => 'Username can only contain letters, numbers, and spaces']);
+        }
+
+        // Custom validation for email (more restrictive)
+        $email = $this->request->getPost('email');
+        if ($email && !preg_match('/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/', $email)) {
+            return redirect()->back()->withInput()->with('errors', ['email' => 'Email format is invalid. Only letters, numbers, periods, underscores, and hyphens are allowed']);
+        }
 
         if (!$this->validate($rules)) {
             return redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
@@ -169,7 +181,7 @@ class UserController extends BaseController
         }
 
         $rules = [
-            'username' => 'required|min_length[3]|max_length[50]|is_unique[users.username,id,' . $id . ']',
+            'username' => 'required|min_length[3]|max_length[50]|is_unique[users.username,id,' . $id . ']|alpha_numeric_space',
             'email' => 'required|valid_email|is_unique[users.email,id,' . $id . ']',
             'role' => 'required|in_list[System Administrator,Central Office Admin,Branch Manager,Inventory Staff,Supplier,Logistics Coordinator,Franchise Manager]',
         ];
@@ -177,6 +189,18 @@ class UserController extends BaseController
         // Add password validation only if password is provided
         if ($this->request->getPost('password')) {
             $rules['password'] = 'min_length[6]';
+        }
+
+        // Custom validation for username (no special characters except spaces)
+        $username = $this->request->getPost('username');
+        if ($username && !preg_match('/^[a-zA-Z0-9\s]+$/', $username)) {
+            return redirect()->back()->withInput()->with('errors', ['username' => 'Username can only contain letters, numbers, and spaces']);
+        }
+
+        // Custom validation for email (more restrictive)
+        $email = $this->request->getPost('email');
+        if ($email && !preg_match('/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/', $email)) {
+            return redirect()->back()->withInput()->with('errors', ['email' => 'Email format is invalid. Only letters, numbers, periods, underscores, and hyphens are allowed']);
         }
 
         if (!$this->validate($rules)) {
@@ -221,6 +245,11 @@ class UserController extends BaseController
         $currentUser = session()->get('user');
         if ($currentUser['id'] == $id) {
             return redirect()->to(base_url('users'))->with('error', 'Cannot deactivate your own account');
+        }
+
+        // Prevent deactivating admin users
+        if (in_array($user['role'], ['System Administrator', 'Central Office Admin'])) {
+            return redirect()->to(base_url('users'))->with('error', 'Cannot deactivate admin users (System Administrator or Central Office Admin)');
         }
 
         if ($this->userModel->update($id, ['status' => 'inactive', 'updated_at' => date('Y-m-d H:i:s')])) {
