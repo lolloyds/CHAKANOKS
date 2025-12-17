@@ -1,6 +1,8 @@
 <?php include __DIR__ . '/../includes/header.php'; ?>
 <?php include __DIR__ . '/../includes/sidebar.php'; ?>
 
+
+
 <style>
   body {
     font-family: "Segoe UI", Arial, sans-serif;
@@ -140,15 +142,21 @@
                         Email <span class="required">*</span>
                     </label>
                     <input type="email" id="email" name="email"
-                           value="<?= old('email', esc($user['email'])) ?>" required>
+                           value="<?= old('email', esc($user['email'] ?? '')) ?>" required>
                     <small style="color: #666;">Valid email address</small>
                 </div>
                 <div class="form-group">
-                    <label for="password">
-                        New Password
+                    <label>
+                        Password Reset
                     </label>
-                    <input type="password" id="password" name="password" minlength="6">
-                    <small style="color: #666;">Leave blank to keep current password. Minimum 6 characters if changing.</small>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <button type="button" onclick="resetPassword()" style="background: #ffc107; color: #000; padding: 8px 16px; border: none; border-radius: 6px; font-weight: 600; cursor: pointer;">
+                            <i class="fas fa-key"></i> Reset to "password"
+                        </button>
+                        <input type="hidden" id="password" name="password" value="">
+                        <span id="passwordStatus" style="color: #666; font-size: 14px;">No password change</span>
+                    </div>
+                    <small style="color: #666;">Click button to reset user password to default "password".</small>
                 </div>
                 <div class="form-group">
                     <label for="role">
@@ -225,6 +233,20 @@ function toggleFields() {
         supplierField.style.display = 'block';
         supplierSelect.required = true;
     }
+}
+
+function resetPassword() {
+    const passwordField = document.getElementById('password');
+    const statusSpan = document.getElementById('passwordStatus');
+    const button = event.target;
+    
+    passwordField.value = 'password';
+    statusSpan.textContent = 'Password will be reset to "password"';
+    statusSpan.style.color = '#28a745';
+    
+    // Change button appearance to show it's been clicked
+    button.style.background = '#28a745';
+    button.innerHTML = '<i class="fas fa-check"></i> Password Reset Queued';
 }
 
 // Initialize on page load

@@ -120,11 +120,19 @@ class UserController extends BaseController
             return redirect()->to(base_url('users'))->with('error', 'Invalid user ID');
         }
 
-        // Get user data
-        $user = $this->userModel->find($id);
+        // Get user data using direct database query to ensure all fields are retrieved
+        $db = \Config\Database::connect();
+        $user = $db->table('users')->where('id', $id)->get()->getRowArray();
         if (!$user) {
             return redirect()->to(base_url('users'))->with('error', 'User not found');
         }
+
+        // Prevent editing inactive users
+        if ($user['status'] === 'inactive') {
+            return redirect()->to(base_url('users'))->with('error', 'Cannot edit inactive users. Please activate the user first.');
+        }
+
+
 
         // Get branches and suppliers for dropdowns
         $branches = $this->branchModel->findAll();
@@ -148,9 +156,16 @@ class UserController extends BaseController
         $redirect = $this->checkAdminAccess();
         if ($redirect) return $redirect;
 
-        $user = $this->userModel->find($id);
+        // Get user data using direct database query
+        $db = \Config\Database::connect();
+        $user = $db->table('users')->where('id', $id)->get()->getRowArray();
         if (!$user) {
             return redirect()->to(base_url('users'))->with('error', 'User not found');
+        }
+
+        // Prevent updating inactive users
+        if ($user['status'] === 'inactive') {
+            return redirect()->to(base_url('users'))->with('error', 'Cannot update inactive users. Please activate the user first.');
         }
 
         $rules = [
