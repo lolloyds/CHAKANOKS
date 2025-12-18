@@ -13,6 +13,7 @@ class BranchesSeeder extends Seeder
 
         $branches = [
             [
+                'franchise_id'   => 1, // CHAKANOKS Davao North
                 'name'           => 'Davao Branch 1',
                 'address'        => '123 Rizal St, Davao City',
                 'phone'          => '+63 82 123 4567',
@@ -21,6 +22,7 @@ class BranchesSeeder extends Seeder
                 'updated_at'     => $now,
             ],
             [
+                'franchise_id'   => 2, // CHAKANOKS Davao South
                 'name'           => 'Davao Branch 2',
                 'address'        => '45 Mabini St, Davao City',
                 'phone'          => '+63 82 234 5678',

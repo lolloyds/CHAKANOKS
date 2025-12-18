@@ -238,9 +238,39 @@ class PurchaseRequest extends BaseController
                 return $this->response->setJSON(['success' => false, 'message' => 'Unauthorized to approve this request']);
             }
 
-            // Get supplier_id from request (required for creating PO)
+            // Get supplier_id from request or auto-determine for Branch Managers
             $jsonData = $this->request->getJSON(true);
             $supplierId = $this->request->getPost('supplier_id') ?? $jsonData['supplier_id'] ?? null;
+
+            // For Branch Managers and Central Office Admin, automatically determine supplier based on items
+            if (in_array($user['role'], ['Branch Manager', 'Central Office Admin']) && !$supplierId) {
+                // Get PR items to determine supplier
+                $prItems = $this->purchaseRequestItemModel->where('purchase_request_id', $id)->findAll();
+                if (empty($prItems)) {
+                    return $this->response->setJSON(['success' => false, 'message' => 'Purchase request has no items']);
+                }
+
+                // Load SupplierProductModel to find suppliers for items
+                $supplierProductModel = new \App\Models\SupplierProductModel();
+                $itemNames = array_column($prItems, 'item_name');
+                $supplierItems = $supplierProductModel->getSuppliersForItems($itemNames);
+
+                if (empty($supplierItems)) {
+                    return $this->response->setJSON(['success' => false, 'message' => 'No suppliers found for the requested items']);
+                }
+
+                // Check if all items can be supplied by a single supplier
+                $supplierCounts = [];
+                foreach ($supplierItems as $supplierItem) {
+                    $supplierCounts[$supplierItem['supplier_id']] = ($supplierCounts[$supplierItem['supplier_id']] ?? 0) + 1;
+                }
+
+                // Find supplier that can provide the most items
+                $bestSupplierId = array_keys($supplierCounts, max($supplierCounts))[0];
+                $supplierId = $bestSupplierId;
+
+                log_message('debug', 'Branch Manager auto-selected supplier: ' . $supplierId);
+            }
 
             log_message('debug', 'Approve request - JSON data received: ' . json_encode($jsonData));
             log_message('debug', 'Approve request - POST data: ' . json_encode($this->request->getPost()));

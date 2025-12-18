@@ -47,4 +47,38 @@ class SupplierProductModel extends Model
             ->get()
             ->getResultArray();
     }
+
+    /**
+     * Get supplier for a specific item by item name
+     */
+    public function getSupplierForItem($itemName)
+    {
+        $db = \Config\Database::connect();
+        return $db->table('supplier_products sp')
+            ->select('sp.supplier_id, s.supplier_name, sp.price_per_unit')
+            ->join('items i', 'sp.item_id = i.id', 'inner')
+            ->join('suppliers s', 'sp.supplier_id = s.id', 'inner')
+            ->where('i.name', $itemName)
+            ->where('sp.availability_status', 'available')
+            ->where('s.status', 'Active')
+            ->get()
+            ->getRowArray();
+    }
+
+    /**
+     * Get suppliers for multiple items
+     */
+    public function getSuppliersForItems($itemNames)
+    {
+        $db = \Config\Database::connect();
+        return $db->table('supplier_products sp')
+            ->select('sp.supplier_id, s.supplier_name, i.name as item_name, sp.price_per_unit')
+            ->join('items i', 'sp.item_id = i.id', 'inner')
+            ->join('suppliers s', 'sp.supplier_id = s.id', 'inner')
+            ->whereIn('i.name', $itemNames)
+            ->where('sp.availability_status', 'available')
+            ->where('s.status', 'Active')
+            ->get()
+            ->getResultArray();
+    }
 }

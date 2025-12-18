@@ -12,7 +12,6 @@ class SupplierProductsSeeder extends Seeder
         $now = Time::now()->toDateTimeString();
 
         $supplierProducts = [
-            // Fresh Poultry (supplier_id = 1) - Chicken products
             [
                 'supplier_id' => 1,
                 'item_id' => 1, // Whole Chicken
@@ -25,10 +24,9 @@ class SupplierProductsSeeder extends Seeder
                 'updated_at' => $now,
             ],
 
-            // Edriane Trading (supplier_id = 2) - Condiments, Vegetables, Seasonings, Cooking Supplies
             [
                 'supplier_id' => 2,
-                'item_id' => 2, // Soy Sauce
+                'item_id' => 2,
                 'price_per_unit' => 85.00,
                 'minimum_order' => 6,
                 'availability_status' => 'available',
